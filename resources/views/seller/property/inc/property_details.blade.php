@@ -1,13 +1,14 @@
 @php
     $options = "";
-    for($i=1;$i<=50;$i++)
+    for($i=0;$i<=50;$i++)
     {
         $options .= "<option value='".$i."'>".$i."</option>";
     }
 @endphp
 <div class="w-100">
-    <form action="" method="POST">
+    <form action="{{route('save_property_details')}}" method="POST">
         @csrf
+        <input type="hidden" name="property_id" value="{{$property_id}}">
     <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#about_property" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">About the property
         <span class="ms-2 rotate-180">
 
@@ -137,7 +138,8 @@
             </div>  
             <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-bold mb-2">Tags</label>
-                <input class="form-control form-control-solid" placeholder="" name="tags" value="" />
+                <select class="form-control select2" id="kt_select2_11" multiple name="tags[]">
+                </select>
             </div>  
             <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-bold mb-2">SMS Code</label>
@@ -244,6 +246,11 @@
             @endforeach
         </div>         
     </div>
+    
+    <div class="col-md-12 fv-row mb-4">
+                <label class="required fs-6 fw-bold mb-2">Other Features</label>
+                <textarea class="form-control form-control-solid" name="other_features" rows="5" cols="30"> </textarea>
+            </div>  
     </div>
     <button class="btn btn-primary">save</button>
     </form>

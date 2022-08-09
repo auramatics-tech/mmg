@@ -17,13 +17,13 @@ class Seller
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(Auth::check() && Auth::user()->type == 1)
-        // {
+        if(Auth::check() && Auth::user()->type == 1)
+        {
             return $next($request);
-        // }
-        // else
-        // {
-        //     return redirect()->route('seller_login');
-        // }
+        }
+        else
+        {
+            return redirect()->route('seller_login');
+        }
     }
 }

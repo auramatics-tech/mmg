@@ -26,7 +26,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/seller/property-list';
 
     /**
      * Create a new controller instance.
@@ -39,4 +39,16 @@ class VerificationController extends Controller
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+    public function verify(Request $request)
+	{
+		if ($request->user() && $request->user() != $request->route('id')) {
+			Auth::logout();
+		}
+		
+		if (! $request->user()) {
+			Auth::loginUsingId($request->route('id'), true);
+		}
+        Session::flash('alert-success', 'Email Verified Successfully.');
+		return $this->parentVerify($request)->with('message',__('Email Verified Successfully').'!');
+	}
 }

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\PropertyFeature;
+use App\Models\PropertyDetail;
+use App\Models\PropertyDocument;
+use App\Models\PropertyLinkListing;
+use App\Models\Inspection;
+use App\Models\User;
 use Auth;
 
 class PropertyController extends Controller
@@ -16,7 +21,7 @@ class PropertyController extends Controller
      *
      * @return void
      */
-
+    
     /**
      * Show the application dashboard.
      *
@@ -47,10 +52,11 @@ class PropertyController extends Controller
         {
             $property_types = PropertyType::where('form_type','residential')->get();
         }
-        return view('seller.property.add_property',compact('property_form','property_types'));
+        $agents = User::where('type',2)->get();
+        return view('seller.property.add_property',compact('property_form','property_types','agents'));
     }
 
-    public function property_details_form($id='',Request $request)
+    public function property_details_form($property_id='',Request $request)
     {
         $property_form = "property_details";
         $allowances = PropertyFeature::where('type','allowances')->get();
@@ -58,19 +64,19 @@ class PropertyController extends Controller
         $indoor = PropertyFeature::where('type','indoor')->get();
         $heating_cooling = PropertyFeature::where('type','heating_cooling')->get();
         $eco_friendly = PropertyFeature::where('type','eco_friendly')->get();
-        return view('seller.property.add_property',compact('property_form','allowances','outdoor','indoor','heating_cooling','eco_friendly'));
+        return view('seller.property.add_property',compact('property_id','property_form','allowances','outdoor','indoor','heating_cooling','eco_friendly'));
     }
 
-    public function property_image_form($id='',Request $request)
+    public function property_image_form($property_id='',Request $request)
     {
         $property_form = "image_docs";
-        return view('seller.property.add_property',compact('property_form'));
+        return view('seller.property.add_property',compact('property_id','property_form'));
     }
 
-    public function property_inspection_form($id='',Request $request)
+    public function property_inspection_form($property_id='',Request $request)
     {
         $property_form = "inspections";
-        return view('seller.property.add_property',compact('property_form'));
+        return view('seller.property.add_property',compact('property_id','property_form'));
     }
 
     public function save_listing_details(Request $request)
@@ -79,5 +85,74 @@ class PropertyController extends Controller
         $data['created_by'] = Auth::id();
         $property = Property::updateOrCreate(['id'=>$request->id],$data);
         return redirect()->route('property_details_form',$property->id);
+    }
+
+    public function save_property_details(Request $request)
+    {
+        $data = $request->except('_token');
+        $data['tags'] = (isset($data['tags']) && count($data['tags']))?json_encode($data['tags']):'';
+        $data['rental_allowances'] = (isset($data['rental_allowances']) && count($data['rental_allowances']))?json_encode($data['rental_allowances']):'';
+        $data['outdoor'] = (isset($data['outdoor']) && count($data['outdoor']))?json_encode($data['outdoor']):'';
+        $data['indoor'] = (isset($data['indoor']) && count($data['indoor']))?json_encode($data['indoor']):'';
+        $data['heating_cooling'] = (isset($data['heating_cooling']) && count($data['heating_cooling']))?json_encode($data['heating_cooling']):'';
+        $data['eco_friendly'] = (isset($data['eco_friendly']) && count($data['eco_friendly']))?json_encode($data['eco_friendly']):'';
+        $property = PropertyDetail::updateOrCreate(['id'=>$request->id],$data);
+        return redirect()->route('property_image_form',$property->id);
+    }
+    
+    public function save_property_images(Request $request)
+    {
+        $data = $request->except('_token');
+        if(isset($data['upload_images']) && count($data['upload_images']))
+        {
+            foreach ($request->upload_images as $key => $img) {
+                $property_documents = new PropertyDocument;
+                $property_documents->type = 'property_images';
+                $property_documents->property_id = $data['property_id'];
+                    $file = $img;
+                    $imageName = time() . $key . '.' . $file->extension();
+                    $file->move(storage_path('app/public/property_images'), $imageName);
+                $property_documents->document = $imageName;
+                $property_documents->save();
+            }
+        }
+        
+        if(isset($data['upload_floorplans']) && count($data['upload_floorplans']))
+        {
+            foreach ($request->upload_floorplans as $key => $img) {
+                $property_documents = new PropertyDocument;
+                $property_documents->type = 'property_floorplans';
+                $property_documents->property_id = $data['property_id'];
+                    $file = $img;
+                    $imageName = time() . $key . '.' . $file->extension();
+                    $file->move(storage_path('app/public/property_floorplans'), $imageName);
+                $property_documents->document = $imageName;
+                $property_documents->save();
+            }
+        }
+        
+        if(isset($data['upload_documents']) && count($data['upload_documents']))
+        {
+            foreach ($request->upload_documents as $key => $img) {
+                $property_documents = new PropertyDocument;
+                $property_documents->type = 'property_documents';
+                $property_documents->property_id = $data['property_id'];
+                    $file = $img;
+                    $imageName = time() . $key . '.' . $file->extension();
+                    $file->move(storage_path('app/public/property_documents'), $imageName);
+                $property_documents->document = $imageName;
+                $property_documents->save();
+            }
+            
+        }
+        $property = PropertyLinkListing::updateOrCreate(['id'=>$request->id],$data);
+        return redirect()->route('property_inspection_form',$property->id);
+    }
+
+    public function save_inspections(Request $request)
+    {
+        $data = $request->except('_token');
+        $property = Inspection::updateOrCreate(['id'=>$request->id],$data);
+        return redirect()->route('property_list');
     }
 }

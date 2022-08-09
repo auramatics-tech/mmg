@@ -176,7 +176,14 @@
                 <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target priorty"></i>
             </label>
 
-            <input class="form-control form-control-solid" name="agents" />
+            <select class="form-control form-control-solid " name="agents" data-control="select2" data-hide-search="true" data-placeholder="Select a Agents">
+                <option value=""></option>
+                @if(count($agents))
+                    @foreach($agents as $agent)
+                    <option value="{{$agent->id}}">{{$agent->first_name}}</option>
+                    @endforeach
+                @endif
+            </select>
         </div>
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
 

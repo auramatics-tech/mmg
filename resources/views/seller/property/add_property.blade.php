@@ -290,17 +290,17 @@
 
                         <div class="container">
                             <div class="stepper-nav justify-content-center py-2">
-                                <div class="stepper-item me-5 me-md-15 current" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ Route::is('add_property_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Listing Details</h3>
                                 </div>
-                                <div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ Route::is('property_details_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Property Details</h3>
                                 </div>
-                                <div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ Route::is('property_image_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Images and Copy</h3>
                                 </div>
 
-                                <div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ Route::is('property_inspection_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Inspections</h3>
                                 </div>
                             </div>
@@ -325,4 +325,19 @@
         </div>
     </div>
 
+@endsection
+@section('script')
+<script>
+
+// tagging support
+  $('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
+   placeholder: "Select an option",
+  });
+
+// tagging support
+  $('#kt_select2_11').select2({
+   placeholder: "Add a tag",
+   tags: true
+  });
+  </script>
 @endsection
