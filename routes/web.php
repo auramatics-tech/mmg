@@ -37,7 +37,8 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('/', [HomeController::class, 'seller_login'])->name('seller_login');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/seller-login', [HomeController::class, 'seller_login'])->name('seller_login');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::get('/about-us', [HomeController::class, 'about_us'])->name('about_us');
 Route::get('/seller-register', [HomeController::class, 'seller_registration'])->name('seller_registration');

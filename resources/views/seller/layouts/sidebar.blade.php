@@ -29,10 +29,33 @@
                 
             <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Crafted</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Main</span>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item show menu-accordion">
+                <a href="{{route('seller.dashboard')}}" class="menu-item {{(Route::is('seller.dashboard')=='seller.dashboard')?'show':''}} menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Dashboard</span>
+                    </span>
+                </a>
+
+            <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Selling</span>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item {{(Route::is('seller.property_list')=='seller.property_list')?'show':''}} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -50,17 +73,24 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{route('property_list')}}">
+                            <a class="menu-link" href="#">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">properties</span>
+                                <span class="menu-title">Add Property</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('seller.property_list')=='seller.property_list')?'active':''}}" href="{{route('seller.property_list')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">My Properties</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--end::Menu-->
         </div>
         <!--end::Aside Menu-->
     </div>

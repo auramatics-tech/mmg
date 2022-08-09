@@ -1,5 +1,5 @@
 <div class="w-100">
-    <form action="{{route('save_property_images')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('seller.save_property_images')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="property_id" value="{{$property_id}}">
     <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#change_status" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">UPLOAD IMAGES

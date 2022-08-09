@@ -270,25 +270,25 @@
 														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 															<!--begin::Menu item-->
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
 															</div>
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'residential_rental'])}}" class="menu-link px-3">Residential Rental</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental'])}}" class="menu-link px-3">Residential Rental</a>
 															</div>
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'land'])}}" class="menu-link px-3">Land</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'land'])}}" class="menu-link px-3">Land</a>
 															</div>
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'commercial'])}}" class="menu-link px-3">Commercial</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'commercial'])}}" class="menu-link px-3">Commercial</a>
 															</div>
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'rural'])}}" class="menu-link px-3">Rural</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'rural'])}}" class="menu-link px-3">Rural</a>
 															</div>
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'business'])}}" class="menu-link px-3">Business</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'business'])}}" class="menu-link px-3">Business</a>
 															</div>
 															<div class="menu-item px-3">
-																<a href="{{route('add_property_form',['listing_type'=>'residential_rental','holiday' => 1])}}" class="menu-link px-3">Holiday Rental</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental','holiday' => 1])}}" class="menu-link px-3">Holiday Rental</a>
 															</div>
 														</div>
 														<!--end::Menu-->
@@ -598,6 +598,11 @@
 									<!--end::Card header-->
 									<!--begin::Card body-->
 									<div class="card-body py-4">
+									@if(session()->has('success'))
+										<div class="alert alert-success">
+											{{ session()->get('success') }}
+										</div>
+									@endif
 										<!--begin::Table-->
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 											<!--begin::Table head-->
@@ -677,12 +682,12 @@
 														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 															<!--begin::Menu item-->
 															<div class="menu-item px-3">
-																<a href="../../demo1/dist/apps/user-management/users/view.html" class="menu-link px-3">Edit</a>
+																<a href="{{route('seller.add_property_form',['listing_type'=>$property->form_type,'property_id'=>$property->id])}}" class="menu-link px-3">Edit</a>
 															</div>
 															<!--end::Menu item-->
 															<!--begin::Menu item-->
 															<div class="menu-item px-3">
-																<a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+																<a href="{{route('seller.property_delete',$property->id)}}" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
 															</div>
 															<!--end::Menu item-->
 														</div>

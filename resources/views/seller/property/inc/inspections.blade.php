@@ -1,5 +1,5 @@
 <div class="w-100">
-    <form action="{{route('save_inspections')}}" method="POST">
+    <form action="{{route('seller.save_inspections')}}" method="POST">
     @csrf
     
     <input type="hidden" name="property_id" value="{{$property_id}}">

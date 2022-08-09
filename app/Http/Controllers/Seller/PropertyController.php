@@ -52,19 +52,29 @@ class PropertyController extends Controller
         {
             $property_types = PropertyType::where('form_type','residential')->get();
         }
+        $property = '';
+        if($request->property_id)
+        {
+            $property = Property::find($request->property_id);
+        }
         $agents = User::where('type',2)->get();
-        return view('seller.property.add_property',compact('property_form','property_types','agents'));
+        return view('seller.property.add_property',compact('property_form','property_types','agents','property'));
     }
 
     public function property_details_form($property_id='',Request $request)
     {
         $property_form = "property_details";
+        $property_details = PropertyDetail::where('property_id',$property_id)->first();
+        if(!isset($property_details->id))
+        {
+            $property_details = '';
+        }
         $allowances = PropertyFeature::where('type','allowances')->get();
         $outdoor = PropertyFeature::where('type','outdoor')->get();
         $indoor = PropertyFeature::where('type','indoor')->get();
         $heating_cooling = PropertyFeature::where('type','heating_cooling')->get();
         $eco_friendly = PropertyFeature::where('type','eco_friendly')->get();
-        return view('seller.property.add_property',compact('property_id','property_form','allowances','outdoor','indoor','heating_cooling','eco_friendly'));
+        return view('seller.property.add_property',compact('property_id','property_details','property_form','allowances','outdoor','indoor','heating_cooling','eco_friendly'));
     }
 
     public function property_image_form($property_id='',Request $request)
@@ -84,7 +94,7 @@ class PropertyController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = Auth::id();
         $property = Property::updateOrCreate(['id'=>$request->id],$data);
-        return redirect()->route('property_details_form',$property->id);
+        return redirect()->route('seller.property_details_form',$property->id);
     }
 
     public function save_property_details(Request $request)
@@ -97,7 +107,7 @@ class PropertyController extends Controller
         $data['heating_cooling'] = (isset($data['heating_cooling']) && count($data['heating_cooling']))?json_encode($data['heating_cooling']):'';
         $data['eco_friendly'] = (isset($data['eco_friendly']) && count($data['eco_friendly']))?json_encode($data['eco_friendly']):'';
         $property = PropertyDetail::updateOrCreate(['id'=>$request->id],$data);
-        return redirect()->route('property_image_form',$property->id);
+        return redirect()->route('seller.property_image_form',$property->id);
     }
     
     public function save_property_images(Request $request)
@@ -146,13 +156,25 @@ class PropertyController extends Controller
             
         }
         $property = PropertyLinkListing::updateOrCreate(['id'=>$request->id],$data);
-        return redirect()->route('property_inspection_form',$property->id);
+        return redirect()->route('seller.property_inspection_form',$property->id);
     }
 
     public function save_inspections(Request $request)
     {
         $data = $request->except('_token');
         $property = Inspection::updateOrCreate(['id'=>$request->id],$data);
-        return redirect()->route('property_list');
+        return redirect()->route('seller.property_list');
+    }
+
+    public function property_delete($id)
+    {
+        $property = Property::find($id);
+        $property->delete();
+        PropertyDetail::where('property_id',$id)->delete();
+        PropertyDocument::where('property_id',$id)->delete();
+        PropertyLinkListing::where('property_id',$id)->delete();
+        Inspection::where('property_id',$id)->delete();
+
+        return back()->with('success','Property deleted successfully.');
     }
 }

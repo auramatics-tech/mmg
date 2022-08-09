@@ -290,17 +290,17 @@
 
                         <div class="container">
                             <div class="stepper-nav justify-content-center py-2">
-                                <div class="stepper-item me-5 me-md-15 {{ Route::is('add_property_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.add_property_form') == 'seller.add_property_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Listing Details</h3>
                                 </div>
-                                <div class="stepper-item me-5 me-md-15 {{ Route::is('property_details_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.property_details_form') == 'seller.property_details_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Property Details</h3>
                                 </div>
-                                <div class="stepper-item me-5 me-md-15 {{ Route::is('property_image_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.property_image_form') == 'seller.property_image_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Images and Copy</h3>
                                 </div>
 
-                                <div class="stepper-item me-5 me-md-15 {{ Route::is('property_inspection_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.property_inspection_form') == 'seller.property_inspection_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
                                     <h3 class="stepper-title">Inspections</h3>
                                 </div>
                             </div>
@@ -339,5 +339,10 @@
    placeholder: "Add a tag",
    tags: true
   });
+
+  $(document).on('click','.select_input',function(){
+    $('.select_input').children('input').removeAttr('checked');
+    $(this).children('input').attr('checked', true);
+  })
   </script>
 @endsection
