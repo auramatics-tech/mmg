@@ -29,11 +29,11 @@
         <div class="row">
             <div class="col-lg-6 align-self-center">
                 <div class="about-us-img-wrap about-img-left">
-                    <img src="img/others/13.png" alt="About Us Image">
+                    <img src="{{asset('frontend/img/others/13.png')}}" alt="About Us Image">
                     <div class="about-us-img-info about-us-img-info-2 about-us-img-info-3">
                         
                         <div class="ltn__video-img ltn__animation-pulse1">
-                            <img src="img/others/8.png" alt="video popup bg image">
+                            <img src="{{asset('frontend/img/others/8.png')}}" alt="video popup bg image">
                             <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&showinfo=0"  data-rel="lightcase:myCollection">
                                 <i class="fa fa-play"></i>
                             </a>
@@ -98,7 +98,7 @@
                 <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
                     <div class="ltn__feature-icon">
                         <!-- <span><i class="flaticon-house"></i></span> -->
-                        <img src="img/icons/icon-img/21.png" alt="#">
+                        <img src="{{asset('frontend/img/icons/icon-img/21.png')}}" alt="#">
                     </div>
                     <div class="ltn__feature-info">
                         <h3><a href="service-details.html">Buy a home</a></h3>
@@ -111,7 +111,7 @@
                 <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1 active">
                     <div class="ltn__feature-icon">
                         <!-- <span><i class="flaticon-house-3"></i></span> -->
-                        <img src="img/icons/icon-img/22.png" alt="#">
+                        <img src="{{asset('frontend/img/icons/icon-img/22.png')}}" alt="#">
                     </div>
                     <div class="ltn__feature-info">
                         <h3><a href="service-details.html">Rent a home</a></h3>
@@ -124,7 +124,7 @@
                 <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
                     <div class="ltn__feature-icon">
                         <!-- <span><i class="flaticon-deal-1"></i></span> -->
-                        <img src="img/icons/icon-img/23.png" alt="#">
+                        <img src="{{asset('frontend/img/icons/icon-img/23.png')}}" alt="#">
                     </div>
                     <div class="ltn__feature-info">
                         <h3><a href="service-details.html">Sell a home</a></h3>
@@ -153,7 +153,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__team-item ltn__team-item-3---">
                     <div class="team-img">
-                        <img src="img/team/4.jpg" alt="Image">
+                        <img src="{{asset('frontend/img/team/4.jpg')}}" alt="Image">
                     </div>
                     <div class="team-info">
                         <h4><a href="team-details.html">Rosalina D. William</a></h4>
@@ -171,7 +171,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__team-item ltn__team-item-3---">
                     <div class="team-img">
-                        <img src="img/team/2.jpg" alt="Image">
+                        <img src="{{asset('frontend/img/team/2.jpg')}}" alt="Image">
                     </div>
                     <div class="team-info">
                         <h4><a href="team-details.html">Kelian Anderson</a></h4>
@@ -189,7 +189,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__team-item ltn__team-item-3---">
                     <div class="team-img">
-                        <img src="img/team/5.jpg" alt="Image">
+                        <img src="{{asset('frontend/img/team/5.jpg')}}" alt="Image">
                     </div>
                     <div class="team-info">
                         <h4><a href="team-details.html">Miranda H. Halim</a></h4>
@@ -233,7 +233,7 @@
                             um dolor sit amet, consecte</p>
                         <div class="ltn__testimoni-info-inner">
                             <div class="ltn__testimoni-img">
-                                <img src="img/testimonial/1.jpg" alt="#">
+                                <img src="{{asset('frontend/img/testimonial/1.jpg')}}" alt="#">
                             </div>
                             <div class="ltn__testimoni-name-designation">
                                 <h5>Jacob William</h5>
@@ -255,7 +255,7 @@
                             um dolor sit amet, consecte</p>
                         <div class="ltn__testimoni-info-inner">
                             <div class="ltn__testimoni-img">
-                                <img src="img/testimonial/2.jpg" alt="#">
+                                <img src="{{asset('frontend/img/testimonial/2.jpg')}}" alt="#">
                             </div>
                             <div class="ltn__testimoni-name-designation">
                                 <h5>Kelian Anderson</h5>
@@ -277,7 +277,7 @@
                             um dolor sit amet, consecte</p>
                         <div class="ltn__testimoni-info-inner">
                             <div class="ltn__testimoni-img">
-                                <img src="img/testimonial/3.jpg" alt="#">
+                                <img src="{{asset('frontend/img/testimonial/3.jpg')}}" alt="#">
                             </div>
                             <div class="ltn__testimoni-name-designation">
                                 <h5>Adam Joseph</h5>
@@ -299,7 +299,7 @@
                             um dolor sit amet, consecte</p>
                         <div class="ltn__testimoni-info-inner">
                             <div class="ltn__testimoni-img">
-                                <img src="img/testimonial/4.jpg" alt="#">
+                                <img src="{{asset('frontend/img/testimonial/4.jpg')}}" alt="#">
                             </div>
                             <div class="ltn__testimoni-name-designation">
                                 <h5>James Carter</h5>
@@ -331,7 +331,7 @@
             <div class="col-lg-12">
                 <div class="ltn__blog-item ltn__blog-item-3">
                     <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#"></a>
+                        <a href="blog-details.html"><img src="{{asset('frontend/img/blog/1.jpg')}}" alt="#"></a>
                     </div>
                     <div class="ltn__blog-brief">
                         <div class="ltn__blog-meta">
@@ -362,7 +362,7 @@
             <div class="col-lg-12">
                 <div class="ltn__blog-item ltn__blog-item-3">
                     <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/2.jpg" alt="#"></a>
+                        <a href="blog-details.html"><img src="{{asset('frontend/img/blog/2.jpg')}}" alt="#"></a>
                     </div>
                     <div class="ltn__blog-brief">
                         <div class="ltn__blog-meta">
@@ -393,7 +393,7 @@
             <div class="col-lg-12">
                 <div class="ltn__blog-item ltn__blog-item-3">
                     <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/3.jpg" alt="#"></a>
+                        <a href="blog-details.html"><img src="{{asset('frontend/img/blog/3.jpg')}}" alt="#"></a>
                     </div>
                     <div class="ltn__blog-brief">
                         <div class="ltn__blog-meta">
@@ -424,7 +424,7 @@
             <div class="col-lg-12">
                 <div class="ltn__blog-item ltn__blog-item-3">
                     <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/4.jpg" alt="#"></a>
+                        <a href="blog-details.html"><img src="{{asset('frontend/img/blog/4.jpg')}}" alt="#"></a>
                     </div>
                     <div class="ltn__blog-brief">
                         <div class="ltn__blog-meta">
@@ -455,7 +455,7 @@
             <div class="col-lg-12">
                 <div class="ltn__blog-item ltn__blog-item-3">
                     <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/5.jpg" alt="#"></a>
+                        <a href="blog-details.html"><img src="{{asset('frontend/img/blog/5.jpg')}}" alt="#"></a>
                     </div>
                     <div class="ltn__blog-brief">
                         <div class="ltn__blog-meta">

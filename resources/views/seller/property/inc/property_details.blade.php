@@ -129,9 +129,17 @@
                 <label class="required fs-6 fw-bold mb-2">Municipality</label>
                 <input class="form-control form-control-solid" placeholder="" name="municipality" value="{{old('municipality') ?? isset($property_details->municipality)?$property_details->municipality:''}}" />
             </div>  
+            @php
+                $tags = old('tags') ?? isset($property_details->tags)?json_decode($property_details->tags):'';
+            @endphp
             <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-bold mb-2">Tags</label>
                 <select class="form-control select2" id="kt_select2_11" multiple name="tags[]">
+                @if(is_array($tags) && count($tags))
+                    @foreach($tags as $tag)
+                        <option value="{{$tag}}" selected>{{$tag}}</option>
+                    @endforeach
+                @endif
                 </select>
             </div>  
             <div class="col-md-6 fv-row">
@@ -184,7 +192,7 @@
         <div class="row">
             @foreach($allowances as $feature)
             <label class=" col-4 form-check form-check-solid mb-5">
-                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" name="rental_allowances[]">
+                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" {{in_array($feature->name,(old('reso_offer_link') ?? (isset($property_details->rental_allowances) && $property_details->rental_allowances)?json_decode($property_details->rental_allowances):[]))?'checked':''}} name="rental_allowances[]">
                 <span class="form-check-label">{{$feature->name}}</span>
             </label>
             @endforeach
@@ -196,7 +204,7 @@
         <div class="row">
             @foreach($outdoor as $feature)
             <label class=" col-4 form-check form-check-solid mb-5">
-                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" name="outdoor[]">
+                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" {{in_array($feature->name,(old('outdoor') ?? (isset($property_details->outdoor) && $property_details->outdoor)?json_decode($property_details->outdoor):[]))?'checked':''}} name="outdoor[]">
                 <span class="form-check-label">{{$feature->name}}</span>
             </label>
             @endforeach
@@ -208,7 +216,7 @@
         <div class="row">
             @foreach($indoor as $feature)
             <label class=" col-4 form-check form-check-solid mb-5">
-                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" name="indoor[]">
+                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" {{in_array($feature->name,(old('indoor') ?? (isset($property_details->indoor) && $property_details->indoor)?json_decode($property_details->indoor):[]))?'checked':''}} name="indoor[]">
                 <span class="form-check-label">{{$feature->name}}</span>
             </label>
             @endforeach
@@ -221,7 +229,7 @@
         <div class="row">
             @foreach($heating_cooling as $feature)
             <label class=" col-4 form-check form-check-solid mb-5">
-                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" name="heating_cooling[]">
+                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" {{in_array($feature->name,(old('heating_cooling') ?? (isset($property_details->heating_cooling) && $property_details->heating_cooling)?json_decode($property_details->heating_cooling):[]))?'checked':''}} name="heating_cooling[]">
                 <span class="form-check-label">{{$feature->name}}</span>
             </label>
             @endforeach
@@ -233,7 +241,7 @@
         <div class="row">
             @foreach($eco_friendly as $feature)
             <label class=" col-4 form-check form-check-solid mb-5">
-                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" name="eco_friendly[]">
+                <input class="form-check-input" type="checkbox" value="{{$feature->name}}" {{in_array($feature->name,(old('eco_friendly') ?? (isset($property_details->eco_friendly) && $property_details->eco_friendly)?json_decode($property_details->eco_friendly):[]))?'checked':''}} name="eco_friendly[]">
                 <span class="form-check-label">{{$feature->name}}</span>
             </label>
             @endforeach
@@ -242,9 +250,10 @@
     
     <div class="col-md-12 fv-row mb-4">
                 <label class="required fs-6 fw-bold mb-2">Other Features</label>
-                <textarea class="form-control form-control-solid" name="other_features" rows="5" cols="30">{{old('other_features') ?? isset($property_details->other_features)?$property_details->other_features:''}} </textarea>
+                <textarea class="form-control form-control-solid" name="other_features" rows="5" cols="30">{{old('other_features') ?? (isset($property_details->other_features) && $property_details->other_features)?$property_details->other_features:''}} </textarea>
             </div>  
     </div>
+    <br>
     <button class="btn btn-primary">save</button>
     </form>
 </div>

@@ -67,19 +67,19 @@
     <div id="listing_copy" class="collapse show">
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Headline</label>
-            <input class="form-control form-control-solid" placeholder="" name="headline" />
+            <input class="form-control form-control-solid" placeholder="" name="headline" value="{{old('headline') ?? isset($property_link_listing->headline)?$property_link_listing->headline:''}}" />
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Description</label>
-            <textarea name="description" class="form-control form-control-solid" cols="30" rows="5"></textarea>
+            <textarea name="description" class="form-control form-control-solid" cols="30" rows="5">{{old('description') ?? isset($property_link_listing->description)?$property_link_listing->description:''}}</textarea>
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Small Description For Stocklists</label>
-            <textarea name="brochure_small_description" class="form-control form-control-solid" cols="30" rows="5"></textarea>
+            <textarea name="brochure_small_description" class="form-control form-control-solid" cols="30" rows="5">{{old('brochure_small_description') ?? isset($property_link_listing->brochure_small_description)?$property_link_listing->brochure_small_description:''}}</textarea>
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Description For Brochures</label>
-            <textarea name="brochure_large_description" class="form-control form-control-solid" cols="30" rows="5"></textarea>
+            <textarea name="brochure_large_description" class="form-control form-control-solid" cols="30" rows="5">{{old('brochure_large_description') ?? isset($property_link_listing->brochure_large_description)?$property_link_listing->brochure_large_description:''}}</textarea>
         </div>
     </div>
     
@@ -101,21 +101,22 @@
     
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Video URL</label>
-            <input class="form-control form-control-solid" placeholder="" name="video_url" />
+            <input class="form-control form-control-solid" placeholder="" name="video_url" value="{{old('video_url') ?? isset($property_link_listing->video_url)?$property_link_listing->video_url:''}}" />
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Online Tour 1</label>
-            <input class="form-control form-control-solid" placeholder="" name="online_tour_1_url" />
+            <input class="form-control form-control-solid" placeholder="" name="online_tour_1_url" value="{{old('online_tour_1_url') ?? isset($property_link_listing->online_tour_1_url)?$property_link_listing->online_tour_1_url:''}}" />
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Online Tour 2</label>
-            <input class="form-control form-control-solid" placeholder="" name="online_tour_2_url" />
+            <input class="form-control form-control-solid" placeholder="" name="online_tour_2_url" value="{{old('online_tour_2_url') ?? isset($property_link_listing->online_tour_2_url)?$property_link_listing->online_tour_2_url:''}}"  />
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Third party website link</label>
-            <input class="form-control form-control-solid" placeholder="" name="email_more_info_url" />
+            <input class="form-control form-control-solid" placeholder="" name="email_more_info_url" value="{{old('email_more_info_url') ?? isset($property_link_listing->email_more_info_url)?$property_link_listing->email_more_info_url:''}}"  />
         </div>
     </div>
+    <br>
     <button class="btn btn-primary">Save</button>
     </form>
 </div>

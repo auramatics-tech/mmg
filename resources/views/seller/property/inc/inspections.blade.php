@@ -18,39 +18,32 @@
     <div id="inspection_time" class="collapse show">
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Date</label>
-            <input type="date" class="form-control form-control-solid" placeholder="" name="inspection_date" />
+            <input type="date" class="form-control form-control-solid" placeholder="" name="inspection_date" value="{{old('inspection_date') ?? isset($inspection->inspection_date)?$inspection->inspection_date:''}}"/>
         </div>
         
         <div class="row g-9 mb-8">
 
             <div class="col-md-6 fv-row fv-plugins-icon-container">
                 <label class="required fs-6 fw-bold mb-2">Start Time</label>
-                <input type="time" class="form-control form-control-solid" placeholder="" name="start_time" />
+                <input type="time" class="form-control form-control-solid" placeholder="" name="start_time" value="{{old('start_time') ?? isset($inspection->start_time)?$inspection->start_time:''}}"/>
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
             <div class="col-md-6 fv-row fv-plugins-icon-container">
                 <label class="required fs-6 fw-bold mb-2">End Time</label>
-                <input type="time" class="form-control form-control-solid" placeholder="" name="end_time" />
+                <input type="time" class="form-control form-control-solid" placeholder="" name="end_time" value="{{old('end_time') ?? isset($inspection->end_time)?$inspection->end_time:''}}"/>
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
         </div>
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Inspection Type</label>
             <select class="form-control form-control-solid" name="inspection_type" id="inspection_inspection_type">
-                <option selected="selected" value="Open">Open</option>
-                <option value="Registration Required">Registration Required</option>
-                <option value="Private">Private</option>
-            </select>
-        </div>
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="required fs-6 fw-bold mb-2">User</label>
-            <select class="form-control form-control-solid" name="inspection_type" id="inspection_inspection_type">
-                <option selected="selected" value="Open">Open</option>
-                <option value="Registration Required">Registration Required</option>
-                <option value="Private">Private</option>
+                <option {{((old('inspection_type') ?? isset($inspection->inspection_type)?$inspection->inspection_type:'')=='Open')?'selected':'' }} value="Open">Open</option>
+                <option {{((old('inspection_type') ?? isset($inspection->inspection_type)?$inspection->inspection_type:'')=='Open')?'selected':'' }} value="Registration Required">Registration Required</option>
+                <option {{((old('inspection_type') ?? isset($inspection->inspection_type)?$inspection->inspection_type:'')=='Open')?'selected':'' }} value="Private">Private</option>
             </select>
         </div>
     </div>
+    <br>
     <button class="btn btn-primary">Save</button>
     </form>
 </div>

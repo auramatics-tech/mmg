@@ -369,8 +369,7 @@
             <input class="form-control form-control-solid" placeholder="" name="commercial_lease_term" value="{{old('commercial_lease_term') ?? isset($property->commercial_lease_term)?$property->commercial_lease_term:''}}"/>
         </div>
     </div>
-    <br>
-    <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#vender_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Vendor details
+    <div class="fw-bolder fs-3 rotate collapsible mb-7 d-none" data-bs-toggle="collapse" href="#vender_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Vendor details
         <span class="ms-2 rotate-180">
 
             <span class="svg-icon svg-icon-3">
@@ -513,6 +512,7 @@
 
         </div>
     </div>
+    <br>
     <button class="btn btn-primary">Save</button>
     </form>
 </div>

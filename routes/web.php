@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PropertyController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Http\Request;
@@ -42,3 +43,8 @@ Route::get('/seller-login', [HomeController::class, 'seller_login'])->name('sell
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::get('/about-us', [HomeController::class, 'about_us'])->name('about_us');
 Route::get('/seller-register', [HomeController::class, 'seller_registration'])->name('seller_registration');
+
+//property
+Route::get('/property-details/{id}', [PropertyController::class, 'property_details'])->name('property_details');
+Route::get('/property-list', [PropertyController::class, 'property_list'])->name('property_list');
+

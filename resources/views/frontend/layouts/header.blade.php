@@ -86,7 +86,7 @@
                                 <div class="ltn__main-menu">
                                     <ul>
                                         <li><a href="{{route('home')}}">Home</a></li>
-                                        <li><a href="{{route('index')}}">Properties</a></li>
+                                        <li><a href="{{route('property_list')}}">Properties</a></li>
                                         <li><a href="{{route('index')}}">Home Loans</a></li>
                                         <li><a href="{{route('about_us')}}">About</a></li>
                                         

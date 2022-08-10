@@ -1,5 +1,7 @@
 @extends('seller.layouts.master')
 @section('css')
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 <style>
     @if(request()->get('listing_type')=='residential_rental') .land_show {
         display: none !important;
@@ -324,7 +326,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('script')
 <script>

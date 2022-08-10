@@ -88,6 +88,23 @@
                                 <span class="menu-title">My Properties</span>
                             </a>
                         </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Add Buyer</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            
+                        <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Offers</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

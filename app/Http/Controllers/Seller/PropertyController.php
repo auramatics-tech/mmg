@@ -80,13 +80,23 @@ class PropertyController extends Controller
     public function property_image_form($property_id='',Request $request)
     {
         $property_form = "image_docs";
-        return view('seller.property.add_property',compact('property_id','property_form'));
+        $property_link_listing = PropertyLinkListing::where('property_id',$property_id)->first();
+        if(!isset($property_link_listing->id))
+        {
+            $property_link_listing = '';
+        }
+        return view('seller.property.add_property',compact('property_id','property_form','property_link_listing'));
     }
 
     public function property_inspection_form($property_id='',Request $request)
     {
         $property_form = "inspections";
-        return view('seller.property.add_property',compact('property_id','property_form'));
+        $inspection = Inspection::where('property_id',$property_id)->first();
+        if(!isset($inspection->id))
+        {
+            $inspection = '';
+        }
+        return view('seller.property.add_property',compact('property_id','property_form','inspection'));
     }
 
     public function save_listing_details(Request $request)
@@ -106,8 +116,8 @@ class PropertyController extends Controller
         $data['indoor'] = (isset($data['indoor']) && count($data['indoor']))?json_encode($data['indoor']):'';
         $data['heating_cooling'] = (isset($data['heating_cooling']) && count($data['heating_cooling']))?json_encode($data['heating_cooling']):'';
         $data['eco_friendly'] = (isset($data['eco_friendly']) && count($data['eco_friendly']))?json_encode($data['eco_friendly']):'';
-        $property = PropertyDetail::updateOrCreate(['id'=>$request->id],$data);
-        return redirect()->route('seller.property_image_form',$property->id);
+        $property_details = PropertyDetail::updateOrCreate(['property_id'=>$request->property_id],$data);
+        return redirect()->route('seller.property_image_form',$property_details->property_id);
     }
     
     public function save_property_images(Request $request)
@@ -155,14 +165,14 @@ class PropertyController extends Controller
             }
             
         }
-        $property = PropertyLinkListing::updateOrCreate(['id'=>$request->id],$data);
-        return redirect()->route('seller.property_inspection_form',$property->id);
+        $property_link_listing = PropertyLinkListing::updateOrCreate(['property_id'=>$request->property_id],$data);
+        return redirect()->route('seller.property_inspection_form',$property_link_listing->property_id);
     }
 
     public function save_inspections(Request $request)
     {
         $data = $request->except('_token');
-        $property = Inspection::updateOrCreate(['id'=>$request->id],$data);
+        $inspection = Inspection::updateOrCreate(['property_id'=>$request->property_id],$data);
         return redirect()->route('seller.property_list');
     }
 
