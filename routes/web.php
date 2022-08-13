@@ -39,12 +39,13 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/seller-login', [HomeController::class, 'seller_login'])->name('seller_login');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::get('/about-us', [HomeController::class, 'about_us'])->name('about_us');
-Route::get('/seller-register', [HomeController::class, 'seller_registration'])->name('seller_registration');
+Route::get('/registeration', [HomeController::class, 'registration'])->name('registration');
 
 //property
 Route::get('/property-details/{id}', [PropertyController::class, 'property_details'])->name('property_details');
 Route::get('/property-list', [PropertyController::class, 'property_list'])->name('property_list');
+Route::get('/add-to-favourite/{id}', [PropertyController::class, 'add_to_favourite'])->name('add_to_favourite');
 

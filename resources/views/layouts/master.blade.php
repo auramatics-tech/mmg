@@ -26,17 +26,17 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Keenthemes | Metronic" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="{{asset('seller/media/logos/favicon.ico_')}}" />
+    <link rel="shortcut icon" href="{{asset('backend/media/logos/favicon.ico_')}}" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{asset('seller/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('seller/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link href="{{asset('seller/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('seller/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     @yield('css')
 </head>
@@ -49,15 +49,15 @@ License: For each use you must have a valid license purchased only from above li
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
         <div class="page d-flex flex-row flex-column-fluid">
-            @include('seller.layouts.sidebar')
+            @include('layouts.sidebar')
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 <!--begin::Header-->
-                @include('seller.layouts.header')
+                @include('layouts.header')
                 <!--end::Header-->
 				<!--begin::Content-->
                 @yield('content')
                 <!--begin::Footer-->
-                @include('seller.layouts.footer')
+                @include('layouts.footer')
                 <!--end::Footer-->
             </div>
             <!--end::Wrapper-->
@@ -67,20 +67,20 @@ License: For each use you must have a valid license purchased only from above li
     
     <script>var hostUrl = "assets/";</script>
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="{{asset('seller/plugins/global/plugins.bundle.js')}}"></script>
-    <script src="{{asset('seller/js/scripts.bundle.js')}}"></script>
+    <script src="{{asset('backend/plugins/global/plugins.bundle.js')}}"></script>
+    <script src="{{asset('backend/js/scripts.bundle.js')}}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
-    <script src="{{asset('seller/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+    <script src="{{asset('backend/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="{{asset('seller/js/custom/apps/file-manager/list.js')}}"></script>
-    <script src="{{asset('seller/js/widgets.bundle.js')}}"></script>
-    <script src="{{asset('seller/js/custom/widgets.js')}}"></script>
-    <script src="{{asset('seller/js/custom/apps/chat/chat.js')}}"></script>
-    <script src="{{asset('seller/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
-    <script src="{{asset('seller/js/custom/utilities/modals/create-app.js')}}"></script>
-    <script src="{{asset('seller/js/custom/utilities/modals/users-search.js')}}"></script>
+    <script src="{{asset('backend/js/custom/apps/file-manager/list.js')}}"></script>
+    <script src="{{asset('backend/js/widgets.bundle.js')}}"></script>
+    <script src="{{asset('backend/js/custom/widgets.js')}}"></script>
+    <script src="{{asset('backend/js/custom/apps/chat/chat.js')}}"></script>
+    <script src="{{asset('backend/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
+    <script src="{{asset('backend/js/custom/utilities/modals/create-app.js')}}"></script>
+    <script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
     @yield('script')             
 </body>
 <!--end::Body-->

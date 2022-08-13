@@ -365,7 +365,10 @@
                                 </li>
                             </ul>
                         </div>
-
+                        @if(Auth::check())
+                            <a href="/add-to-favourite/{{$property->id}}" class="btn theme-btn-1">
+                            @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
+                        @endif
                         <h4 class="title-2">From Our Gallery</h4>
                         <div class="ltn__property-details-gallery mb-30">
                             <div class="row">
@@ -1657,7 +1660,7 @@
                             <p>We can help you realize your dream of a new home</p>
                         </div>
                         <div class="btn-wrapper">
-                            <a class="btn btn-effect-3 btn-white" href="contact.html">Explore Properties <i class="icon-next"></i></a>
+                            <a class="btn btn-effect-3 btn-white" href="{{route('property_list')}}">Explore Properties <i class="icon-next"></i></a>
                         </div>
                     </div>
                 </div>

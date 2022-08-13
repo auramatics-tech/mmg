@@ -2,8 +2,8 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="../../demo1/dist/index.html">
-            <img alt="Logo" src="{{asset('seller/media/logos/logo-1-dark.svg')}}" class="h-25px logo" />
+        <a href="{{route('index')}}">
+            <img alt="Logo" src="{{asset('backend/media/logos/logo-1-dark.svg')}}" class="h-25px logo" />
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->
@@ -32,7 +32,7 @@
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Main</span>
                     </div>
                 </div>
-                <a href="{{route('seller.dashboard')}}" class="menu-item {{(Route::is('seller.dashboard')=='seller.dashboard')?'show':''}} menu-accordion">
+                <a href="{{route('buyer.dashboard')}}" class="menu-item {{(Route::is('buyer.dashboard')=='buyer.dashboard')?'show':''}} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
@@ -49,7 +49,7 @@
                         <span class="menu-title">Dashboard</span>
                     </span>
                 </a>
-
+            @if(in_array(1,get_user_roles()))
             <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Selling</span>
@@ -73,14 +73,6 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Add Property</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
                             <a class="menu-link {{(Route::is('seller.property_list')=='seller.property_list')?'active':''}}" href="{{route('seller.property_list')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -93,20 +85,83 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Add Buyer</span>
+                                <span class="menu-title">My Property Buyers</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             
-                        <a class="menu-link" href="#">
+                        <a class="menu-link {{(Route::is('seller.property_offers')=='seller.property_offers')?'active':''}}" href="{{route('seller.property_offers')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Offers</span>
+                                <span class="menu-title">My Property Offers</span>
+                            </a>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('seller.property_inspections')=='seller.property_inspections')?'active':''}}" href="{{route('seller.property_inspections')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">My Property Inspections</span>
                             </a>
                         </div>
                     </div>
                 </div>
+            @endif
+            
+            @if(in_array(3,get_user_roles()))
+            <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Buying</span>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item {{(Route::is('buyer.favourite_properties')=='buyer.favourite_properties')?'show':''}} menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z" fill="currentColor" />
+                                    <path d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z" fill="currentColor" />
+                                    <path opacity="0.3" d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Properties</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('buyer.favourite_properties')=='buyer.favourite_properties')?'active':''}}" href="{{route('buyer.favourite_properties')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Favourite Properties</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            
+                        <a class="menu-link {{(Route::is('buyer.my_offers')=='buyer.my_offers')?'active':''}}" href="{{route('buyer.my_offers')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">My Offers</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('buyer.booked_inspections')=='buyer.booked_inspections')?'active':''}}" href="{{route('buyer.booked_inspections')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Booked Inspections</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
             </div>
         </div>
         <!--end::Aside Menu-->

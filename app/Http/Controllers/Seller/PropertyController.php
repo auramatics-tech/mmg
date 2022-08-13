@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Seller;
 use App\Http\Controllers\Controller;
-
+use App\Models\BookInspection;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\PropertyType;
@@ -11,7 +11,9 @@ use App\Models\PropertyDetail;
 use App\Models\PropertyDocument;
 use App\Models\PropertyLinkListing;
 use App\Models\Inspection;
+use App\Models\Offer;
 use App\Models\User;
+use App\Models\UserRole;
 use Auth;
 
 class PropertyController extends Controller
@@ -57,7 +59,8 @@ class PropertyController extends Controller
         {
             $property = Property::find($request->property_id);
         }
-        $agents = User::where('type',2)->get();
+        $crowd_sellers = UserRole::where('role',2)->pluck('user_id')->toArray();
+        $agents = User::whereIn('id',$crowd_sellers)->get();
         return view('seller.property.add_property',compact('property_form','property_types','agents','property'));
     }
 
@@ -186,5 +189,19 @@ class PropertyController extends Controller
         Inspection::where('property_id',$id)->delete();
 
         return back()->with('success','Property deleted successfully.');
+    }
+
+    public function property_offers()
+    {
+        $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
+        $property_offers = Offer::whereIn('property_id',$my_properties)->get();
+        return view('seller.property.property_offers',compact('property_offers'));
+    }
+    
+    public function property_inspections()
+    {
+        $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
+        $property_inspections = BookInspection::whereIn('property_id',$my_properties)->get();
+        return view('seller.property.property_inspections',compact('property_inspections'));
     }
 }

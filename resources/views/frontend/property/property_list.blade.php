@@ -320,13 +320,13 @@
                                                     <div class="product-hover-action">
                                                         <ul>
                                                             <li>
-                                                                <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                                                <a href="{{route('property_details',$property->id)}}" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                                                     <i class="flaticon-expand"></i>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
-                                                                    <i class="flaticon-heart-1"></i></a>
+                                                                <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
+                                                                    <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i></a>
                                                             </li>
                                                             <li>
                                                                 <a href="product-details.html" title="Product Details">
@@ -1102,7 +1102,7 @@
                             <p>We can help you realize your dream of a new home</p>
                         </div>
                         <div class="btn-wrapper">
-                            <a class="btn btn-effect-3 btn-white" href="contact.html">Explore Properties <i class="icon-next"></i></a>
+                            <a class="btn btn-effect-3 btn-white" href="{{route('property_list')}}">Explore Properties <i class="icon-next"></i></a>
                         </div>
                     </div>
                 </div>

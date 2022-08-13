@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Property;
 
 class HomeController extends Controller
 {
@@ -19,17 +20,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.index');
+        $properties = Property::all();
+        return view('frontend.index',compact('properties'));
     }
 
-    public function seller_login()
+    public function login()
     {
-        return view('frontend.seller_login');
+        return view('frontend.login');
     }
 
-    public function seller_registration()
+    public function registration()
     {
-        return view('frontend.seller_registration');
+        return view('frontend.registration');
     }
 
     public function contact_us()

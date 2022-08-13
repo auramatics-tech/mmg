@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\FavouriteProperty;
+use Auth;
 
 class PropertyController extends Controller
 {
@@ -18,5 +20,28 @@ class PropertyController extends Controller
     {
         $property = Property::find($property_id);
         return view('frontend.property.property_details',compact('property'));
+    }
+
+    public function add_to_favourite($property_id='',Request $request)
+    {
+        $favourite_property = FavouriteProperty::where(['user_id'=>Auth::id(),'property_id'=>$property_id])->first();
+        if(isset($favourite_property->id))
+        {
+            $favourite_property->delete(); 
+            $is_fav = 0;
+        }
+        else
+        {
+            $favourite_property = new FavouriteProperty;
+            $favourite_property->user_id = Auth::id();
+            $favourite_property->property_id = $property_id;
+            $favourite_property->save();
+            $is_fav = 1;
+        }
+        if($request->ajax())
+        {
+            return response()->json(["success"=>true,'is_fav'=>$is_fav]);
+        }
+        return back();
     }
 }

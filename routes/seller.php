@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Seller\DashboardController;
 use App\Http\Controllers\Seller\PropertyController;
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +12,6 @@ use App\Http\Controllers\Seller\PropertyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('seller.dashboard');
-
 //property-form 
 Route::get('/property-list', [PropertyController::class, 'index'])->name('seller.property_list');
 Route::get('/add-property-form', [PropertyController::class, 'add_property_form'])->name('seller.add_property_form');
@@ -26,3 +23,7 @@ Route::post('/save-property-details', [PropertyController::class, 'save_property
 Route::post('/save-property-images', [PropertyController::class, 'save_property_images'])->name('seller.save_property_images');
 Route::post('/save-inspections', [PropertyController::class, 'save_inspections'])->name('seller.save_inspections');
 Route::get('/property-delete/{id}', [PropertyController::class, 'property_delete'])->name('seller.property_delete');
+
+
+Route::get('/property-offers', [PropertyController::class, 'property_offers'])->name('seller.property_offers');
+Route::get('/property-inspections', [PropertyController::class, 'property_inspections'])->name('seller.property_inspections');

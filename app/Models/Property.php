@@ -28,4 +28,8 @@ class Property extends Model
     public function property_links_listing(){
         return $this->hasOne(PropertyLinkListing::class, 'property_id','id'); 
     }
+    
+    public function property_inspection(){
+        return $this->hasOne(Inspection::class, 'property_id','id'); 
+    }
 }

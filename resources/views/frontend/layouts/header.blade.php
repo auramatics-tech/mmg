@@ -120,9 +120,17 @@
                                 <li>
                                     <a href="#"><i class="icon-user"></i></a>
                                     <ul>
-                                        <li><a href="{{route('seller_login')}}">Sign in</a></li>
-                                        <li><a href="{{route('seller_registration')}}">Register</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        @if(!Auth::check())
+                                        <li><a href="{{route('login')}}">Sign in</a></li>
+                                        <li><a href="{{route('registration')}}">Register</a></li>
+                                        @else
+                                        <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
+                                        <li><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                Sign Out
+                            </a></li>
+                                        @endif
                                     </ul>
                                 </li>
                             </ul>

@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\FavouriteProperty;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserRole;
 
 if (!function_exists('debug')) {
 
@@ -25,4 +27,27 @@ if (!function_exists('number_dropdown')) {
         return $options;
     }
     
+}
+
+
+if (!function_exists('get_user_roles')) {
+    function get_user_roles(){
+        $roles =  UserRole::where('user_id',Auth::id())->pluck('role')->toArray(); 
+        return $roles;
+    }
+}
+
+
+if (!function_exists('check_favourite_property')) {
+    function check_favourite_property($property_id){
+        if(Auth::check())
+        {
+            $property =  FavouriteProperty::where(['user_id'=>Auth::id(),'property_id'=>$property_id])->first(); 
+            if(isset($property->id))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

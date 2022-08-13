@@ -194,8 +194,15 @@
 
             <label class="fs-6 fw-bold mb-2">Rental Per Week</label>
 
+            <div class="position-relative me-md-2">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
+                    <i class="bi bi-currency-dollar"></i>
+                </span>
+                <!--end::Svg Icon-->
+                <input type="text" class="form-control form-control-solid ps-10" name="rental_per_week" value="{{old('rental_per_week') ?? isset($property->rental_per_week)?$property->rental_per_week:''}}" >
+            </div>
 
-            <input class="form-control form-control-solid" placeholder="" name="rental_per_week" value="{{old('rental_per_week') ?? isset($property->rental_per_week)?$property->rental_per_week:''}}" />
 
         </div>
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
@@ -203,7 +210,14 @@
             <label class="fs-6 fw-bold mb-2">Rental Per Calendar Month</label>
 
 
-            <input class="form-control form-control-solid" placeholder="" name="rental_per_month" value="{{old('rental_per_month') ?? isset($property->rental_per_month)?$property->rental_per_month:''}}" />
+            <div class="position-relative me-md-2">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
+                    <i class="bi bi-currency-dollar"></i>
+                </span>
+                <!--end::Svg Icon-->
+                <input type="text" class="form-control form-control-solid ps-10" name="rental_per_month" value="{{old('rental_per_month') ?? isset($property->rental_per_month)?$property->rental_per_month:''}}" >
+            </div>
 
         </div>
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
@@ -211,7 +225,15 @@
             <label class="fs-6 fw-bold mb-2">Security Bond</label>
 
 
-            <input class="form-control form-control-solid" placeholder="" name="rental_security_bond" value="{{old('rental_security_bond') ?? isset($property->rental_security_bond)?$property->rental_security_bond:''}}" />
+
+            <div class="position-relative me-md-2">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
+                    <i class="bi bi-currency-dollar"></i>
+                </span>
+                <!--end::Svg Icon-->
+                <input type="text" class="form-control form-control-solid ps-10" name="rental_security_bond" value="{{old('rental_security_bond') ?? isset($property->rental_security_bond)?$property->rental_security_bond:''}}" >
+            </div>
 
         </div>
         <div class="row g-9 mb-7">
@@ -230,8 +252,14 @@
 
                 <label class="required fs-6 fw-bold mb-2">Price</label>
 
-
-                <input class="form-control form-control-solid" placeholder="" name="price" value="{{old('price') ?? isset($property->price)?$property->price:''}}" />
+                <div class="position-relative w-md-400px me-md-2">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                    <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
+                        <i class="bi bi-currency-dollar"></i>
+                    </span>
+                    <!--end::Svg Icon-->
+                    <input type="text" class="form-control form-control-solid ps-10" name="price" value="{{old('price') ?? isset($property->price)?$property->price:''}}" >
+                </div>
 
             </div>
 

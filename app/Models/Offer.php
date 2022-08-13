@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Inspection extends Model
+class Offer extends Model
 {
     use HasFactory;
-    public $table = "inspections";
+    public $table = "offers";
     protected $fillable = [
-        'inspection_date','start_time','end_time','inspection_type','user_id','property_id'
+        'user_id','property_id','offer_price','note','visible_to_vendor'
     ];
-    
+
     public function property(){
         return $this->hasOne(Property::class, 'id','property_id'); 
     }
-    
+
+    public function user(){
+        return $this->hasOne(User::class, 'id','user_id'); 
+    }
 }

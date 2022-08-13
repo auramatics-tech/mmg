@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
     @yield('css')
@@ -44,6 +45,34 @@
     
     <script>
         var HOST_URL = "{{ url('/') }}";
+    </script>
+    <script>
+        $(document).on('click','.fav_property',function(){
+            @if(Auth::check())
+                var property_id = $(this).attr('data-property_id');
+                var this_ = $(this);
+                $.ajax({
+                    url: "{{route('add_to_favourite','')}}/"+property_id,
+                    success: function(result) {
+                        if(result.success)
+                        {
+                            if(result.is_fav)
+                            {
+                                this_.children('i').removeClass('far');
+                                this_.children('i').addClass('fa');
+                            }
+                            else
+                            {
+                                this_.closest('i').removeClass('fa');
+                                this_.closest('i').addClass('far');
+                            }
+                        }
+                    }
+                });
+            @else
+                window.location.href = "{{route('login')}}";
+            @endif
+        })
     </script>
     @yield('script')
 </body>

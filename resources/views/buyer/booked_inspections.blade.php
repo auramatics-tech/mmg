@@ -1,11 +1,4 @@
 @extends('layouts.master')
-@section('css')
-<style>
-	.w-180px{
-		width:180px !important;
-	}
-</style>
-@endsection
 @section('content')
 
 					<!--begin::Content-->
@@ -17,43 +10,8 @@
 								<!--begin::Page title-->
 								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 									<!--begin::Title-->
-									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Properties List</h1>
+									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Booked Inspections</h1>
 									<!--end::Title-->
-									<!--begin::Separator-->
-									<span class="h-20px border-gray-300 border-start mx-4"></span>
-									<!--end::Separator-->
-									<!--begin::Breadcrumb-->
-									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">
-											<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-300 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Property Management</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-300 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Properties</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-300 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-dark">Properties List</li>
-										<!--end::Item-->
-									</ul>
 									<!--end::Breadcrumb-->
 								</div>
 								<!--end::Page title-->
@@ -257,50 +215,6 @@
 												<!--end::Export-->
 												<!--begin::Add user-->
 												
-												<div class="text-end">
-														<a href="#" class="btn btn-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-														<span class="svg-icon svg-icon-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
-																<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
-															</svg>
-														</span>
-														Add Property
-														<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-														<span class="svg-icon svg-icon-5 m-0">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
-															</svg>
-														</span>
-														<!--end::Svg Icon--></a>
-														<!--begin::Menu-->
-														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-180px py-4" data-kt-menu="true">
-															<!--begin::Menu item-->
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental'])}}" class="menu-link px-3">Residential Rental</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'land'])}}" class="menu-link px-3">Land</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'commercial'])}}" class="menu-link px-3">Commercial</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'rural'])}}" class="menu-link px-3">Rural</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'business'])}}" class="menu-link px-3">Business</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental','holiday' => 1])}}" class="menu-link px-3">Holiday Rental</a>
-															</div>
-														</div>
-														<!--end::Menu-->
-													</div>
-												<!--end::Add user-->
 											</div>
 											<!--end::Toolbar-->
 											<!--begin::Group actions-->
@@ -623,9 +537,9 @@
 													</th>
 													<th class="min-w-125px">Property</th>
 													<th class="min-w-125px">Price</th>
-													<th class="min-w-125px">Status</th>
-													<th class="min-w-125px">Listed Date</th>
-													<th class="min-w-125px">Expiry Date</th>
+													<th class="min-w-125px">Inspection Type</th>
+													<th class="min-w-125px">Inspection start time</th>
+													<th class="min-w-125px">Inspection end time</th>
 													<th class="text-end min-w-100px">Actions</th>
 												</tr>
 												<!--end::Table row-->
@@ -633,7 +547,7 @@
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
-                                                @foreach($properties as $property)
+                                                @foreach($booked_inspections as $book_inspection)
 												<!--begin::Table row-->
 												<tr>
 													<!--begin::Checkbox-->
@@ -645,45 +559,27 @@
 													<td class="d-flex align-items-center">
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-															@if(isset($property->get_property_image))
+															@if(isset($book_inspection->property->get_property_image))
 															<a href="javascript:">
 																<div class="symbol-label">
-																	<img src="{{asset('storage/property_images/'.$property->get_property_image->document)}}" alt="E" class="w-100" />
+																	<img src="{{asset('storage/property_images/'.$book_inspection->property->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
 															</a>
 															@endif
 														</div>
 														<div class="d-flex flex-column">
-															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($property->address_display=='Full Address')?$property->address:$property->suburb}}</a>
-															<span>{{$property->property_type}}</span>
+															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($book_inspection->property->address_display=='Full Address')?$book_inspection->property->address:$book_inspection->property->suburb}}</a>
+															<span>{{$book_inspection->property->property_type}}</span>
 														</div>
 														<!--begin::User details-->
 													</td>
 													<td>
-														<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->price)?$property->price:''}}</div>
+														<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
 													</td>
-													<td>{{isset($property->status)?$property->status:''}}</td>
-													<td>{{isset($property->created_at)?date('Y-m-d',strtotime($property->created_at)):''}}</td>
-													<td>{{isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}</td>
+													<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
+													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
+													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>
 													<td class="d-flex">
-														<div class="me-0">
-															<button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-																<i class="bi bi-share fs-3"></i>
-															</button>
-															<!--begin::Menu 3-->
-															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true" style="">
-																
-																<div class="menu-item px-3">
-																	<a href="https://www.instagram.com/?url={{route('property_list',$property->id)}}" target="_blank" rel="noopener" class="menu-link px-3">
-																		Instagram
-																	</a>
-																</div>
-																<div class="menu-item px-3">
-																	<a href="http://www.facebook.com/sharer/sharer.php?u={{route('property_list',$property->id)}}" target="_blank" rel="noopener" class="menu-link px-3">Facebook</a>
-																</div>
-															</div>
-															<!--end::Menu 3-->
-														</div>
 														<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 														<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 														<span class="svg-icon svg-icon-5 m-0">
@@ -693,15 +589,8 @@
 														</span>
 														</a>
 														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-															
 															<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>$property->form_type,'property_id'=>$property->id])}}" class="menu-link px-3">Edit</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="{{route('seller.property_delete',$property->id)}}" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="javascript:" data-id="{{$property->id}}" class="menu-link px-3 copy_link">Copy link</a>
+																<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
 															</div>
 														</div>
 														<!--end::Menu-->
@@ -724,13 +613,4 @@
 						<!--end::Post-->
 					</div>
 					<!--end::Content-->
-@endsection
-@section('script')
-<script>
-	$(document).on('click','.copy_link',function(){
-		var id = $(this).attr('data-id');
-		var copyText = "{{route('property_list')}}/"+id;
-		navigator.clipboard.writeText(copyText);
-	})
-</script>
 @endsection
