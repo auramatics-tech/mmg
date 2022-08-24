@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $properties = Property::all();
+        $properties = Property::where('is_approved',1)->get();
         return view('frontend.index',compact('properties'));
     }
 

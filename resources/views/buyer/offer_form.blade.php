@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('backend_layouts.master')
 @section('content')
 
 <!--begin::Content-->
@@ -31,6 +31,7 @@
                             <div id="inspection_time" class="collapse show">
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                                <input type="hidden" name="reference_id" value="{{request()->get('reference_id')}}">
                                 @if($property_id)
                                 <input type="hidden" name="property_id" value="{{$property_id}}">
                                 @else

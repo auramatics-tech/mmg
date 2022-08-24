@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('backend_layouts.master')
 @section('css')
 <style>
 	.w-180px{
@@ -674,12 +674,12 @@
 															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true" style="">
 																
 																<div class="menu-item px-3">
-																	<a href="https://www.instagram.com/?url={{route('property_list',$property->id)}}" target="_blank" rel="noopener" class="menu-link px-3">
+																	<a href="https://www.instagram.com/?url={{route('property_details',$property->id)}}" target="_blank" rel="noopener" class="menu-link px-3">
 																		Instagram
 																	</a>
 																</div>
 																<div class="menu-item px-3">
-																	<a href="http://www.facebook.com/sharer/sharer.php?u={{route('property_list',$property->id)}}" target="_blank" rel="noopener" class="menu-link px-3">Facebook</a>
+																	<a href="http://www.facebook.com/sharer/sharer.php?u={{route('property_details',$property->id)}}" target="_blank" rel="noopener" class="menu-link px-3">Facebook</a>
 																</div>
 															</div>
 															<!--end::Menu 3-->
@@ -729,7 +729,7 @@
 <script>
 	$(document).on('click','.copy_link',function(){
 		var id = $(this).attr('data-id');
-		var copyText = "{{route('property_list')}}/"+id;
+		var copyText = "{{route('property_details','')}}/"+id;
 		navigator.clipboard.writeText(copyText);
 	})
 </script>

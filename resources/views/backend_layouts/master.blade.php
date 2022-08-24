@@ -49,15 +49,15 @@ License: For each use you must have a valid license purchased only from above li
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
         <div class="page d-flex flex-row flex-column-fluid">
-            @include('layouts.sidebar')
+            @include('backend_layouts.sidebar')
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 <!--begin::Header-->
-                @include('layouts.header')
+                @include('backend_layouts.header')
                 <!--end::Header-->
 				<!--begin::Content-->
                 @yield('content')
                 <!--begin::Footer-->
-                @include('layouts.footer')
+                @include('backend_layouts.footer')
                 <!--end::Footer-->
             </div>
             <!--end::Wrapper-->
@@ -83,6 +83,11 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
     @yield('script')             
 </body>
-<!--end::Body-->
+<script>
+    setTimeout(function(){
+        $('.alert').hide();
+    }, 10000);
+
+</script>
 
 </html>

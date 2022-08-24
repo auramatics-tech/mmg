@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller\PropertyController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 //property-form 
 Route::get('/property-list', [PropertyController::class, 'index'])->name('seller.property_list');
 Route::get('/add-property-form', [PropertyController::class, 'add_property_form'])->name('seller.add_property_form');

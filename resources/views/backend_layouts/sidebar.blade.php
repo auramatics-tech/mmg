@@ -49,13 +49,14 @@
                         <span class="menu-title">Dashboard</span>
                     </span>
                 </a>
-            @if(in_array(1,get_user_roles()))
-            <div class="menu-item">
+            
+                @if(in_array(4,get_user_roles()))
+                <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Selling</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Admin</span>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item {{(Route::is('seller.property_list')=='seller.property_list')?'show':''}} menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item {{(in_array(Route::current()->getName(),['admin.draft_properties','admin.approved_properties']))?'show':''}} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -68,7 +69,54 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Properties</span>
+                        <span class="menu-title">Admin</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.draft_properties')=='admin.draft_properties')?'active':''}}" href="{{route('admin.draft_properties')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Draft Properties</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.approved_properties')=='admin.approved_properties')?'active':''}}" href="{{route('admin.approved_properties')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Approved Properties</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
+
+            @if(in_array(1,get_user_roles()))
+                <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Selling</span>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item {{(in_array(Route::current()->getName(),['seller.property_list','seller.property_offers','seller.property_inspections']))?'show':''}} menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z" fill="currentColor" />
+                                    <path d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z" fill="currentColor" />
+                                    <path opacity="0.3" d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Selling</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -110,13 +158,13 @@
                 </div>
             @endif
             
-            @if(in_array(3,get_user_roles()))
-            <div class="menu-item">
+            @if(in_array(2,get_user_roles()))
+                <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Buying</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Crowd Selling</span>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item {{(Route::is('buyer.favourite_properties')=='buyer.favourite_properties')?'show':''}} menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item {{(Route::is('CrowdSeller.properties_list')=='CrowdSeller.properties_list')?'show':''}} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -129,10 +177,53 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Properties</span>
+                        <span class="menu-title">Crowd Selling</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('CrowdSeller.properties_list')=='CrowdSeller.properties_list')?'active':''}}" href="{{route('CrowdSeller.properties_list')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">All Properties</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
+            @if(Auth::check())
+            <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Buying</span>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item {{(in_array(Route::current()->getName(),['buyer.favourite_properties','buyer.my_offers','buyer.booked_inspections']))?'show':''}} menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z" fill="currentColor" />
+                                    <path d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z" fill="currentColor" />
+                                    <path opacity="0.3" d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Buying</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <div class="menu-item">
+                            <a class="menu-link" href="{{route('property_list')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Property Search</span>
+                            </a>
+                        </div>
                         <div class="menu-item">
                             <a class="menu-link {{(Route::is('buyer.favourite_properties')=='buyer.favourite_properties')?'active':''}}" href="{{route('buyer.favourite_properties')}}">
                                 <span class="menu-bullet">

@@ -20,7 +20,7 @@ class PropertyController extends Controller
     public function favourite_properties()
     {
         $favourite_properties = FavouriteProperty::where('user_id',Auth::id())->pluck('property_id')->toArray();
-        $properties = Property::whereIn('id',$favourite_properties)->get();
+        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)->get();
         return view('buyer.favourite_properties',compact('properties'));
     }
 
@@ -37,7 +37,7 @@ class PropertyController extends Controller
     
     public function save_offer(Request $request)
     {
-        Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['offer_price'=>$request->offer_price,'note'=>$request->note]);
+        Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>$request->offer_price,'note'=>$request->note]);
         
         return back()->with('success','Offer send Successfully');
     }

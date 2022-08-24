@@ -223,6 +223,12 @@
     </div>
     <!-- BREADCRUMB AREA END -->
 
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
+
     <!-- IMAGE SLIDER AREA START (img-slider-3) -->
     <div class="ltn__img-slider-area mb-90">
         <div class="container-fluid">
@@ -366,8 +372,12 @@
                             </ul>
                         </div>
                         @if(Auth::check())
-                            <a href="/add-to-favourite/{{$property->id}}" class="btn theme-btn-1">
+                            <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1">
                             @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
+                            
+                            <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a>
+                            
+                            <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1"> Book Inspection </a>
                         @endif
                         <h4 class="title-2">From Our Gallery</h4>
                         <div class="ltn__property-details-gallery mb-30">

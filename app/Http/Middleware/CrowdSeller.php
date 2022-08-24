@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Seller
+class CrowdSeller
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class Seller
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && in_array(3,get_user_roles()))
+        if(Auth::check() && in_array(2,get_user_roles()))
         {
             return $next($request);
         }

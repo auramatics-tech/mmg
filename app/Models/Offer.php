@@ -10,7 +10,7 @@ class Offer extends Model
     use HasFactory;
     public $table = "offers";
     protected $fillable = [
-        'user_id','property_id','offer_price','note','visible_to_vendor'
+        'user_id','property_id','reference_id','offer_price','note','visible_to_vendor'
     ];
 
     public function property(){

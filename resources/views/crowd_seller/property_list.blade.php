@@ -1,4 +1,11 @@
 @extends('backend_layouts.master')
+@section('css')
+<style>
+	.w-180px{
+		width:180px !important;
+	}
+</style>
+@endsection
 @section('content')
 
 					<!--begin::Content-->
@@ -10,8 +17,43 @@
 								<!--begin::Page title-->
 								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 									<!--begin::Title-->
-									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">My Offers</h1>
+									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Properties List</h1>
 									<!--end::Title-->
+									<!--begin::Separator-->
+									<span class="h-20px border-gray-300 border-start mx-4"></span>
+									<!--end::Separator-->
+									<!--begin::Breadcrumb-->
+									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-muted">
+											<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item">
+											<span class="bullet bg-gray-300 w-5px h-2px"></span>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-muted">Property Management</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item">
+											<span class="bullet bg-gray-300 w-5px h-2px"></span>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-muted">Properties</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item">
+											<span class="bullet bg-gray-300 w-5px h-2px"></span>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-dark">Properties List</li>
+										<!--end::Item-->
+									</ul>
 									<!--end::Breadcrumb-->
 								</div>
 								<!--end::Page title-->
@@ -213,8 +255,6 @@
 												</span>
 												<!--end::Svg Icon-->Export</button>
 												<!--end::Export-->
-												<!--begin::Add user-->
-												
 											</div>
 											<!--end::Toolbar-->
 											<!--begin::Group actions-->
@@ -537,8 +577,9 @@
 													</th>
 													<th class="min-w-125px">Property</th>
 													<th class="min-w-125px">Price</th>
-													<th class="min-w-125px">Offer price</th>
-													<th class="min-w-125px">Note</th>
+													<th class="min-w-125px">Status</th>
+													<th class="min-w-125px">Listed Date</th>
+													<th class="min-w-125px">Expiry Date</th>
 													<th class="text-end min-w-100px">Actions</th>
 												</tr>
 												<!--end::Table row-->
@@ -546,7 +587,7 @@
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
-                                                @foreach($my_offers as $offer)
+                                                @foreach($properties as $property)
 												<!--begin::Table row-->
 												<tr>
 													<!--begin::Checkbox-->
@@ -558,26 +599,45 @@
 													<td class="d-flex align-items-center">
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-															@if(isset($offer->property->get_property_image))
+															@if(isset($property->get_property_image))
 															<a href="javascript:">
 																<div class="symbol-label">
-																	<img src="{{asset('storage/property_images/'.$offer->property->get_property_image->document)}}" alt="E" class="w-100" />
+																	<img src="{{asset('storage/property_images/'.$property->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
 															</a>
 															@endif
 														</div>
 														<div class="d-flex flex-column">
-															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($offer->property->address_display=='Full Address')?$offer->property->address:$offer->property->suburb}}</a>
-															<span>{{$offer->property->property_type}}</span>
+															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($property->address_display=='Full Address')?$property->address:$property->suburb}}</a>
+															<span>{{$property->property_type}}</span>
 														</div>
 														<!--begin::User details-->
 													</td>
 													<td>
-														<div class="badge badge-light fw-bolder">@if(isset($offer->property->rental_per_week)) ${{$offer->property->rental_per_week}}pw <br>@endif @if(isset($offer->property->rental_per_month)) ${{$offer->property->rental_per_month}}pm <br>@endif @if(isset($offer->property->rental_security_bond)) ${{$offer->property->rental_security_bond}} bond <br>@endif ${{isset($offer->property->price)?$offer->property->price:''}}</div>
+														<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->price)?$property->price:''}}</div>
 													</td>
-													<td>${{isset($offer->offer_price)?$offer->offer_price:''}}</td>
-													<td>{{isset($offer->note)?$offer->note:''}}</td>
+													<td>{{isset($property->status)?$property->status:''}}</td>
+													<td>{{isset($property->created_at)?date('Y-m-d',strtotime($property->created_at)):''}}</td>
+													<td>{{isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}</td>
 													<td class="d-flex">
+														<div class="me-0">
+															<button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+																<i class="bi bi-share fs-3"></i>
+															</button>
+															<!--begin::Menu 3-->
+															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true" style="">
+																
+																<div class="menu-item px-3">
+																	<a href="https://www.instagram.com/?url={{route('property_details',$property->id)}}?reference_id={{Auth::id()}}" target="_blank" rel="noopener" class="menu-link px-3">
+																		Instagram
+																	</a>
+																</div>
+																<div class="menu-item px-3">
+																	<a href="http://www.facebook.com/sharer/sharer.php?u={{route('property_details',$property->id)}}?reference_id={{Auth::id()}}" target="_blank" rel="noopener" class="menu-link px-3">Facebook</a>
+																</div>
+															</div>
+															<!--end::Menu 3-->
+														</div>
 														<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 														<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 														<span class="svg-icon svg-icon-5 m-0">
@@ -586,16 +646,10 @@
 															</svg>
 														</span>
 														</a>
-														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-															
-																<div class="menu-item px-3">
-																	<a href="{{route('buyer.offer_form',$offer->property_id)}}" class="menu-link px-3">edit offer</a>
-																</div>
-																<div class="menu-item px-3">
-																	<a href="{{route('buyer.delete_offer',$offer->id)}}" class="menu-link px-3">
-																		Delete offer
-																	</a>
-																</div>
+														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">														
+															<div class="menu-item px-3">
+																<a href="javascript:" data-id="{{$property->id}}" class="menu-link px-3 copy_link">Copy link</a>
+															</div>
 														</div>
 														<!--end::Menu-->
 													</td>
@@ -617,4 +671,13 @@
 						<!--end::Post-->
 					</div>
 					<!--end::Content-->
+@endsection
+@section('script')
+<script>
+	$(document).on('click','.copy_link',function(){
+		var id = $(this).attr('data-id');
+		var copyText = "{{route('property_details','')}}/"+id+"?reference_id={{Auth::id()}}";
+		navigator.clipboard.writeText(copyText);
+	})
+</script>
 @endsection
