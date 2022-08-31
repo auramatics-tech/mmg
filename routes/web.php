@@ -48,4 +48,6 @@ Route::get('/registeration', [HomeController::class, 'registration'])->name('reg
 Route::get('/property-details/{id}', [PropertyController::class, 'property_details'])->name('property_details');
 Route::get('/property-list', [PropertyController::class, 'property_list'])->name('property_list');
 Route::get('/add-to-favourite/{id}', [PropertyController::class, 'add_to_favourite'])->name('add_to_favourite');
+//search 
+Route::get('/property_search', [PropertyController::class, 'property_search'])->name('property_search');
 

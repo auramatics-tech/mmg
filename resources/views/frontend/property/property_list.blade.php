@@ -1,5 +1,32 @@
 
 @extends('frontend.layouts.master')
+@section('css')
+<style>
+    .page-item.active .page-link {
+    z-index: 3;
+    background-color:var(--ltn__secondary-color);;
+    border: none !important;
+}
+.page-link{
+    color: grey;
+}
+.page-link:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.ltn__pagination ul li a {
+    line-height: 38px !important;
+}
+.si_link{
+    padding: 0.375rem 0.75rem;
+}
+.page-item.active .si_link {
+    z-index: 3;
+    background-color: var(--ltn__secondary-color);
+    border: none !important;
+}
+</style>
+@endsection
 @section('content')
 
     <!-- Utilize Cart Menu Start -->
@@ -274,9 +301,9 @@
                                     <div class="col-lg-12">
                                         <!-- Search Widget -->
                                         <div class="ltn__search-widget mb-30">
-                                            <form action="#">
+                                            <form action="#" id="form1">
                                                 <input type="text" name="search" placeholder="Search your keyword...">
-                                                <button type="submit"><i class="fas fa-search"></i></button>
+                                                <button type="button" id="searchbtn"><i class="fas fa-search"></i></button>
                                             </form>
                                         </div>
                                     </div>
@@ -705,7 +732,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ltn__pagination-area text-center">
+                    {{ $properties->links('frontend.layouts.pagination') }}
+                    <!--<div class="ltn__pagination-area text-center">
                         <div class="ltn__pagination">
                             <ul>
                                 <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
@@ -717,7 +745,7 @@
                                 <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-lg-4">
                     <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
@@ -726,52 +754,61 @@
                         <!-- Advance Information widget -->
                         <div class="widget ltn__menu-widget">
                             <h4 class="ltn__widget-title">Property Type</h4>
-                            <ul>
+                            <form action="" id="form2">
+                            <ul class="list-unstyled">
                                 <li>
                                     <a href="shop-right-sidebar.html">
-                                        <label class="checkbox-item">House
-                                            <input type="checkbox" checked="checked">
+                                        <label class="checkbox-item">Residential Sale
+                                            <input type="checkbox"  @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif  value="residential_sale" name="type[]">
                                             <span class="checkmark"></span>
                                         </label>
                                         <span class="categorey-no">3,924</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <label class="checkbox-item">Single Family
-                                        <input type="checkbox">
+                                    <label class="checkbox-item">Residential Rental
+                                        <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental", request()->type)) checked @endif value="residential_rental" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no">3,610</span>
                                 </li>
                                 <li>
-                                    <label class="checkbox-item">Apartment
-                                        <input type="checkbox">
+                                    <label class="checkbox-item">Land
+                                        <input type="checkbox" @if(isset(request()->type) && in_array("land", request()->type)) checked @endif value="land" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no">2,912</span>
                                 </li>
                                 <li>
-                                    <label class="checkbox-item">Office Villa
-                                        <input type="checkbox">
+                                    <label class="checkbox-item">Commercial
+                                        <input type="checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no">2,687</span>
                                 </li>
                                 <li>
-                                    <label class="checkbox-item">Luxary Home
-                                        <input type="checkbox">
+                                    <label class="checkbox-item">Rural
+                                        <input type="checkbox" @if(isset(request()->type) && in_array("rural", request()->type)) checked @endif value="rural" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no">1,853</span>
                                 </li>
                                 <li>
-                                    <label class="checkbox-item">Studio
-                                        <input type="checkbox">
+                                    <label class="checkbox-item">Business
+                                        <input type="checkbox" @if(isset(request()->type) && in_array("business", request()->type)) checked @endif value="business" name="type[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <span class="categorey-no">893</span>
+                                </li>
+                                <li>
+                                    <label class="checkbox-item">Holiday Rental
+                                        <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental&holiday=1", request()->type)) checked @endif value="residential_rental&holiday=1" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no">893</span>
                                 </li>
                             </ul>
+                            </form>
                             <hr>
                             <h4 class="ltn__widget-title">Amenities</h4>
                             <ul>
@@ -1074,7 +1111,6 @@
                                 <li class="pink"><a href="#"></a></li>
                                 <li class="nude"><a href="#"></a></li>
                                 <li class="orange"><a href="#"></a></li>
-
                                 <li><a href="#" class="orange"></a></li>
                                 <li><a href="#" class="orange"></a></li>
                             </ul>
@@ -1083,14 +1119,12 @@
                         <div class="widget ltn__banner-widget d-none">
                             <a href="shop.html"><img src="img/banner/banner-2.jpg" alt="#"></a>
                         </div>
-
                     </aside>
                 </div>
             </div>
         </div>
     </div>
     <!-- PRODUCT DETAILS AREA END -->
-
     <!-- CALL TO ACTION START (call-to-action-6) -->
     <div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom" data-bs-bg="img/1.jpg--">
         <div class="container">
@@ -1110,4 +1144,12 @@
         </div>
     </div>
     <!-- CALL TO ACTION END -->
+@endsection
+@section('script')
+<script>
+    $(document).on('click','#searchbtn',function(){
+        $('#form2 :input').not(':submit').clone().hide().appendTo('#form1');
+        $('#form1').submit();
+    })
+</script>
 @endsection

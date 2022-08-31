@@ -11,9 +11,15 @@ use Auth;
 class PropertyController extends Controller
 {
     
-    public function property_list()
+    public function property_list(Request $request)
     {
-        $properties = Property::where('is_approved',1)->get();
+        $properties = Property::where('is_approved',1)
+        ->when(isset($request->type), function ($query) use ($request) {
+            $query->whereIn('properties.form_type',$request->type);
+        })->when(isset($request->search), function ($query) use ($request) {
+            $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');
+        })->paginate(1);
+        // echo "<pre>";print_r($properties);die;
         return view('frontend.property.property_list',compact('properties'));
     }
 
