@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Http\Request;
@@ -50,4 +51,10 @@ Route::get('/property-list', [PropertyController::class, 'property_list'])->name
 Route::get('/add-to-favourite/{id}', [PropertyController::class, 'add_to_favourite'])->name('add_to_favourite');
 //search 
 Route::get('/property_search', [PropertyController::class, 'property_search'])->name('property_search');
+
+
+//user
+Route::get('/user-profile', [UserController::class, 'user_profile'])->name('user_profile');
+Route::post('/update-profile', [UserController::class, 'update_profile'])->name('update_profile');
+
 
