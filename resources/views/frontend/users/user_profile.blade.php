@@ -8,12 +8,14 @@
             <input type="file" class="form-control form-control-solid" placeholder="" name="profile_pic" value="{{Auth::user()->profile_pic}}" />
         </div>
         <div class="col-6 flex-column mb-7 fv-row">
-            <label class="form-check form-switch form-check-custom form-check-solid d-flex justify-content-between">
-                <div>
-                    <span class="form-check-label fw-bold text-dark" for="kt_modal_add_customer_billing">Account Status</span>
-                    <div class="form-check-label fw-bold text-muted">ON/OFF</div>
-                </div>
-                <input class="form-check-input" name="account_status" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
+
+        <label class="form-check form-switch form-check-custom form-check-solid d-flex justify-content-between">
+            <div>
+            <span class="form-check-label fw-bold text-dark" for="kt_modal_add_customer_billing">Account Status</span>
+                <div class="form-check-label fw-bold text-muted">ON/OFF</div>
+            </div>
+                <input class="form-check-input" @if(Auth::user()->account_status) checked="checked" @endif name="account_status" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
+              
             </label>
         </div>
     </div>
@@ -27,13 +29,17 @@
             <input type="text" class="form-control form-control-solid" placeholder="Enter last name" name="last_name" value="{{Auth::user()->last_name}}" />
         </div>
     </div>
-    <div class="d-flex flex-column mb-7 fv-row">
-        <label class="required fs-6 fw-bold mb-2">Email</label>
-        <input type="email" class="form-control form-control-solid" placeholder="Enter email" name="email" value="{{Auth::user()->email}}" />
-        <div class="d-flex flex-stack pt-5">
-            <div class="me-5">
-                <label class="fs-6 fw-bold">Email Notifications</label>
-                <div class="fs-7 fw-bold text-muted">ON/OFF</div>
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="required fs-6 fw-bold mb-2">Email</label>
+            <input type="email" class="form-control form-control-solid" placeholder="Enter email" name="email" value="{{Auth::user()->email}}" />
+            <div class="d-flex flex-stack pt-5">
+                <div class="me-5">
+                    <label class="fs-6 fw-bold">Email Notifications</label>
+                    <div class="fs-7 fw-bold text-muted">ON/OFF</div>
+                </div>
+                <label class="form-check form-switch form-check-custom form-check-solid">
+                    <input class="form-check-input" @if(Auth::user()->notification_flag) checked="checked" @endif name="notification_flag" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
+                </label>
             </div>
             <label class="form-check form-switch form-check-custom form-check-solid">
                 <input class="form-check-input" name="notification_flag" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
