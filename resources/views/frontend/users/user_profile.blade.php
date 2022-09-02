@@ -13,7 +13,8 @@
             <span class="form-check-label fw-bold text-dark" for="kt_modal_add_customer_billing">Account Status</span>
                 <div class="form-check-label fw-bold text-muted">ON/OFF</div>
             </div>
-                <input class="form-check-input" name="account_status" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
+                <input class="form-check-input" @if(Auth::user()->account_status) checked="checked" @endif name="account_status" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
+              
             </label>
         </div>
     </div>
@@ -36,7 +37,7 @@
                     <div class="fs-7 fw-bold text-muted">ON/OFF</div>
                 </div>
                 <label class="form-check form-switch form-check-custom form-check-solid">
-                    <input class="form-check-input" name="notification_flag" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
+                    <input class="form-check-input" @if(Auth::user()->notification_flag) checked="checked" @endif name="notification_flag" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
                 </label>
             </div>
         </div>

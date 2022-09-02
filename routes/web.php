@@ -54,7 +54,7 @@ Route::get('/property_search', [PropertyController::class, 'property_search'])->
 
 
 //user
-Route::get('/user-profile', [UserController::class, 'user_profile'])->name('user_profile');
-Route::post('/update-profile', [UserController::class, 'update_profile'])->name('update_profile');
+Route::get('/user-profile', [UserController::class, 'user_profile'])->middleware('auth')->name('user_profile');
+Route::post('/update-profile', [UserController::class, 'update_profile'])->middleware('auth')->name('update_profile');
 
 

@@ -24,7 +24,7 @@ class UserController extends Controller
     
      public function update_profile(Request $request)
     {
-        
+       
         $user = Auth::user();
         // echo "<pre>";print_r( $request->all());die;
         if(isset($request->first_name)){
@@ -53,6 +53,7 @@ class UserController extends Controller
             $user->profile_pic = $imageName;
         }       
         $user->save();
+       
         return back()->with('success','Data updated successfully');
     }
 
