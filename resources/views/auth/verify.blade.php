@@ -1,11 +1,21 @@
-@extends('backend_layouts.app')
-
+@extends('frontend.layouts.master')
+@section('css')
+<style>
+    .si_header{
+        border-bottom: 2px solid var(--border-color-11) !important;
+    background-color: var(--section-bg-1) !important;
+    }
+    .si_card_verify{
+        border: 2px solid var(--border-color-11) !important ;
+    }
+</style>
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+
+<div class="container py-5">
+        <div class="d-flex justify-content-center">
+            <div class="card si_card_verify w-50">
+                <div class="card-header si_header">{{ __('Verify Your Email Address') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -23,6 +33,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
+
 @endsection
