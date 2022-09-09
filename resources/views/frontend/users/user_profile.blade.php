@@ -8,14 +8,12 @@
             <input type="file" class="form-control form-control-solid" placeholder="" name="profile_pic" value="{{Auth::user()->profile_pic}}" />
         </div>
         <div class="col-6 flex-column mb-7 fv-row">
-
         <label class="form-check form-switch form-check-custom form-check-solid d-flex justify-content-between">
             <div>
             <span class="form-check-label fw-bold text-dark" for="kt_modal_add_customer_billing">Account Status</span>
                 <div class="form-check-label fw-bold text-muted">ON/OFF</div>
             </div>
                 <input class="form-check-input" @if(Auth::user()->account_status) checked="checked" @endif name="account_status" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
-              
             </label>
         </div>
     </div>
@@ -41,11 +39,7 @@
                     <input class="form-check-input" @if(Auth::user()->notification_flag) checked="checked" @endif name="notification_flag" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
                 </label>
             </div>
-            <label class="form-check form-switch form-check-custom form-check-solid">
-                <input class="form-check-input" name="notification_flag" type="checkbox" value="1" id="kt_modal_add_customer_billing" />
-            </label>
         </div>
-    </div>
     <div class="row">
         <div class="col-6 flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Password</label>

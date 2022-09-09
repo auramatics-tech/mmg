@@ -607,6 +607,7 @@
 											<!--end::Table body-->
 										</table>
 										<!--end::Table-->
+										{{ $my_offers->links() }}
 									</div>
 									<!--end::Card body-->
 								</div>

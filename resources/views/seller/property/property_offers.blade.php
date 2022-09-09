@@ -605,6 +605,7 @@
 											<!--end::Table body-->
 										</table>
 										<!--end::Table-->
+										{{ $property_offers->links() }}
 									</div>
 									<!--end::Card body-->
 								</div>

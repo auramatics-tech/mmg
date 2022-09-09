@@ -20,7 +20,7 @@ class PropertyController extends Controller
     public function favourite_properties()
     {
         $favourite_properties = FavouriteProperty::where('user_id',Auth::id())->pluck('property_id')->toArray();
-        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)->get();
+        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)->paginate(1);
         return view('buyer.favourite_properties',compact('properties'));
     }
 
@@ -57,7 +57,7 @@ class PropertyController extends Controller
 
     public function my_offers()
     {
-        $my_offers = Offer::where('user_id',Auth::id())->get();
+        $my_offers = Offer::where('user_id',Auth::id())->paginate(1);
         
         return view('buyer.my_offers',compact('my_offers'));
     }
@@ -70,7 +70,7 @@ class PropertyController extends Controller
 
     public function booked_inspections()
     {
-        $booked_inspections = BookInspection::where('user_id',Auth::id())->get();
+        $booked_inspections = BookInspection::where('user_id',Auth::id())->paginate(1);
         return view('buyer.booked_inspections',compact('booked_inspections'));
     }
 

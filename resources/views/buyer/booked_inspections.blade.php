@@ -603,6 +603,7 @@
 											<!--end::Table body-->
 										</table>
 										<!--end::Table-->
+										{{ $booked_inspections->links() }}
 									</div>
 									<!--end::Card body-->
 								</div>
