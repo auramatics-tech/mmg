@@ -351,20 +351,23 @@
                                             </ul>
                                             <div class="product-hover-action">
                                                 <ul>
-                                                    <li>
+                                                   {{--<li>
                                                         <a href="{{route('property_details' ,isset($property->$property->id)?$property->$property->id:'')}}" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                                             <i class="flaticon-expand"></i>
                                                         </a>
                                                     </li>
+                                                    --}} 
                                                     <li>
                                                         <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
                                                             <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i></a>
                                                     </li>
+                                                    {{--
                                                     <li>
                                                         <a href="product-details.html" title="Product Details">
                                                             <i class="flaticon-add"></i>
                                                         </a>
                                                     </li>
+                                                    --}} 
                                                 </ul>
                                             </div>
                                         </div>
@@ -443,20 +446,24 @@
                                             </div>
                                             <div class="product-hover-action">
                                                 <ul>
+                                                {{--
                                                     <li>
                                                         <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                                             <i class="flaticon-expand"></i>
                                                         </a>
                                                     </li>
+                                                    --}}
                                                     <li>
                                                         <a href="#" title="" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                                             <i class="flaticon-heart-1"></i></a>
                                                     </li>
+                                                    {{--
                                                     <li>
                                                         <a href="product-details.html" title="Product Details">
                                                             <i class="flaticon-add"></i>
                                                         </a>
                                                     </li>
+                                                    --}}
                                                 </ul>
                                             </div>
                                         </div>
