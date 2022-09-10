@@ -202,8 +202,8 @@
 
 <div class="ltn__utilize-overlay"></div>
 
-<!-- BREADCRUMB AREA START -->
-<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
+{{--<!-- BREADCRUMB AREA START -->
+<!-- <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -219,8 +219,8 @@
             </div>
         </div>
     </div>
-</div>
-<!-- BREADCRUMB AREA END -->
+</div> -->
+<!-- BREADCRUMB AREA END --> --}}
 
 <!-- LOGIN AREA START -->
 <div class="ltn__login-area pb-65">

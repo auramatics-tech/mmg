@@ -32,4 +32,7 @@ class Property extends Model
     public function property_inspection(){
         return $this->hasOne(Inspection::class, 'property_id','id'); 
     }
+    public function property_name(){
+        return $this->hasOne(User::class, 'id','created_by'); 
+    }
 }
