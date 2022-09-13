@@ -1,7 +1,28 @@
 @extends('frontend.layouts.master')
+@section('css')
+<style>
+    .css-1y3w866:not([aria-disabled='true']):hover {
+    background-color: #f2f2f2;
+}
+.si_radius a img{
+    border-radius:1.5rem
+}
+.about-img-right img{
+    border-radius: 1.5rem
+}
+.si-bg-dark{
+    background-color: var(--ltn__secondary-color);
+    color: white !important;
+}
+
+@media screen and (max-width: 480px){
+.si_mini_flex{
+    justify-content: center !important;
+}
+}
+</style>
+@endsection
 @section('content')
-
-
     <!-- Utilize Cart Menu Start -->
     <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
@@ -510,17 +531,17 @@
                             </li>
                         </ul>
                         <ul class="ltn__list-item-2 ltn__list-item-2-before--- ltn__list-item-2-img mb-50">
-                            <li>
+                            <li class="si_radius">
                                 <a href="img/img-slide/11.jpg" data-rel="lightcase:myCollection">
                                     <img src="{{asset('frontend/img/img-slide/11.jpg')}}" alt="Image">
                                 </a>
                             </li>
-                            <li>
+                            <li class="si_radius">
                                 <a href="img/img-slide/12.jpg" data-rel="lightcase:myCollection">
                                     <img src="{{asset('frontend/img/img-slide/12.jpg')}}" alt="Image">
                                 </a>
                             </li>
-                            <li>
+                            <li class="si_radius">
                                 <a href="img/img-slide/13.jpg" data-rel="lightcase:myCollection">
                                     <img src="{{asset('frontend/img/img-slide/13.jpg')}}" alt="Image">
                                 </a>
