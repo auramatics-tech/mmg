@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\FavouriteProperty;
 use App\Models\PropertyView;
+use App\Models\PropertyFeature;
+use App\Models\PropertyDetail;
 use Auth;
 
 class PropertyController extends Controller
@@ -12,14 +14,18 @@ class PropertyController extends Controller
     
     public function property_list(Request $request)
     {
-        $properties = Property::where('is_approved',1)
+        $properties = Property::select('properties.*','property_details.rental_allowances')
+        ->where('is_approved',1)->leftjoin('property_details','properties.id','property_details.property_id')
         ->when(isset($request->type), function ($query) use ($request) {
             $query->whereIn('properties.form_type',$request->type);
         })->when(isset($request->search), function ($query) use ($request) {
             $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');
-        })->paginate(1);
+        })->when(isset($request->amenities), function ($query) use ($request) {
+            $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
+        })->paginate(4);
+        $property_features = PropertyFeature::all();
         // echo "<pre>";print_r($properties);die;
-        return view('frontend.property.property_list',compact('properties'));
+        return view('frontend.property.property_list',compact('properties','property_features'));
     }
 
     public function property_details($property_id='')

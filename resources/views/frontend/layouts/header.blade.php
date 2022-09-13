@@ -41,13 +41,32 @@
 
                                             <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                                             <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                                            <div class="ltn__drop-menu user-menu">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#"><i class="icon-user"></i></a>
+                                                        <ul>
+                                                            @if(!Auth::check())
+                                                            <li><a href="{{route('login')}}">Sign in</a></li>
+                                                            <li><a href="{{route('registration')}}">Register</a></li>
+                                                            @else
+                                                            <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
+                                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                                    Sign Out
+                                                                </a></li>
+                                                            @endif
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
                                     <!-- header-top-btn -->
                                     <div class="header-top-btn">
-                                        <a href="add-listing.html">Add Listing</a>
+                                        <a href="{{route('seller.property_list')}}">Add Listing</a>
                                     </div>
                                 </li>
                                 <!-- <div class="ltn__drop-menu user-menu">
@@ -142,11 +161,10 @@
                                     <ul>
                                         @if(!Auth::check())
                                         <li><a href="{{route('login')}}">Sign in</a></li>
-                                        <li><a href="{{route('registration')}}">Register</a></li>
-                                        @else
-                                        <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
-                                        <li><a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
+                    <li><a href="{{route('registration')}}">Register</a></li>
+                    @else
+                    <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                 Sign Out
                             </a></li>
@@ -228,6 +246,7 @@
             </div>
         </nav>
 
+    </div>
     </div>
     </div>
     <!-- ltn__header-middle-area end -->
