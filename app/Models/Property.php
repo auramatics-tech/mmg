@@ -10,7 +10,16 @@ class Property extends Model
     use HasFactory;
     public $table = "properties";
     protected $fillable = [
-        'created_by','is_approved','form_type','status','is_featured','property_type','new_construction','home_and_land_package','authority','listing_expiry_date','price','show_price','alt_to_price','address','state','unit','street_no','street','postcode','suburb','address_display','key_number','key_location','alarm_code','internal_notes','headline','description','brochure_small_description','brochure_large_description','video_url','online_tour_1_url','online_tour_2_url','email_more_info_url'
+        'created_by','is_approved','form_type',
+        'status','is_featured','property_type',
+        'new_construction','home_and_land_package',
+        'authority','listing_expiry_date','normal_price',
+        'desired_price','show_price','alt_to_price',
+        'address','state','unit','street_no','street',
+        'postcode','suburb','address_display','key_number',
+        'key_location','alarm_code','internal_notes','headline',
+        'description','brochure_small_description','brochure_large_description',
+        'video_url','online_tour_1_url','online_tour_2_url','email_more_info_url','about_home','about_location','about_improvements'
     ];
     
     public function get_property_image(){

@@ -15,6 +15,8 @@ class PropertyController extends Controller
     
     public function property_list(Request $request)
     {
+       
+      
         $properties = Property::select('properties.*','property_details.rental_allowances')
         ->where('is_approved',1)->leftjoin('property_details','properties.id','property_details.property_id')
         ->when(isset($request->type), function ($query) use ($request) {
@@ -31,6 +33,8 @@ class PropertyController extends Controller
 
     public function property_details($property_id='')
     {
+        $property_details = PropertyDetail::All();
+        // echo "<pre>";print_r( $property_details );die;
         $property = Property::find($property_id);
         if(Auth::check())
         {
@@ -42,8 +46,11 @@ class PropertyController extends Controller
                 $property_view->property_id = $property_id;
                 $property_view->save();
             }
+            // // echo "<pre>";
+            // print_r($property_view);
+            // die;
         }
-        return view('frontend.property.property_details',compact('property'));
+        return view('frontend.property.property_details',compact('property','property_details'));
     }
 
     public function add_to_favourite($property_id='',Request $request)

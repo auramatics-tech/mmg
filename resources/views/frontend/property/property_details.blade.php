@@ -277,10 +277,13 @@
                         <p>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</p>
 
                         <h4 class="title-2">Property Detail</h4>  
-                        <div class="property-detail-info-list section-bg-1 clearfix mb-60">                          
+                        <div class="property-detail-info-list section-bg-1 clearfix mb-60">   
+                        @if(count($property_details))
+                            @foreach($property_details as $property)                       
                             <ul>
-                                <li><label>Property ID:</label> <span>HZ29</span></li>
-                                <li><label>Home Area: </label> <span>120 sqft</span></li>
+                         
+                                <li><label>Property ID:</label> <span> {{isset($property->property_id)?$property->property_id:''}}</span></li>
+                                <li><label>Home Area: </label> <span>{{isset($property->house_sizes)?$property->house_sizes:''}}</span></li>
                                 <li><label>Rooms:</label> <span>7</span></li>
                                 <li><label>Baths:</label> <span>2</span></li>
                                 <li><label>Year built:</label> <span>1992</span></li>
@@ -292,8 +295,9 @@
                                 <li><label>Price:</label> <span>2</span></li>
                                 <li><label>Property Status:</label> <span>For Sale</span></li>
                             </ul>
-                        </div>
-                                        
+                            @endforeach
+                            @endif
+                        </div>             
                         <h4 class="title-2">Facts and Features</h4>
                         <div class="property-detail-feature-list clearfix mb-45">                            
                             <ul>
@@ -370,6 +374,7 @@
                                     </div>
                                 </li>
                             </ul>
+                           
                         </div>
                         @if(Auth::check())
                             <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1">

@@ -60,7 +60,7 @@
 								<!--begin::Actions-->
 								<div class="d-flex align-items-center gap-2 gap-lg-3">
 									<!--begin::Filter menu-->
-									<div class="m-0">
+								{{--	<div class="m-0">
 										<!--begin::Menu toggle-->
 										<a href="#" class="btn btn-sm btn-flex btn-light btn-active-primary fw-bolder" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 										<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
@@ -147,12 +147,12 @@
 											<!--end::Form-->
 										</div>
 										<!--end::Menu 1-->
-									</div>
+									</div>  --}}
 									<!--end::Filter menu-->
 									<!--begin::Secondary button-->
 									<!--end::Secondary button-->
 									<!--begin::Primary button-->
-									<a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create</a>
+							{{--<a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create</a>  --}}
 									<!--end::Primary button-->
 								</div>
 								<!--end::Actions-->
@@ -190,7 +190,7 @@
 											<!--begin::Toolbar-->
 											<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
 												<!--begin::Filter-->
-												<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+										{{-- <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 												<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
 												<span class="svg-icon svg-icon-2">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -240,11 +240,11 @@
 														<!--end::Actions-->
 													</div>
 													<!--end::Content-->
-												</div>
+												</div>  --}}
 												<!--end::Menu 1-->
 												<!--end::Filter-->
 												<!--begin::Export-->
-												<button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_users">
+										{{--<button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_users">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 												<span class="svg-icon svg-icon-2">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -253,12 +253,12 @@
 														<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
 													</svg>
 												</span>
-												<!--end::Svg Icon-->Export</button>
+												<!--end::Svg Icon-->Export</button>   --}}
 												<!--end::Export-->
 												<!--begin::Add user-->
 												
 												<div class="text-end">
-														<a href="#" class="btn btn-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+														<a href="{{route('seller.add_property_form')}}" class="btn btn-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 														<span class="svg-icon svg-icon-2">
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
@@ -274,7 +274,7 @@
 														</span>
 														<!--end::Svg Icon--></a>
 														<!--begin::Menu-->
-														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-180px py-4" data-kt-menu="true">
+													{{--	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-180px py-4" data-kt-menu="true">
 															<!--begin::Menu item-->
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
@@ -297,7 +297,7 @@
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental','holiday' => 1])}}" class="menu-link px-3">Holiday Rental</a>
 															</div>
-														</div>
+														</div>  --}}
 														<!--end::Menu-->
 													</div>
 												<!--end::Add user-->
