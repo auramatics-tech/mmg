@@ -16,14 +16,17 @@ class Property extends Model
         'authority','listing_expiry_date','normal_price',
         'desired_price','show_price','alt_to_price',
         'address','state','unit','street_no','street',
-        'postcode','suburb','address_display','key_number',
+        'postcode','suburb','lat','lng','address_display','key_number',
         'key_location','alarm_code','internal_notes','headline',
         'description','brochure_small_description','brochure_large_description',
-        'video_url','online_tour_1_url','online_tour_2_url','email_more_info_url','about_home','about_location','about_improvements'
+        'video_url','online_tour_1_url','online_tour_2_url','email_more_info_url','about_home','about_location','about_improvements','commercial_listing_type'
     ];
     
     public function get_property_image(){
         return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_images'); 
+    }
+    public function get_property_floor_plan(){
+        return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_floorplans'); 
     }
     
     public function property_details(){

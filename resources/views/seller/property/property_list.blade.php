@@ -713,6 +713,7 @@
 											<!--end::Table body-->
 										</table>
 										<!--end::Table-->
+										{{ $properties->links() }}
 									</div>
 									<!--end::Card body-->
 								</div>

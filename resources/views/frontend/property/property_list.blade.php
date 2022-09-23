@@ -238,7 +238,7 @@
 
 <div class="ltn__utilize-overlay"></div>
 
-<!-- BREADCRUMB AREA START -->
+{{-- <!-- BREADCRUMB AREA START -->
 <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
     <div class="container">
         <div class="row">
@@ -256,8 +256,7 @@
         </div>
     </div>
 </div>
-<!-- BREADCRUMB AREA END -->
-
+<!-- BREADCRUMB AREA END -->  --}}
 <!-- PRODUCT DETAILS AREA START -->
 <div class="ltn__product-area ltn__product-gutter mb-120">
     <div class="container">
@@ -279,15 +278,17 @@
                             </div>
                         </li>
                         <li>
+                            <form id="sorting_form">
                             <div class="short-by text-center">
-                                <select class="nice-select">
-                                    <option>Default Sorting</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by new arrivals</option>
-                                    <option>Sort by price: low to high</option>
-                                    <option>Sort by price: high to low</option>
+                                <select class="nice-select" name="sort" id="sortby">
+                                    <option value="">Default Sorting</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'o') selected @endif value="o">Sort by first arrivals</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'n') selected @endif value="n">Sort by new arrivals</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'l') selected @endif  value="l">Sort by price: low to high</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'h')  selected @endif value="h">Sort by price: high to low</option>
                                 </select>
                             </div>
+                            </form>
                         </li>
                         <li>
                             <div class="short-by text-center">
@@ -376,7 +377,7 @@
                                         </div>
                                         <div class="product-info-bottom">
                                             <div class="product-price">
-                                                <span>${{isset($property->price)?$property->price:''}}</span>
+                                                <span>${{isset($property->normal_price)?$property->normal_price:''}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -404,7 +405,7 @@
                                 <div class="col-lg-12">
                                     <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
                                         <div class="product-img">
-                                            <a href=""><img src="img/product-3/1.jpg" alt="#"></a>
+                                        <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                         </div>
                                         <div class="product-info">
                                             <div class="product-badge-price">
@@ -457,7 +458,7 @@
                                                     </li>
                                                     --}}
                                                     <li>
-                                                        <a href="#" title="" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                        <a href="javascript:" title="" data-property_id="{{$property->id}}" class="fav_property" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                                             <i class="flaticon-heart-1"></i></a>
                                                     </li>
                                                     {{--
@@ -497,7 +498,7 @@
             <div class="col-lg-4">
                 <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
                     <h3 class="mb-10">Advance Information</h3>
-                    <label class="mb-30"><small>About 9,620 results (0.62 seconds) </small></label>
+                <label class="mb-30"><small>Filter All Property </small></label>
                     <!-- Advance Information widget -->
                     <div class="widget ltn__menu-widget">
                         <h4 class="ltn__widget-title">Property Type</h4>
@@ -509,7 +510,7 @@
                                             <input type="checkbox" @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif value="residential_sale" name="type[]">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <span class="categorey-no">3,924</span>
+                                        <span class="categorey-no"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -517,42 +518,42 @@
                                         <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental", request()->type)) checked @endif value="residential_rental" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">3,610</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Land
                                         <input type="checkbox" @if(isset(request()->type) && in_array("land", request()->type)) checked @endif value="land" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">2,912</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Commercial
                                         <input type="checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">2,687</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Rural
                                         <input type="checkbox" @if(isset(request()->type) && in_array("rural", request()->type)) checked @endif value="rural" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">1,853</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Business
                                         <input type="checkbox" @if(isset(request()->type) && in_array("business", request()->type)) checked @endif value="business" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">893</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Holiday Rental
                                         <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental&holiday=1", request()->type)) checked @endif value="residential_rental&holiday=1" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">893</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                             </ul>
                         </form>
@@ -590,8 +591,8 @@
                         </ul>
                         <hr>
                         </form>
-                        <h4 class="ltn__widget-title">Price Renge</h4>
-                        <ul>
+                        {{-- <h4 class="ltn__widget-title">Price Renge</h4>
+                           <ul>
                             <li>
                                 <label class="checkbox-item">Low Budget
                                     <input type="checkbox">
@@ -613,7 +614,7 @@
                                 </label>
                                 <span class="categorey-no">$30,000 Up</span>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <hr>
                         <!-- Price Filter Widget -->
                         <div class="widget--- ltn__price-filter-widget">
@@ -644,25 +645,25 @@
                         <h4 class="ltn__widget-title">Catagory</h4>
                         <ul>
                             <li>
-                                <label class="checkbox-item">Buying
+                                <label class="checkbox-item">For Sale
                                     <input type="checkbox" checked="checked">
                                     <span class="checkmark"></span>
                                 </label>
-                                <span class="categorey-no">3,924</span>
+                                <span class="categorey-no"></span>
                             </li>
                             <li>
                                 <label class="checkbox-item">Renting
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
-                                <span class="categorey-no">3,610</span>
+                                <span class="categorey-no"></span>
                             </li>
                             <li>
                                 <label class="checkbox-item">Selling
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
-                                <span class="categorey-no">2,912</span>
+                                <span class="categorey-no"></span>
                             </li>
                         </ul>
                     </div>
@@ -697,7 +698,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                        <a href=""><img src="img/product/1.png" alt="#"></a>
+                                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -720,7 +721,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                        <a href=""><img src="img/product/2.png" alt="#"></a>
+                                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -743,7 +744,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                        <a href=""><img src="img/product/3.png" alt="#"></a>
+                                      <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -878,5 +879,17 @@
         $('.extra_fetures').hide();
         $('#view_more_fetures').show();
     })
+</script>
+<script>
+    $("#myselect").change(function() {
+     this.form.submit();
+});
+</script>
+<script>
+$(document).ready(function(){
+   $('#sortby').change(function(){
+       $('#sorting_form').submit();
+    });
+});
 </script>
 @endsection

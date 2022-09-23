@@ -31,12 +31,13 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::where('created_by',Auth::id())->get();
+        $properties = Property::where('created_by',Auth::id())->paginate(5);
         return view('seller.property.property_list',compact('properties'));
     }
 
     public function add_property_form(Request $request)
     {
+        
         $property_form = "listing_details";
         if($request->listing_type == 'commercial')
         {
@@ -194,14 +195,14 @@ class PropertyController extends Controller
     public function property_offers()
     {
         $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
-        $property_offers = Offer::whereIn('property_id',$my_properties)->get();
+        $property_offers = Offer::whereIn('property_id',$my_properties)->paginate(1);
         return view('seller.property.property_offers',compact('property_offers'));
     }
     
     public function property_inspections()
     {
         $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
-        $property_inspections = BookInspection::whereIn('property_id',$my_properties)->get();
+        $property_inspections = BookInspection::whereIn('property_id',$my_properties)->paginate(1);
         return view('seller.property.property_inspections',compact('property_inspections'));
     }
 }

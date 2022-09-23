@@ -24,7 +24,6 @@ class UserController extends Controller
     
      public function update_profile(Request $request)
     {
-       
         $user = Auth::user();
         // echo "<pre>";print_r( $request->all());die;
         if(isset($request->first_name)){
@@ -46,8 +45,8 @@ class UserController extends Controller
         if(isset($request->password)){
             $user->password = Hash::make($request->password);
         }
-        if(isset($request->profile)){
-            $file = $request->file('profile');
+        if(isset($request->profile_pic)){
+            $file = $request->file('profile_pic');
             $imageName = time() . '.' . $file->extension();
             $file->move(public_path('user_profile/'), $imageName);
             $user->profile_pic = $imageName;

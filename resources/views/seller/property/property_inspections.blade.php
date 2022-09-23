@@ -609,6 +609,7 @@
 											<!--end::Table body-->
 										</table>
 										<!--end::Table-->
+										{{ $property_inspections->links() }}
 									</div>
 									<!--end::Card body-->
 								</div>

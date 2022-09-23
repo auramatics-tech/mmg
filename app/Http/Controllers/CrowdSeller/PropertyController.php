@@ -31,7 +31,7 @@ class PropertyController extends Controller
      */
     public function all_properties()
     {
-        $properties = Property::where('is_approved',1)->get();
+        $properties = Property::where('is_approved',1)->paginate(1);
         return view('crowd_seller.property_list',compact('properties'));
     }
 }

@@ -447,7 +447,9 @@
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Address</label>
-        <input class="form-control form-control-solid" placeholder="" id="autocomplete2" onfocus="fillInAddress1()" name="address" value="{{old('address') ?? isset($property->address)?$property->address:''}}" />
+        <input type="hidden" name="lat" id="lat">
+        <input type="hidden" name="lng" id="lng">
+        <input class="form-control form-control-solid" placeholder="" id="address_filed"  name="address" value="{{old('address') ?? isset($property->address)?$property->address:''}}" />
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="fs-6 fw-bold mb-2">Unit</label>
@@ -466,7 +468,7 @@
         <label class="required fs-6 fw-bold mb-2">Street name</label>
 
 
-        <input class="form-control form-control-solid" placeholder="" name="street" value="{{old('street') ?? isset($property->street)?$property->street:''}}" />
+        <input class="form-control form-control-solid" placeholder="" id="street" name="street" value="{{old('street') ?? isset($property->street)?$property->street:''}}" />
 
     </div>
     <div class="row g-9 mb-8">

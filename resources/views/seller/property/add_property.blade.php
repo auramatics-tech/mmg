@@ -387,34 +387,26 @@
             });
         };
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-apy6gxIDy6Te4JSdRBpHQeuUXXjZHQI&callback=initMap&libraries=places&v=weekly" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initAutocomplete&libraries=places&v=weekly" defer></script>
 
     <script>
-        function initMap() {
-            const map = mapM = new google.maps.Map(document.getElementById("map"), {
-                mapTypeControl: false,
-                center: {
-                    lat: -33.8688,
-                    lng: 151.2195
-                },
-                zoom: 13,
-            });
-            //  new AutocompleteDirectionsHandler(map);
-            initAutocomplete();
-        }
-
         function initAutocomplete() {
-            autocomplete2 = new google.maps.places.Autocomplete(document.getElementById('autocomplete2'), {
-                types: ['geocode']
-            });
-            google.maps.event.addListener(autocomplete2, 'place_changed', function() {
-                fillInAddress1();
-            })
+            address1Field = document.querySelector("#address_filed");
+            // Create the autocomplete object, restricting the search predictions to
+            // addresses in the US and Canada.
+            autocomplete = new google.maps.places.Autocomplete(address1Field);
+            // When the user selects an address from the drop-down, populate the
+            // address fields in the form.
+            autocomplete.addListener("place_changed", fillInAddress);
         }
 
-        function fillInAddress1() {
-            var place1 = autocomplete2.getPlace();
+        function fillInAddress() {
+            var place1 = autocomplete.getPlace();
             $('#origin-input').val(place1.formatted_address);
+            var lat = place1.geometry.location.lat();
+            var lng = place1.geometry.location.lng();
+            $('#lat').val(lat)
+            $('#lng').val(lng)
             for (var i = 0; i < place1.address_components.length; i++) {
                 var addressType = place1.address_components[i].types[0];
                 // console.log(addressType);
@@ -425,9 +417,9 @@
                 if (addressType == "route") {
                     $('#street_no').val(street_number + ' ' + place1.address_components[i].long_name);
                 }
-                /* if (addressType == "country") {
-                    $('#pickupcountry').val(place1.address_components[i].long_name);
-                } */
+                if (addressType == "route") {
+                    $('#street').val(place1.address_components[i].long_name);
+                }
                 if (addressType == "postal_code") {
                     $('#postcode').val(place1.address_components[i].long_name);
                 }
