@@ -16,6 +16,9 @@ class Property extends Model
     public function get_property_image(){
         return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_images'); 
     }
+    public function get_property_floor_plan(){
+        return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_floorplans'); 
+    }
     
     public function property_details(){
         return $this->hasOne(PropertyDetail::class, 'property_id','id'); 

@@ -533,7 +533,7 @@
                                     <div class="row">
                                         <div class="col-lg-7">
                                             <div class="apartments-plan-img">
-                                                <img src="{{asset('frontend/img/others/10.png')}}" alt="#">
+                                                <img src="{{isset($property->get_property_floor_plan->document)?asset('storage/property_floorplans/'.$property->get_property_floor_plan->document):asset('frontend/img/others/10.png')}}" alt="#">
                                             </div>
                                         </div>
                                         <div class="col-lg-5">

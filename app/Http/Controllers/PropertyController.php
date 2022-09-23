@@ -23,7 +23,7 @@ class PropertyController extends Controller
         })->when(isset($request->amenities), function ($query) use ($request) {
             $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
         })->paginate(4);
-        $property_features = PropertyFeature::all();
+        $property_features = PropertyFeature::all();    
         // echo "<pre>";print_r($properties);die;
         return view('frontend.property.property_list',compact('properties','property_features'));
     }
