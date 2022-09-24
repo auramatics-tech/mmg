@@ -41,35 +41,16 @@
 
                                             <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                                             <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
-                                            <div class="ltn__drop-menu user-menu">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#"><i class="icon-user"></i></a>
-                                                        <ul>
-                                                            @if(!Auth::check())
-                                                            <li><a href="{{route('login')}}">Sign in</a></li>
-                                                            <li><a href="{{route('registration')}}">Register</a></li>
-                                                            @else
-                                                            <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
-                                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                                                    Sign Out
-                                                                </a></li>
-                                                            @endif
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
                                     <!-- header-top-btn -->
                                     <div class="header-top-btn">
-                                        <a href="{{route('seller.property_list')}}">Add Listing</a>
+                                        <a href="add-listing.html">Add Listing</a>
                                     </div>
                                 </li>
-                                <!-- <div class="ltn__drop-menu user-menu">
+                                <div class="ltn__drop-menu user-menu">
                                     <ul>
                                         <li>
                                             <a href="#"><i class="icon-user"></i></a>
@@ -87,7 +68,7 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </div> -->
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -100,8 +81,7 @@
     <!-- ltn__header-middle-area start -->
     <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
         <div class="container">
-            <!-- <div class="row">
-                
+            <div class="row">
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
@@ -122,7 +102,6 @@
                     <div class="header-menu d-none d-xl-block">
                         <nav>
                             <div class="ltn__main-menu">
-                                
                                 <ul>
                                     <li><a href="{{route('home')}}">Home</a></li>
                                     <li><a href="{{route('property_list')}}">Properties</a></li>
@@ -137,7 +116,7 @@
                 </div>
                 <div class="col ltn__header-options ltn__header-options-2 mb-sm-20">
                   {{--  <!-- header-search-1 -->
-            <!-- <div class="header-search-wrap">
+                    <!-- <div class="header-search-wrap">
                             <div class="header-search-1">
                                 <div class="search-icon">
                                     <i class="icon-search for-search-show"></i>
@@ -153,18 +132,19 @@
                                 </form>
                             </div>
                         </div> -->
-            <!-- user-menu -->
-            <!-- <div class="ltn__drop-menu user-menu">
+                    <!-- user-menu -->
+                    <!-- <div class="ltn__drop-menu user-menu">
                             <ul>
                                 <li>
                                     <a href="#"><i class="icon-user"></i></a>
                                     <ul>
                                         @if(!Auth::check())
                                         <li><a href="{{route('login')}}">Sign in</a></li>
-                    <li><a href="{{route('registration')}}">Register</a></li>
-                    @else
-                    <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
-                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        <li><a href="{{route('registration')}}">Register</a></li>
+                                        @else
+                                        <li><a href="{{route('buyer.dashboard')}}">Dashboard</a></li>
+                                        <li><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                 Sign Out
                             </a></li>
@@ -173,81 +153,27 @@
                                 </li>
                             </ul>
                         </div> -->
-            <!-- mini-cart -->
-            <!-- <div class="mini-cart-icon">
+                    <!-- mini-cart -->
+                    <!-- <div class="mini-cart-icon">
                             <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                 <i class="icon-shopping-cart"></i>
                                 <sup>2</sup>
                             </a>
                         </div> -->
-            <!-- mini-cart -->
-            <!-- Mobile Menu Button --> --}}
-            <div class="mobile-menu-toggle d-xl-none">
-                <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
-                    <svg viewBox="0 0 800 600">
-                        <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
-                        <path d="M300,320 L540,320" id="middle"></path>
-                        <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
-                    </svg>
-                </a>
+                    <!-- mini-cart -->
+                    <!-- Mobile Menu Button --> --}}
+                    <div class="mobile-menu-toggle d-xl-none">
+                        <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
+                            <svg viewBox="0 0 800 600">
+                                <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                                <path d="M300,320 L540,320" id="middle"></path>
+                                <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- </div> -->
-        <nav class="navbar navbar-dark" aria-label="First navbar example">
-            <div class="container-fluid d-flex px-0 si_mini_flex">
-                    <div class="site-logo-wrap">
-                        <div class="site-logo">
-                            <a href="{{route('index')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="Logo"></a>
-                        </div>
-                        <div class="get-support clearfix d-none">
-                            <div class="get-support-icon">
-                                <i class="icon-call"></i>
-                            </div>
-                            <div class="get-support-info">
-                                <h6>Get Support</h6>
-                                <h4><a href="tel:+123456789">123-456-789-10</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                <div class="d-flex">
-                    @if(!Auth::check())
-                    <span><a href="{{route('registration')}}"><b class="me-3 my-2">Register</b></a></span>
-                    <span><a href="{{route('login')}}"><b class="me-3 my-2">Sign in</b></a></span>
-                    @else
-                    <span><a href="{{route('buyer.dashboard')}}"><b class="me-3 my-2">Dashboard</b></a></span>
-                    <span><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                            <b class="me-3 my-2">Sign Out</b>
-                        </a></span>
-                    @endif
-                    <button class="navbar-toggler si-bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse bg-white shadow rounded px-3 mt-4" id="navbarsExample01">
-                    <ul class="navbar-nav me-auto mb-2">
-                        <li class="nav-item">
-                            <a href="{{route('home')}}" class="text-dark">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('property_list')}}" class="text-dark">Properties</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('index')}}" class="text-dark">Home Loans</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('about_us')}}" class="text-dark">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('contact_us')}}" class="text-dark">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </div>
-    </div>
     </div>
     <!-- ltn__header-middle-area end -->
 </header>

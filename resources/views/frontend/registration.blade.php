@@ -264,14 +264,14 @@
                         </span>
                         @enderror
                         <input type="password" name="password_confirmation" placeholder="Confirm Password*" required autocomplete="new-password">
-                        <label class="checkbox-inline">
+                       {{-- <label class="checkbox-inline">
                             <input type="checkbox" value="">
                             I consent to Herboil processing my personal data in order to send personalized marketing material in accordance with the consent form and the privacy policy.
                         </label>
                         <label class="checkbox-inline">
                             <input type="checkbox" value="">
                             By clicking "create account", I consent to the privacy policy.
-                        </label>
+                        </label> --}}
                         <div class="btn-wrapper">
                             <button class="theme-btn-1 btn reverse-color btn-block" type="submit">CREATE ACCOUNT</button>
                         </div>

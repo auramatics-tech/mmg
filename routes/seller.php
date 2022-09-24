@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller\PropertyController;
 //property-form 
 Route::get('/property-list', [PropertyController::class, 'index'])->name('seller.property_list');
-Route::get('/add-property-form', [PropertyController::class, 'add_property_form'])->name('seller.add_property_form');
+Route::get('/add-property-form/{property_id?}', [PropertyController::class, 'add_property_form'])->name('seller.add_property_form');
 Route::get('/property-detail-form/{property_id}', [PropertyController::class, 'property_details_form'])->name('seller.property_details_form');
 Route::get('/property-image-form/{property_id}', [PropertyController::class, 'property_image_form'])->name('seller.property_image_form');
 Route::get('/property-inspection-form/{property_id}', [PropertyController::class, 'property_inspection_form'])->name('seller.property_inspection_form');

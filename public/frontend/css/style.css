@@ -451,10 +451,10 @@ ol li {
 /* -------------------------------------
     Custom Class
 ------------------------------------- */
-/* .section-bg-1 {
+.section-bg-1 {
   background-color: var(--section-bg-1); }
   .section-bg-1 .ltn__separate-line .separate-icon {
-    background-color: var(--section-bg-1); } */
+    background-color: var(--section-bg-1); }
 
 .section-bg-2,
 .section-bg-6,
@@ -6121,7 +6121,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     Slider Area 1, 2, 3, 4, 5, 6, 7, 9
 ---------------------------------------------------- */
 .ltn__slide-item {
-  padding-top: 50px;
+  padding-top: 100px;
   padding-bottom: 100px;
   height: 750px; }
 
@@ -6278,7 +6278,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 /* slide-item-2 */
 .ltn__slide-item-2 {
   height: calc(100vh - 0px);
-  padding-top: 50px; }
+  padding-top: 200px; }
   .ltn__slide-item-2 .slide-item-info {
     max-width: 650px; }
   .ltn__slide-item-2 .slide-sub-title {
@@ -6457,13 +6457,12 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   height: 70%; }
   .ltn__slide-item-3 .slide-item-img img {
     text-align: right;
-    /* margin-left: auto; */
+    margin-left: auto;
     height: 100%;
     -o-object-fit: contain;
     object-fit: contain;
     -o-object-position: center center;
-    object-position: center center;
-  border-radius: 1.5rem }
+    object-position: center center; }
 
 .ltn__slide-item-3 .text-right .slide-item-img {
   right: auto;
@@ -6471,17 +6470,17 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .ltn__slide-item-3-normal {
   height: calc(100vh - 160px);
-  padding-top: 50px; }
+  padding-top: 100px; }
 
 /* slide-item-4 */
 .ltn__slide-item-4 {
   padding-bottom: 50px; }
   .ltn__slide-item-4 .slide-item-img {
-    margin-top: 50px; }
+    margin-top: 100px; }
 
 /* slider-5 */
 .ltn__slider-5 .ltn__slide-item-2 {
-  padding-top: 50px; }
+  padding-top: 100px; }
 
 /* slide-item-5 */
 .ltn__slide-item-5 .slide-item-img {
@@ -8949,7 +8948,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   border: none;
   -webkit-box-shadow: var(--ltn__box-shadow-4);
   box-shadow: var(--ltn__box-shadow-4);
-  border-radius: 1.5rem;
+  border-radius: 10px;
   margin-bottom: 50px; }
   .ltn__category-item-5 a {
     padding: 40px 30px 35px;
@@ -9766,15 +9765,11 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .ltn__blog-item-3-normal .ltn__blog-item-3 .ltn__blog-brief {
     width: calc( 100%); }
   .ltn__blog-item-3-normal .ltn__blog-item-3 .ltn__blog-img + .ltn__blog-brief {
-    margin-top: 0px;
-    border-bottom-left-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem; }
+    margin-top: 0px; }
 
 .ltn__blog-item-3 .ltn__blog-img {
   overflow: hidden; }
   .ltn__blog-item-3 .ltn__blog-img img {
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
     -webkit-transition: all 0.5s ease 0s;
     -o-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s; }
@@ -11887,8 +11882,7 @@ input.cart-plus-minus-box {
 .about-us-img-wrap {
   position: relative; }
   .about-us-img-wrap img {
-    margin: 0;
-  border-radius: 1.5rem; }
+    margin: 0; }
 
 .about-us-img-info {
   width: 310px;
@@ -12524,7 +12518,6 @@ input.cart-plus-minus-box {
 
 /* call-to-action-6 */
 .call-to-action-inner-6 {
-  border-radius: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12823,7 +12816,6 @@ input.cart-plus-minus-box {
     color: var(--white); }
 
 .ltn__car-dealer-form-tab .tab-content {
-  border-radius: 1.5rem;
   padding: 40px;
   background-color: var(--section-bg-1); }
 
@@ -12833,13 +12825,12 @@ input.cart-plus-minus-box {
   margin-bottom: 30px; }
 
 .ltn__car-dealer-form-box .nice-select {
-  border-radius: 6.5rem;
   margin: 0;
   height: 60px;
   line-height: 58px;
   padding-right: 40px;
   padding-left: 20px;
-  /* border-radius: 0; */
+  border-radius: 0;
   min-width: 200px;
   font-size: 16px;
   font-weight: 500;
@@ -13736,8 +13727,7 @@ input.cart-plus-minus-box {
 
 .apartments-plan-info,
 .apartments-plan-img {
-  margin-bottom: 50px;
-  border-radius: 1.5rem }
+  margin-bottom: 50px; }
 
 .apartments-info-list > ul {
   padding: 0;
@@ -14443,13 +14433,11 @@ input.cart-plus-minus-box {
   z-index: 1;
   margin-right: 15px; }
   .btn:last-child {
-    margin-right: 0;
-  border-radius: 6.5rem; }
+    margin-right: 0; }
 
 .theme-btn-1 {
   background-color: var(--ltn__secondary-color);
-  color: var(--white);
-  border-radius: 6.5rem }
+  color: var(--white); }
   .theme-btn-1:hover {
     background-color: var(--ltn__primary-color);
     color: var(--white); }
@@ -14525,7 +14513,6 @@ input.cart-plus-minus-box {
 .btn:after {
   content: '';
   position: absolute;
-  border-radius: 6.5rem;
   z-index: -1;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;

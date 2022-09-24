@@ -1,5 +1,5 @@
 <div class="w-100">
-    <form action="{{route('seller.save_property_details')}}" method="POST">
+    <form action="{{route('seller.save_property_details')}}" method="POST" onsubmit="setFormSubmitting()">
         @csrf
         <input type="hidden" name="property_id" value="{{$property_id}}">
     <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#about_property" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">About the property
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 fv-row">
+         {{--  <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-bold mb-2">Energy efficiency rating</label>
                 <select name="energy_efficiency_rating" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                     <option value=""></option>
@@ -169,7 +169,7 @@
             <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-bold mb-2">RESO Offer Link</label>
                 <input class="form-control form-control-solid" placeholder="" name="reso_offer_link" value="{{old('reso_offer_link') ?? isset($property_details->reso_offer_link)?$property_details->reso_offer_link:''}}" />
-            </div>  
+            </div>  --}} 
         </div>
     </div>
     <br>
@@ -187,7 +187,7 @@
 
     <div id="property_feature" class="collapse show">
         
-   <div class="col-md-12 fv-row my-4">
+ {{--  <div class="col-md-12 fv-row my-4">
         <label class="fs-5 fw-bolder form-label mb-2">ALLOWANCES</label>
         <div class="row">
             @foreach($allowances as $feature)
@@ -197,7 +197,7 @@
             </label>
             @endforeach
         </div>
-    </div>
+    </div>  --}}
     
    <div class="col-md-12 fv-row my-4">
         <label class="fs-5 fw-bolder form-label mb-2">OUTDOOR FEATURES</label>

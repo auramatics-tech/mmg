@@ -30,6 +30,9 @@
         background-color: var(--ltn__secondary-color);
         border: none !important;
     }
+    .extra_fetures{
+        display: none;
+    }
 </style>
 @endsection
 @section('content')
@@ -88,8 +91,8 @@
                 <h5>Subtotal: <span>$310.00</span></h5>
             </div>
             <div class="btn-wrapper">
-                <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                <a href="" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                <a href="" class="theme-btn-2 btn btn-effect-2">Checkout</a>
             </div>
             <p>Free Shipping on All Orders Over $100!</p>
         </div>
@@ -103,7 +106,7 @@
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                <a href=""><img src="img/logo.png" alt="Logo"></a>
             </div>
             <button class="ltn__utilize-close">×</button>
         </div>
@@ -117,84 +120,84 @@
             <ul>
                 <li><a href="#">Home</a>
                     <ul class="sub-menu">
-                        <li><a href="index.html">Home Style 01</a></li>
-                        <li><a href="index-2.html">Home Style 02</a></li>
-                        <li><a href="index-3.html">Home Style 03</a></li>
-                        <li><a href="index-4.html">Home Style 04</a></li>
-                        <li><a href="index-5.html">Home Style 05 <span class="menu-item-badge">video</span></a></li>
-                        <li><a href="index-6.html">Home Style 06</a></li>
-                        <li><a href="index-7.html">Home Style 07</a></li>
-                        <li><a href="index-8.html">Home Style 08</a></li>
-                        <li><a href="index-9.html">Home Style 09</a></li>
-                        <li><a href="index-10.html">Home Style 10 <span class="menu-item-badge">Map</span></a></li>
-                        <li><a href="index-11.html">Home Style 11</a></li>
+                        <li><a href="">Home Style 01</a></li>
+                        <li><a href="">Home Style 02</a></li>
+                        <li><a href="">Home Style 03</a></li>
+                        <li><a href="">Home Style 04</a></li>
+                        <li><a href="">Home Style 05 <span class="menu-item-badge">video</span></a></li>
+                        <li><a href="">Home Style 06</a></li>
+                        <li><a href="">Home Style 07</a></li>
+                        <li><a href="">Home Style 08</a></li>
+                        <li><a href="">Home Style 09</a></li>
+                        <li><a href="">Home Style 10 <span class="menu-item-badge">Map</span></a></li>
+                        <li><a href="">Home Style 11</a></li>
                     </ul>
                 </li>
                 <li><a href="#">About</a>
                     <ul class="sub-menu">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="service.html">Services</a></li>
-                        <li><a href="service-details.html">Service Details</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="portfolio-2.html">Portfolio - 02</a></li>
-                        <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                        <li><a href="team.html">Team</a></li>
-                        <li><a href="team-details.html">Team Details</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="locations.html">Google Map Locations</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Service Details</a></li>
+                        <li><a href="">Portfolio</a></li>
+                        <li><a href="l">Portfolio - 02</a></li>
+                        <li><a href="">Portfolio Details</a></li>
+                        <li><a href="">Team</a></li>
+                        <li><a href="">Team Details</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Google Map Locations</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Shop</a>
                     <ul class="sub-menu">
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="shop-grid.html">Shop Grid</a></li>
-                        <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                        <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                        <li><a href="product-details.html">Shop details </a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="wishlist.html">Wishlist</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="order-tracking.html">Order Tracking</a></li>
-                        <li><a href="account.html">My Account</a></li>
-                        <li><a href="login.html">Sign in</a></li>
-                        <li><a href="register.html">Register</a></li>
+                        <li><a href="">Shop</a></li>
+                        <li><a href="">Shop Grid</a></li>
+                        <li><a href="">Shop Left sidebar</a></li>
+                        <li><a href="">Shop right sidebar</a></li>
+                        <li><a href="">Shop details </a></li>
+                        <li><a href="">Cart</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Checkout</a></li>
+                        <li><a href="">Order Tracking</a></li>
+                        <li><a href="">My Account</a></li>
+                        <li><a href="">Sign in</a></li>
+                        <li><a href="">Register</a></li>
                     </ul>
                 </li>
                 <li><a href="#">News</a>
                     <ul class="sub-menu">
-                        <li><a href="blog.html">News</a></li>
-                        <li><a href="blog-grid.html">News Grid</a></li>
-                        <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                        <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
-                        <li><a href="blog-details.html">News details</a></li>
+                        <li><a href="">News</a></li>
+                        <li><a href="">News Grid</a></li>
+                        <li><a href="">News Left sidebar</a></li>
+                        <li><a href="">News Right sidebar</a></li>
+                        <li><a href="">News details</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Pages</a>
                     <ul class="sub-menu">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="service.html">Services</a></li>
-                        <li><a href="service-details.html">Service Details</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="portfolio-2.html">Portfolio - 02</a></li>
-                        <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                        <li><a href="team.html">Team</a></li>
-                        <li><a href="team-details.html">Team Details</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="history.html">History</a></li>
-                        <li><a href="appointment.html">Appointment</a></li>
-                        <li><a href="locations.html">Google Map Locations</a></li>
-                        <li><a href="404.html">404</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Service Details</a></li>
+                        <li><a href="">Portfolio</a></li>
+                        <li><a href="">Portfolio - 02</a></li>
+                        <li><a href="">Portfolio Details</a></li>
+                        <li><a href="">Team</a></li>
+                        <li><a href="">Team Details</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">History</a></li>
+                        <li><a href="">Appointment</a></li>
+                        <li><a href="">Google Map Locations</a></li>
+                        <li><a href="">404</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Coming Soon</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="">Contact</a></li>
             </ul>
         </div>
         <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
             <ul>
                 <li>
-                    <a href="account.html" title="My Account">
+                    <a href="" title="My Account">
                         <span class="utilize-btn-icon">
                             <i class="far fa-user"></i>
                         </span>
@@ -202,7 +205,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="wishlist.html" title="Wishlist">
+                    <a href="" title="Wishlist">
                         <span class="utilize-btn-icon">
                             <i class="far fa-heart"></i>
                             <sup>3</sup>
@@ -211,7 +214,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="cart.html" title="Shoping Cart">
+                    <a href="" title="Shoping Cart">
                         <span class="utilize-btn-icon">
                             <i class="fas fa-shopping-cart"></i>
                             <sup>5</sup>
@@ -235,7 +238,7 @@
 
 <div class="ltn__utilize-overlay"></div>
 
-<!-- BREADCRUMB AREA START -->
+{{-- <!-- BREADCRUMB AREA START -->
 <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
     <div class="container">
         <div class="row">
@@ -253,7 +256,7 @@
         </div>
     </div>
 </div>
-<!-- BREADCRUMB AREA END -->
+<!-- BREADCRUMB AREA END -->  --}}
 <!-- PRODUCT DETAILS AREA START -->
 <div class="ltn__product-area ltn__product-gutter mb-120">
     <div class="container">
@@ -275,15 +278,17 @@
                             </div>
                         </li>
                         <li>
+                            <form id="sorting_form">
                             <div class="short-by text-center">
-                                <select class="nice-select">
-                                    <option>Default Sorting</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by new arrivals</option>
-                                    <option>Sort by price: low to high</option>
-                                    <option>Sort by price: high to low</option>
+                                <select class="nice-select" name="sort" id="sortby">
+                                    <option value="">Default Sorting</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'o') selected @endif value="o">Sort by first arrivals</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'n') selected @endif value="n">Sort by new arrivals</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'l') selected @endif  value="l">Sort by price: low to high</option>
+                                    <option @if(isset(request()->sort) && request()->sort == 'h')  selected @endif value="h">Sort by price: high to low</option>
                                 </select>
                             </div>
+                            </form>
                         </li>
                         <li>
                             <div class="short-by text-center">
@@ -319,7 +324,7 @@
                                             <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                             <div class="real-estate-agent">
                                                 <div class="agent-img">
-                                                    <a href="team-details.html"><img src="img/blog/author.jpg" alt="#"></a>
+                                                    <a href=""><img src="img/blog/author.jpg" alt="#"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,7 +338,7 @@
                                             <div class="product-img-location">
                                                 <ul>
                                                     <li>
-                                                        <a href="locations.html"><i class="flaticon-pin"></i> {{isset($property->address)?$property->address:''}}</a>
+                                                        <a href=""><i class="flaticon-pin"></i> {{isset($property->address)?$property->address:''}}</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -362,7 +367,7 @@
                                                     </li>
                                                     {{--
                                                     <li>
-                                                        <a href="product-details.html" title="Product Details">
+                                                        <a href="" title="Product Details">
                                                             <i class="flaticon-add"></i>
                                                         </a>
                                                     </li>
@@ -372,7 +377,7 @@
                                         </div>
                                         <div class="product-info-bottom">
                                             <div class="product-price">
-                                                <span>${{isset($property->price)?$property->price:''}}</span>
+                                                <span>${{isset($property->normal_price)?$property->normal_price:''}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -400,7 +405,7 @@
                                 <div class="col-lg-12">
                                     <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
                                         <div class="product-img">
-                                            <a href="product-details.html"><img src="img/product-3/1.jpg" alt="#"></a>
+                                        <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property_list->get_property_image)?asset('storage/property_images/'.$property_list->get_property_image->document):''}}" alt="#"></a>
                                         </div>
                                         <div class="product-info">
                                             <div class="product-badge-price">
@@ -417,7 +422,7 @@
                                             <div class="product-img-location">
                                                 <ul>
                                                     <li>
-                                                        <a href="locations.html"><i class="flaticon-pin"></i> {{isset($property_list->address)?$property_list->address:''}}</a>
+                                                        <a href=""><i class="flaticon-pin"></i> {{isset($property_list->address)?$property_list->address:''}}</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -436,10 +441,10 @@
                                         <div class="product-info-bottom">
                                             <div class="real-estate-agent">
                                                 <div class="agent-img">
-                                                    <a href="team-details.html"><img src="img/blog/author.jpg" alt="#"></a>
+                                                    <a href=""><img src="img/blog/author.jpg" alt="#"></a>
                                                 </div>
                                                 <div class="agent-brief">
-                                                    <h6><a href="team-details.html"> {{isset($property_list->property_name->first_name)?$property_list->property_name->first_name:''}} {{isset($property_list->property_name->last_name)?$property_list->property_name->last_name:''}} </a></h6>
+                                                    <h6><a href=""> {{isset($property_list->property_name->first_name)?$property_list->property_name->first_name:''}} {{isset($property_list->property_name->last_name)?$property_list->property_name->last_name:''}} </a></h6>
                                                     <small>Estate Agents</small>
                                                 </div>
                                             </div>
@@ -453,12 +458,12 @@
                                                     </li>
                                                     --}}
                                                     <li>
-                                                        <a href="#" title="" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                        <a href="javascript:" title="" data-property_id="{{$property->id}}" class="fav_property" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                                             <i class="flaticon-heart-1"></i></a>
                                                     </li>
                                                     {{--
                                                     <li>
-                                                        <a href="product-details.html" title="Product Details">
+                                                        <a href="" title="Product Details">
                                                             <i class="flaticon-add"></i>
                                                         </a>
                                                     </li>
@@ -493,19 +498,19 @@
             <div class="col-lg-4">
                 <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
                     <h3 class="mb-10">Advance Information</h3>
-                    <label class="mb-30"><small>About 9,620 results (0.62 seconds) </small></label>
+                <label class="mb-30"><small>Filter All Property </small></label>
                     <!-- Advance Information widget -->
                     <div class="widget ltn__menu-widget">
                         <h4 class="ltn__widget-title">Property Type</h4>
                         <form action="" id="form2">
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="shop-right-sidebar.html">
+                                    <a href="">
                                         <label class="checkbox-item">Residential Sale
                                             <input type="checkbox" @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif value="residential_sale" name="type[]">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <span class="categorey-no">3,924</span>
+                                        <span class="categorey-no"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -513,51 +518,52 @@
                                         <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental", request()->type)) checked @endif value="residential_rental" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">3,610</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Land
                                         <input type="checkbox" @if(isset(request()->type) && in_array("land", request()->type)) checked @endif value="land" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">2,912</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Commercial
                                         <input type="checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">2,687</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Rural
                                         <input type="checkbox" @if(isset(request()->type) && in_array("rural", request()->type)) checked @endif value="rural" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">1,853</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Business
                                         <input type="checkbox" @if(isset(request()->type) && in_array("business", request()->type)) checked @endif value="business" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">893</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                                 <li>
                                     <label class="checkbox-item">Holiday Rental
                                         <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental&holiday=1", request()->type)) checked @endif value="residential_rental&holiday=1" name="type[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="categorey-no">893</span>
+                                    <span class="categorey-no"></span>
                                 </li>
                             </ul>
                         </form>
                         <hr>
                         <form action="" id="form3">
                         <h4 class="ltn__widget-title">Amenities</h4>
-                        <ul>
+                        <ul class="list-unstyled">
                             @if(count($property_features))
                             @foreach($property_features as $key => $property_feature)
+                            @if($key <= 7)
                             <li>
                                 <label class="checkbox-item">{{$property_feature->name}}
                                     <input type="checkbox" name="amenities[]" value="{{$property_feature->name}}">
@@ -565,13 +571,28 @@
                                 </label>
                                 <span class="categorey-no"></span>
                             </li>
+                            @else
+                                <li class="extra_fetures">
+                                    <label class="checkbox-item">{{$property_feature->name}}
+                                        <input type="checkbox" name="amenities[]" value="{{$property_feature->name}}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <span class="categorey-no"></span>
+                                </li>
+                            @endif
                             @endforeach
+                            <li class="text-center">
+                                <button class="ltn__secondary-color section-subtitle section-subtitle-2" type="button" id="view_more_fetures">See More</button>
+                            <li>
+                            <li class="text-center">
+                                <button class="ltn__secondary-color section-subtitle section-subtitle-2" type="button" id="hide_more_fetures" style="display: none;">See less</button>
+                            <li>
                             @endif
                         </ul>
                         <hr>
                         </form>
-                        <h4 class="ltn__widget-title">Price Renge</h4>
-                        <ul>
+                        {{-- <h4 class="ltn__widget-title">Price Renge</h4>
+                           <ul>
                             <li>
                                 <label class="checkbox-item">Low Budget
                                     <input type="checkbox">
@@ -593,7 +614,7 @@
                                 </label>
                                 <span class="categorey-no">$30,000 Up</span>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <hr>
                         <!-- Price Filter Widget -->
                         <div class="widget--- ltn__price-filter-widget">
@@ -624,25 +645,25 @@
                         <h4 class="ltn__widget-title">Catagory</h4>
                         <ul>
                             <li>
-                                <label class="checkbox-item">Buying
+                                <label class="checkbox-item">For Sale
                                     <input type="checkbox" checked="checked">
                                     <span class="checkmark"></span>
                                 </label>
-                                <span class="categorey-no">3,924</span>
+                                <span class="categorey-no"></span>
                             </li>
                             <li>
                                 <label class="checkbox-item">Renting
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
-                                <span class="categorey-no">3,610</span>
+                                <span class="categorey-no"></span>
                             </li>
                             <li>
                                 <label class="checkbox-item">Selling
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
-                                <span class="categorey-no">2,912</span>
+                                <span class="categorey-no"></span>
                             </li>
                         </ul>
                     </div>
@@ -677,7 +698,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                        <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
+                                    <a href=""><img src="" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -689,7 +710,7 @@
                                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                                             </ul>
                                         </div>
-                                        <h6><a href="product-details.html">Mixel Solid Seat Cover</a></h6>
+                                        <h6><a href="">Mixel Solid Seat Cover</a></h6>
                                         <div class="product-price">
                                             <span>$49.00</span>
                                             <del>$65.00</del>
@@ -700,7 +721,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                        <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                                    <a href=""><img src="" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -712,7 +733,7 @@
                                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                                             </ul>
                                         </div>
-                                        <h6><a href="product-details.html">3 Rooms Manhattan</a></h6>
+                                        <h6><a href="">3 Rooms Manhattan</a></h6>
                                         <div class="product-price">
                                             <span>$49.00</span>
                                             <del>$65.00</del>
@@ -723,7 +744,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                        <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
+                                      <a href=""><img src="" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -735,7 +756,7 @@
                                                 <li><a href="#"><i class="far fa-star"></i></a></li>
                                             </ul>
                                         </div>
-                                        <h6><a href="product-details.html">Coil Spring Conversion</a></h6>
+                                        <h6><a href="">Coil Spring Conversion</a></h6>
                                         <div class="product-price">
                                             <span>$49.00</span>
                                             <del>$65.00</del>
@@ -813,7 +834,7 @@
                     </div>
                     <!-- Banner Widget -->
                     <div class="widget ltn__banner-widget d-none">
-                        <a href="shop.html"><img src="img/banner/banner-2.jpg" alt="#"></a>
+                        <a href=""><img src="img/banner/banner-2.jpg" alt="#"></a>
                     </div>
                 </aside>
             </div>
@@ -848,10 +869,27 @@
         $('#form3 :input').not(':submit').clone().hide().appendTo('#form1');
         $('#form1').submit();
     })
+    $(document).on('click','#view_more_fetures',function(){
+        $(this).hide();
+        $('.extra_fetures').show();
+        $('#hide_more_fetures').show();
+    })
+    $(document).on('click','#hide_more_fetures',function(){
+        $(this).hide();
+        $('.extra_fetures').hide();
+        $('#view_more_fetures').show();
+    })
 </script>
 <script>
     $("#myselect").change(function() {
      this.form.submit();
+});
+</script>
+<script>
+$(document).ready(function(){
+   $('#sortby').change(function(){
+       $('#sorting_form').submit();
+    });
 });
 </script>
 @endsection

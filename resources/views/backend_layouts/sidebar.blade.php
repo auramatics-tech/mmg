@@ -2,9 +2,11 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="{{route('index')}}">
-            <img alt="Logo" src="{{asset('backend/media/logos/logo-1-dark.svg')}}" class="h-25px logo" />
+       <a href="{{route('index')}}">
+       <span class="menu-section text-muted text-uppercase  ls-1" style="font-size: 1.50rem;">MMG</span>
+       {{--  <img alt="Logo" src="{{asset('backend/media/logos/logo-1-dark.svg')}}" class="h-25px logo" /> --}} 
         </a>
+       
         <!--end::Logo-->
         <!--begin::Aside toggler-->
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">

@@ -10,7 +10,7 @@ class Inspection extends Model
     use HasFactory;
     public $table = "inspections";
     protected $fillable = [
-        'inspection_date','start_time','end_time','inspection_type','user_id','property_id'
+        'inspection_date','start_time','end_time','inspection_type','user_id','property_id','inspections_date_time'
     ];
     
     public function property(){

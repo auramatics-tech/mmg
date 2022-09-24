@@ -258,7 +258,7 @@
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
                 <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Properties List</h1>
-                
+
                 <!--begin::Separator-->
                 <span class="h-0px border-gray-300 border-start mx-4"></span>
                 <!--end::Separator-->
@@ -293,32 +293,55 @@
                         <div class="container">
                             <div class="stepper-nav justify-content-center py-2">
                                 <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.add_property_form') == 'seller.add_property_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                    @if(isset(request()->property_id))
+                                    <a href="{{route('seller.add_property_form',request()->property_id)}}?listing_type={{get_property_type(request()->property_id)->form_type}}">
+                                        <h3 class="stepper-title">Listing Details</h3>
+                                    </a>
+                                    @else
                                     <h3 class="stepper-title">Listing Details</h3>
+                                    @endif
                                 </div>
                                 <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.property_details_form') == 'seller.property_details_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                    @if(isset(request()->property_id))
+                                    <a href="{{route('seller.property_details_form',request()->property_id)}}">
+                                        <h3 class="stepper-title">Property Details</h3>
+                                    </a>
+                                    @else
                                     <h3 class="stepper-title">Property Details</h3>
+                                    @endif
                                 </div>
                                 <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.property_image_form') == 'seller.property_image_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                    @if(isset(request()->property_id))
+                                    <a href="{{route('seller.property_image_form',request()->property_id)}}">
+                                        <h3 class="stepper-title">Images and Copy</h3>
+                                    </a>
+                                    @else
                                     <h3 class="stepper-title">Images and Copy</h3>
+                                    @endif
                                 </div>
-
                                 <div class="stepper-item me-5 me-md-15 {{ (Route::is('seller.property_inspection_form') == 'seller.property_inspection_form') ? 'current' : '' }}" data-kt-stepper-element="nav">
+                                    @if(isset(request()->property_id))
+                                    <a href="{{route('seller.property_inspection_form',request()->property_id)}}">
+                                        <h3 class="stepper-title">Inspections</h3>
+                                    </a>
+                                    @else
                                     <h3 class="stepper-title">Inspections</h3>
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="current" data-kt-stepper-element="content">
                                 @if($property_form == "listing_details")
-                                    @include('seller.property.inc.listing_details')
+                                @include('seller.property.inc.listing_details')
                                 @elseif($property_form == "property_details")
-                                    @include('seller.property.inc.property_details')
+                                @include('seller.property.inc.property_details')
                                 @elseif($property_form == "image_docs")
-                                    @include('seller.property.inc.image_docs')
+                                @include('seller.property.inc.image_docs')
                                 @elseif($property_form == "inspections")
-                                    @include('seller.property.inc.inspections')
+                                @include('seller.property.inc.inspections')
                                 @endif
                             </div>
-                            
+
 
                         </div>
                     </div>
@@ -326,24 +349,88 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-<script>
+    <div id="map" style="display:none;"></div>
+    @endsection
+    @section('script')
+    <script>
+        // tagging support
+        $('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
+            placeholder: "Select an option",
+        });
 
-// tagging support
-  $('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
-   placeholder: "Select an option",
-  });
+        // tagging support
+        $('#kt_select2_11').select2({
+            placeholder: "Add a tag",
+            tags: true
+        });
 
-// tagging support
-  $('#kt_select2_11').select2({
-   placeholder: "Add a tag",
-   tags: true
-  });
+        $(document).on('click', '.select_input', function() {
+            $('.select_input').children('input').removeAttr('checked');
+            $(this).children('input').attr('checked', true);
+        })
+        var formSubmitting = false;
+        var setFormSubmitting = function() {
+            formSubmitting = true;
+        };
 
-  $(document).on('click','.select_input',function(){
-    $('.select_input').children('input').removeAttr('checked');
-    $(this).children('input').attr('checked', true);
-  })
-  </script>
-@endsection
+        window.onload = function() {
+            window.addEventListener("beforeunload", function(e) {
+                if (formSubmitting) {
+                    return undefined;
+                }
+
+                var confirmationMessage = 'It looks like you have been editing something. ' +
+                    'If you leave before saving, your changes will be lost.';
+
+                (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+                return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+            });
+        };
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initAutocomplete&libraries=places&v=weekly" defer></script>
+
+    <script>
+        function initAutocomplete() {
+            address1Field = document.querySelector("#address_filed");
+            // Create the autocomplete object, restricting the search predictions to
+            // addresses in the US and Canada.
+            autocomplete = new google.maps.places.Autocomplete(address1Field);
+            // When the user selects an address from the drop-down, populate the
+            // address fields in the form.
+            autocomplete.addListener("place_changed", fillInAddress);
+        }
+
+        function fillInAddress() {
+            var place1 = autocomplete.getPlace();
+            $('#origin-input').val(place1.formatted_address);
+            var lat = place1.geometry.location.lat();
+            var lng = place1.geometry.location.lng();
+            $('#lat').val(lat)
+            $('#lng').val(lng)
+            for (var i = 0; i < place1.address_components.length; i++) {
+                var addressType = place1.address_components[i].types[0];
+                // console.log(addressType);
+                if (addressType == "street_number") {
+                    var street_number = place1.address_components[i].long_name
+                    $('#unit').val(place1.address_components[i].long_name);
+                }
+                if (addressType == "route") {
+                    $('#street_no').val(street_number + ' ' + place1.address_components[i].long_name);
+                }
+                if (addressType == "route") {
+                    $('#street').val(place1.address_components[i].long_name);
+                }
+                if (addressType == "postal_code") {
+                    $('#postcode').val(place1.address_components[i].long_name);
+                }
+                if (addressType == "locality") {
+                    $('#suburb').val(place1.address_components[i].long_name);
+                }
+                if (addressType == "administrative_area_level_1") {
+                    $('#state').val(place1.address_components[i].long_name);
+                }
+            }
+        }
+    </script>
+
+    @endsection

@@ -18,6 +18,9 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
     @yield('css')
