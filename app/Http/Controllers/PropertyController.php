@@ -129,4 +129,8 @@ public function inspection_books(Request $request){
 
 }
 
+public function property_bid(){
+    return view('frontend.property.property_bid');
+}
+
 }
