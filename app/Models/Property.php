@@ -23,10 +23,10 @@ class Property extends Model
     ];
     
     public function get_property_image(){
-        return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_images'); 
+        return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_images')->orderBy('id','desc'); 
     }
     public function get_property_floor_plan(){
-        return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_floorplans'); 
+        return $this->hasOne(PropertyDocument::class, 'property_id','id')->where('type','property_floorplans')->orderBy('id','desc'); 
     }
     
     public function property_details(){
@@ -34,7 +34,7 @@ class Property extends Model
     }
     
     public function get_property_all_image(){
-        return $this->hasMany(PropertyDocument::class, 'property_id','id')->where('type','property_images'); 
+        return $this->hasMany(PropertyDocument::class, 'property_id','id')->where('type','property_images')->orderBy('id','desc'); 
     }
 
     public function property_links_listing(){

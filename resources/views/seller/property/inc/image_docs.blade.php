@@ -30,7 +30,7 @@
         </span>
     </div>
     <div id="upload_floorplans" class="collapse show">
-        <input type="file" name="upload_floorplans[]" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf" multiple>
+        <input type="file" name="upload_floorplans[]" accept="image/png,image/jpg, image/gif, image/jpeg, image/*" multiple>
     </div>
     
     <br>

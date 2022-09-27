@@ -286,8 +286,6 @@
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
-
-
                         <ul>
                             <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li>
                             <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}}</span></li>
@@ -302,9 +300,7 @@
                                 <li><label>Price:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
                                 <li><label>Property Status:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
                             </ul> -->
-
                     </div>
-
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
                         <ul>
@@ -394,17 +390,28 @@
                     <div class="ltn__property-details-gallery mb-30">
                         <div class="row">
                             <div class="col-md-6">
+                            @if(isset($property->get_property_all_image[0]->document))
                                 <a href="img/others/14.jpg" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images')}}" alt="Image">
+                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
                                 </a>
+                                @endif
+                                @if(isset($property->get_property_all_image[1]->document))
                                 <a href="img/others/15.jpg" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images')}}" alt="Image">
+                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[1]->document)}}" alt="Image">
                                 </a>
+                                @endif
                             </div>
                             <div class="col-md-6">
+                            @if(isset($property->get_property_all_image[2]->document))
                                 <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images')}}" alt="Image">
+                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
                                 </a>
+                                @endif
+                                @if(isset($property->get_property_all_image[3]->document))
+                                <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
+                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[3]->document)}}" alt="Image">
+                                </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -415,15 +422,14 @@
                                 <div class="ltn__menu-widget">
                                     <ul>
                                         @php
-                                        if(isset($property_details->rental_allowances) && $property_details->rental_allowances != ''){
-                                        $property_features = json_decode($property_details->rental_allowances,true);
+                                        if(isset($property_details->outdoor) && $property_details->outdoor != ''){
+                                        $property_features = json_decode($property_details->outdoor,true);
                                         }else{
                                         $property_features = array();
                                         }
                                         @endphp
                                         @if(count($property_features))
                                         @foreach($property_features as $key => $property_feature)
-
                                         <li>
                                             <label class="checkbox-item">{{$property_feature}}
                                                 <input type="checkbox" checked="checked">
@@ -725,15 +731,18 @@
                     <!-- APARTMENTS PLAN AREA END -->
 
                     <h4 class="title-2">Property Video</h4>
+                    @if(count($property_video_links))
+                    @foreach($property_video_links as $property_video_link )
                     <div class="ltn__video-bg-img ltn__video-popup-height-500 bg-overlay-black-50 bg-image mb-60" data-bs-bg="img/others/5.jpg">
-                        <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/eWUxqVFBq74?autoplay=1&showinfo=0" data-rel="lightcase:myCollection">
+                        <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="{{$property_video_link}}" data-rel="lightcase:myCollection">
                             <i class="fa fa-play"></i>
                         </a>
                     </div>
-
+                    @endforeach
+                    @endif
                     <div class="ltn__shop-details-tab-content-inner--- ltn__shop-details-tab-inner-2 ltn__product-details-review-inner mb-60">
                         <h4 class="title-2">Customer Reviews</h4>
-                        <div class="product-ratting">
+                        <div class="product-ratting" id="review">
                             <ul>
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
@@ -866,10 +875,10 @@
                         <div class="col-xl-4 col-md-6 col-sm-12 col-12">
                             <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                 <div class="product-img">
-                                <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
+                                <a href="{{route('property_details',$property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
                                     <div class="real-estate-agent">
                                         <div class="agent-img">
-                                            <a href="team-details.html"><img src="{{asset('frontend/img/blog/author.jpg')}}" alt="#"></a>
+                                            <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -1089,10 +1098,10 @@
                             <div class="col-12">
                                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                     <div class="product-img">
-                                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
+                                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
                                         <div class="real-estate-agent">
                                             <div class="agent-img">
-                                                <a href="team-details.html"><img src="{{asset('frontend/img/blog/author.jpg')}}" alt="#"></a>
+                                                <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1128,14 +1137,14 @@
                     </div>
                     <!-- Popular Post Widget -->
                     <div class="widget ltn__popular-post-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border-2">Leatest Property</h4>
+                        <h4 class="ltn__widget-title ltn__widget-title-border-2">Latest Property</h4>
                         <ul>
                         @if(count($latest_property))
                         @foreach($latest_property as $key => $blog_property)
                             <li>
                                 <div class="popular-post-widget-item clearfix">
                                     <div class="popular-post-widget-img">
-                                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
+                                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($blog_property->get_property_image)?asset('storage/property_images/'.$blog_property->get_property_image->document):''}}" alt="#"></a>
                                     </div>
                                     <div class="popular-post-widget-brief">
                                         <h6><a href="blog-details.html">{{isset($blog_property->address)?$blog_property->address:''}}</a></h6>
@@ -1568,6 +1577,39 @@ $('#timepicker').timepicker({
     dropdown: true,
     scrollbar: true
 });
+</script>
+<script>
+var rate = 0;
+ 
+function submitRate(){
+	var user=document.getElementById('user').value;
+	var review=document.getElementById('review').value;
+	if(rate != 0 && user !="" && review !=""){
+		var html=
+		"<h4>User: <label class='text-primary'>" + user + "</label></h4>"
+		+"<h4>Rating: <label class='text-primary'>" + rate + "</label></h4>"
+		+"<h4>Review</h4>"
+		+"<p>"+review+"</p>"
+		+"<hr style='border-top:1px solid #000;'/>";
+		document.getElementById('result').innerHTML+=html;
+ 
+		document.getElementById('user').value="";
+		document.getElementById('review').value="";
+	}
+}
+ 
+function startRating(item){
+	rate=item.id[0];
+	sessionStorage.star = rate;
+	for(var i=0;i<5;i++){
+		if(i<rate){
+			document.getElementById((i+1)).style.color="yellow";
+		}
+		else{
+			document.getElementById((i+1)).style.color="black";
+		}
+	}
+}
 </script>
 @endsection
 

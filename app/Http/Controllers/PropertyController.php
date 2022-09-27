@@ -9,6 +9,7 @@ use App\Models\PropertyFeature;
 use App\Models\PropertyDetail;
 use App\Models\PropertyReview;
 use App\Models\InspectionBook;
+use App\Models\PropertyLinkListing;
 use Auth;
 
 class PropertyController extends Controller
@@ -42,8 +43,6 @@ class PropertyController extends Controller
             $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');
         })->when(isset($request->amenities), function ($query) use ($request) {
             $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
-        })->when(isset($request->amenities), function ($query) use ($request) {
-            $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
         })->orderby($sortby,$orderby)->paginate(4);
         $property_features = PropertyFeature::all();
         return view('frontend.property.property_list',compact('properties','property_features'));
@@ -52,7 +51,7 @@ class PropertyController extends Controller
     public function property_details($property_id='')
     {
         $property_details = PropertyDetail::where('property_id',$property_id)->first();
-        $latest_property = Property::latest('created_at')->limit(5)->get();
+        $latest_property = Property::where('is_approved',1)->latest('created_at')->limit(5)->get();
         $property_types = Property::select('property_type')->distinct('property_type')->get();
         // echo "<pre>";print_r( $property_types);die;
         $property_reviews = PropertyReview::where('property_id',$property_id)->get();
@@ -70,8 +69,9 @@ class PropertyController extends Controller
             }
          
         }
-        $related_properties = Property::where('property_type',$property->property_type)->get();
-        return view('frontend.property.property_details',compact('property','property_details','property_reviews','related_properties','latest_property','comments_count','property_types'));
+        $related_properties = Property::where('property_type',$property->property_type)->where('is_approved',1)->get();
+        $property_video_links = PropertyLinkListing::where('id',$property_id)->get();
+        return view('frontend.property.property_details',compact('property','property_details','property_reviews','related_properties','latest_property','comments_count','property_types','property_video_links'));
     }
 
     public function add_to_favourite($property_id='',Request $request)
