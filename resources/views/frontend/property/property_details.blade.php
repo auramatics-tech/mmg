@@ -286,8 +286,6 @@
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
-
-
                         <ul>
                             <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li>
                             <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}}</span></li>
@@ -302,9 +300,7 @@
                                 <li><label>Price:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
                                 <li><label>Property Status:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
                             </ul> -->
-
                     </div>
-
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
                         <ul>
@@ -393,24 +389,30 @@
                     <h4 class="title-2">From Our Gallery</h4>
                     <div class="ltn__property-details-gallery mb-30">
                         <div class="row">
-                            @if(isset($property->get_property_all_image[0]->document))
                             <div class="col-md-6">
+                            @if(isset($property->get_property_all_image[0]->document))
                                 <a href="img/others/14.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
                                 </a>
+                                @endif
+                                @if(isset($property->get_property_all_image[1]->document))
                                 <a href="img/others/15.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[1]->document)}}" alt="Image">
                                 </a>
+                                @endif
                             </div>
                             <div class="col-md-6">
+                            @if(isset($property->get_property_all_image[2]->document))
                                 <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
                                 </a>
+                                @endif
+                                @if(isset($property->get_property_all_image[3]->document))
                                 <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[3]->document)}}" alt="Image">
                                 </a>
+                                @endif
                             </div>
-                            @endif
                         </div>
                     </div>
                     <h4 class="title-2 mb-10">Amenities</h4>
@@ -420,15 +422,14 @@
                                 <div class="ltn__menu-widget">
                                     <ul>
                                         @php
-                                        if(isset($property_details->rental_allowances) && $property_details->rental_allowances != ''){
-                                        $property_features = json_decode($property_details->rental_allowances,true);
+                                        if(isset($property_details->outdoor) && $property_details->outdoor != ''){
+                                        $property_features = json_decode($property_details->outdoor,true);
                                         }else{
                                         $property_features = array();
                                         }
                                         @endphp
                                         @if(count($property_features))
                                         @foreach($property_features as $key => $property_feature)
-
                                         <li>
                                             <label class="checkbox-item">{{$property_feature}}
                                                 <input type="checkbox" checked="checked">
@@ -730,15 +731,18 @@
                     <!-- APARTMENTS PLAN AREA END -->
 
                     <h4 class="title-2">Property Video</h4>
+                    @if(count($property_video_links))
+                    @foreach($property_video_links as $property_video_link )
                     <div class="ltn__video-bg-img ltn__video-popup-height-500 bg-overlay-black-50 bg-image mb-60" data-bs-bg="img/others/5.jpg">
-                        <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/eWUxqVFBq74?autoplay=1&showinfo=0" data-rel="lightcase:myCollection">
+                        <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="{{$property_video_link}}" data-rel="lightcase:myCollection">
                             <i class="fa fa-play"></i>
                         </a>
                     </div>
-
+                    @endforeach
+                    @endif
                     <div class="ltn__shop-details-tab-content-inner--- ltn__shop-details-tab-inner-2 ltn__product-details-review-inner mb-60">
                         <h4 class="title-2">Customer Reviews</h4>
-                        <div class="product-ratting">
+                        <div class="product-ratting" id="review">
                             <ul>
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
@@ -1573,6 +1577,39 @@ $('#timepicker').timepicker({
     dropdown: true,
     scrollbar: true
 });
+</script>
+<script>
+var rate = 0;
+ 
+function submitRate(){
+	var user=document.getElementById('user').value;
+	var review=document.getElementById('review').value;
+	if(rate != 0 && user !="" && review !=""){
+		var html=
+		"<h4>User: <label class='text-primary'>" + user + "</label></h4>"
+		+"<h4>Rating: <label class='text-primary'>" + rate + "</label></h4>"
+		+"<h4>Review</h4>"
+		+"<p>"+review+"</p>"
+		+"<hr style='border-top:1px solid #000;'/>";
+		document.getElementById('result').innerHTML+=html;
+ 
+		document.getElementById('user').value="";
+		document.getElementById('review').value="";
+	}
+}
+ 
+function startRating(item){
+	rate=item.id[0];
+	sessionStorage.star = rate;
+	for(var i=0;i<5;i++){
+		if(i<rate){
+			document.getElementById((i+1)).style.color="yellow";
+		}
+		else{
+			document.getElementById((i+1)).style.color="black";
+		}
+	}
+}
 </script>
 @endsection
 

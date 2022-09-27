@@ -324,7 +324,7 @@
                                             <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                             <div class="real-estate-agent">
                                                 <div class="agent-img">
-                                                    <a href=""><img src="img/blog/author.jpg" alt="#"></a>
+                                                    <a href=""><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -415,7 +415,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-price">
-                                                    <span>${{isset($property_list->price)?$property_list->price:''}}<label>/Month</label></span>
+                                                    <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}<label></label></span>
                                                 </div>
                                             </div>
                                             <h2 class="product-title"><a href="{{isset($property_list->id) ? route('property_details', $property_list->id ) : 'javascript:'}}">{{isset($property_list->property_type)?$property_list->property_type:''}}</a></h2>
@@ -445,7 +445,7 @@
                                                 </div>
                                                 <div class="agent-brief">
                                                     <h6><a href=""> {{isset($property_list->property_name->first_name)?$property_list->property_name->first_name:''}} {{isset($property_list->property_name->last_name)?$property_list->property_name->last_name:''}} </a></h6>
-                                                    <small>Estate Agents</small>
+                                                {{-- <small>Estate Agents</small> --}}
                                                 </div>
                                             </div>
                                             <div class="product-hover-action">

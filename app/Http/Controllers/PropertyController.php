@@ -9,6 +9,7 @@ use App\Models\PropertyFeature;
 use App\Models\PropertyDetail;
 use App\Models\PropertyReview;
 use App\Models\InspectionBook;
+use App\Models\PropertyLinkListing;
 use Auth;
 
 class PropertyController extends Controller
@@ -69,7 +70,8 @@ class PropertyController extends Controller
          
         }
         $related_properties = Property::where('property_type',$property->property_type)->where('is_approved',1)->get();
-        return view('frontend.property.property_details',compact('property','property_details','property_reviews','related_properties','latest_property','comments_count','property_types'));
+        $property_video_links = PropertyLinkListing::where('id',$property_id)->get();
+        return view('frontend.property.property_details',compact('property','property_details','property_reviews','related_properties','latest_property','comments_count','property_types','property_video_links'));
     }
 
     public function add_to_favourite($property_id='',Request $request)
