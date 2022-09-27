@@ -163,13 +163,14 @@
     .boxed-widget h3 i {
         margin-right: 4px;
     }
+
     .boxed-widget h3 {
-    font-size: 20px;
-    padding: 0 0 25px;
-    margin: 0 0 25px;
-    display: block;
-    border-bottom: 1px solid #e8e8e8;
-}
+        font-size: 20px;
+        padding: 0 0 25px;
+        margin: 0 0 25px;
+        display: block;
+        border-bottom: 1px solid #e8e8e8;
+    }
 
     .opening-hours ul {
         list-style: none;
@@ -225,85 +226,47 @@
                 <img src="{{asset('frontend/img/blog/bid-logo-1.png')}}" alt="">
                 <h5 class="text-dark mt-3">Place Bid</h5>
             </div>
-            <form action="" method="">
-            <script type="12066b611d5146334392687f-text/javascript">
-				
-				
-				
-
-															
-                currentBid = Number("1850000");
-    
-                originalBid = Number("1850000");	
-            
-
-                
-                    function numberWithCommas(x) {
-return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-
-            function addAmount(amount){
-            
-            console.log("currentbid:"+currentBid);	
-            currentBid = currentBid + Number(amount);
-                
-            document.getElementById("buynow").value = "$"+numberWithCommas(currentBid);
-            document.getElementById("buynow2").value = currentBid;	
-            }
-            
-            function clear(){
-            
-                currentBid = Number('1850000');
-                document.getElementById("buynow").value = "";
-                document.getElementById("buynow2").value = "";
-                
-            }
-            
-            
-            function duplicateVal(){
-                
-                valofinput = document.getElementById("buynow").value;
-                valofinput2 = valofinput.replace("$", "");
-                valofinput3 = valofinput2.replace(/,/g, "");
-                
-                
-            console.log("bidEntered:"+valofinput3);		
-                
-            
-            document.getElementById("buynow2").value = valofinput3;
-            
-            }
-            
-            
-        </script>
+            @if(Session::has('success'))
+            <div class="alert alert-success text-center">
+                {{ Session::get('success') }}
+            </div>
+            @endif
+            <form action="{{route('buyer.save_offer')}}" method="post">
                 <p><b>Quick Bid</b></p>
+                @csrf
+                <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                <input type="hidden" name="reference_id" value="{{request()->get('reference_id')}}">
+                <input type="hidden" name="property_id" value="{{isset(request()->property_id) ? request()->property_id :''}}">
                 <div class="d-flex justify-content-between si_bg_h4" bis_skin_checked="1">
-                    <a href="javascript:addAmount('5000')" class="highlighted-category">
+                    <a href="javascript:" data-amount="5000" class="highlighted-category add_price_bid">
                         <h4>+$5,000</h4>
                     </a>
 
-                    <a href="javascript:addAmount('10000')" class="highlighted-category">
+                    <a href="javascript:" data-amount="10000" class="highlighted-category add_price_bid">
                         <h4>+$10,000</h4>
                     </a>
 
-                    <a href="javascript:addAmount('20000')" class="highlighted-category">
+                    <a href="javascript:" data-amount="15000" class="highlighted-category add_price_bid">
+                        <h4>+$15,000</h4>
+                    </a>
+
+                    <a href="javascript:" data-amount="20000" class="highlighted-category add_price_bid">
                         <h4>+$20,000</h4>
                     </a>
 
-                    <a href="javascript:addAmount('30000')" class="highlighted-category">
-                        <h4>+$30,000</h4>
-                    </a>
-
-                    <a href="javascript:clear()" class="highlighted-category">
+                    <a href="javascript:" class="highlighted-category Clear_bid_price">
                         <h4>Clear</h4>
                     </a>
                 </div>
+                @if(count($property_summary))
+                @foreach($property_summary as $bid_placeholder)
                 <div class="si_custom_bid pt-2">
-                    <label class="mb-2"><b>or Enter your custom bid $$</b></label>
-                    <input type="text" name="" id="" required="1" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" onkeyup="if (!window.__cfRLUnblockHandlers) return false; duplicateVal()" data-type="currency" placeholder="$1,850,000" class="valid" aria-invalid="false">
+                    <label class="mb-2"><b> Enter Your Custom Bid $</b></label>
+                    <input type="text" name="offer_price" id="offer_price_input" value="{{isset($bid_placeholder->desired_price)?$bid_placeholder->desired_price:old('offer_price')}}" class="valid" aria-invalid="false">
                 </div>
-                <div>
+                @endforeach
+                @endif
+                {{-- <div>
                     <label for="conditions" class="mb-2"><b>Conditions</b></label><br>
                     <select name="conditions" id="conditions1" class="si_select">
                         <option value="Unconditional">Unconditional</option>
@@ -311,8 +274,9 @@ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         <option value="Subject to building/pest inspection">Subject to building/pest inspection</option>
                     </select>
                 </div>
-                <div class="row pt-4">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
+                --}}
+                {{-- <div class="row pt-4">
+                   <div class="col-lg-6 col-md-6 col-sm-12">
                         <label for="settlement" class="mb-2"><b>Settlement</b></label><br>
                         <select name="settlement" id="settlement1" class="si_select">
                             <option value="60"><b>60 Days</b></option>
@@ -320,200 +284,65 @@ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             <option value="90"><b>90 Days (Recommended)</b></option>
                             <option value="30"><b>30 Days</b></option>
                         </select>
-                    </div>
+                    </div> 
                     <div class="col-lg-6 col-md-6 col-sm-12 si_crowd si_select_input">
                         <label for="settlement" class="mb-2"><b>Crowd Seller Code (If Applicable)</b></label><br>
                         <input type="text" name="" id="">
-                    </div>
+                    </div> 
+                </div>--}}
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Note</label>
+                    <textarea name="note" class="form-control form-control-solid" id="" cols="30" rows="5">{{old('note') ?? isset($property_offer->note)?$property_offer->note:''}}</textarea>
                 </div>
                 <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> Bid Now!</button>
             </form>
             <div class="mb-5">
                 <div class="p-5 si_current_bids" bis_skin_checked="1">
-                    <h5 class="mb-0"><i class="fa fa-hand-paper me-2" aria-hidden="true"></i> No Current Bids</h5>
+                    <h5 class="mb-0"><i class="fa fa-hand-paper me-2" aria-hidden="true"></i> @if($bid_count > 0) {{$bid_count}} Bid @else No Current Bids @endif</h5>
                 </div>
             </div>
         </div>
+        @if(count($property_summary))
+        @foreach($property_summary as $property_bid_summary)
         <div class="col-lg-4 col-md-4 col-12">
             <div class="listing-item" bis_skin_checked="1">
-                <img src="{{asset('frontend/img/blog/bid_img.jpg')}}" alt="">
+                <img src="{{isset($property_bid_summary->get_property_image)?asset('storage/property_images/'.$property_bid_summary->get_property_image->document):''}}" alt="">
                 <div class="listing-item-content" bis_skin_checked="1">
-                    <span>31 Hughes Cct<br>BUNDOORA</span>
+                    <span>{{isset($property_bid_summary->address)?$property_bid_summary->address:''}}</span>
                 </div>
             </div>
             <div class="boxed-widget opening-hours summary margin-top-0" bis_skin_checked="1">
                 <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
                 <ul>
-                    <li><b>Property Type</b> <span>House</span></li>
-                    <li><b>Price</b> <span>$1,850,000 - $2,000,000</span></li>
-                    <li><b>Bedrooms</b> <span>4</span></li>
-                    <li><b>Bathrooms</b> <span>4</span></li>
-                    <li><b>Car Spaces</b> <span></span></li>
-                    <li><b>Land Size</b> <span>658&nbsp;m<sup>2</sup> &nbsp;(Approx)</span></li>
-                    <li style="text-align:center" class="pb-5 pt-5"><a href="details.asp?i=102050" class="button"><i class="fa fa-arrow-circle-left"></i> Back</a></li>
+                    <li><b>PROPERTY TYPE</b> <span>{{isset($property_bid_summary->property_type)?$property_bid_summary->property_type:''}}</span></li>
+                    <li><b>PRICE</b> <span>${{isset($property_bid_summary->desired_price)?$property_bid_summary->desired_price:''}} - ${{isset($property_bid_summary->normal_price)?$property_bid_summary->normal_price:''}}</span></li>
+                    <li><b>BEDROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bedrooms:''}}</span></li>
+                    <li><b>BATHROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bathrooms:''}} </span></li>
+                    <li><b>LAND SIZE</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size:''}}&nbsp;{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size_units:''}}</span></li>
+                    <li style="text-align:center" class="pb-5 pt-5"><a href="{{route('property_details',$property_bid_summary->id)}}" class="button"><i class="fa fa-arrow-circle-left"></i> Back</a></li>
                 </ul>
             </div>
+            @endforeach
+            @endif
         </div>
     </div>
 </section>
 @endsection
 @section('script')
-<script type="12066b611d5146334392687f-text/javascript">
-	
-		 
-		   var uniqueString3 = getById('avatarBook');
+<script>
+    $(document).on('click', '.add_price_bid', function() {
+        var price = parseFloat($(this).attr('data-amount'));
+        if ($('#offer_price_input').val() == '') {
+            var total_price = 0;
+        } else {
+            var total_price = parseFloat($('#offer_price_input').val());
+        }
 
-			var iSVGInspection = multiavatar('e5e8e6bcd9498ba619b7');
-	     uniqueString3.innerHTML = iSVGInspection;
-		 
-		 
-		 
-		
-		
-		
-$("input[data-type='currency']").on({
-    keyup: function() {
-      formatCurrency($(this));
-    },
-    blur: function() { 
-      formatCurrency($(this), "blur");
-    }
-});
-
-
-
-
-
-function formatNumber(n) {
-  // format number 1000000 to 1,234,567
-  return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-}
-
-
-function formatCurrency(input, blur) {
-  // appends $ to value, validates decimal side
-  // and puts cursor back in right position.
-  
-  // get input value
-  var input_val = input.val();
-  
-  // don't validate empty input
-  if (input_val === "") { return; }
-  
-  // original length
-  var original_len = input_val.length;
-
-  // initial caret position 
-  var caret_pos = input.prop("selectionStart");
-    
-  // check for decimal
-  if (input_val.indexOf(".") >= 0) {
-
-    // get position of first decimal
-    // this prevents multiple decimals from
-    // being entered
-    var decimal_pos = input_val.indexOf(".");
-
-    // split number by decimal point
-    var left_side = input_val.substring(0, decimal_pos);
-    var right_side = input_val.substring(decimal_pos);
-
-    // add commas to left side of number
-    left_side = formatNumber(left_side);
-
-    // validate right side
-    right_side = formatNumber(right_side);
-    
-    // On blur make sure 2 numbers after decimal
-    if (blur === "blur") {
-      right_side += "00";
-    }
-    
-    // Limit decimal to only 2 digits
-    right_side = right_side.substring(0, 2);
-
-    // join number by .
-    input_val = "$" + left_side;
-
-  } else {
-    // no decimal entered
-    // add commas to number
-    // remove all non-digits
-    input_val = formatNumber(input_val);
-    input_val = "$" + input_val;
-    
-	
-  }
-  
-  // send updated string to input
-  input.val(input_val);
-
-  // put caret back in the right position
-  var updated_len = input_val.length;
-  caret_pos = updated_len - original_len + caret_pos;
-  input[0].setSelectionRange(caret_pos, caret_pos);
-}
-
-	
-
-$().ready(function() {
-		// validate signup form on keyup and submit
-		$("#form1").validate({
-			rules: {
-				buynow: {
-					required: true,
-					
-					
-				},
-				buynow2: {
-					required: true,
-					number: true,
-					min: 500
-				},
-				
-			},
-			messages: {
-				
-				buynow: "You must bid higher then the minimum or highest bid - $1850000",
-				
-			
-			},
-			submitHandler: function(form) {
-				
-    			event.preventDefault();
-    
-
-    			swal({
-        		title: "Are you sure?",
-        		text: "By clicking 'OK' you will place your bid and place a fully refundable $100 holding deposit.",
-        		type: "success",
-        		showCancelButton: true
-    			},
-	
-			
-	    function(){
-				$('body').append('<div style="" id="loadingDiv"><div class="loader"><img src="images/spinner.svg" style="width:100px"/></div></div>');
-				$("html").css("overflow","hidden");
-				$("html").css("height","100%");
-				$("body").css("overflow","hidden");
-				$("body").css("height","100%");
-				form.submit();
-				
-	
-				
-			
-				
-			    });
-			}
-		});
-
-		
-		
-	});
-	
-	
-	
-	
-	
+        $('#offer_price_input').val(price + total_price)
+    })
+    $(document).on('click', '.Clear_bid_price', function() {
+        $('#offer_price_input').val('')
+    })
 </script>
+
 @endsection

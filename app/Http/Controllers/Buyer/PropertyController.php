@@ -39,7 +39,7 @@ class PropertyController extends Controller
     {
         Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>$request->offer_price,'note'=>$request->note]);
         
-        return back()->with('success','Offer send Successfully');
+        return back()->with('success',"Your bid submitted successfully, we'll contact you sortly");
     }
 
     public function book_inspection($property_id)
@@ -78,5 +78,13 @@ class PropertyController extends Controller
     {
         BookInspection::find($book_inspection_id)->delete();
         return back()->with('success','Inspection deleted Successfully');
+    }
+
+    public function property_bid($property_id){
+         $property = Property::find($property_id);
+        $property_summary = Property::where('id',$property_id)->where('is_approved',1)->get();
+        $bid_count = Offer::where('property_id',$property_id)->count();
+        // echo"<pre>";print_r($property_summary);die;
+        return view('buyer.property_bid',compact('property_summary','bid_count'));
     }
 }

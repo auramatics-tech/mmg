@@ -53,7 +53,6 @@ Route::post('/property-reviews', [PropertyController::class, 'property_reviews']
 Route::post('/inspection-books', [PropertyController::class, 'inspection_books'])->name('inspection_books');
 //search 
 Route::get('/property_search', [PropertyController::class, 'property_search'])->name('property_search');
-Route::get('/property-bid', [PropertyController::class, 'property_bid'])->name('property_bid');
 
 
 //user
