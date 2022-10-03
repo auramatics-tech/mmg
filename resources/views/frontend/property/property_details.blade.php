@@ -730,10 +730,9 @@
                         </div>
                     </div>
                     <!-- APARTMENTS PLAN AREA END -->
-
                     <h4 class="title-2">Property Video</h4>
                     @if(count($property_video_links))
-                    @foreach($property_video_links as $property_video_link )
+                    @foreach($property_video_links as $property_video_link)
                     <div class="ltn__video-bg-img ltn__video-popup-height-500 bg-overlay-black-50 bg-image mb-60" data-bs-bg="img/others/5.jpg">
                         <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="{{$property_video_link}}" data-rel="lightcase:myCollection">
                             <i class="fa fa-play"></i>
