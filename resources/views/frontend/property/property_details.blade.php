@@ -309,7 +309,7 @@
                                     <i class="flaticon-double-bed"></i>
                                     <div>
                                         <h6>Living Room</h6>
-                                        <small>{{isset($property_details->living_areas)? $property_details->living_areas:''}} sq feet</small>
+                                        <small>{{isset($property_details->living_areas)? $property_details->living_areas:''}}</small>
                                     </div>
                                 </div>
                             </li>
@@ -318,7 +318,7 @@
                                     <i class="flaticon-double-bed"></i>
                                     <div>
                                         <h6>Garage</h6>
-                                        <small>{{isset($property_details->garage_spaces)? $property_details->garage_spaces: ''}} sq feet</small>
+                                        <small>{{isset($property_details->garage_spaces)? $property_details->garage_spaces: ''}}</small>
                                     </div>
                                 </div>
                             </li>
@@ -336,7 +336,7 @@
                                     <i class="flaticon-double-bed"></i>
                                     <div>
                                         <h6>Bedroom</h6>
-                                        <small>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}sq feet</small>
+                                        <small>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}</small>
                                     </div>
                                 </div>
                             </li>
@@ -345,7 +345,7 @@
                                     <i class="flaticon-double-bed"></i>
                                     <div>
                                         <h6>Bathroom</h6>
-                                        <small>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}} sq feet</small>
+                                        <small>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</small>
                                     </div>
                                 </div>
                             </li>
@@ -440,104 +440,78 @@
                                         @endforeach
                                         @endif
                                     </ul>
-                                    <!-- 
-                                    <li>
-                                        <label class="checkbox-item">Gym
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">Microwave
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">Swimming Pool
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">WiFi
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
+                                </div>
+                            </div>
+                             <h4 class="title-2 mb-10">Indoor</h4>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="ltn__menu-widget">
+                                     <ul>
+                                        @php
+                                        if(isset($property_details->indoor) && $property_details->indoor != ''){
+                                        $property_features = json_decode($property_details->indoor,true);
+                                        }else{
+                                        $property_features = array();
+                                        }
+                                        @endphp
+                                        @if(count($property_features))
+                                        @foreach($property_features as $key => $property_feature)
+                                        <li>
+                                            <label class="checkbox-item">{{$property_feature}}
+                                                <input type="checkbox" checked="checked">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                        @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
+                            <h4 class="title-2 mb-10">Heating Cooling</h4>
+                           <div class="col-lg-4 col-md-6">
                                 <div class="ltn__menu-widget">
-                                    <ul>
+                                <ul>
+                                        @php
+                                        if(isset($property_details->heating_cooling) && $property_details->heating_cooling != ''){
+                                        $property_features = json_decode($property_details->heating_cooling,true);
+                                        }else{
+                                        $property_features = array();
+                                        }
+                                        @endphp
+                                        @if(count($property_features))
+                                        @foreach($property_features as $key => $property_feature)
                                         <li>
-                                            <label class="checkbox-item">Barbeque
+                                            <label class="checkbox-item">{{$property_feature}}
                                                 <input type="checkbox" checked="checked">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </li>
-                                        <li>
-                                            <label class="checkbox-item">Recreation
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Microwave
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Basketball Cout
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Fireplace
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
+                                        @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
+                            <h4 class="title-2 mb-10">Eco friendly</h4>
+                           <div class="col-lg-4 col-md-6">
                                 <div class="ltn__menu-widget">
-                                    <ul>
+                                <ul>
+                                        @php
+                                        if(isset($property_details->eco_friendly) && $property_details->eco_friendly != ''){
+                                        $property_features = json_decode($property_details->eco_friendly,true);
+                                        }else{
+                                        $property_features = array();
+                                        }
+                                        @endphp
+                                        @if(count($property_features))
+                                        @foreach($property_features as $key => $property_feature)
                                         <li>
-                                            <label class="checkbox-item">Refrigerator
+                                            <label class="checkbox-item">{{$property_feature}}
                                                 <input type="checkbox" checked="checked">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </li>
-                                        <li>
-                                            <label class="checkbox-item">Window Coverings
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Washer
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">24x7 Security
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Indoor Game
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                    </ul> -->
+                                        @endforeach
+                                        @endif
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -624,16 +598,16 @@
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
-                                                                <li><label>Total Area</label> <span>2800 Sq. Ft</span></li>
-                                                                <li><label>Bedroom</label> <span>150 Sq. Ft</span></li>
+                                                                <li><label>Total land Area</label> <span>{{isset( $property_details->land_size)? $property_details->land_size:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
+                                                                <li><label>House Area</label> <span>{{isset($property_details->house_sizes)? $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</span></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
-                                                                <li><label>Belcony/Pets</label> <span>Allowed</span></li>
-                                                                <li><label>Lounge</label> <span>650 Sq. Ft</span></li>
+                                                                <li><label>Open Car Spaces</label> <span>{{isset($property_details->open_car_spaces) ? $property_details->open_car_spaces:''}}</span></li>
+                                                                <li><label>Living Areas</label> <span>{{isset($property_details->open_car_spaces) ? $property_details->open_car_spaces:''}} </span></li>
                                                             </ul>
                                                         </div>
                                                     </div>

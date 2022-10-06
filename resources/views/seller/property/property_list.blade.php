@@ -659,7 +659,7 @@
 														<!--begin::User details-->
 													</td>
 													<td>
-														<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->price)?$property->price:''}}</div>
+														<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->normal_price)?$property->normal_price:''}} - ${{isset($property->desired_price)?$property->desired_price:''}}</div>
 													</td>
 													<td>{{isset($property->status)?$property->status:''}}</td>
 													<td>{{isset($property->created_at)?date('Y-m-d',strtotime($property->created_at)):''}}</td>

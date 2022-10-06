@@ -13,6 +13,7 @@ Route::post('/save-property-details', [PropertyController::class, 'save_property
 Route::post('/save-property-images', [PropertyController::class, 'save_property_images'])->name('seller.save_property_images');
 Route::post('/save-inspections', [PropertyController::class, 'save_inspections'])->name('seller.save_inspections');
 Route::get('/property-delete/{id}', [PropertyController::class, 'property_delete'])->name('seller.property_delete');
+Route::get('/property-bid-listing/{property_id?}', [PropertyController::class, 'property_bid_listing'])->name('seller.property_bid_listing');
 
 
 Route::get('/property-offers', [PropertyController::class, 'property_offers'])->name('seller.property_offers');

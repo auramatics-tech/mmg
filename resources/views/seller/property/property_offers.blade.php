@@ -582,7 +582,7 @@
 								</td>
 								<td>{{$offer->user->first_name}} {{$offer->user->last_name}}</td>
 								<td>
-									<div class="badge badge-light fw-bolder">@if(isset($offer->property->rental_per_week)) ${{$offer->property->rental_per_week}}pw <br>@endif @if(isset($offer->property->rental_per_month)) ${{$offer->property->rental_per_month}}pm <br>@endif @if(isset($offer->property->rental_security_bond)) ${{$offer->property->rental_security_bond}} bond <br>@endif ${{isset($offer->property->price)?$offer->property->price:''}}</div>
+									<div class="badge badge-light fw-bolder">@if(isset($offer->property->rental_per_week)) ${{$offer->property->rental_per_week}}pw <br>@endif @if(isset($offer->property->rental_per_month)) ${{$offer->property->rental_per_month}}pm <br>@endif @if(isset($offer->property->rental_security_bond)) ${{$offer->property->rental_security_bond}} bond <br>@endif ${{isset($offer->property->normal_price)?$offer->property->normal_price:''}} - ${{isset($offer->property->desired_price)?$offer->property->desired_price:''}}</div>
 								</td>
 								<td>${{isset($offer->offer_price)?$offer->offer_price:''}}</td>
 								<td>{{isset($offer->note)?$offer->note:''}}</td>

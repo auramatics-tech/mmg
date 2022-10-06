@@ -16,7 +16,7 @@
 								<!--begin::Page title-->
 								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 									<!--begin::Title-->
-									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">My Property Inspections</h1>
+									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">My Property Buyers</h1>
 									<!--end::Title-->
 									<!--end::Breadcrumb-->
 								</div>
@@ -542,10 +542,10 @@
 														</div>
 													</th>
 													<th class="min-w-125px">Property</th>
-													<th class="min-w-125px">User</th>
-													<th class="min-w-125px">Inspection Type</th>
-													<th class="min-w-125px">Inspection start time</th>
-													<th class="min-w-125px">Inspection end time</th>
+													<th class="min-w-125px">Buyers name</th>
+													<th class="min-w-125px">Property Name</th>
+													<th class="min-w-125px">Note</th>
+													<th class="min-w-125px">Offer price</th>
 													<th class="text-end min-w-100px">Actions</th>
 												</tr>
 												<!--end::Table row-->
@@ -553,7 +553,7 @@
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
-                                                @foreach($property_inspections as $book_inspection)
+                                                @foreach($buyer_name as $buyer_detalis)
 												<!--begin::Table row-->
 												<tr>
 													<!--begin::Checkbox-->
@@ -565,29 +565,24 @@
 													<td class="d-flex align-items-center">
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-															@if(isset($book_inspection->property->get_property_image))
+															@if(isset($buyer_detalis->property->get_property_image))
 															<a href="javascript:">
 																<div class="symbol-label">
-																	<img src="{{asset('storage/property_images/'.$book_inspection->property->get_property_image->document)}}" alt="E" class="w-100" />
+																	<img src="{{asset('storage/property_images/'.$buyer_detalis->property->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
 															</a>
 															@endif
 														</div>
 														<div class="d-flex flex-column">
-															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($book_inspection->property->address_display=='Full Address')?$book_inspection->property->address:$book_inspection->property->suburb}}</a>
-															<span>{{$book_inspection->property->property_type}}</span>
+															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1"></a>
+															<span></span>
 														</div>
 														<!--begin::User details-->
 													</td>
-													<td>
-														{{isset($book_inspection->user->first_name)?$book_inspection->user->first_name:''}} {{isset($book_inspection->user->last_name)?$book_inspection->user->last_name:''}}
-													</td>
-													{{--<td>
-														<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
-													</td>--}}
-													<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
-													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
-													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>
+													<td>{{$buyer_detalis->user->first_name}} {{$buyer_detalis->user->last_name}}</td>
+													<td>{{$buyer_detalis->property->address}}</td>
+													<td>{{$buyer_detalis->note}}</td>
+													<td>{{$buyer_detalis->offer_price}}</td>
 													<td class="d-flex">
 														<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 														<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -599,7 +594,7 @@
 														</a>
 														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 															<div class="menu-item px-3">
-																<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
+																<a href="{{route('seller.property_delete',$buyer_detalis->id)}}" class="menu-link px-3 copy_link">Delete Property Buyer</a>
 															</div>
 														</div>
 														<!--end::Menu-->
@@ -611,8 +606,6 @@
 											</tbody>
 											<!--end::Table body-->
 										</table>
-										<!--end::Table-->
-										{{ $property_inspections->links() }}
 									</div>
 									<!--end::Card body-->
 								</div>
