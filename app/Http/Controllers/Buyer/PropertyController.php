@@ -87,4 +87,5 @@ class PropertyController extends Controller
         // echo"<pre>";print_r($property_summary);die;
         return view('buyer.property_bid',compact('property_summary','bid_count'));
     }
+
 }

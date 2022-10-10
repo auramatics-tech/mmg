@@ -104,7 +104,8 @@ class PropertyController extends Controller
     }
 
     public function save_listing_details(Request $request)
-    {
+    {    
+     
         $data = $request->except('_token');
         $data['created_by'] = Auth::id();
         $property = Property::updateOrCreate(['id'=>$request->id],$data);
@@ -188,6 +189,7 @@ class PropertyController extends Controller
         PropertyDocument::where('property_id',$id)->delete();
         PropertyLinkListing::where('property_id',$id)->delete();
         Inspection::where('property_id',$id)->delete();
+        Offer::where('property_id',$id)->delete();
 
         return back()->with('success','Property deleted successfully.');
     }
@@ -195,14 +197,20 @@ class PropertyController extends Controller
     public function property_offers()
     {
         $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
-        $property_offers = Offer::whereIn('property_id',$my_properties)->paginate(1);
+        $property_offers = Offer::whereIn('property_id',$my_properties)->paginate(4);
         return view('seller.property.property_offers',compact('property_offers'));
     }
     
     public function property_inspections()
     {
         $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
-        $property_inspections = BookInspection::whereIn('property_id',$my_properties)->paginate(1);
+        $property_inspections = BookInspection::whereIn('property_id',$my_properties)->paginate(4);
         return view('seller.property.property_inspections',compact('property_inspections'));
+    }
+
+    public function property_bid_listing(){
+        $my_properties = Property::where(['created_by'=>Auth::id()])->pluck('id')->toArray();
+        $buyer_name = Offer::whereIn('property_id',$my_properties)->get();
+        return view('seller.property.bid_listing',compact('buyer_name'));
     }
 }

@@ -580,8 +580,11 @@
 														<!--begin::User details-->
 													</td>
 													<td>
-														<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
+														{{isset($book_inspection->user->first_name)?$book_inspection->user->first_name:''}} {{isset($book_inspection->user->last_name)?$book_inspection->user->last_name:''}}
 													</td>
+													{{--<td>
+														<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
+													</td>--}}
 													<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
 													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
 													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>

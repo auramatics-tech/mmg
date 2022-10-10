@@ -1,8 +1,8 @@
 <div class="w-100">
     <form action="{{route('seller.save_listing_details')}}" method="POST" onsubmit="setFormSubmitting()">
         @csrf
-        <input type="hidden" name="form_type" value="{{request()->get('listing_type')}}">
-        <input type="hidden" name="id" value="{{request()->get('property_id')}}">
+        <input type="hidden" name="form_type" value="{{isset(request()->listing_type) ? request()->listing_type : ''}}">
+        <input type="hidden" name="id" value="{{isset(request()->property_id) ? request()->property_id : ''}}">
         <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#change_status" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Change Status
             <span class="ms-2 rotate-180">
                 <span class="svg-icon svg-icon-3">
@@ -250,7 +250,6 @@
             <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
 
                 <label class="required fs-6 fw-bold mb-2"> Normal Price</label>
-
                 <div class="position-relative w-md-400px me-md-2">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">

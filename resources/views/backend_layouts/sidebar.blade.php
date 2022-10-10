@@ -131,7 +131,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                        <a class="menu-link {{(Route::is('seller.property_bid_listing')=='seller.property_bid_listing')?'active':''}}" href="{{route('seller.property_bid_listing')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
