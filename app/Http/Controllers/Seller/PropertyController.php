@@ -89,6 +89,7 @@ class PropertyController extends Controller
         {
             $property_link_listing = '';
         }
+        // echo"<pre>";print_r($floorplan_image_count);die;
         return view('seller.property.add_property',compact('property_id','property_form','property_link_listing'));
     }
 
@@ -100,6 +101,7 @@ class PropertyController extends Controller
         {
             $inspection = '';
         }
+   
         return view('seller.property.add_property',compact('property_id','property_form','inspection'));
     }
 
@@ -167,10 +169,14 @@ class PropertyController extends Controller
                     $file->move(storage_path('app/public/property_documents'), $imageName);
                 $property_documents->document = $imageName;
                 $property_documents->save();
-            }
-            
+            }   
         }
         $property_link_listing = PropertyLinkListing::updateOrCreate(['property_id'=>$request->property_id],$data);
+        $property_image_count = PropertyDocument :: where('type','property_images')->where(['property_id'=>$request->property_id])->count();
+        if($property_image_count < 2){
+            $msg = 'Please upload '.(2 - $property_image_count).' more files ';
+            return back()->with('error',$msg);
+        }
         return redirect()->route('seller.property_inspection_form',$property_link_listing->property_id);
     }
 

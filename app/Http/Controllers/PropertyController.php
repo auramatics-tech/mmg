@@ -10,6 +10,7 @@ use App\Models\PropertyDetail;
 use App\Models\PropertyReview;
 use App\Models\InspectionBook;
 use App\Models\PropertyLinkListing;
+use App\Models\ReviewImages;
 use Auth;
 
 class PropertyController extends Controller
@@ -98,9 +99,6 @@ class PropertyController extends Controller
     }
     public function property_reviews(Request $request){
         
-    //  echo "<pre>";
-    //         print_r($request->all());
-    //         die;
     if (isset($request->id)) {
         $property_reviews = PropertyReview::Find($request->id)->first();
     }
@@ -109,9 +107,23 @@ class PropertyController extends Controller
     }
     $property_reviews ->property_id = $request->property_id;
     $property_reviews ->name = $request->name;
+    $property_reviews ->rating = $request->rating;
     $property_reviews ->email = $request->email;
     $property_reviews ->comments = $request->comments;
     $property_reviews->save();
+    if(isset($request->upload_images) && count($request->upload_images))
+    {
+        foreach ($request->upload_images as $key => $img) {
+            $property_review_image = new ReviewImages;
+            $property_review_image->review_id = $property_reviews->id;
+                $file = $img;
+                $imageName = time() . $key . '.' . $file->extension();
+                $property_review_image->file_type = $file->extension();
+                $file->move(storage_path('app/public/review_images'), $imageName);
+            $property_review_image->file_name = $imageName;
+            $property_review_image->save();
+        }
+    }
     return redirect()->back();
 }
 public function inspection_books(Request $request){
