@@ -88,4 +88,6 @@ class PropertyController extends Controller
         return view('buyer.property_bid',compact('property_summary','bid_count'));
     }
 
+   
+
 }

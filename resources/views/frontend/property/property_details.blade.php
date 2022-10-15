@@ -417,9 +417,7 @@
                                 <a href="img/others/14.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
                                 </a>
-                            </div>
-                            @endif
-                            <div class="col-md-6">
+                                @endif
                                 @if(isset($property->get_property_all_image[1]->document))
                                 <a href="img/others/15.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[1]->document)}}" alt="Image">
@@ -432,8 +430,6 @@
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
                                 </a>
                                 @endif
-                            </div>
-                            <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[3]->document))
                                 <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[3]->document)}}" alt="Image">
@@ -469,7 +465,6 @@
                                 </div>
                             </div>
                             @endif
-
                             @php
                             if(isset($property_details->indoor) && $property_details->indoor != ''){
                             $property_features = json_decode($property_details->indoor,true);
@@ -527,7 +522,7 @@
                             }
                             @endphp
                             @if(count($property_features))
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <h4 class="title-2 mb-10">Eco friendly</h4>
                                 <div class="ltn__menu-widget">
                                     <ul>
@@ -980,7 +975,7 @@
                         <div>
                             <input type="hidden" name="property_id" value="{{isset(request()->id) ? request()->id : ''}}">
                             <div style="margin-bottom:10px" bis_skin_checked="1">Select a Date by clicking below. </div>
-                            <input type="date" class="date form-data " id="inspection_date" name="inspection_date">
+                            <input type="date" class="date form-data form-control " id="inspection_date" name="inspection_date">
                         </div>
                         <div>
                             <div>

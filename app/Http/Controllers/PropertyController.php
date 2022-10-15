@@ -11,6 +11,7 @@ use App\Models\PropertyReview;
 use App\Models\InspectionBook;
 use App\Models\PropertyLinkListing;
 use App\Models\ReviewImages;
+use App\Models\Appraisal;
 use Auth;
 
 class PropertyController extends Controller
@@ -139,6 +140,22 @@ public function inspection_books(Request $request){
     $inspection_books->save();
     return redirect()->back();
 
+}
+
+public function book_appraisal()
+{
+    return view('frontend.book_appraisals');
+}
+
+public function save_appraisal(Request $request)
+{
+    $appraisal = new Appraisal();
+    $appraisal->name = $request->name;
+    $appraisal->address = $request->address;
+    $appraisal->phone_no = $request->phone_no;
+    $appraisal->email = $request->email;
+    $appraisal->save();
+    return redirect()->back()->with('success','Appraisal booked successfully, will get back to you sortly!');
 }
 
 }

@@ -8,6 +8,7 @@
                         <ul>
                             <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i> info@webmail.com</a></li>
                             <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a></li>
+                            <li><a href="{{route('book_appraisal')}}"><i></i>BOOK APPRAISAL</a></li>
                         </ul>
                     </div>
                 </div>
