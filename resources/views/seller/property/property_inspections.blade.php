@@ -546,7 +546,7 @@
 													<th class="min-w-125px">Inspection Type</th>
 													<th class="min-w-125px">Inspection start time</th>
 													<th class="min-w-125px">Inspection end time</th>
-													<th class="text-end min-w-100px">Actions</th>
+													<th class="min-w-125px">Actions</th>
 												</tr>
 												<!--end::Table row-->
 											</thead>

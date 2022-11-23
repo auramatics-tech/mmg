@@ -172,6 +172,7 @@
 										<div class="card-title">
 											<!--begin::Search-->
 											<div class="d-flex align-items-center position-relative my-1">
+												<form>
 												<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
 												<span class="svg-icon svg-icon-1 position-absolute ms-6">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -181,6 +182,7 @@
 												</span>
 												<!--end::Svg Icon-->
 												<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" />
+												</form>
 											</div>
 											<!--end::Search-->
 										</div>
@@ -273,9 +275,9 @@
 														</span>
 														<!--end::Svg Icon--></a>
 														<!--begin::Menu-->
-													{{--<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-180px py-4" data-kt-menu="true">
+													<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-180px py-4" data-kt-menu="true">
 															<!--begin::Menu item-->
-															<div class="menu-item px-3">
+															{{--<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
 															</div>
 															<div class="menu-item px-3">
@@ -283,6 +285,9 @@
 															</div>
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'land'])}}" class="menu-link px-3">Land</a>
+															</div>--}}
+															<div class="menu-item px-3">
+																<a href="{{route('seller.add_property_form',['listing_type'=>'residential'])}}" class="menu-link px-3">Residential</a>
 															</div>
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'commercial'])}}" class="menu-link px-3">Commercial</a>
@@ -293,10 +298,10 @@
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'business'])}}" class="menu-link px-3">Business</a>
 															</div>
-															<div class="menu-item px-3">
+															{{--<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental','holiday' => 1])}}" class="menu-link px-3">Holiday Rental</a>
-															</div>
-														</div>  --}}
+															</div>--}}
+														</div> 
 														<!--end::Menu-->
 													</div>
 												<!--end::Add user-->
@@ -307,6 +312,7 @@
 												<div class="fw-bolder me-5">
 												<span class="me-2" data-kt-user-table-select="selected_count"></span>Selected</div>
 												<button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
+						
 											</div>
 											<!--end::Group actions-->
 											<!--begin::Modal - Adjust Balance-->
@@ -620,12 +626,13 @@
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 														</div>
 													</th>
+													<th class="min-w-125px">Property No.</th>
 													<th class="min-w-125px">Property</th>
 													<th class="min-w-125px">Price</th>
 													<th class="min-w-125px">Status</th>
 													<th class="min-w-125px">Listed Date</th>
 													<th class="min-w-125px">Expiry Date</th>
-													<th class="text-end min-w-100px">Actions</th>
+													<th class="min-w-125px">Actions</th>
 												</tr>
 												<!--end::Table row-->
 											</thead>
@@ -641,6 +648,7 @@
 															<input class="form-check-input" type="checkbox" value="1" />
 														</div>
 													</td>
+													<td>{{isset($property->id)?$property->id:''}}</td>
 													<td class="d-flex align-items-center">
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
@@ -659,7 +667,8 @@
 														<!--begin::User details-->
 													</td>
 													<td>
-														<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->normal_price)?$property->normal_price:''}} - ${{isset($property->desired_price)?$property->desired_price:''}}</div>
+														{{--<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->normal_price)?$property->normal_price:''}} - ${{isset($property->desired_price)?$property->desired_price:''}}</div>--}}
+														{{isset($property->normal_price)?$property->normal_price:''}}
 													</td>
 													<td>{{isset($property->status)?$property->status:''}}</td>
 													<td>{{isset($property->created_at)?date('Y-m-d',strtotime($property->created_at)):''}}</td>

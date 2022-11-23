@@ -547,7 +547,7 @@
 								<th class="min-w-125px">Inspection Type</th>
 								<th class="min-w-125px">Inspection start time</th>
 								<th class="min-w-125px">Inspection end time</th>
-								<th class="text-end min-w-100px">Actions</th>
+								<th class="min-w-125px">Actions</th>
 							</tr>
 							<!--end::Table row-->
 						</thead>
@@ -575,49 +575,54 @@
 										@endif
 									</div>
 									<div class="d-flex flex-column">
+										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</a>	
+									</div>
+									{{--<div class="d-flex flex-column">
 										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($book_inspection->property->address_display=='Full Address')?$book_inspection->property->address:$book_inspection->property->suburb}}</a>
 										<span>{{$book_inspection->property->property_type}}</span>
-									</div>
+									</div>--}}
 									<!--begin::User details-->
 								</td>
 								<td>
-									<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
-								</td>
-								<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
-								<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
-								<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>
-								<td class="d-flex">
-									<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-										<span class="svg-icon svg-icon-5 m-0">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
-											</svg>
-										</span>
-									</a>
-									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-										<div class="menu-item px-3">
-											<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
-										</div>
-									</div>
-									<!--end::Menu-->
-								</td>
-								<!--end::Action=-->
-							</tr>
-							<!--end::Table row-->
-							@endforeach
-						</tbody>
-						<!--end::Table body-->
-					</table>
-					<!--end::Table-->
-				</div>
-				<!--end::Card body-->
+									{{--<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}
+				</div>--}}
+				{{isset($book_inspection->property->normal_price)?$book_inspection->property->normal_price:''}}
+				</td>
+				<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
+				<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
+				<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>
+				<td class="d-flex">
+					<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+						<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+						<span class="svg-icon svg-icon-5 m-0">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
+							</svg>
+						</span>
+					</a>
+					<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+						<div class="menu-item px-3">
+							<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
+						</div>
+					</div>
+					<!--end::Menu-->
+				</td>
+				<!--end::Action=-->
+				</tr>
+				<!--end::Table row-->
+				@endforeach
+				</tbody>
+				<!--end::Table body-->
+				</table>
+				<!--end::Table-->
 			</div>
-			<!--end::Card-->
+			<!--end::Card body-->
 		</div>
-		<!--end::Container-->
+		<!--end::Card-->
 	</div>
-	<!--end::Post-->
+	<!--end::Container-->
+</div>
+<!--end::Post-->
 </div>
 <!--end::Content-->
 @endsection

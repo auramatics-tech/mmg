@@ -20,7 +20,7 @@ class PropertyController extends Controller
     public function favourite_properties()
     {
         $favourite_properties = FavouriteProperty::where('user_id',Auth::id())->pluck('property_id')->toArray();
-        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)->paginate(1);
+        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)->paginate(4);
         return view('buyer.favourite_properties',compact('properties'));
     }
 
@@ -57,7 +57,10 @@ class PropertyController extends Controller
 
     public function my_offers()
     {
-        $my_offers = Offer::where('user_id',Auth::id())->paginate(1);
+
+      
+        $my_offers = Offer::where('user_id',Auth::id())->paginate(4);
+    
         
         return view('buyer.my_offers',compact('my_offers'));
     }
@@ -70,7 +73,7 @@ class PropertyController extends Controller
 
     public function booked_inspections()
     {
-        $booked_inspections = BookInspection::where('user_id',Auth::id())->paginate(1);
+        $booked_inspections = BookInspection::where('user_id',Auth::id())->paginate(4);
         return view('buyer.booked_inspections',compact('booked_inspections'));
     }
 
@@ -84,7 +87,7 @@ class PropertyController extends Controller
          $property = Property::find($property_id);
         $property_summary = Property::where('id',$property_id)->where('is_approved',1)->get();
         $bid_count = Offer::where('property_id',$property_id)->count();
-        // echo"<pre>";print_r($property_summary);die;
+        // echo"<pre>";print_r($bid_count);die;
         return view('buyer.property_bid',compact('property_summary','bid_count'));
     }
 

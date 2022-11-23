@@ -247,7 +247,6 @@
 </style>
 @endsection
 @section('content')
-
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -286,6 +285,11 @@
     </div>
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <div id="kt_content_container" class="container-xxl">
+            @if(Session::has('error'))
+            <div class="alert alert-danger text-center">
+                {{ Session::get('error') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="stepper stepper-links d-flex flex-column" id="kt_modal_create_project_stepper" data-kt-stepper="true">

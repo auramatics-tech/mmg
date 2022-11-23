@@ -439,6 +439,7 @@
                         </div>
                     </div>
                     <div class="property-details-amenities mb-60">
+                    <h4 class="title-2 mb-10">Amenities</h4>
                         <div class="row">
                             @php
                             if(isset($property_details->outdoor) && $property_details->outdoor != ''){
@@ -449,14 +450,14 @@
                             @endphp
                             @if(count($property_features))
                             <div class="col-lg-6 col-md-6">
-                                <h4 class="title-2 mb-10">Amenities</h4>
+                                <h4 class="title-2 mb-10">Outdoor</h4>
                                 <div class="ltn__menu-widget">
                                     <ul>
 
                                         @foreach($property_features as $key => $property_feature)
                                         <li>
                                             <label class="checkbox-item">{{$property_feature}}
-                                                <input type="checkbox" checked="checked" disabled=true>
+                                                <input type="checkbox"  checked="checked" disabled=true>
                                                 <span class="checkmark"></span>
                                             </label>
                                         </li>
@@ -774,7 +775,8 @@
                                 <li>
                                     <div class="ltn__comment-item clearfix">
                                         <div class="ltn__commenter-img">
-                                            <img src="{{asset('frontend/img/testimonial/1.png')}}" alt="Image">
+                                          {{--<img src="{{asset('frontend/img/testimonial/1.png')}}" alt="Image"> --}} 
+                                          <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
                                         </div>
                                         <div class="ltn__commenter-comment">
                                             <h6><a href="#">{{$property_review->name}}</a></h6>
@@ -802,6 +804,7 @@
                         </div>
                     </div>
                     <!-- comment-reply -->
+            
                     <div class="ltn__comment-reply-area ltn__form-box mb-30">
                         <form action="{{route('property_reviews')}}" method="post" enctype="multipart/form-data">
                             @csrf
@@ -848,7 +851,9 @@
                             </div>
                         </form>
                     </div>
+           
                 </div>
+               
                 <h4 class="title-2">Related Properties</h4>
                 <div class="row">
                     <!-- ltn__product-item -->
@@ -923,11 +928,11 @@
         <div class="col-lg-4">
             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar---">
                 <!-- Author Widget -->
-                <div class="widget ltn__author-widget">
+            <div class="widget ltn__author-widget">
                     @if(count($property_reviews))
                     @foreach($property_reviews as $key => $property_review)
                     <div class="ltn__author-widget-inner text-center">
-                        <img src="{{asset('frontend/img/team/4.png')}}" alt="Image">
+                    <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
                         <h5>{{$property_review->name}}</h5>
                         <small>{{$property_review->email}}</small>
                         <div class="product-ratting">
@@ -1545,8 +1550,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#inspection_date').datepicker();
-    })
+        $('#inspection_date').datepicker({
+                minDate: 0
+            }); 
+        });
+
 </script>
 <script>
     $(document).ready(function() {
