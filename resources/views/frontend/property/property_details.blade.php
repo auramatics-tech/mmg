@@ -264,7 +264,7 @@
 @endif
 
 <!-- IMAGE SLIDER AREA START (img-slider-3)  -->
-<!-- <div class="ltn__img-slider-area mb-90">
+ <div class="ltn__img-slider-area mb-50">
     <div class="container-fluid">
         <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
             @if(isset($property->get_property_all_image) && count($property->get_property_all_image))
@@ -272,7 +272,7 @@
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4">
                     <a href="{{asset('storage/property_images/'.$property_image->document)}}" data-rel="">
-                  <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image">
+                  <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image" style="width:100%;">
                     </a>
                 </div>
             </div>
@@ -409,7 +409,7 @@
                         @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
 
                     {{-- <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a> --}}
-                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Make an </a>
+                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Make an Offer</a>
 
                     <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1"> Book Inspection </a>
                     @endif

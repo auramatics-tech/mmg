@@ -262,7 +262,7 @@
                 @foreach($property_summary as $bid_placeholder)
                 <div class="si_custom_bid pt-2">
                     <label class="mb-2"><b> Enter Your Custom Bid $</b></label>
-                    <input type="number" name="offer_price" id="offer_price_input" value="${{isset($bid_placeholder->desired_price)?$bid_placeholder->desired_price:old('offer_price')}}" class="valid" aria-invalid="false">
+                    <input type="text" name="offer_price" id="offer_price_input" value="${{isset($bid_placeholder->desired_price)?number_format($bid_placeholder->desired_price):old('offer_price')}}" class="valid" aria-invalid="false">
                 </div>
                 @endforeach
                 @endif
@@ -305,12 +305,12 @@
         @if(count($property_summary))
         @foreach($property_summary as $property_bid_summary)
         <div class="col-lg-4 col-md-4 col-12">
-            <div class="listing-item" bis_skin_checked="1">
+           {{-- <div class="listing-item" bis_skin_checked="1">
                 <img src="{{isset($property_bid_summary->get_property_image)?asset('storage/property_images/'.$property_bid_summary->get_property_image->document):''}}" alt="">
                 <div class="listing-item-content" bis_skin_checked="1">
                     <span>{{isset($property_bid_summary->address)?$property_bid_summary->address:''}}</span>
                 </div>
-            </div>
+            </div>--}}
             <div class="boxed-widget opening-hours summary margin-top-0" bis_skin_checked="1">
                 <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
                 <ul>
@@ -335,10 +335,13 @@
         if ($('#offer_price_input').val() == '') {
             var total_price = 0;
         } else {
-            var total_price = parseFloat($('#offer_price_input').val());
+            var value_price = $('#offer_price_input').val()
+            value_price = value_price.replace('$','')
+            value_price = value_price.replace(',','')
+            var total_price = parseFloat(value_price);
         }
-
-        $('#offer_price_input').val(price + total_price)
+        var all_price = price + total_price;
+        $('#offer_price_input').val(all_price.toLocaleString())
     })
     $(document).on('click', '.Clear_bid_price', function() {
         $('#offer_price_input').val('')
