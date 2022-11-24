@@ -120,7 +120,7 @@
                             <div class="product-img-location">
                                 <ul>
                                     <li>
-                                        <a href=""><i class="flaticon-pin"></i> {{isset($property_list->address)?$property_list->address:''}}</a>
+                                    <a href="{{route('property_details',$property_list->id)}}"><i class="flaticon-pin"></i> {{isset($property_list->address)?$property_list->address:''}}</a>
                                     </li>
                                 </ul>
                             </div>

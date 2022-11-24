@@ -262,7 +262,7 @@
                 @foreach($property_summary as $bid_placeholder)
                 <div class="si_custom_bid pt-2">
                     <label class="mb-2"><b> Enter Your Custom Bid $</b></label>
-                    <input type="text" name="offer_price" id="offer_price_input" value="{{isset($bid_placeholder->desired_price)?$bid_placeholder->desired_price:old('offer_price')}}" class="valid" aria-invalid="false">
+                    <input type="number" name="offer_price" id="offer_price_input" value="${{isset($bid_placeholder->desired_price)?$bid_placeholder->desired_price:old('offer_price')}}" class="valid" aria-invalid="false">
                 </div>
                 @endforeach
                 @endif
@@ -294,7 +294,7 @@
                     <label class="required fs-6 fw-bold mb-2">Note</label>
                     <textarea name="note" class="form-control form-control-solid" id="" cols="30" rows="5">{{old('note') ?? isset($property_offer->note)?$property_offer->note:''}}</textarea>
                 </div>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> Bid Now!</button>
+                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> My Offer</button>
             </form>
             <div class="mb-5">
                 <div class="p-5 si_current_bids" bis_skin_checked="1">

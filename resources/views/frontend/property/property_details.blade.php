@@ -29,6 +29,10 @@
         border: none;
         transition: all .5s ease;
     }
+    #lightcase-overlay {
+    z-index: 9999;
+    background: #a5a139 !important;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -259,7 +263,7 @@
 </div>
 @endif
 
-<!-- IMAGE SLIDER AREA START (img-slider-3) -->
+<!-- IMAGE SLIDER AREA START (img-slider-3)  -->
 <!-- <div class="ltn__img-slider-area mb-90">
     <div class="container-fluid">
         <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
@@ -267,8 +271,8 @@
             @foreach($property->get_property_all_image as $property_image)
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4">
-                    <a href="{{asset('storage/property_images/'.$property_image->document)}}" data-rel="lightcase:myCollection">
-                        <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image">
+                    <a href="{{asset('storage/property_images/'.$property_image->document)}}" data-rel="">
+                  <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image">
                     </a>
                 </div>
             </div>
@@ -276,7 +280,7 @@
             @endif
         </div>
     </div>
-</div> -->
+</div> 
 <!-- IMAGE SLIDER AREA END -->
 
 <!-- SHOP DETAILS AREA START -->
@@ -405,7 +409,7 @@
                         @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
 
                     {{-- <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a> --}}
-                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a>
+                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Make an </a>
 
                     <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1"> Book Inspection </a>
                     @endif

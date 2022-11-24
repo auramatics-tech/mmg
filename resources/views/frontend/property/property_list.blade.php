@@ -351,7 +351,7 @@
                                     </label>
                                     <span class="categorey-no"></span>
                                 </li>
-                                <li>
+                                {{--<li>
                                     <label class="checkbox-item">Rural
                                         <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("rural", request()->type)) checked @endif value="rural" name="type[]">
                                         <span class="checkmark"></span>
@@ -364,7 +364,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no"></span>
-                                </li>
+                                </li>--}}
                                 {{--<li>
                                     <label class="checkbox-item">Residential Sale
                                             <input type="checkbox" @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif value="residential_sale" name="type[]">
@@ -563,21 +563,21 @@
                             <h4 class="ltn__widget-title">Category</h4>
                             <ul>
                                 <li class="listcat">
-                                    <label class="checkbox-item">For Sale
+                                    <label class="checkbox-item">Buy
                                         <input type="checkbox" checked="checked">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no"></span>
                                 </li>
                                 <li class="listcat">
-                                    <label class="checkbox-item">Renting
+                                    <label class="checkbox-item">Rent
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no"></span>
                                 </li>
                                 <li class="listcat">
-                                    <label class="checkbox-item">Selling
+                                    <label class="checkbox-item">Sell
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>

@@ -384,7 +384,7 @@
                             
                             <div class="ltn__video-img ltn__animation-pulse1">
                                 <img src="{{asset('frontend/img/others/8.png')}}" alt="video popup bg image">
-                                <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&showinfo=0"  data-rel="lightcase:myCollection">
+                                <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&showinfo=0"  data-rel="">
                                     <i class="fa fa-play"></i>
                                 </a>
                             </div>
@@ -516,7 +516,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="img/img-slide/12.jpg" data-rel="lightcase:myCollection">
+                                <a href="img/img-slide/12.jpg" data-rel="">
                                     <img src="{{asset('frontend/img/img-slide/12.jpg')}}" alt="Image">
                                 </a>
                             </li>
@@ -871,7 +871,7 @@
     <!-- VIDEO AREA START -->
     <div class="ltn__video-popup-area ltn__video-popup-margin---">
         <div class="ltn__video-bg-img ltn__video-popup-height-600--- bg-overlay-black-30 bg-image bg-fixed ltn__animation-pulse1" data-bs-bg="img/bg/19.jpg">
-            <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&showinfo=0" data-rel="lightcase:myCollection">
+            <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&showinfo=0" data-rel="">
                 <i class="fa fa-play"></i>
             </a>
         </div>

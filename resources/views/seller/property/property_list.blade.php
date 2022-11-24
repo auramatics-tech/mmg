@@ -172,8 +172,8 @@
 										<div class="card-title">
 											<!--begin::Search-->
 											<div class="d-flex align-items-center position-relative my-1">
-												<form>
 												<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+					
 												<span class="svg-icon svg-icon-1 position-absolute ms-6">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 														<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
@@ -182,7 +182,7 @@
 												</span>
 												<!--end::Svg Icon-->
 												<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" />
-												</form>
+						
 											</div>
 											<!--end::Search-->
 										</div>
