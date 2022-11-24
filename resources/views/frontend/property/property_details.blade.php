@@ -8,8 +8,16 @@
     .ltn__product-item-4 .product-info {
         padding: 20px 16px 1px;
     }
-</style>
-<style>
+
+    .custom_img {
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
     .leave-rating label {
         color: #ffc107;
     }
@@ -29,10 +37,16 @@
         border: none;
         transition: all .5s ease;
     }
+
     #lightcase-overlay {
-    z-index: 9999;
-    background: #a5a139 !important;
-}
+        z-index: 9999;
+        background: #a5a139 !important;
+
+    }
+
+    .img_len a {
+        height: calc(100vh - 220px) !important;
+    }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -264,15 +278,15 @@
 @endif
 
 <!-- IMAGE SLIDER AREA START (img-slider-3)  -->
- <div class="ltn__img-slider-area mb-50">
+<div class="ltn__img-slider-area mb-50">
     <div class="container-fluid">
         <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
             @if(isset($property->get_property_all_image) && count($property->get_property_all_image))
             @foreach($property->get_property_all_image as $property_image)
             <div class="col-lg-12">
-                <div class="ltn__img-slide-item-4">
+                <div class="ltn__img-slide-item-4 img_len">
                     <a href="{{asset('storage/property_images/'.$property_image->document)}}" data-rel="">
-                  <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image" style="width:100%;">
+                        <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image" class="custom_img">
                     </a>
                 </div>
             </div>
@@ -280,7 +294,7 @@
             @endif
         </div>
     </div>
-</div> 
+</div>
 <!-- IMAGE SLIDER AREA END -->
 
 <!-- SHOP DETAILS AREA START -->
@@ -443,7 +457,7 @@
                         </div>
                     </div>
                     <div class="property-details-amenities mb-60">
-                    <h4 class="title-2 mb-10">Amenities</h4>
+                        <h4 class="title-2 mb-10">Amenities</h4>
                         <div class="row">
                             @php
                             if(isset($property_details->outdoor) && $property_details->outdoor != ''){
@@ -461,7 +475,7 @@
                                         @foreach($property_features as $key => $property_feature)
                                         <li>
                                             <label class="checkbox-item">{{$property_feature}}
-                                                <input type="checkbox"  checked="checked" disabled=true>
+                                                <input type="checkbox" checked="checked" disabled=true>
                                                 <span class="checkmark"></span>
                                             </label>
                                         </li>
@@ -779,8 +793,8 @@
                                 <li>
                                     <div class="ltn__comment-item clearfix">
                                         <div class="ltn__commenter-img">
-                                          {{--<img src="{{asset('frontend/img/testimonial/1.png')}}" alt="Image"> --}} 
-                                          <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
+                                            {{--<img src="{{asset('frontend/img/testimonial/1.png')}}" alt="Image"> --}}
+                                            <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
                                         </div>
                                         <div class="ltn__commenter-comment">
                                             <h6><a href="#">{{$property_review->name}}</a></h6>
@@ -808,7 +822,7 @@
                         </div>
                     </div>
                     <!-- comment-reply -->
-            
+
                     <div class="ltn__comment-reply-area ltn__form-box mb-30">
                         <form action="{{route('property_reviews')}}" method="post" enctype="multipart/form-data">
                             @csrf
@@ -855,9 +869,9 @@
                             </div>
                         </form>
                     </div>
-           
+
                 </div>
-               
+
                 <h4 class="title-2">Related Properties</h4>
                 <div class="row">
                     <!-- ltn__product-item -->
@@ -932,11 +946,11 @@
         <div class="col-lg-4">
             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar---">
                 <!-- Author Widget -->
-            <div class="widget ltn__author-widget">
+                <div class="widget ltn__author-widget">
                     @if(count($property_reviews))
                     @foreach($property_reviews as $key => $property_review)
                     <div class="ltn__author-widget-inner text-center">
-                    <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
+                        <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
                         <h5>{{$property_review->name}}</h5>
                         <small>{{$property_review->email}}</small>
                         <div class="product-ratting">
@@ -1555,10 +1569,9 @@
 <script>
     $(document).ready(function() {
         $('#inspection_date').datepicker({
-                minDate: 0
-            }); 
+            minDate: 0
         });
-
+    });
 </script>
 <script>
     $(document).ready(function() {
