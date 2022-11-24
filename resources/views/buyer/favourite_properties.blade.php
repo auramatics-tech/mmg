@@ -545,7 +545,8 @@
 													<th class="min-w-125px">Price</th>
 													<th class="min-w-125px">Status</th>
 													<th class="min-w-125px">Inspection time</th>
-													<th class="text-end min-w-100px">Actions</th>
+													<th class="min-w-125px">Actions</th>
+													<!-- <th class="text-end min-w-100px">Actions</th> -->
 												</tr>
 												<!--end::Table row-->
 											</thead>
@@ -578,8 +579,11 @@
 														</div>
 														<!--begin::User details-->
 													</td>
-													<td>
+													{{--<td>
 														<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->price)?$property->price:''}}</div>
+													</td>--}}
+													<td>
+														<div class="badge badge-light fw-bolder">{{isset($property->normal_price)?$property->normal_price:''}} </div>
 													</td>
 													<td>{{isset($property->status)?$property->status:''}}</td>
 													<td>{{isset($property->property_inspection)?date('Y-m-d',strtotime($property->property_inspection->inspection_date . ' ' . $property->property_inspection->start_time)):''}}</td>

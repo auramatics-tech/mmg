@@ -546,7 +546,7 @@
 													<th class="min-w-125px">Property Name</th>
 													<th class="min-w-125px">Note</th>
 													<th class="min-w-125px">Offer price</th>
-													<th class="text-end min-w-100px">Actions</th>
+													<th class="min-w-125px">Actions</th>
 												</tr>
 												<!--end::Table row-->
 											</thead>

@@ -582,7 +582,7 @@
 								<th class="min-w-125px">Status</th>
 								<th class="min-w-125px">Listed Date</th>
 								<th class="min-w-125px">Expiry Date</th>
-								<th class="text-end min-w-100px">Actions</th>
+								<th class="min-w-125px">Actions</th>
 							</tr>
 							<!--end::Table row-->
 						</thead>

@@ -10,6 +10,7 @@ class PropertyReview extends Model
     use HasFactory;
     public $table = "property_reviews";
     protected $fillable = [
-        'property_id','name','email','comments','created_at','updated_at'
+        'property_id','user_id','name','email','comments','created_at','updated_at'
     ];
 }
+

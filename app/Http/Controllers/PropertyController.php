@@ -13,13 +13,19 @@ use App\Models\PropertyLinkListing;
 use App\Models\ReviewImages;
 use App\Models\Appraisal;
 use Auth;
+use DB;
 
 class PropertyController extends Controller
 {
     
     public function property_list(Request $request)
     {
-        if(isset($request->sort) && $request->sort == 'o'){
+         $outdoors = PropertyFeature::where('type', 'outdoor')->get();
+         $indoors = PropertyFeature::where('type', 'indoor')->get();
+         $heating_coolings = PropertyFeature::where('type', 'heating_cooling')->get();
+         $eco_friendlies = PropertyFeature::where('type', 'eco_friendly')->get();
+    
+         if(isset($request->sort) && $request->sort == 'o'){
             $orderby = 'ASC';
             $sortby = 'properties.id';
         }elseif(isset($request->sort) && $request->sort == 'n'){
@@ -36,27 +42,52 @@ class PropertyController extends Controller
             $orderby = 'DESC';
             $sortby = 'properties.id';
         }
-       
+        $minPrice = $request->minPrice;
+        $maxPrice= $request->MaxPrice;
+        if (isset($request->price)) {
+            $date = explode('-', $request->price);
+            $minPrice= $price[0];
+            $maxPrice= $price[1];
+        }
+
         $properties = Property::select('properties.*','property_details.rental_allowances')
         ->where('is_approved',1)->leftjoin('property_details','properties.id','property_details.property_id')
         ->when(isset($request->type), function ($query) use ($request) {
             $query->whereIn('properties.form_type',$request->type);
         })->when(isset($request->search), function ($query) use ($request) {
-            $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');
+            $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');    
         })->when(isset($request->amenities), function ($query) use ($request) {
             $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
-        })->orderby($sortby,$orderby)->paginate(4);
+        })->when(isset($request->indoor), function ($query) use ($request) {
+            $query->whereJsonContains('property_details.indoor',$request->indoor);
+        })->when(isset($request->outdoor), function ($query) use ($request) {
+            $query->whereJsonContains('property_details.outdoor',$request->outdoor);
+        })->when(isset($request->heating_cooling), function ($query) use ($request) {
+            $query->whereJsonContains('property_details.heating_cooling',$request->heating_cooling);
+        })->when(isset($request->eco_friendly), function ($query) use ($request) {
+            $query->whereJsonContains('property_details.eco_friendly',$request->eco_friendly);
+        })  ->when((isset($request->price_from) && isset($request->price_to)), function ($query) use ($request) {
+            return $query->whereBetween('properties.normal_price', [$request->price_from, $request->price_to]);
+        })
+        ->orderby($sortby,$orderby)->paginate(4);
+        
+        if($request->ajax()){
+            $html = view('frontend.property._listing',compact('properties'))->render();
+            return response($html);
+        }
         $property_features = PropertyFeature::all();
-        return view('frontend.property.property_list',compact('properties','property_features'));
+        return view('frontend.property.property_list',compact('properties','property_features','outdoors', 'indoors', 'heating_coolings', 'eco_friendlies'));
     }
 
     public function property_details($property_id='')
     {
+        
         $property_details = PropertyDetail::where('property_id',$property_id)->first();
         $latest_property = Property::where('is_approved',1)->latest('created_at')->limit(5)->get();
         $property_types = Property::select('property_type')->distinct('property_type')->get();
-        // echo "<pre>";print_r( $property_types);die;
-        $property_reviews = PropertyReview::where('property_id',$property_id)->get();
+        // 
+        $property_reviews = PropertyReview::select('property_reviews.*',DB::raw("(select profile_pic from users where `users`.`id` = property_reviews.user_id) as profile_pic"))->where('property_id',$property_id)->get();
+        // echo "<pre>";print_r( $property_reviews);die;
         $comments_count = PropertyReview::where('property_id',$property_id)->count();
         $property = Property::find($property_id);
         if(Auth::check())
@@ -73,6 +104,7 @@ class PropertyController extends Controller
         }
         $related_properties = Property::where('property_type',$property->property_type)->where('is_approved',1)->get();
         $property_video_links = PropertyLinkListing::where('id',$property_id)->get();
+       
         return view('frontend.property.property_details',compact('property','property_details','property_reviews','related_properties','latest_property','comments_count','property_types','property_video_links'));
     }
 
@@ -107,6 +139,7 @@ class PropertyController extends Controller
         $property_reviews = new PropertyReview();
     }
     $property_reviews ->property_id = $request->property_id;
+    $property_reviews ->user_id= Auth::id();
     $property_reviews ->name = $request->name;
     $property_reviews ->rating = $request->rating;
     $property_reviews ->email = $request->email;

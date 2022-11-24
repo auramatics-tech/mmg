@@ -1,8 +1,10 @@
 <div class="w-100">
+
     <form action="{{route('seller.save_listing_details')}}" method="POST" onsubmit="setFormSubmitting()">
         @csrf
         <input type="hidden" name="form_type" value="{{isset(request()->listing_type) ? request()->listing_type : ''}}">
         <input type="hidden" name="id" value="{{isset(request()->property_id) ? request()->property_id : ''}}">
+      
         <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#change_status" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Change Status
             <span class="ms-2 rotate-180">
                 <span class="svg-icon svg-icon-3">
@@ -27,6 +29,9 @@
                     <option {{((old('status') ?? isset($property->status)?$property->status:'')=='Sold')?'selected':'' }} value="Sold">Sold</option>
                     <option {{((old('status') ?? isset($property->status)?$property->status:'')=='Under Offer')?'selected':'' }} value="Under Offer">Under Offer</option>
                 </select>
+                @error('status')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
 
             <div class="fv-row mb-7">
@@ -42,11 +47,9 @@
 
                     </div>
 
-
                     <label class="form-check form-switch form-check-custom form-check-solid">
 
                         <input class="form-check-input" name="is_featured" type="checkbox" value="1" id="kt_modal_add_customer_billing" {{((old('is_featured') ?? isset($property->is_featured)?$property->is_featured:'')=='1')?'checked':'' }} />
-
 
                         <span class="form-check-label fw-bold text-muted" for="kt_modal_add_customer_billing">Yes</span>
 
@@ -77,7 +80,6 @@
             </div>
             <div class="d-flex flex-column mb-7 fv-row business_show">
                 <label class="fs-6 fw-bold mb-2">Sale or Tender</label>
-
                 <select class="form-control form-control-solid " name="commercial_listing_type" data-control="select2" data-hide-search="true" data-placeholder="Select">
                     <option value="sale" {{((old('commercial_listing_type') ?? isset($property->commercial_listing_type)?$property->commercial_listing_type:'')=='sale')?'selected':'' }}>For Sale</option>
                     <option value="tender" {{((old('commercial_listing_type') ?? isset($property->commercial_listing_type)?$property->commercial_listing_type:'')=='tender')?'selected':'' }}>Tender</option>
@@ -85,13 +87,15 @@
             </div>
             <div class="d-flex flex-column mb-7 fv-row land_hide commercial_hide business_hide ">
                 <label class="required fs-6 fw-bold mb-2">Property Type</label>
-
                 <select class="form-control form-control-solid " name="property_type" data-control="select2" data-hide-search="true" data-placeholder="Select a property type">
                     <option value=""></option>
                     @foreach($property_types as $property_type)
                     <option value="{{$property_type->value}}" {{((old('property_type') ?? isset($property->property_type)?$property->property_type:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                     @endforeach
                 </select>
+                @error('property_type')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
 
             {{-- <div class="d-flex flex-column mb-7 fv-row land_hide commercial_hide rural_hide business_hide">
@@ -102,7 +106,6 @@
             <option value="1" {{((old('new_construction') ?? isset($property->new_construction)?$property->new_construction:'')=='1')?'selected':'' }}>Under Development</option>
             </select>
         </div> --}}
-
         <div class="d-flex flex-column mb-7 fv-row residential_sale_show">
 
             <label class="required fs-6 fw-bold mb-2">Is Home and Land Package</label>
@@ -111,6 +114,9 @@
                 <option value="0" {{((old('home_and_land_package') ?? isset($property->home_and_land_package)?$property->home_and_land_package:'')=='0')?'selected':'' }}>No</option>
                 <option value="1" {{((old('home_and_land_package') ?? isset($property->home_and_land_package)?$property->home_and_land_package:'')=='1')?'selected':'' }}>Yes</option>
             </select>
+            @error('home_and_land_package')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row commercial_show">
@@ -120,6 +126,8 @@
                 <option value="commercial_lease" {{((old('commercial_listing_type') ?? isset($property->commercial_listing_type)?$property->commercial_listing_type:'')=='commercial_lease')?'selected':'' }}>For Lease</option>
                 <option value="commercial_sale_and_lease" {{((old('commercial_listing_type') ?? isset($property->commercial_listing_type)?$property->commercial_listing_type:'')=='commercial_sale_and_lease')?'selected':'' }}>For Sale and Lease</option>
             </select>
+       
+
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row commercial_show business_show">
@@ -133,7 +141,7 @@
                 <option value="{{$property_type->value}}" {{((old('commercial_property_type') ?? isset($property->commercial_property_type)?$property->commercial_property_type:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                 @endforeach
             </select>
-
+         
         </div>
         <div class="d-flex flex-column mb-7 fv-row commercial_show business_show">
 
@@ -146,6 +154,7 @@
                 <option value="{{$property_type->value}}" {{((old('commercial_property_type2') ?? isset($property->commercial_property_type2)?$property->commercial_property_type2:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                 @endforeach
             </select>
+        
 
         </div>
         <div class="d-flex flex-column mb-7 fv-row commercial_show business_show">
@@ -157,6 +166,8 @@
                 <option value="{{$property_type->value}}" {{((old('commercial_property_type3') ?? isset($property->commercial_property_type3)?$property->commercial_property_type3:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                 @endforeach
             </select>
+        
+
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row residential_sale_show land_show commercial_sale_show rural_show">
@@ -172,6 +183,9 @@
                 <option value="Open" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Open')?'selected':'' }}>Open</option>
                 <option value="Sale by Negotiation" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Sale by Negotiation')?'selected':'' }}>Sale by Negotiation</option>
             </select>
+            @error('authority')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="d-flex flex-column mb-8 fv-row d-none">
@@ -200,7 +214,7 @@
                     <i class="bi bi-currency-dollar"></i>
                 </span>
                 <!--end::Svg Icon-->
-                <input type="text" class="form-control form-control-solid ps-10" name="rental_per_week" value="{{old('rental_per_week') ?? isset($property->rental_per_week)?$property->rental_per_week:''}}">
+                <input type="number" class="form-control form-control-solid ps-10" name="rental_per_week" value="{{old('rental_per_week') ?? isset($property->rental_per_week)?$property->rental_per_week:''}}">
             </div>
 
 
@@ -216,7 +230,7 @@
                     <i class="bi bi-currency-dollar"></i>
                 </span>
                 <!--end::Svg Icon-->
-                <input type="text" class="form-control form-control-solid ps-10" name="rental_per_month" value="{{old('rental_per_month') ?? isset($property->rental_per_month)?$property->rental_per_month:''}}">
+                <input type="number" class="form-control form-control-solid ps-10" name="rental_per_month" value="{{old('rental_per_month') ?? isset($property->rental_per_month)?$property->rental_per_month:''}}">
             </div>
 
         </div>
@@ -232,12 +246,12 @@
                     <i class="bi bi-currency-dollar"></i>
                 </span>
                 <!--end::Svg Icon-->
-                <input type="text" class="form-control form-control-solid ps-10" name="rental_security_bond" value="{{old('rental_security_bond') ?? isset($property->rental_security_bond)?$property->rental_security_bond:''}}">
+                <input type="number" class="form-control form-control-solid ps-10" name="rental_security_bond" value="{{old('rental_security_bond') ?? isset($property->rental_security_bond)?$property->rental_security_bond:''}}">
             </div>
 
         </div>
         <div class="row g-9 mb-7">
-        @if (isset(get_user_roles()->role) && get_user_roles()->role == 4)
+            @if (isset(get_user_roles()->role) && get_user_roles()->role == 4)
             <div class="col-md-6 fv-row">
 
                 <label class="required fs-6 fw-bold mb-2">Listing Expiry Date</label>
@@ -256,8 +270,12 @@
                         <i class="bi bi-currency-dollar"></i>
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
+                    <input type="number" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
+                    @error('normal_price')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
+
 
             </div>
             <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
@@ -270,7 +288,10 @@
                         <i class="bi bi-currency-dollar"></i>
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" class="form-control form-control-solid ps-10" name="desired_price" value="{{old('desired_price') ?? isset($property->desired_price)?$property->desired_price:''}}">
+                    <input type="number" class="form-control form-control-solid ps-10" name="desired_price" value="{{old('desired_price') ?? isset($property->desired_price)?$property->desired_price:''}}">
+                    @error('desired_price')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
 
             </div>
@@ -278,15 +299,15 @@
         </div>
 
         <div class="mb-10">
-        @if (isset(get_user_roles()->role) && get_user_roles()->role == 4)
+            @if (isset(get_user_roles()->role) && get_user_roles()->role == 4)
             <div class="mb-3">
-            
+
                 <label class="d-flex align-items-center fs-5 fw-bold">
                     <span class="required">Display Price</span>
                     <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Your billing numbers will be calculated based on your API method"></i>
                 </label>
             </div>
-          
+
             <div class="fv-row">
 
                 <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
@@ -300,7 +321,7 @@
 
                     <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success select_input {{((old('show_price') ?? isset($property->show_price)?$property->show_price:'')=='text')?'active':'' }}" data-kt-button="true">
 
-                        <input class="btn-check" type="radio" name="show_price" value="text" {{((old('show_price') ?? isset($property->show_price)?$property->show_price:'')=='text')?'checked':'' }} />
+                        <input class="btn-check" type="radio" name="show_price" value="number" {{((old('show_price') ?? isset($property->show_price)?$property->show_price:'')=='number')?'checked':'' }} />
 
                         Show text instead of price</label>
 
@@ -317,14 +338,14 @@
             </div>
             @endif
         </div>
-       
+
 
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
 
             <label class="fs-6 fw-bold mb-2">Date Available</label>
 
 
-            <input class="form-control form-control-solid" placeholder="" name="rental_date_available" value="{{old('rental_date_available') ?? isset($property->rental_date_available)?$property->rental_date_available:''}}" />
+            <input type="date" class="form-control form-control-solid" placeholder="" name="rental_date_available" value="{{old('rental_date_available') ?? isset($property->rental_date_available)?$property->rental_date_available:''}}" />
 
         </div>
 
@@ -335,6 +356,7 @@
                 <option value="Exclusive" {{((old('commercial_exclusivity') ?? isset($property->commercial_exclusivity)?$property->commercial_exclusivity:'')=='Exclusive')?'selected':'' }}>Exclusive</option>
                 <option value="Open" {{((old('commercial_exclusivity') ?? isset($property->commercial_exclusivity)?$property->commercial_exclusivity:'')=='Open')?'selected':'' }}>Open</option>
             </select>
+   
         </div>
 
 
@@ -346,6 +368,7 @@
                 <option value="Inclusive" {{((old('commercial_tax') ?? isset($property->commercial_tax)?$property->commercial_tax:'')=='Inclusive')?'selected':'' }}>Inclusive</option>
                 <option value="Not Applicable" {{((old('commercial_tax') ?? isset($property->commercial_tax)?$property->commercial_tax:'')=='Not Applicable')?'selected':'' }}>Not Applicable</option>
             </select>
+    
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row business_show">
@@ -363,7 +386,7 @@
 
 
             <input class="form-control form-control-solid" placeholder="" name="commercial_roi" value="{{old('commercial_roi') ?? isset($property->commercial_roi)?$property->commercial_roi:''}}" />
-
+          
         </div>
 </div>
 
@@ -382,31 +405,49 @@
 <div id="lease_details" class="collapse show commercial_lease_show">
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Rental Per Annum</label>
-        <input class="form-control form-control-solid" placeholder="" name="commercial_rental_per_annum" value="{{old('commercial_rental_per_annum') ?? isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}}" />
+        <input class="form-control form-control-solid" placeholder="" type="number" name="commercial_rental_per_annum" value="{{old('commercial_rental_per_annum') ?? isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}}" />
+        @error('commercial_rental_per_annum')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
 
     <div class="row g-9 mb-7">
         <div class="col-md-6 fv-row">
             <label class="required fs-6 fw-bold mb-2">PSM/PA Min</label>
             <input class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_min" type="date" value="{{old('commercial_psm_pa_min') ?? isset($property->commercial_psm_pa_min)?$property->commercial_psm_pa_min:''}}" />
+            @error('commercial_psm_pa_min')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
         </div>
         <div class="col-md-6 fv-row residential_rental_hide commercial_sale_show">
             <label class="required fs-6 fw-bold mb-2">PSM/PA Max</label>
-            <input class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_max" value="{{old('commercial_psm_pa_max') ?? isset($property->commercial_psm_pa_max)?$property->commercial_psm_pa_max:''}}" />
+            <input type="date" class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_max" value="{{old('commercial_psm_pa_max') ?? isset($property->commercial_psm_pa_max)?$property->commercial_psm_pa_max:''}}" />
+            @error('commercial_psm_pa_max')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
         </div>
 
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Current Lease Expiry</label>
-        <input class="form-control form-control-solid" placeholder="" name="commercial_lease_expiry_date" value="{{old('commercial_lease_expiry_date') ?? isset($property->commercial_lease_expiry_date)?$property->commercial_lease_expiry_date:''}}" />
+        <input type="date" class="form-control form-control-solid" placeholder="" name="commercial_lease_expiry_date" value="{{old('commercial_lease_expiry_date') ?? isset($property->commercial_lease_expiry_date)?$property->commercial_lease_expiry_date:''}}" />
+        @error('commercial_lease_expiry_date')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Outgoings</label>
         <input class="form-control form-control-solid" placeholder="" name="commercial_outgoings" value="{{old('commercial_outgoings') ?? isset($property->commercial_outgoings)?$property->commercial_outgoings:''}}" />
+        @error('commercial_outgoings')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Lease Term</label>
         <input class="form-control form-control-solid" placeholder="" name="commercial_lease_term" value="{{old('commercial_lease_term') ?? isset($property->commercial_lease_term)?$property->commercial_lease_term:''}}" />
+        @error('commercial_lease_term')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
 </div>
 <div class="fw-bolder fs-3 rotate collapsible mb-7 d-none" data-bs-toggle="collapse" href="#vender_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Vendor details
@@ -443,48 +484,62 @@
     <div class="d-flex flex-column mb-7 fv-row commercial_show">
         <label class="required fs-6 fw-bold mb-2">Property Name</label>
         <input class="form-control form-control-solid" placeholder="" name="commercial_property_name" value="{{old('commercial_property_name') ?? isset($property->commercial_property_name)?$property->commercial_property_name:''}}" />
+        @error('commercial_property_name')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Address</label>
         <input type="hidden" name="lat" id="lat">
         <input type="hidden" name="lng" id="lng">
-        <input class="form-control form-control-solid" placeholder="" id="address_filed"  name="address" value="{{old('address') ?? isset($property->address)?$property->address:''}}" />
+        <input class="form-control form-control-solid" placeholder="" id="address_filed" name="address" value="{{old('address') ?? isset($property->address)?$property->address:''}}" />
+        @error('address')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="fs-6 fw-bold mb-2">Unit</label>
         <input class="form-control form-control-solid" placeholder="" id="unit" name="unit" value="{{old('unit') ?? isset($property->unit)?$property->unit:''}}" />
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
-
         <label class="required fs-6 fw-bold mb-2">Street number</label>
-
-
         <input class="form-control form-control-solid" placeholder="" id="street_no" name="street_no" value="{{old('street_no') ?? isset($property->street_no)?$property->street_no:''}}" />
+        @error('street_no')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
 
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
-
         <label class="required fs-6 fw-bold mb-2">Street name</label>
-
-
         <input class="form-control form-control-solid" placeholder="" id="street" name="street" value="{{old('street') ?? isset($property->street)?$property->street:''}}" />
-
+        @error('street')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     <div class="row g-9 mb-8">
 
         <div class="col-md-4 fv-row fv-plugins-icon-container">
             <label class="required fs-6 fw-bold mb-2">Suburb</label>
             <input class="form-control form-control-solid" id="suburb" placeholder="" name="suburb" value="{{old('suburb') ?? isset($property->suburb)?$property->suburb:''}}" />
+            @error('suburb')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="col-md-4 fv-row fv-plugins-icon-container">
             <label class="required fs-6 fw-bold mb-2">State</label>
             <input class="form-control form-control-solid" placeholder="" id="state" name="state" value="{{old('state') ?? isset($property->state)?$property->state:''}}" />
+            @error('state')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="col-md-4 fv-row fv-plugins-icon-container">
             <label class="required fs-6 fw-bold mb-2">Postcode</label>
             <input class="form-control form-control-solid" placeholder="" id="postcode" name="postcode" value="{{old('postcode') ?? isset($property->postcode)?$property->postcode:''}}" />
+            @error('postcode')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
     </div>
@@ -498,11 +553,14 @@
             <option value="Full Address" {{((old('address_display') ?? isset($property->address_display)?$property->address_display:'')=='Full Address')?'selected':'' }}>Full Address</option>
             <option value="Suburb Only" {{((old('address_display') ?? isset($property->address_display)?$property->address_display:'')=='Suburb Only')?'selected':'' }}>Suburb Only</option>
         </select>
+        @error('address_display')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
 </div>
 
 <br>
- <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#internal_notes" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Internal Notes:
+<div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#internal_notes" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Internal Notes:
     <span class="ms-2 rotate-180">
 
         <span class="svg-icon svg-icon-3">
@@ -512,27 +570,33 @@
         </span>
 
     </span>
-</div> 
-  <div id="internal_notes" class="collapse show">
+</div>
+<div id="internal_notes" class="collapse show">
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">What are the three things that you love most about your home ?</label>
-        <textarea name="about_home" class="form-control" id=""></textarea>
+        <textarea name="about_home" class="form-control" id="">{{ isset($property->about_home) ? $property->about_home: old('about_home') }}</textarea>
+        @error('about_home')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="fs-6 fw-bold mb-2">What are the three things you love most about your home's location ?</label>
-        <textarea name="about_location" class="form-control" id=""></textarea>
+        <textarea name="about_location" class="form-control" id="">{{ isset($property->about_location) ? $property->about_location : old('about_location') }}</textarea>
     </div>
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">If applicable , since being in the home what improvments have you made ? </label>
-        <textarea name="about_improvements" class="form-control" id=""></textarea>
+        <textarea name="about_improvements" class="form-control" id="">{{ isset($property->about_improvements) ? $property->about_improvements: old('about_improvements') }}</textarea>
+        @error('about_improvements')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
     </div>
     {{--<div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Internal Notes</label>
         <input class="form-control form-control-solid" placeholder="" name="internal_notes" value="{{old('internal_notes') ?? isset($property->internal_notes)?$property->internal_notes:''}}" />
-    </div> --}} 
-</div> 
+</div> --}}
+</div>
 
 <br>
-<button  class="btn btn-primary">Save</button>
+<button class="btn btn-primary">Save</button>
 </form>
 </div>

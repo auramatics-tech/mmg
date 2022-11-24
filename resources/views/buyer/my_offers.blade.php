@@ -610,7 +610,7 @@
 								<th class="min-w-125px">Price</th>
 								<th class="min-w-125px">Offer price</th>
 								<th class="min-w-125px">Note</th>
-								<th class="text-end min-w-100px">Actions</th>
+								<th class="min-w-125px">Actions</th>
 							</tr>
 							<!--end::Table row-->
 						</thead>
@@ -638,13 +638,18 @@
 										@endif
 									</div>
 									<div class="d-flex flex-column">
-										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($offer->property->address_display=='Full Address')?$offer->property->address:$offer->property->suburb}}</a>
-										<span>{{$offer->property->property_type}}</span>
+										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</a>
 									</div>
+									
+								{{--<div class="d-flex flex-column">
+										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{(isset($offer->property->address) && ($offer->property->address_display=='Full Address'))?$offer->property->address:$offer->property->suburb}}</a>
+										<span>{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</span>
+									</div>--}}
 									<!--begin::User details-->
 								</td>
 								<td>
-									<div class="badge badge-light fw-bolder">@if(isset($offer->property->rental_per_week)) ${{$offer->property->rental_per_week}}pw <br>@endif @if(isset($offer->property->rental_per_month)) ${{$offer->property->rental_per_month}}pm <br>@endif @if(isset($offer->property->rental_security_bond)) ${{$offer->property->rental_security_bond}} bond <br>@endif ${{isset($offer->property->price)?$offer->property->price:''}}</div>
+									{{--<div class="badge badge-light fw-bolder">@if(isset($offer->property->rental_per_week)) ${{$offer->property->rental_per_week}}pw <br>@endif @if(isset($offer->property->rental_per_month)) ${{$offer->property->rental_per_month}}pm <br>@endif @if(isset($offer->property->rental_security_bond)) ${{$offer->property->rental_security_bond}} bond <br>@endif ${{isset($offer->property->price)?$offer->property->price:''}}</div>--}}
+									{{isset($offer->property->normal_price)?$offer->property->normal_price:''}}
 								</td>
 								<td>${{isset($offer->offer_price)?$offer->offer_price:''}}</td>
 								<td>{{isset($offer->note)?$offer->note:''}}</td>

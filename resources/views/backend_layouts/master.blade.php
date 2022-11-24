@@ -81,6 +81,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{asset('backend/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
     <script src="{{asset('backend/js/custom/utilities/modals/create-app.js')}}"></script>
     <script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
+    
     @yield('script')             
 </body>
 <script>
@@ -89,5 +90,6 @@ License: For each use you must have a valid license purchased only from above li
     }, 10000);
 
 </script>
+
 
 </html>
