@@ -38,8 +38,53 @@
     .listcat {
         list-style: none;
     }
-    .new_hi{
-       height:40px;
+
+    .new_hi {
+        height: 40px;
+    }
+
+    .su_modal_content {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .su_modal_dialog {
+        max-width: 50%;
+        margin-top: 50px;
+    }
+
+    .su_modal {
+        z-index: 99999 !important;
+    }
+
+    .m_t_b_20 {
+        margin: 20px 0px;
+    }
+
+    .su_listcat {
+        list-style: none;
+        margin-top: 2px;
+    }
+
+    .su_flex_block {
+        display: flex;
+    }
+
+    @media screen and (max-width: 991px) {
+        .su_flex_block {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .su_modal_dialog {
+            max-width: 65%;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        .su_modal_dialog {
+            max-width: 100%;
+        }
     }
 </style>
 @endsection
@@ -309,6 +354,147 @@
                                 </select>
                             </div>--}}
                         </li>
+                        <li class="ms-auto">
+                            <button class="btn theme-btn-1" data-bs-toggle="modal" data-bs-target="#filter_model">Filter</button>
+                        </li>
+
+                        <!-- Modal -->
+                        <div class="modal fade su_modal" id="filter_model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog su_modal_dialog">
+                                <div class="modal-content su_modal_content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Filter</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body p-0 mt-4">
+                                       
+                                        <div class="row">
+                                        <!-- <h4 class="ltn__widget-title m_t_b_20">Category</h4>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <li class="su_listcat">
+                                                    <label class="checkbox-item">Buy
+                                                        <input type="checkbox" checked="checked">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="categorey-no"></span>
+                                                </li>
+
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <li class="su_listcat">
+                                                    <label class="checkbox-item">Rent
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="categorey-no"></span>
+                                                </li>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <li class="su_listcat">
+                                                    <label class="checkbox-item">For Sale
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="categorey-no"></span>
+                                                </li>
+                                            </div> -->
+                                            <h4 class="ltn__widget-title m_t_b_20">Property Type</h4>
+                                            <form class="su_flex_block p-0" action="" id="form2">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Residental
+                                                            <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("residential", request()->type)) checked @endif value="residential" name="type[]">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Commercial
+                                                            <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                            </form>
+                                            <h4 class="ltn__widget-title m_t_b_20">Residental</h4>
+                                            <div class="row" action="" id="">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">House
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Unit
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Town House
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Appartment
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Retirement House
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Land
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                            <h4 class="ltn__widget-title m_t_b_20">Filter By Price</h4>
+                                            <form class="su_flex_block p-0" action="" id="form4">
+                                                <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                    <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                    <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer p-0">
+                                        <button type="button" class="btn theme-btn-1">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </ul>
                 </div>
                 <div class="property_listing">
@@ -511,15 +697,15 @@
                             <hr>
                             <!-- Price Filter Widget -->
                             <div class="row">
-                            <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
-                            <form id="form4">
-                                <div class="col-lg-12 col-md-4" bis_skin_checked="1">
-                                    <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
-                                </div>
-                                <div class="col-lg-12 col-md-4 pl_mt_4" bis_skin_checked="1">
-                                    <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
-                                </div>
-                            </form>
+                                <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
+                                <form id="form4">
+                                    <div class="col-lg-12 col-md-4" bis_skin_checked="1">
+                                        <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
+                                    </div>
+                                    <div class="col-lg-12 col-md-4 pl_mt_4" bis_skin_checked="1">
+                                        <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
+                                    </div>
+                                </form>
                             </div>
                             {{--<div class="widget--- ltn__price-filter-widget">
                                 <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
