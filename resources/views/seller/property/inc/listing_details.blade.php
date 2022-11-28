@@ -459,7 +459,7 @@
 </div>
 <div id="" class="collapse show commercial_sale_show">
 
-    <div class="d-flex flex-column mb-7 fv-row residential_sale_show land_show commercial_sale_show rural_show">
+    <div class="d-flex flex-column mb-7 fv-row commercial_sale_show ">
 
         <label class="required fs-6 fw-bold mb-2">Authority</label>
 
@@ -476,7 +476,7 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
     </div>
-    <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
+    <div class="col-md-6 fv-row commercial_sale_show ">
         <label class="required fs-6 fw-bold mb-2"> Normal Price</label>
         <div class="position-relative w-md-400px me-md-2">
             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -606,7 +606,7 @@
 </div>
 
 <br>
-<div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#internal_notes" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Internal Notes:
+{{--<div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#internal_notes" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Internal Notes:
     <span class="ms-2 rotate-180">
 
         <span class="svg-icon svg-icon-3">
@@ -636,11 +636,11 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
     </div>
-    {{--<div class="d-flex flex-column mb-7 fv-row">
+  <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Internal Notes</label>
         <input class="form-control form-control-solid" placeholder="" name="internal_notes" value="{{old('internal_notes') ?? isset($property->internal_notes)?$property->internal_notes:''}}" />
-</div> --}}
 </div>
+</div> --}}
 
 <br>
 <button class="btn btn-primary">Save</button>

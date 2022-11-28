@@ -438,9 +438,8 @@
                 $('.commercial_sale_show').hide();
                 $('.commercial_lease_show').show();
             } else if ($(this).val() == 'commercial_sale_and_lease') {
-                $('.commercial_sale_show').hide();
-                $('.commercial_lease_show').hide();
-                $('.commercial_sale_and_lease_show').show();
+                $('.commercial_sale_show').show();
+                $('.commercial_lease_show').show();
             }
         });
     </script>
