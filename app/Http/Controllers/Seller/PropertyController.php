@@ -41,6 +41,7 @@ class PropertyController extends Controller
     public function add_property_form(Request $request)
     {
 
+      
         $property_form = "listing_details";
         if ($request->listing_type == 'commercial') {
             $property_types = PropertyType::where('form_type', 'commercial')->get();
@@ -48,7 +49,7 @@ class PropertyController extends Controller
             $property_types = PropertyType::where('form_type', 'buisness')->get();
         } elseif ($request->listing_type == 'rural') {
             $property_types = PropertyType::where('form_type', 'rural')->get();
-        } else {
+        }else {
             $property_types = PropertyType::where('form_type', 'residential')->get();
         }
         $property = '';
@@ -98,9 +99,10 @@ class PropertyController extends Controller
         return view('seller.property.add_property', compact('property_id', 'property_form', 'inspection'));
     }
 
+
     public function save_listing_details(Request $request)
     {
-        // echo "<pre>";print_r($request->all());die;
+         //echo "<pre>";print_r($request->all());die;
         $data = $request->except("_token");
         //echo "<pre>";print_r($data);die;
         if ( $request->form_type == 'residential') {
@@ -187,8 +189,6 @@ class PropertyController extends Controller
                 'about_improvements' => ['required'],        
             ]);
         }
-
-
         if ($validate->fails()) {
             return Redirect::back()->with($data)->withErrors($validate);
         }

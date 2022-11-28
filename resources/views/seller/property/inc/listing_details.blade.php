@@ -4,7 +4,7 @@
         @csrf
         <input type="hidden" name="form_type" value="{{isset(request()->listing_type) ? request()->listing_type : ''}}">
         <input type="hidden" name="id" value="{{isset(request()->property_id) ? request()->property_id : ''}}">
-      
+
         <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#change_status" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Change Status
             <span class="ms-2 rotate-180">
                 <span class="svg-icon svg-icon-3">
@@ -126,7 +126,7 @@
                 <option value="commercial_lease" {{((old('commercial_listing_type') ?? isset($property->commercial_listing_type)?$property->commercial_listing_type:'')=='commercial_lease')?'selected':'' }}>For Lease</option>
                 <option value="commercial_sale_and_lease" {{((old('commercial_listing_type') ?? isset($property->commercial_listing_type)?$property->commercial_listing_type:'')=='commercial_sale_and_lease')?'selected':'' }}>For Sale and Lease</option>
             </select>
-       
+
 
         </div>
 
@@ -141,7 +141,7 @@
                 <option value="{{$property_type->value}}" {{((old('commercial_property_type') ?? isset($property->commercial_property_type)?$property->commercial_property_type:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                 @endforeach
             </select>
-         
+
         </div>
         <div class="d-flex flex-column mb-7 fv-row commercial_show business_show">
 
@@ -154,7 +154,7 @@
                 <option value="{{$property_type->value}}" {{((old('commercial_property_type2') ?? isset($property->commercial_property_type2)?$property->commercial_property_type2:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                 @endforeach
             </select>
-        
+
 
         </div>
         <div class="d-flex flex-column mb-7 fv-row commercial_show business_show">
@@ -166,7 +166,7 @@
                 <option value="{{$property_type->value}}" {{((old('commercial_property_type3') ?? isset($property->commercial_property_type3)?$property->commercial_property_type3:'')==$property_type->value)?'selected':'' }}>{{$property_type->value}}</option>
                 @endforeach
             </select>
-        
+
 
         </div>
 
@@ -188,7 +188,7 @@
             @enderror
         </div>
 
-        <div class="d-flex flex-column mb-8 fv-row d-none">
+        {{--<div class="d-flex flex-column mb-8 fv-row ">
 
             <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Agents</span>
@@ -203,7 +203,7 @@
                 @endforeach
                 @endif
             </select>
-        </div>
+        </div>--}}
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
 
             <label class="fs-6 fw-bold mb-2">Rental Per Week</label>
@@ -262,7 +262,6 @@
             </div>
             @endif
             <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
-
                 <label class="required fs-6 fw-bold mb-2"> Normal Price</label>
                 <div class="position-relative w-md-400px me-md-2">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -275,8 +274,6 @@
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
-
-
             </div>
             <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
 
@@ -356,7 +353,7 @@
                 <option value="Exclusive" {{((old('commercial_exclusivity') ?? isset($property->commercial_exclusivity)?$property->commercial_exclusivity:'')=='Exclusive')?'selected':'' }}>Exclusive</option>
                 <option value="Open" {{((old('commercial_exclusivity') ?? isset($property->commercial_exclusivity)?$property->commercial_exclusivity:'')=='Open')?'selected':'' }}>Open</option>
             </select>
-   
+
         </div>
 
 
@@ -368,7 +365,7 @@
                 <option value="Inclusive" {{((old('commercial_tax') ?? isset($property->commercial_tax)?$property->commercial_tax:'')=='Inclusive')?'selected':'' }}>Inclusive</option>
                 <option value="Not Applicable" {{((old('commercial_tax') ?? isset($property->commercial_tax)?$property->commercial_tax:'')=='Not Applicable')?'selected':'' }}>Not Applicable</option>
             </select>
-    
+
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row business_show">
@@ -386,12 +383,12 @@
 
 
             <input class="form-control form-control-solid" placeholder="" name="commercial_roi" value="{{old('commercial_roi') ?? isset($property->commercial_roi)?$property->commercial_roi:''}}" />
-          
+
         </div>
 </div>
 
 <br>
-<div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_lease_show" data-bs-toggle="collapse" href="#lease_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Lease Details
+<div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_lease_show" data-bs-toggle="collapse" href="#lease_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details" style="display: none;">Lease Details
     <span class="ms-2 rotate-180">
 
         <span class="svg-icon svg-icon-3">
@@ -402,7 +399,7 @@
 
     </span>
 </div>
-<div id="lease_details" class="collapse show commercial_lease_show">
+<div id="" class="collapse show commercial_lease_show" style="display: none;">
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">Rental Per Annum</label>
         <input class="form-control form-control-solid" placeholder="" type="number" name="commercial_rental_per_annum" value="{{old('commercial_rental_per_annum') ?? isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}}" />
@@ -449,6 +446,55 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
     </div>
+</div>
+<div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_sale_show" data-bs-toggle="collapse" href="#sale_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Sale Details
+    <span class="ms-2 rotate-180">
+        <span class="svg-icon svg-icon-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
+            </svg>
+        </span>
+
+    </span>
+</div>
+<div id="" class="collapse show commercial_sale_show">
+
+    <div class="d-flex flex-column mb-7 fv-row residential_sale_show land_show commercial_sale_show rural_show">
+
+        <label class="required fs-6 fw-bold mb-2">Authority</label>
+
+        <select class="form-control form-control-solid " name="authority" data-control="select2" data-hide-search="true" data-placeholder="Select a Authority">
+            <option value=""></option>
+            <option value="Auction" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Auction')?'selected':'' }}>Auction</option>
+            <option value="Exclusive" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Exclusive')?'selected':'' }}>Exclusive</option>
+            <option value="Multi List" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Multi List')?'selected':'' }}>Multi List</option>
+            <option value="Conjunctional" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Conjunctional')?'selected':'' }}>Conjunctional</option>
+            <option value="Open" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Open')?'selected':'' }}>Open</option>
+            <option value="Sale by Negotiation" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Sale by Negotiation')?'selected':'' }}>Sale by Negotiation</option>
+        </select>
+        @error('authority')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+    </div>
+    <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
+        <label class="required fs-6 fw-bold mb-2"> Normal Price</label>
+        <div class="position-relative w-md-400px me-md-2">
+            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+            <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
+                <i class="bi bi-currency-dollar"></i>
+            </span>
+            <!--end::Svg Icon-->
+            <input type="number" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
+            @error('normal_price')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+        </div>
+    </div>
+    <div class="d-flex flex-column mb-7 fv-row commercial_sale_show">
+        <label class="fs-6 fw-bold mb-2">Return on Investment</label>
+        <input class="form-control form-control-solid" placeholder="" name="commercial_roi" value="{{old('commercial_roi') ?? isset($property->commercial_roi)?$property->commercial_roi:''}}" />
+    </div>
+
 </div>
 <div class="fw-bolder fs-3 rotate collapsible mb-7 d-none" data-bs-toggle="collapse" href="#vender_details" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Vendor details
     <span class="ms-2 rotate-180">
@@ -600,3 +646,4 @@
 <button class="btn btn-primary">Save</button>
 </form>
 </div>
+

@@ -115,14 +115,6 @@
         display: block !important;
     }
 
-    .commercial_lease_show {
-        display: block !important;
-    }
-
-    .commercial_sale_show {
-        display: block !important;
-    }
-
     .commercial_hide {
         display: none !important;
     }
@@ -356,6 +348,7 @@
     <div id="map" style="display:none;"></div>
     @endsection
     @section('script')
+    
     <script>
         // tagging support
         $('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
@@ -436,5 +429,19 @@
             }
         }
     </script>
-
+    <script>
+        $(document).on('change', '#property_commercial_listing_type', function() {
+            if ($(this).val() == 'commercial_sale') {
+                $('.commercial_lease_show').hide();
+                $('.commercial_sale_show').show();
+            } else if ($(this).val() == 'commercial_lease') {
+                $('.commercial_sale_show').hide();
+                $('.commercial_lease_show').show();
+            } else if ($(this).val() == 'commercial_sale_and_lease') {
+                $('.commercial_sale_show').hide();
+                $('.commercial_lease_show').hide();
+                $('.commercial_sale_and_lease_show').show();
+            }
+        });
+    </script>
     @endsection

@@ -286,18 +286,21 @@
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'land'])}}" class="menu-link px-3">Land</a>
 															</div>--}}
-															<div class="menu-item px-3">
+															{{--<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential'])}}" class="menu-link px-3">Residential</a>
-															</div>
+															</div>--}}
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'commercial'])}}" class="menu-link px-3">Commercial</a>
 															</div>
 															<div class="menu-item px-3">
+																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental'])}}" class="menu-link px-3">Residential Rental</a>
+															</div>
+															{{--<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'rural'])}}" class="menu-link px-3">Rural</a>
 															</div>
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'business'])}}" class="menu-link px-3">Business</a>
-															</div>
+															</div>--}}
 															{{--<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental','holiday' => 1])}}" class="menu-link px-3">Holiday Rental</a>
 															</div>--}}
