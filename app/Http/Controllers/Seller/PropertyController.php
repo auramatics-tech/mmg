@@ -241,7 +241,8 @@ class PropertyController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = Auth::id();
         $property = Property::updateOrCreate(['id' => $request->id], $data);
-        return redirect()->route('seller.property_details_form', $property->id);
+        $url = route('seller.property_details_form', $property->id)."?listing_type=".$data['form_type'];
+        return redirect( $url );
     }
 
     public function save_property_details(Request $request)

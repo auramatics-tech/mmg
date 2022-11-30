@@ -69,6 +69,42 @@
     .su_flex_block {
         display: flex;
     }
+    .su_selector_input{
+        width: 100%;
+    }
+    .su_selector_input:focus {
+    border-color: #e8e8e8 !important;
+    }
+    .su_div_height{
+        height: 60vh;
+        overflow-y: scroll;
+    }
+    .su_input_style{
+        color: var(--ltn__paragraph-color);
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        font-family: var(--ltn__body-font);
+        line-height: 1.8;
+    }
+    .su_sub_heading{
+        font-weight: 800 !important;
+    }
+    .su_hr{
+        border-top: 1px solid #dee2e6 !important;
+        margin: 15px 0px !important;
+    }
+    .m_t_b_10{
+        margin: 0px 0px 20px 0px;
+    }
+    .su_product_img>a{
+        width: 100%;
+        height: 230px;
+    }
+    .su_product_img_inside{
+        width: 100%;
+        height: 100%;
+    }
 
     @media screen and (max-width: 991px) {
         .su_flex_block {
@@ -85,6 +121,54 @@
         .su_modal_dialog {
             max-width: 100%;
         }
+    }
+</style>
+<style>
+    .cal {
+        margin-right: 4px;
+    }
+
+    .ltn__product-item-4 .product-info {
+        padding: 20px 16px 1px;
+    }
+
+    .custom_img {
+        width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .leave-rating label {
+        color: #ffc107;
+    }
+
+    .leave-rating input {
+        display: none;
+    }
+
+    .leave-rating .star_color {
+        color: #ccc;
+    }
+
+    .agency_leave_a_review .btn {
+        background: #00B3FF;
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        transition: all .5s ease;
+    }
+
+    #lightcase-overlay {
+        z-index: 9999;
+        background: #a5a139 !important;
+
+    }
+
+    .img_len a {
+        height: calc(100vh - 220px) !important;
     }
 </style>
 @endsection
@@ -311,6 +395,43 @@
 </div>
 <!-- BREADCRUMB AREA END --> --}}
 <!-- PRODUCT DETAILS AREA START -->
+<div class="ltn__img-slider-area mb-50">
+    <div class="container-fluid">
+        <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
+           
+        <div class="col-lg-12">
+                <div class="ltn__img-slide-item-4 img_len">
+                    <a href="{{asset('storage/property_images/16692713461.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16692713461.jpg')}}" alt="Image" class="custom_img">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="ltn__img-slide-item-4 img_len">
+                    <a href="{{asset('storage/property_images/16692713450.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16692713450.jpg')}}" alt="Image" class="custom_img">
+                    </a>
+                </div>
+            </div> 
+            <div class="col-lg-12">
+                <div class="ltn__img-slide-item-4 img_len">
+                    <a href="{{asset('storage/property_images/16692713463.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16692713463.jpg')}}" alt="Image" class="custom_img">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="ltn__img-slide-item-4 img_len">
+                    <a href="{{asset('storage/property_images/16697024065.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16697024065.jpg')}}" alt="Image" class="custom_img">
+                    </a>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+</div>
+
 <div class="ltn__product-area ltn__product-gutter mb-120">
     <div class="container">
         <div class="row">
@@ -344,7 +465,8 @@
                             </form>
                         </li>
                         <li>
-                            {{--<div class="short-by text-center">
+                            {{--
+                                <div class="short-by text-center">
                                 <select class="nice-select">
                                     <option>Per Page: 12</option>
                                     <option>Per Page: 20</option>
@@ -352,7 +474,8 @@
                                     <option>Per Page: 50</option>
                                     <option>Per Page: 100</option>
                                 </select>
-                            </div>--}}
+                            </div>
+                            --}}
                         </li>
                         <li class="ms-auto">
                             <button class="btn theme-btn-1" data-bs-toggle="modal" data-bs-target="#filter_model">Filter</button>
@@ -368,8 +491,8 @@
                                     </div>
                                     <div class="modal-body p-0 mt-4">
                                        
-                                        <div class="row">
-                                        <!-- <h4 class="ltn__widget-title m_t_b_20">Category</h4>
+                                        <div class="row su_div_height">
+                                        <h4 class="ltn__widget-title m_t_b_20">Category</h4>
                                             <div class="col-lg-6 col-md-12 col-12">
                                                 <li class="su_listcat">
                                                     <label class="checkbox-item">Buy
@@ -398,9 +521,9 @@
                                                     </label>
                                                     <span class="categorey-no"></span>
                                                 </li>
-                                            </div> -->
-                                            <h4 class="ltn__widget-title m_t_b_20">Property Type</h4>
-                                            <form class="su_flex_block p-0" action="" id="form2">
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
                                                 <div class="col-lg-6 col-md-12 col-12">
                                                     <li class="su_listcat">
                                                         <label class="checkbox-item">Residental
@@ -419,8 +542,8 @@
                                                         <span class="categorey-no"></span>
                                                     </li>
                                                 </div>
-                                            </form>
-                                            <h4 class="ltn__widget-title m_t_b_20">Residental</h4>
+                                                 <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Residental</h4>
                                             <div class="row" action="" id="">
                                                 <div class="col-lg-6 col-md-12 col-12">
                                                     <li class="su_listcat">
@@ -477,18 +600,349 @@
                                                     </li>
                                                 </div>
                                             </div>
-                                            <h4 class="ltn__widget-title m_t_b_20">Filter By Price</h4>
-                                            <form class="su_flex_block p-0" action="" id="form4">
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">About the property</h4>
+                                            <div class="row">
+                                                <div class="su_sub_heading">Bedrooms</div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <label class="su_input_style">Min</label>
+                                                    <br>
+                                                    <select class="su_selector_input" id="" name="" form="">
+                                                    <option value="volvo">0</option>
+                                                    <option value="saab">1</option>
+                                                    <option value="opel">2</option>
+                                                    <option value="audi">3</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <label class="su_input_style">Max</label>
+                                                    <br>
+                                                    <select class="su_selector_input" id="" name="" form="">
+                                                    <option value="volvo">0</option>
+                                                    <option value="saab">1</option>
+                                                    <option value="opel">2</option>
+                                                    <option value="audi">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Bathrooms</h4>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <select class="su_selector_input" id="" name="" form="">
+                                                    <option value="volvo">0</option>
+                                                    <option value="saab">1</option>
+                                                    <option value="opel">2</option>
+                                                    <option value="audi">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Car spaces</h4>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <select class="su_selector_input" id="" name="" form="">
+                                                    <option value="volvo">0</option>
+                                                    <option value="saab">1</option>
+                                                    <option value="opel">2</option>
+                                                    <option value="audi">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Land size</h4>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <label class="su_input_style">Min</label>
+                                                    <br>
+                                                    <select class="su_selector_input" id="" name="" form="">
+                                                    <option value="volvo">0</option>
+                                                    <option value="saab">1</option>
+                                                    <option value="opel">2</option>
+                                                    <option value="audi">3</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <label class="su_input_style">Max</label>
+                                                    <br>
+                                                    <select class="su_selector_input" id="" name="" form="">
+                                                    <option value="volvo">0</option>
+                                                    <option value="saab">1</option>
+                                                    <option value="opel">2</option>
+                                                    <option value="audi">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">New or established property</h4>
+                                            <div class="row" action="" id="">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">New
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Established
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Outdoor features</h4>
+                                            <div class="row" action="" id="">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Swimming pool
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Garage
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Balcony
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Outdoor area
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Undercover parking
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Shed
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Fully fenced
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Outdoor spa
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Tennis court
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Indoor features</h4>
+                                            <div class="row" action="" id="">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Ensuite
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Dishwasher
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Study
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Built in robes
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Alarm system
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Broadband
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Floorboards
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Gym
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Rumpus room
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Workshop
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                            <hr class="su_hr">
+                                            <h4 class="ltn__widget-title m_t_b_10">Climate control & energy</h4>
+                                            <div class="row" action="" id="">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Air conditioning
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Solar panels
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Heating
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">High energy efficiency
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Water tank
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <li class="su_listcat">
+                                                        <label class="checkbox-item">Solar hot water
+                                                            <input type="checkbox" class="all_checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <span class="categorey-no"></span>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                          
+                                            <!-- <h4 class="ltn__widget-title m_t_b_20">Filter By Price</h4>
                                                 <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
                                                     <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
                                                     <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
-                                                </div>
-                                            </form>
+                                                </div> -->
                                         </div>
                                     </div>
-                                    <div class="modal-footer p-0">
+                                    <div class="modal-footer pt-4 pb-0">
                                         <button type="button" class="btn theme-btn-1">Search</button>
                                     </div>
                                 </div>
@@ -785,16 +1239,18 @@
                         </ul>
                     </div>
                     <!-- Price Filter Widget -->
-                    {{--<div class="widget ltn__price-filter-widget d-none">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Filter by price</h4>
-                        <div class="price_filter">
-                            <div class="price_slider_amount">
-                                <input type="submit" value="Your range:" />
-                                <input type="text" class="amount" id="price_range" name="price" placeholder="Add Your Price"  />
+                        {{--
+                        <div class="widget ltn__price-filter-widget d-none">
+                            <h4 class="ltn__widget-title ltn__widget-title-border">Filter by price</h4>
+                            <div class="price_filter">
+                                <div class="price_slider_amount">
+                                    <input type="submit" value="Your range:" />
+                                    <input type="text" class="amount" id="price_range" name="price" placeholder="Add Your Price"  />
+                                </div>
+                                <div class="slider-range"></div>
                             </div>
-                            <div class="slider-range"></div>
-    </div>
-</div>--}}
+                        </div>
+                        --}}
                     <!-- Top Rated Product Widget -->
                     <div class="widget ltn__top-rated-product-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Top Rated Product</h4>
