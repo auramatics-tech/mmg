@@ -188,7 +188,7 @@
             @enderror
         </div>
 
-        {{--<div class="d-flex flex-column mb-8 fv-row ">
+        <div class="d-flex flex-column mb-8 fv-row ">
 
             <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Agents</span>
@@ -203,7 +203,26 @@
                 @endforeach
                 @endif
             </select>
-        </div>--}}
+        </div>
+        <div class="col-md-6 mb-8 fv-row">
+
+            <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
+
+
+            <input class="form-control form-control-solid" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
+
+        </div>
+        <div class="col-md-6 mb-8 fv-row ">
+                <label class=" fs-6 fw-bold mb-2"> Normal Price</label>
+                <div class="position-relative w-md-400px me-md-2">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                    <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
+                        <i class="bi bi-currency-dollar"></i>
+                    </span>
+                    <!--end::Svg Icon-->
+                    <input type="number" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
+                </div>
+            </div>
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
 
             <label class="fs-6 fw-bold mb-2">Rental Per Week</label>
@@ -416,7 +435,7 @@
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="col-md-6 fv-row residential_rental_hide commercial_sale_show">
+        <div class="col-md-6 fv-row ">
             <label class="required fs-6 fw-bold mb-2">PSM/PA Max</label>
             <input type="date" class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_max" value="{{old('commercial_psm_pa_max') ?? isset($property->commercial_psm_pa_max)?$property->commercial_psm_pa_max:''}}" />
             @error('commercial_psm_pa_max')
@@ -621,24 +640,24 @@
     <div class="d-flex flex-column mb-7 fv-row">
         <label class="required fs-6 fw-bold mb-2">What are the three things that you love most about your home ?</label>
         <textarea name="about_home" class="form-control" id="">{{ isset($property->about_home) ? $property->about_home: old('about_home') }}</textarea>
-        @error('about_home')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-    </div>
-    <div class="d-flex flex-column mb-7 fv-row">
-        <label class="fs-6 fw-bold mb-2">What are the three things you love most about your home's location ?</label>
-        <textarea name="about_location" class="form-control" id="">{{ isset($property->about_location) ? $property->about_location : old('about_location') }}</textarea>
-    </div>
-    <div class="d-flex flex-column mb-7 fv-row">
-        <label class="required fs-6 fw-bold mb-2">If applicable , since being in the home what improvments have you made ? </label>
-        <textarea name="about_improvements" class="form-control" id="">{{ isset($property->about_improvements) ? $property->about_improvements: old('about_improvements') }}</textarea>
-        @error('about_improvements')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-    </div>
-  <div class="d-flex flex-column mb-7 fv-row">
-        <label class="required fs-6 fw-bold mb-2">Internal Notes</label>
-        <input class="form-control form-control-solid" placeholder="" name="internal_notes" value="{{old('internal_notes') ?? isset($property->internal_notes)?$property->internal_notes:''}}" />
+@error('about_home')
+<span class="text-danger">{{$message}}</span>
+@enderror
+</div>
+<div class="d-flex flex-column mb-7 fv-row">
+    <label class="fs-6 fw-bold mb-2">What are the three things you love most about your home's location ?</label>
+    <textarea name="about_location" class="form-control" id="">{{ isset($property->about_location) ? $property->about_location : old('about_location') }}</textarea>
+</div>
+<div class="d-flex flex-column mb-7 fv-row">
+    <label class="required fs-6 fw-bold mb-2">If applicable , since being in the home what improvments have you made ? </label>
+    <textarea name="about_improvements" class="form-control" id="">{{ isset($property->about_improvements) ? $property->about_improvements: old('about_improvements') }}</textarea>
+    @error('about_improvements')
+    <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+<div class="d-flex flex-column mb-7 fv-row">
+    <label class="required fs-6 fw-bold mb-2">Internal Notes</label>
+    <input class="form-control form-control-solid" placeholder="" name="internal_notes" value="{{old('internal_notes') ?? isset($property->internal_notes)?$property->internal_notes:''}}" />
 </div>
 </div> --}}
 
@@ -646,4 +665,3 @@
 <button class="btn btn-primary">Save</button>
 </form>
 </div>
-
