@@ -2,7 +2,7 @@
     <form action="{{route('seller.save_property_details')}}" method="POST" onsubmit="setFormSubmitting()">
         @csrf
         <input type="hidden" name="property_id" value="{{$property_id}}">
-        <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#about_property" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">About the property
+        <div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_hide " data-bs-toggle="collapse" href="#about_property" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">About the property
             <span class="ms-2 rotate-180">
 
                 <span class="svg-icon svg-icon-3">
@@ -14,90 +14,72 @@
             </span>
         </div>
 
-        <div id="about_property" class="collapse show">
+        <div id="about_property" class="collapse show commercial_hide">
             <div class="row g-9 mb-8">
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Bedrooms</label>
+                    <label class="fs-6 fw-bold mb-2">Bedrooms</label>
                     <select name="bedrooms" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('bedrooms') ?? isset($property_details->bedrooms)?$property_details->bedrooms:'')!!}
                     </select>
-                    @error('bedrooms')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                    
                     <div class="fv-plugins-message-container invalid-feedback"></div>
                 </div>
 
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Bathrooms</label>
+                    <label class="fs-6 fw-bold mb-2">Bathrooms</label>
                     <select name="bathrooms" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('bathrooms') ?? isset($property_details->bathrooms)?$property_details->bathrooms:'')!!}
                     </select>
-                    @error('bathrooms')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                   
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Ensuites</label>
+                    <label class="fs-6 fw-bold mb-2">Ensuites</label>
                     <select name="ensuites" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('ensuites') ?? isset($property_details->ensuites)?$property_details->ensuites:'')!!}
                     </select>
-                    @error('ensuites')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                  
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Toilets</label>
+                    <label class="fs-6 fw-bold mb-2">Toilets</label>
                     <select name="toilets" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('toilets') ?? isset($property_details->toilets)?$property_details->toilets:'')!!}
                     </select>
-                    @error('toilets')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+        
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Garage spaces</label>
+                    <label class="fs-6 fw-bold mb-2">Garage spaces</label>
                     <select name="garage_spaces" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('garage_spaces') ?? isset($property_details->garage_spaces)?$property_details->garage_spaces:'')!!}
                     </select>
-                    @error('garage_spaces')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Carport spaces</label>
+                    <label class="fs-6 fw-bold mb-2">Carport spaces</label>
                     <select name="carport_spaces" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('carport_spaces') ?? isset($property_details->carport_spaces)?$property_details->carport_spaces:'')!!}
                     </select>
-                    @error('carport_spaces')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+            
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Open car spaces</label>
+                    <label class="fs-6 fw-bold mb-2">Open car spaces</label>
                     <select name="open_car_spaces" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('open_car_spaces') ?? isset($property_details->open_car_spaces)?$property_details->open_car_spaces:'')!!}
                     </select>
-                    @error('open_car_spaces')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+               
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Living areas</label>
+                    <label class="fs-6 fw-bold mb-2">Living areas</label>
                     <select name="living_areas" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         {!!number_dropdown(old('living_areas') ?? isset($property_details->living_areas)?$property_details->living_areas:'')!!}
                     </select>
-                    @error('living_areas')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                   
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">House size</label>
+                    <label class=" fs-6 fw-bold mb-2">House size</label>
                     <div class="row">
                         <div class="col-6">
                             <input class="form-control form-control-solid" placeholder="" name="house_sizes" value="{{old('house_sizes') ?? isset($property_details->house_sizes)?$property_details->house_sizes:''}}" />
-                            @error('house_sizes')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
+                      
                         </div>
                         <div class="col-6">
                             <select name="house_size_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
@@ -110,13 +92,11 @@
                     </div>
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Land size</label>
+                    <label class="fs-6 fw-bold mb-2">Land size</label>
                     <div class="row">
                         <div class="col-6">
                             <input class="form-control form-control-solid" placeholder="" name="land_size" value="{{old('land_size') ?? isset($property_details->land_size)?$property_details->land_size:''}}" />
-                            @error('land_size')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
+                     
                         </div>
                         <div class="col-6">
                             <select name="land_size_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
@@ -130,9 +110,9 @@
                         </div>
                     </div>
                 </div>
-                {{-- 
+            
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Energy efficiency rating</label>
+                    <label class="fs-6 fw-bold mb-2">Energy efficiency rating</label>
                     <select name="energy_efficiency_rating" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         <option value=""></option>
                         <option value="0" {{((old('energy_efficiency_rating') ?? isset($property_details->energy_efficiency_rating)?$property_details->energy_efficiency_rating:'')=='0')?'selected':'' }}>0</option>
@@ -159,14 +139,14 @@
                     </select>
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Municipality</label>
+                    <label class="fs-6 fw-bold mb-2">Municipality</label>
                     <input class="form-control form-control-solid" placeholder="" name="municipality" value="{{old('municipality') ?? isset($property_details->municipality)?$property_details->municipality:''}}" />
                 </div>
                 @php
                 $tags = old('tags') ?? isset($property_details->tags)?json_decode($property_details->tags):'';
                 @endphp
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Tags</label>
+                    <label class=" fs-6 fw-bold mb-2">Tags</label>
                     <select class="form-control select2" id="kt_select2_11" multiple name="tags[]">
                         @if(is_array($tags) && count($tags))
                         @foreach($tags as $tag)
@@ -176,40 +156,40 @@
                     </select>
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">SMS Code</label>
+                    <label class=" fs-6 fw-bold mb-2">SMS Code</label>
                     <input class="form-control form-control-solid" placeholder="" name="sms_code" value="{{old('sms_code') ?? isset($property_details->sms_code)?$property_details->sms_code:''}}" />
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Test URL</label>
+                    <label class=" fs-6 fw-bold mb-2">Test URL</label>
                     <input class="form-control form-control-solid" placeholder="" name="test_url" value="{{old('test_url') ?? isset($property_details->test_url)?$property_details->test_url:''}}" />
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Sample Test</label>
+                    <label class=" fs-6 fw-bold mb-2">Sample Test</label>
                     <input class="form-control form-control-solid" placeholder="" name="sample_test" value="{{old('sample_test') ?? isset($property_details->sample_test)?$property_details->sample_test:''}}" />
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Utilities</label>
+                    <label class=" fs-6 fw-bold mb-2">Utilities</label>
                     <input class="form-control form-control-solid" placeholder="" name="utilities" value="{{old('utilities') ?? isset($property_details->utilities)?$property_details->utilities:''}}" />
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Rental</label>
+                    <label class=" fs-6 fw-bold mb-2">Rental</label>
                     <input class="form-control form-control-solid" placeholder="" name="rental" value="{{old('rental') ?? isset($property_details->rental)?$property_details->rental:''}}" />
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">View Docs</label>
+                    <label class="fs-6 fw-bold mb-2">View Docs</label>
                     <input class="form-control form-control-solid" placeholder="" name="view_docs" value="{{old('view_docs') ?? isset($property_details->view_docs)?$property_details->view_docs:''}}" />
                 </div>
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">RESO Offer Link</label>
+                    <label class=" fs-6 fw-bold mb-2">RESO Offer Link</label>
                     <input class="form-control form-control-solid" placeholder="" name="reso_offer_link" value="{{old('reso_offer_link') ?? isset($property_details->reso_offer_link)?$property_details->reso_offer_link:''}}" />
                 </div>
-                --}}
+          
             </div>
         </div>
 
         <br>
 
-        <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#property_feature" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Property features
+        <div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_hide" data-bs-toggle="collapse" href="#property_feature" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Property features
             <span class="ms-2 rotate-180">
 
                 <span class="svg-icon svg-icon-3">
@@ -221,7 +201,7 @@
             </span>
         </div>
 
-        <div id="property_feature" class="collapse show">
+        <div id="property_feature" class="collapse show commercial_hide">
 
             {{--
             <div class="col-md-12 fv-row my-4">
@@ -289,14 +269,12 @@
             <div class="col-md-12 fv-row mb-4">
                 <label class="required fs-6 fw-bold mb-2">Other Features</label>
                 <textarea class="form-control form-control-solid" name="other_features" rows="5" cols="30">{{old('other_features') ?? (isset($property_details->other_features) && $property_details->other_features)?$property_details->other_features:''}} </textarea>
-                @error('other_features')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
+             
             </div>
 
         </div>
 
-        <div class="row" id="">
+        <div class="row residential_sale_hide residential_rental_hide " id="" >
                 <div class="col-lg-6 col-md-6 col-12">
                     <label class=" fs-6 fw-bold mb-2">Total Floor Area</label>
                     <div class="row">

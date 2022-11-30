@@ -172,7 +172,7 @@
 
         <div class="d-flex flex-column mb-7 fv-row residential_sale_show land_show commercial_sale_show rural_show">
 
-            <label class="required fs-6 fw-bold mb-2">Authority</label>
+            <label class=" fs-6 fw-bold mb-2">Authority</label>
 
             <select class="form-control form-control-solid " name="authority" data-control="select2" data-hide-search="true" data-placeholder="Select a Authority">
                 <option value=""></option>
@@ -183,12 +183,9 @@
                 <option value="Open" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Open')?'selected':'' }}>Open</option>
                 <option value="Sale by Negotiation" {{((old('authority') ?? isset($property->authority)?$property->authority:'')=='Sale by Negotiation')?'selected':'' }}>Sale by Negotiation</option>
             </select>
-            @error('authority')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
         </div>
 
-        <div class="d-flex flex-column mb-8 fv-row ">
+       {{--<div class="d-flex flex-column mb-8 fv-row ">
 
             <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Agents</span>
@@ -203,7 +200,7 @@
                 @endforeach
                 @endif
             </select>
-        </div>
+        </div>--}}
         <div class="col-md-6 mb-8 fv-row">
 
             <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
@@ -254,7 +251,7 @@
 
         </div>
         <div class="col-md-6 fv-row residential_rental_show ">
-        <label class="required fs-6 fw-bold mb-8"> Normal Price</label>
+        <label class="fs-6 fw-bold mb-8"> Normal Price</label>
         <div class="position-relative w-md-400px me-md-2">
             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
             <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
@@ -262,9 +259,7 @@
             </span>
             <!--end::Svg Icon-->
             <input type="number" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
-            @error('normal_price')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
+        
         </div>
     </div>
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
@@ -295,7 +290,7 @@
             </div>
             @endif
             <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
-                <label class="required fs-6 fw-bold mb-2"> Normal Price</label>
+                <label class="fs-6 fw-bold mb-2"> Normal Price</label>
                 <div class="position-relative w-md-400px me-md-2">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
@@ -303,14 +298,12 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="number" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
-                    @error('normal_price')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                
                 </div>
             </div>
             <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
 
-                <label class="required fs-6 fw-bold mb-2"> Desired Price</label>
+                <label class=" fs-6 fw-bold mb-2"> Desired Price</label>
 
                 <div class="position-relative w-md-400px me-md-2">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -319,9 +312,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="number" class="form-control form-control-solid ps-10" name="desired_price" value="{{old('desired_price') ?? isset($property->desired_price)?$property->desired_price:''}}">
-                    @error('desired_price')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                 
                 </div>
 
             </div>
@@ -443,18 +434,13 @@
 
     <div class="row g-9 mb-7">
         <div class="col-md-6 fv-row">
-            <label class="required fs-6 fw-bold mb-2">PSM/PA Min</label>
-            <input class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_min" type="date" value="{{old('commercial_psm_pa_min') ?? isset($property->commercial_psm_pa_min)?$property->commercial_psm_pa_min:''}}" />
-            @error('commercial_psm_pa_min')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
+            <label class="fs-6 fw-bold mb-2">PSM/PA Min</label>
+            <input class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_min" type="text" value="{{old('commercial_psm_pa_min') ?? isset($property->commercial_psm_pa_min)?$property->commercial_psm_pa_min:''}}" />
         </div>
         <div class="col-md-6 fv-row ">
-            <label class="required fs-6 fw-bold mb-2">PSM/PA Max</label>
-            <input type="date" class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_max" value="{{old('commercial_psm_pa_max') ?? isset($property->commercial_psm_pa_max)?$property->commercial_psm_pa_max:''}}" />
-            @error('commercial_psm_pa_max')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
+            <label class="fs-6 fw-bold mb-2">PSM/PA Max</label>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="commercial_psm_pa_max" value="{{old('commercial_psm_pa_max') ?? isset($property->commercial_psm_pa_max)?$property->commercial_psm_pa_max:''}}" />
+       
         </div>
 
     </div>
