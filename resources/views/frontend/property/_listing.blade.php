@@ -15,20 +15,22 @@
                 @foreach($properties as $property)
                 <div class="col-xl-6 col-sm-6 col-12">
                     <div class="ltn__product-item ltn__product-item-4 ltn__grid-list-tab-menu ltn__product-item-5 text-center---">
-                        <div class="product-img">
-                            <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
+                        <div class="product-img su_product_img">
+                            <a href="{{route('property_details',$property->id)}}"><img class="su_product_img_inside" src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                             <div class="real-estate-agent">
-                                <div class="agent-img">
+                                <div class="w-100 agent-img">
                                     <a href=""><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                 </div>
                             </div>
                         </div>
                         <div class="product-info">
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badg">{{isset($property->status)?$property->status:''}}</li>
-                                </ul>
-                            </div>
+                            {{--
+                                <div class="product-badge">
+                                    <ul>
+                                        <li class="sale-badg">{{isset($property->status)?$property->status:''}}</li>
+                                    </ul>
+                                </div>
+                            --}}
                             <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($property->property_type)?$property->property_type:''}}</a></h2>
                             <div class="product-img-location">
                                 <ul>
@@ -38,13 +40,19 @@
                                 </ul>
                             </div>
                             <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
+                                <li>
+                                <i class="fa-solid fa-bed su_icon_clr"></i>
+                                <span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
                                     Bed
                                 </li>
-                                <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
+                                <li>
+                                <i class="fa-sharp fa-solid fa-shower su_icon_clr"></i>    
+                                <span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
                                     Bath
                                 </li>
-                                <li><span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
+                                <li>
+                                <i class="fa-solid fa-chart-area su_icon_clr"></i>  
+                                <span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
                                     {{isset($property->property_details)?$property->property_details->land_size_units:''}}
                                 </li>
                             </ul>

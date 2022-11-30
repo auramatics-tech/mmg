@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="{{asset('frontend/img/favicon.png')}}" type="image/x-icon" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="{{asset('frontend/css/font-icons.css')}}">
-    <!-- plugins css -->
+    <!-- plugins css --> 
     <link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
@@ -23,6 +23,11 @@
     
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
+    <style>
+        .su_icon_clr{
+            color: #ff5a3c;
+        }
+    </style>
     @yield('css')
 </head>
 

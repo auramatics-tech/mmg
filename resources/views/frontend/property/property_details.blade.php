@@ -278,6 +278,7 @@
 @endif
 
 <!-- IMAGE SLIDER AREA START (img-slider-3)  -->
+{{--
 <div class="ltn__img-slider-area mb-50">
     <div class="container-fluid">
         <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
@@ -294,7 +295,8 @@
             @endif
         </div>
     </div>
-</div>
+</div> 
+--}}
 <!-- IMAGE SLIDER AREA END -->
 
 <!-- SHOP DETAILS AREA START -->
