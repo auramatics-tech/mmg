@@ -295,6 +295,17 @@
                     <textarea name="note" class="form-control form-control-solid" id="" cols="30" rows="5">{{old('note') ?? isset($property_offer->note)?$property_offer->note:''}}</textarea>
                 </div>
                 <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> My Offer</button>
+              <div>
+                <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
+                <input class="form-control form-control-solid" id="expiry_date" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
+              </div>
+                 <div class="d-flex">
+                <button type="submit" class="button si_btn_bid btn_one mt-2 mb-5" id="">30 days</button>
+                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">60 days</button>
+                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">90 days</button>
+                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">120 days</button>
+                <i class="fa fa-remove" style="margin-top:25px;"></i>
+               </div>
             </form>
             <div class="mb-5">
                 <div class="p-5 si_current_bids" bis_skin_checked="1">
@@ -305,26 +316,26 @@
         @if(count($property_summary))
         @foreach($property_summary as $property_bid_summary)
         <div class="col-lg-4 col-md-4 col-12">
-           {{-- <div class="listing-item" bis_skin_checked="1">
+            {{-- <div class="listing-item" bis_skin_checked="1">
                 <img src="{{isset($property_bid_summary->get_property_image)?asset('storage/property_images/'.$property_bid_summary->get_property_image->document):''}}" alt="">
-                <div class="listing-item-content" bis_skin_checked="1">
-                    <span>{{isset($property_bid_summary->address)?$property_bid_summary->address:''}}</span>
-                </div>
-            </div>--}}
-            <div class="boxed-widget opening-hours summary margin-top-0" bis_skin_checked="1">
-                <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
-                <ul>
-                    <li><b>PROPERTY TYPE</b> <span>{{isset($property_bid_summary->property_type)?$property_bid_summary->property_type:''}}</span></li>
-                    <li><b>PRICE</b> <span>${{isset($property_bid_summary->desired_price)?$property_bid_summary->desired_price:''}} - ${{isset($property_bid_summary->normal_price)?$property_bid_summary->normal_price:''}}</span></li>
-                    <li><b>BEDROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bedrooms:''}}</span></li>
-                    <li><b>BATHROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bathrooms:''}} </span></li>
-                    <li><b>LAND SIZE</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size:''}}&nbsp;{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size_units:''}}</span></li>
-                    <li style="text-align:center" class="pb-5 pt-5"><a href="{{route('property_details',$property_bid_summary->id)}}" class="button"><i class="fa fa-arrow-circle-left"></i> Back</a></li>
-                </ul>
+            <div class="listing-item-content" bis_skin_checked="1">
+                <span>{{isset($property_bid_summary->address)?$property_bid_summary->address:''}}</span>
             </div>
-            @endforeach
-            @endif
+        </div>--}}
+        <div class="boxed-widget opening-hours summary margin-top-0" bis_skin_checked="1">
+            <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
+            <ul>
+                <li><b>PROPERTY TYPE</b> <span>{{isset($property_bid_summary->property_type)?$property_bid_summary->property_type:''}}</span></li>
+                <li><b>PRICE</b> <span>${{isset($property_bid_summary->desired_price)?$property_bid_summary->desired_price:''}} - ${{isset($property_bid_summary->normal_price)?$property_bid_summary->normal_price:''}}</span></li>
+                <li><b>BEDROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bedrooms:''}}</span></li>
+                <li><b>BATHROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bathrooms:''}} </span></li>
+                <li><b>LAND SIZE</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size:''}}&nbsp;{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size_units:''}}</span></li>
+                <li style="text-align:center" class="pb-5 pt-5"><a href="{{route('property_details',$property_bid_summary->id)}}" class="button"><i class="fa fa-arrow-circle-left"></i> Back</a></li>
+            </ul>
         </div>
+        @endforeach
+        @endif
+    </div>
     </div>
 </section>
 @endsection
@@ -336,8 +347,8 @@
             var total_price = 0;
         } else {
             var value_price = $('#offer_price_input').val()
-            value_price = value_price.replace('$','')
-            value_price = value_price.replace(',','')
+            value_price = value_price.replace('$', '')
+            value_price = value_price.replace(',', '')
             var total_price = parseFloat(value_price);
         }
         var all_price = price + total_price;
@@ -347,5 +358,11 @@
         $('#offer_price_input').val('')
     })
 </script>
+<script>
+ $(document).on('click', '.btn_one', function() {
+    
+
+ });
+    </script>
 
 @endsection
