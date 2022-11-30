@@ -1471,8 +1471,8 @@
             dots: false,
             infinite: true,
             speed: 300,
-            autoplay: true,
-            autoplaySpeed: 1500,
+            // autoplay: true,
+            // autoplaySpeed: 1500,
             slidesToShow: 1,
             slidesToScroll: 1,
             // centerMode: true,
@@ -1485,8 +1485,8 @@
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 1500,
+                        // autoplay: true,
+                        // autoplaySpeed: 1500,
                         // centerMode: true,
                         // centerPadding: '250px',
                     }
@@ -1496,8 +1496,8 @@
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 1500,
+                        // autoplay: true,
+                        // autoplaySpeed: 1500,
                         // centerMode: true,
                         // centerPadding: '200px',
                     }
@@ -1509,8 +1509,8 @@
                         dots: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 1500,
+                        // autoplay: true,
+                        // autoplaySpeed: 1500,
                         // centerMode: true,
                         // centerPadding: '150px',
                     }
@@ -1522,8 +1522,8 @@
                         dots: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 1500,
+                        // autoplay: true,
+                        // autoplaySpeed: 1500,
                         // centerMode: false,
                         // centerPadding: '0px',
                     }
@@ -1535,8 +1535,8 @@
                         dots: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 1500,
+                        // autoplay: true,
+                        // autoplaySpeed: 1500,
                         // centerMode: false,
                         // centerPadding: '0px',
                     }

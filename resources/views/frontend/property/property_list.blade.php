@@ -168,8 +168,35 @@
     }
 
     .img_len a {
-        height: calc(100vh - 220px) !important;
+        height: calc(100vh - 155px) !important;
     }
+    .ul_Residential_commercial{
+        display: flex;
+        width: 100%;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+    .ul_Residential_commercial li{
+        width: 50%;
+        border-bottom: black 1px solid;
+        text-align: center;
+        margin: 0;
+        padding: 10px 0px;
+    }
+    .su_res_com_btns{
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        background: none;
+    }
+    .su_res_com_btns:hover{
+        text-decoration: underline;
+    }
+   
+    .active{
+        border-bottom: #ff5a3c 3px solid !important;
+    }
+
 </style>
 @endsection
 @section('content')
@@ -408,22 +435,22 @@
             </div>
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16692713450.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16692713450.jpg')}}" alt="Image" class="custom_img">
+                    <a href="{{asset('storage/property_images/16692713462.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16692713462.jpg')}}" alt="Image" class="custom_img">
                     </a>
                 </div>
             </div> 
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16692713463.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16692713463.jpg')}}" alt="Image" class="custom_img">
+                    <a href="{{asset('storage/property_images/16692713464.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16692713464.jpg')}}" alt="Image" class="custom_img">
                     </a>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16697024065.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16697024065.jpg')}}" alt="Image" class="custom_img">
+                    <a href="{{asset('storage/property_images/16697024060.jpg')}}" data-rel="">
+                        <img src="{{asset('storage/property_images/16697024060.jpg')}}" alt="Image" class="custom_img">
                     </a>
                 </div>
             </div>
@@ -492,7 +519,15 @@
                                     <div class="modal-body p-0 mt-4">
                                        
                                         <div class="row su_div_height">
-                                        <h4 class="ltn__widget-title m_t_b_20">Category</h4>
+                                            <ul class="ul_Residential_commercial">
+                                                <li class="type_li">
+                                                    <button class="su_res_com_btns">Residential</button>
+                                                </li>
+                                                <li class="type_li">
+                                                    <button class="su_res_com_btns">commercial</button>
+                                                </li>
+                                            </ul>
+                                        <!-- <h4 class="ltn__widget-title m_t_b_20">Category</h4>
                                             <div class="col-lg-6 col-md-12 col-12">
                                                 <li class="su_listcat">
                                                     <label class="checkbox-item">Buy
@@ -521,12 +556,11 @@
                                                     </label>
                                                     <span class="categorey-no"></span>
                                                 </li>
-                                            </div>
-                                            <hr class="su_hr">
+                                            </div> -->
                                             <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
                                                 <div class="col-lg-6 col-md-12 col-12">
                                                     <li class="su_listcat">
-                                                        <label class="checkbox-item">Residental
+                                                        <label class="checkbox-item">For Purchase
                                                             <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("residential", request()->type)) checked @endif value="residential" name="type[]">
                                                             <span class="checkmark"></span>
                                                         </label>
@@ -535,7 +569,7 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-12">
                                                     <li class="su_listcat">
-                                                        <label class="checkbox-item">Commercial
+                                                        <label class="checkbox-item">For Rent
                                                             <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
                                                             <span class="checkmark"></span>
                                                         </label>
@@ -1481,6 +1515,12 @@
             }
         })
     });
+</script>
+<script>
+    $(document).on('click','.su_res_com_btns',function(){
+        $('.type_li').removeClass('active')
+        $(this).parent().addClass('active')
+    })
 </script>
 
 

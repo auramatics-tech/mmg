@@ -40,13 +40,22 @@
 
     #lightcase-overlay {
         z-index: 9999;
-        background: #a5a139 !important;
-
+        background: #6e6e6e75 !important;
+    }
+    #lightcase-info {
+        color: #ff5a3c !important;
+    }
+    #lightcase-caption {
+        color: #ff5a3c !important;
     }
 
     .img_len a {
         height: calc(100vh - 220px) !important;
     }
+    .property-detail-feature-list .property-detail-feature-list-item i {
+    min-width: 50px !important;
+    height: 50px !important;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -348,7 +357,7 @@
                         <ul>
                             <li>
                                 <div class="property-detail-feature-list-item">
-                                    <i class="flaticon-double-bed"></i>
+                                    <i class="fa-solid fa-bed su_icon_clr"></i>
                                     <div>
                                         <h6>Living Room</h6>
                                         <small>{{isset($property_details->living_areas)? $property_details->living_areas:''}}</small>
@@ -357,25 +366,16 @@
                             </li>
                             <li>
                                 <div class="property-detail-feature-list-item">
-                                    <i class="flaticon-double-bed"></i>
+                                    <i class="fa-solid fa-tree su_icon_clr"></i>
                                     <div>
                                         <h6>Garage</h6>
                                         <small>{{isset($property_details->garage_spaces)? $property_details->garage_spaces: ''}}</small>
                                     </div>
                                 </div>
                             </li>
-                            <!-- <li>
-                                    <div class="property-detail-feature-list-item">
-                                        <i class="flaticon-double-bed"></i>
-                                        <div>
-                                            <h6>Dining Area</h6>
-                                            <small>20 x 16 sq feet</small>
-                                        </div>
-                                    </div>
-                                </li> -->
                             <li>
                                 <div class="property-detail-feature-list-item">
-                                    <i class="flaticon-double-bed"></i>
+                                    <i class="fa-solid fa-bed su_icon_clr"></i>
                                     <div>
                                         <h6>Bedroom</h6>
                                         <small>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}</small>
@@ -384,40 +384,13 @@
                             </li>
                             <li>
                                 <div class="property-detail-feature-list-item">
-                                    <i class="flaticon-double-bed"></i>
+                                    <i class="fa-sharp fa-solid fa-shower su_icon_clr"></i>
                                     <div>
                                         <h6>Bathroom</h6>
                                         <small>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</small>
                                     </div>
                                 </div>
                             </li>
-                            <!-- <li>
-                                    <div class="property-detail-feature-list-item">
-                                        <i class="flaticon-double-bed"></i>
-                                        <div>
-                                            <h6>Gym Area</h6>
-                                            <small>20 x 16 sq feet</small>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="property-detail-feature-list-item">
-                                        <i class="flaticon-double-bed"></i>
-                                        <div>
-                                            <h6>Garden</h6>
-                                            <small>20 x 16 sq feet</small>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="property-detail-feature-list-item">
-                                        <i class="flaticon-double-bed"></i>
-                                        <div>
-                                            <h6>Parking</h6>
-                                            <small>20 x 16 sq feet</small>
-                                        </div>
-                                    </div>
-                                </li> -->
                         </ul>
                     </div>
                     @if(Auth::check())
@@ -429,33 +402,28 @@
 
                     <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1"> Book Inspection </a>
                     @endif
-                    <h4 class="title-2">From Our Gallery</h4>
+                    <h4 class="title-2">View Our Gallery</h4>
                     <div class="ltn__property-details-gallery mb-30">
                         <div class="row">
                             <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[0]->document))
-                                <a href="img/others/14.jpg" data-rel="lightcase:myCollection">
+                                <a href="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
-                                </a>
-                                @endif
-                                @if(isset($property->get_property_all_image[1]->document))
-                                <a href="img/others/15.jpg" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[1]->document)}}" alt="Image">
                                 </a>
                                 @endif
                             </div>
                             <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[2]->document))
-                                <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
+                                <a href="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
                                 </a>
                                 @endif
-                                @if(isset($property->get_property_all_image[3]->document))
-                                <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[3]->document)}}" alt="Image">
-                                </a>
-                                @endif
                             </div>
+                            @if(count($property->get_property_all_image))
+                            @foreach($property->get_property_all_image as $image)
+                            <a href="{{asset('storage/property_images/'.$image->document)}}" data-rel="lightcase:myCollection"></a>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="property-details-amenities mb-60">
