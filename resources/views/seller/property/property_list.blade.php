@@ -277,9 +277,7 @@
 														<!--begin::Menu-->
 													<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-180px py-4" data-kt-menu="true">
 															<!--begin::Menu item-->
-															{{--<div class="menu-item px-3">
-																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
-															</div>
+															{{--
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_rental'])}}" class="menu-link px-3">Residential Rental</a>
 															</div>
@@ -289,6 +287,9 @@
 															{{--<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'residential'])}}" class="menu-link px-3">Residential</a>
 															</div>--}}
+															<div class="menu-item px-3">
+																<a href="{{route('seller.add_property_form',['listing_type'=>'residential_sale'])}}" class="menu-link px-3">Residential Sale</a>
+															</div>
 															<div class="menu-item px-3">
 																<a href="{{route('seller.add_property_form',['listing_type'=>'commercial'])}}" class="menu-link px-3">Commercial</a>
 															</div>
