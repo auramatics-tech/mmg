@@ -39,6 +39,7 @@
                                     </li>
                                 </ul>
                             </div>
+
                             <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
                                 <li>
                                 <i class="fa-solid fa-bed su_icon_clr"></i>
@@ -56,6 +57,25 @@
                                     {{isset($property->property_details)?$property->property_details->land_size_units:''}}
                                 </li>
                             </ul>
+
+                            <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+                                <li>
+                                <i class="fa-solid fa-bed su_icon_clr"></i>
+                                <span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
+                                    Area
+                                </li>
+                                <li>
+                                <i class="fa-sharp fa-solid fa-shower su_icon_clr"></i>    
+                                <span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
+                                    Parking
+                                </li>
+                                <li>
+                                <i class="fa-solid fa-chart-area su_icon_clr"></i>  
+                                <span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
+                                    Rating
+                                </li>
+                            </ul>
+                            
                             <div class="product-hover-action">
                                 <ul>
                                     {{--<li>

@@ -53,9 +53,19 @@
         height: calc(100vh - 220px) !important;
     }
     .property-detail-feature-list .property-detail-feature-list-item i {
-    min-width: 50px !important;
-    height: 50px !important;
-}
+        min-width: 50px !important;
+        height: 50px !important;
+    }
+    .su_img_height_at_detail{
+        height: 230px;
+        width: 100%;
+    }
+    @media screen and (max-width: 1200px) {
+        .su_mt_sm{
+            margin: 5px 0px;
+        }
+    }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -394,13 +404,13 @@
                         </ul>
                     </div>
                     @if(Auth::check())
-                    <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1">
+                    <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1 su_mt_sm">
                         @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
 
                     {{-- <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a> --}}
-                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Make an Offer</a>
+                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1 su_mt_sm"> Make an Offer</a>
 
-                    <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1"> Book Inspection </a>
+                    <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1 su_mt_sm"> Book Inspection </a>
                     @endif
                     <h4 class="title-2">View Our Gallery</h4>
                     <div class="ltn__property-details-gallery mb-30">
@@ -408,14 +418,14 @@
                             <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[0]->document))
                                 <a href="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
+                                    <img class="mb-30 su_img_height_at_detail" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
                                 </a>
                                 @endif
                             </div>
                             <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[2]->document))
                                 <a href="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" data-rel="lightcase:myCollection">
-                                    <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
+                                    <img class="mb-30 su_img_height_at_detail" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
                                 </a>
                                 @endif
                             </div>
