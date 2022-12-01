@@ -267,7 +267,7 @@
             </div>
 
             <div class="col-md-12 fv-row mb-4">
-                <label class="required fs-6 fw-bold mb-2">Other Features</label>
+                <label class=" fs-6 fw-bold mb-2">Other Features</label>
                 <textarea class="form-control form-control-solid" name="other_features" rows="5" cols="30">{{old('other_features') ?? (isset($property_details->other_features) && $property_details->other_features)?$property_details->other_features:''}} </textarea>
              
             </div>

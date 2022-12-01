@@ -301,7 +301,7 @@
                 
                 </div>
             </div>
-            <div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
+            {{--<div class="col-md-6 fv-row residential_rental_hide residential_sale_show land_show commercial_sale_show rural_show business_show">
 
                 <label class=" fs-6 fw-bold mb-2"> Desired Price</label>
 
@@ -315,7 +315,7 @@
                  
                 </div>
 
-            </div>
+            </div>--}}
 
         </div>
 

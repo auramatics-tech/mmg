@@ -12,6 +12,7 @@ use App\Models\InspectionBook;
 use App\Models\PropertyLinkListing;
 use App\Models\ReviewImages;
 use App\Models\Appraisal;
+use App\Models\PropertyType;
 use Auth;
 use DB;
 
@@ -20,10 +21,14 @@ class PropertyController extends Controller
     
     public function property_list(Request $request)
     {
+        // echo "<prE>";print_r($request->all());die;
          $outdoors = PropertyFeature::where('type', 'outdoor')->get();
          $indoors = PropertyFeature::where('type', 'indoor')->get();
          $heating_coolings = PropertyFeature::where('type', 'heating_cooling')->get();
          $eco_friendlies = PropertyFeature::where('type', 'eco_friendly')->get();
+         $residentials = PropertyType::where('form_type', 'residential')->get();
+         $bedroom = PropertyDetail::where('property_id', 'bedrooms')->get();
+         $bathrooms = PropertyDetail::where('property_id', 'bathrooms')->get();
     
          if(isset($request->sort) && $request->sort == 'o'){
             $orderby = 'ASC';
@@ -50,12 +55,14 @@ class PropertyController extends Controller
             $maxPrice= $price[1];
         }
 
-        $properties = Property::select('properties.*','property_details.rental_allowances')
-        ->where('is_approved',1)->leftjoin('property_details','properties.id','property_details.property_id')
+        $properties = Property::select('properties.*','property_details.rental_allowances','property_details.bedrooms','property_details.bathrooms',)
+        ->where('is_approved',1)->where('is_complete',1)->leftjoin('property_details','properties.id','property_details.property_id')
         ->when(isset($request->type), function ($query) use ($request) {
             $query->whereIn('properties.form_type',$request->type);
         })->when(isset($request->search), function ($query) use ($request) {
-            $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');    
+            $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');   
+        })->when(isset($request->proprty_type), function ($query) use ($request) {
+            $query->whereIn('properties.property_type', $request->proprty_type);  
         })->when(isset($request->amenities), function ($query) use ($request) {
             $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
         })->when(isset($request->indoor), function ($query) use ($request) {
@@ -66,8 +73,10 @@ class PropertyController extends Controller
             $query->whereJsonContains('property_details.heating_cooling',$request->heating_cooling);
         })->when(isset($request->eco_friendly), function ($query) use ($request) {
             $query->whereJsonContains('property_details.eco_friendly',$request->eco_friendly);
-        })  ->when((isset($request->price_from) && isset($request->price_to)), function ($query) use ($request) {
+        })->when((isset($request->price_from) && isset($request->price_to)), function ($query) use ($request) {
             return $query->whereBetween('properties.normal_price', [$request->price_from, $request->price_to]);
+        })->when((isset($request->bedroom_from) && isset($request->bedroom_to)), function ($query) use ($request) {
+            return $query->whereBetween('property_details.bedrooms', [$request->bedroom_from, $request->bedroom_to]);
         })
         ->orderby($sortby,$orderby)->paginate(4);
         
@@ -76,7 +85,7 @@ class PropertyController extends Controller
             return response($html);
         }
         $property_features = PropertyFeature::all();
-        return view('frontend.property.property_list',compact('properties','property_features','outdoors', 'indoors', 'heating_coolings', 'eco_friendlies'));
+        return view('frontend.property.property_list',compact('properties','residentials','property_features','outdoors', 'indoors', 'heating_coolings', 'eco_friendlies'));
     }
 
     public function property_details($property_id='')

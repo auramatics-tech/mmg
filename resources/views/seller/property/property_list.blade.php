@@ -665,7 +665,7 @@
 															@endif
 														</div>
 														<div class="d-flex flex-column">
-															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($property->address_display=='Full Address')?$property->address:$property->suburb}}</a>
+														<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($property->address_display=='Full Address')?$property->address:$property->suburb}}</a>
 															<span>{{$property->property_type}}</span>
 														</div>
 														<!--begin::User details-->

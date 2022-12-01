@@ -19,7 +19,7 @@ class Property extends Model
         'postcode','suburb','lat','lng','address_display','key_number','terms','commercial_outgoings','commercial_lease_term','commercial_property_name',
         'key_location','alarm_code','internal_notes','headline','rental_per_week','rental_per_month','rental_security_bond','rental_date_available',
         'description','brochure_small_description','brochure_large_description','commercial_roi','commercial_property_type','commercial_property_type2','commercial_property_type3','commercial_rental_per_annum','commercial_lease_expiry_date','commercial_psm_pa_max','commercial_psm_pa_min',
-        'video_url','online_tour_1_url','online_tour_2_url','email_more_info_url','about_home','about_location','about_improvements','commercial_listing_type'
+        'video_url','online_tour_1_url','online_tour_2_url','email_more_info_url','about_home','about_location','about_improvements','is_complete','commercial_listing_type',
     ];
     
     public function get_property_image(){

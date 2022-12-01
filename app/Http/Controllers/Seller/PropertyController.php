@@ -324,6 +324,7 @@ class PropertyController extends Controller
     public function save_inspections(Request $request)
     {
         $data = $request->except('_token');
+        $data['is_complete'] = 1;
         $inspection = Inspection::updateOrCreate(['property_id' => $request->property_id], $data);
         return redirect()->route('seller.property_list');
     }
