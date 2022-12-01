@@ -28,7 +28,6 @@ class PropertyController extends Controller
          $eco_friendlies = PropertyFeature::where('type', 'eco_friendly')->get();
          $residentials = PropertyType::where('form_type', 'residential')->get();
          $bedroom = PropertyDetail::where('property_id', 'bedrooms')->get();
-         $bathrooms = PropertyDetail::where('property_id', 'bathrooms')->get();
     
          if(isset($request->sort) && $request->sort == 'o'){
             $orderby = 'ASC';
@@ -55,14 +54,14 @@ class PropertyController extends Controller
             $maxPrice= $price[1];
         }
 
-        $properties = Property::select('properties.*','property_details.rental_allowances','property_details.bedrooms','property_details.bathrooms',)
+        $properties = Property::select('properties.*','property_details.rental_allowances','property_details.bedrooms')
         ->where('is_approved',1)->where('is_complete',1)->leftjoin('property_details','properties.id','property_details.property_id')
         ->when(isset($request->type), function ($query) use ($request) {
             $query->whereIn('properties.form_type',$request->type);
         })->when(isset($request->search), function ($query) use ($request) {
             $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');   
         })->when(isset($request->proprty_type), function ($query) use ($request) {
-            $query->whereIn('properties.property_type', $request->proprty_type);  
+            $query->whereIn('properties.property_type', $request->property_type);  
         })->when(isset($request->amenities), function ($query) use ($request) {
             $query->whereJsonContains('property_details.rental_allowances',$request->amenities);
         })->when(isset($request->indoor), function ($query) use ($request) {

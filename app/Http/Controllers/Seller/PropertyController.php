@@ -66,6 +66,9 @@ class PropertyController extends Controller
 
         $property_form = "property_details";
         $property_details = PropertyDetail::where('property_id', $property_id)->first();
+        // echo "<pre>";
+        // print_r($property_details);
+        // die;
         if (!isset($property_details->id)) {
             $property_details = '';
         }
