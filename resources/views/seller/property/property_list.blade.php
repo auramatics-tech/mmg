@@ -633,7 +633,8 @@
 													<th class="min-w-125px">Property No.</th>
 													<th class="min-w-125px">Property</th>
 													<th class="min-w-125px">Price</th>
-													<th class="min-w-125px">Status</th>
+													<!-- <th class="min-w-125px">Status</th>	 -->
+													<th class="min-w-125px">Property Type</th>
 													<th class="min-w-125px">Listed Date</th>
 													<th class="min-w-125px">Expiry Date</th>
 													<th class="min-w-125px">Actions</th>
@@ -674,9 +675,10 @@
 														{{--<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->normal_price)?$property->normal_price:''}} - ${{isset($property->desired_price)?$property->desired_price:''}}</div>--}}
 														{{isset($property->normal_price)?$property->normal_price:''}}
 													</td>
-													<td>{{isset($property->status)?$property->status:''}}</td>
+													<!-- <td>{{isset($property->status)?$property->status:''}}</td> -->
+													<td>{{isset($property->form_type)?$property->form_type:''}}</td>
 													<td>{{isset($property->created_at)?date('Y-m-d',strtotime($property->created_at)):''}}</td>
-													<td>{{isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}</td>
+													<td>{{isset($property->commercial_lease_expiry_date)?$property->commercial_lease_expiry_date:''}}</td>
 													<td class="d-flex">
 														<div class="me-0">
 															<button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
