@@ -78,11 +78,12 @@
         border-color: #e8e8e8 !important;
     }
 
-  .su_modal .modal-body{
-    overflow-y: auto;
-    max-height: calc(100vh - 300px);
-    overflow-x: hidden;
-  }
+    .su_modal .modal-body {
+        overflow-y: auto;
+        max-height: calc(100vh - 300px);
+        overflow-x: hidden;
+    }
+
     .su_input_style {
         color: var(--ltn__paragraph-color);
         font-weight: 400;
@@ -434,36 +435,13 @@
 <div class="ltn__img-slider-area mb-50">
     <div class="container-fluid">
         <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
-
+            @foreach($sliderimages as $image)
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16692713461.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16692713461.jpg')}}" alt="Image" class="custom_img">
-                    </a>
+                    <img src="{{asset('storage/sliders/'.$image->file_name)}}" alt="Image" style="width:100%;height:600px">
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16692713462.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16692713462.jpg')}}" alt="Image" class="custom_img">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16692713464.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16692713464.jpg')}}" alt="Image" class="custom_img">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/16697024060.jpg')}}" data-rel="">
-                        <img src="{{asset('storage/property_images/16697024060.jpg')}}" alt="Image" class="custom_img">
-                    </a>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </div>

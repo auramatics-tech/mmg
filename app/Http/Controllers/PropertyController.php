@@ -14,6 +14,7 @@ use App\Models\PropertyLinkListing;
 use App\Models\ReviewImages;
 use App\Models\Appraisal;
 use App\Models\PropertyType;
+use App\Models\Slider;
 use Auth;
 use DB;
 
@@ -89,7 +90,11 @@ class PropertyController extends Controller
             return response($html);
         }
         $property_features = PropertyFeature::all();
-        return view('frontend.property.property_list', compact('properties', 'residentials', 'property_features', 'outdoors', 'indoors', 'heating_coolings', 'eco_friendlies'));
+        $sliderimages = Slider::all();
+        //   echo "<pre>";
+        //     print_r( $sliderimages);
+        //     die;
+        return view('frontend.property.property_list', compact('properties', 'residentials', 'property_features', 'outdoors', 'indoors', 'heating_coolings', 'eco_friendlies','sliderimages'));
     }
 
     public function property_details($property_id = '')
