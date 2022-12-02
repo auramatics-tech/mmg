@@ -15,6 +15,7 @@ use App\Models\Appraisal;
 use App\Models\PropertyType;
 use Auth;
 use DB;
+use Pdf;
 
 class PropertyController extends Controller
 {

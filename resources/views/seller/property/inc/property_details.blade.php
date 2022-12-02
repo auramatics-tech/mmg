@@ -275,7 +275,7 @@
         </div>
 
         <div class="row residential_sale_hide residential_rental_hide " id="" >
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Total Floor Area</label>
                     <div class="row">
                         <div class="col-6">
@@ -291,11 +291,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Office Area</label>
                     <input class="form-control form-control-solid" placeholder="" name="Office_Area" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Land size</label>
                     <div class="row">
                         <div class="col-6">
@@ -313,45 +313,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Warehouse Area</label>
                     <input class="form-control form-control-solid" placeholder="" name="Warehouse_Area" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Total Car Spaces</label>
                     <input class="form-control form-control-solid" placeholder="" name="Total_Car_Spaces" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Parking Comments</label>
                     <input class="form-control form-control-solid" placeholder="" name="Parking_Comments" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                 <label class=" fs-6 fw-bold mb-2">Occupancy Title</label>
                     <select name="" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         <option value="Whole Building">Whole Building</option>
                         <option value="Partial Building">Partial Building</option>
                     </select>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                <label class=" fs-6 fw-bold mb-2">Tenancy</label>
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
+                    <label class=" fs-6 fw-bold mb-2">Tenancy</label>
                     <select name="" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         <option value="Vacant Posession">Vacant Posession</option>
                         <option value="Tenanted Investment">Tenanted Investment</option>
                     </select>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Tenancy</label>
                     <input class="form-control form-control-solid" placeholder="" name="Tenancy" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Zoning</label>
                     <input class="form-control form-control-solid" placeholder="" name="Zoning" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Nabers rating</label>
                     <input class="form-control form-control-solid" placeholder="" name="Nabers_rating" value="" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-7">
                     <label class=" fs-6 fw-bold mb-2">Energy efficiency rating</label>
                     <select name="" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         <option value="0">0</option>

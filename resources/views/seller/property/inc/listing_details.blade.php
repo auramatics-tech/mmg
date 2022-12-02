@@ -209,17 +209,6 @@
             <input class="form-control form-control-solid" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
 
         </div>
-        {{--<div class="col-md-6 mb-8 fv-row ">
-                <label class=" fs-6 fw-bold mb-2"> Normal Price</label>
-                <div class="position-relative w-md-400px me-md-2">
-                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                    <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
-                        <i class="bi bi-currency-dollar"></i>
-                    </span>
-                    <!--end::Svg Icon-->
-                    <input type="number" class="form-control form-control-solid ps-10" name="normal_price" value="{{old('normal_price') ?? isset($property->normal_price)?$property->normal_price:''}}">
-                </div>
-            </div>--}}
         <div class="d-flex flex-column mb-7 fv-row residential_rental_show">
 
             <label class="fs-6 fw-bold mb-2">Rental Per Week</label>
@@ -250,9 +239,9 @@
             </div>
 
         </div>
-        <div class="col-md-6 fv-row residential_rental_show ">
-        <label class="fs-6 fw-bold mb-8"> Normal Price</label>
-        <div class="position-relative w-md-400px me-md-2">
+        <div class="col-md-12 mb-7 fv-row residential_rental_show ">
+        <label class="fs-6 fw-bold mb-2"> Normal Price</label>
+        <div class="position-relative me-md-2">
             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
             <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
                 <i class="bi bi-currency-dollar"></i>
@@ -404,8 +393,6 @@
        {{--<div class="d-flex flex-column mb-7 fv-row commercial_sale_show">
 
             <label class="fs-6 fw-bold mb-2">Return on Investment</label>
-
-
             <input class="form-control form-control-solid" placeholder="" name="commercial_roi" value="{{old('commercial_roi') ?? isset($property->commercial_roi)?$property->commercial_roi:''}}" />
 
         </div>--}}
@@ -495,9 +482,9 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
     </div>
-<div class="col-md-6 fv-row commercial_sale_show ">
-        <label class="required fs-6 fw-bold mb-8"> Normal Price</label>
-        <div class="position-relative w-md-400px me-md-2">
+<div class="col-md-12 mb-7 fv-row commercial_sale_show ">
+        <label class="required fs-6 fw-bold mb-2"> Normal Price</label>
+        <div class="position-relative  me-md-2">
             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
             <span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
                 <i class="bi bi-currency-dollar"></i>
