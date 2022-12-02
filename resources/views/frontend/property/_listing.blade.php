@@ -40,7 +40,7 @@
                                     </li>
                                 </ul>
                             </div>
-
+                            @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease')
                             <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
                                 <li>
                                 <i class="fa-solid fa-bed su_icon_clr"></i>
@@ -58,8 +58,9 @@
                                     {{isset($property->property_details)?$property->property_details->land_size_units:''}}
                                 </li>
                             </ul>
-
-                            <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+                            @endif
+                            @if($property->form_type == 'commercial' || $property->form_type == 'commercial_lease')
+                            <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief ">
                                 <li>
                                     <i class="fa-solid fa-car-side su_icon_clr"></i>
                                     <span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
@@ -71,6 +72,7 @@
                                     Area
                                 </li>
                             </ul>
+                          @endif
                             
                             <div class="product-hover-action">
                                 <ul>
