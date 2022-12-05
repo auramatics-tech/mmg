@@ -17,6 +17,7 @@ use App\Models\PropertyType;
 use App\Models\Slider;
 use Auth;
 use DB;
+use Pdf;
 
 class PropertyController extends Controller
 {

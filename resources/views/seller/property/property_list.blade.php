@@ -630,7 +630,7 @@
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 														</div>
 													</th>
-													<th class="min-w-125px">Property No.</th>
+													<th class="min-w-125px">Sr No.</th>
 													<th class="min-w-125px">Property</th>
 													<th class="min-w-125px">Price</th>
 													<!-- <th class="min-w-125px">Status</th>	 -->
@@ -645,6 +645,7 @@
 											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
                                                 @foreach($properties as $property)
+												
 												<!--begin::Table row-->
 												<tr>
 													<!--begin::Checkbox-->
@@ -658,7 +659,7 @@
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 															@if(isset($property->get_property_image))
-															<a href="javascript:">
+															<a href="{{route('property_details',$property->id)}}">
 																<div class="symbol-label">
 																	<img src="{{asset('storage/property_images/'.$property->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
@@ -666,8 +667,9 @@
 															@endif
 														</div>
 														<div class="d-flex flex-column">
-														<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($property->address_display=='Full Address')?$property->address:$property->suburb}}</a>
+														<a href="{{route('property_details',$property->id)}}" class="text-gray-800 text-hover-primary mb-1">
 															<span>{{$property->property_type}}</span>
+														</a>
 														</div>
 														<!--begin::User details-->
 													</td>

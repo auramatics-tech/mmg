@@ -13,6 +13,7 @@
                 </div>
                 @if(isset($properties) && count($properties))
                 @foreach($properties as $property)
+               
                 <div class="col-xl-6 col-sm-6 col-12">
                     <div class="ltn__product-item ltn__product-item-4 ltn__grid-list-tab-menu ltn__product-item-5 text-center---">
                         <div class="product-img su_product_img">
@@ -61,19 +62,14 @@
                             @if($property->form_type == 'commercial' || $property->form_type == 'commercial_lease')
                             <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief ">
                                 <li>
-                                <i class="fa-solid fa-bed su_icon_clr"></i>
-                                <span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
+                                    <i class="fa-solid fa-car-side su_icon_clr"></i>
+                                    <span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
+                                        Parking
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-chart-area su_icon_clr"></i>  
+                                    <span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
                                     Area
-                                </li>
-                                <li>
-                                <i class="fa-sharp fa-solid fa-shower su_icon_clr"></i>    
-                                <span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
-                                    Parking
-                                </li>
-                                <li>
-                                <i class="fa-solid fa-chart-area su_icon_clr"></i>  
-                                <span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
-                                    Rating
                                 </li>
                             </ul>
                           @endif
