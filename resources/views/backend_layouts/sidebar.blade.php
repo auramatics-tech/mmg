@@ -95,6 +95,16 @@
                             </a>
                         </div>
                     </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.sliders')=='admin.sliders')?'active':''}}" href="{{route('admin.sliders')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Slider Images</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             @endif
             

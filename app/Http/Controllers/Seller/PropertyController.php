@@ -34,13 +34,14 @@ class PropertyController extends Controller
      */
     public function index()
     {
+        
         $properties = Property::where('created_by', Auth::id())->paginate(5);
         return view('seller.property.property_list', compact('properties'));
     }
 
     public function add_property_form(Request $request)
     {
-
+       
    
         $property_form = "listing_details";
         if ($request->listing_type == 'commercial') {
@@ -105,7 +106,7 @@ class PropertyController extends Controller
 
     public function save_listing_details(Request $request)
     {
-        //echo "<pre>";print_r($request->all());die;
+      // echo "<pre>";print_r($request->all());die;
         $data = $request->except("_token");
         //echo "<pre>";print_r($data);die;
         if ( $request->form_type == 'residential') {
@@ -359,7 +360,9 @@ class PropertyController extends Controller
     }
 
     public function property_bid_listing()
+
     {
+
         $my_properties = Property::where(['created_by' => Auth::id()])->pluck('id')->toArray();
         $buyer_name = Offer::whereIn('property_id', $my_properties)->get();
         return view('seller.property.bid_listing', compact('buyer_name'));
