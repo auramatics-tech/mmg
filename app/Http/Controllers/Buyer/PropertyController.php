@@ -84,7 +84,11 @@ class PropertyController extends Controller
     }
 
     public function property_bid($property_id){
+     
          $property = Property::find($property_id);
+        //  echo"<pre>";
+        //  print_r($property);
+        //  die;
         $property_summary = Property::where('id',$property_id)->where('is_approved',1)->get();
         $bid_count = Offer::where('property_id',$property_id)->count();
         // echo"<pre>";print_r($bid_count);die;

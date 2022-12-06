@@ -206,7 +206,10 @@
     .active {
         border-bottom: #ff5a3c 3px solid !important;
     }
-    .su_on_click_clr.open, .su_on_click_clr:active, .su_on_click_clr:focus {
+
+    .su_on_click_clr.open,
+    .su_on_click_clr:active,
+    .su_on_click_clr:focus {
         border-color: var(--ltn__secondary-color) !important;
     }
 </style>
@@ -1150,86 +1153,84 @@
                             @endforeach
                             @endif
                         </div>
+                        <hr class="su_hr">
+                        <hr class="su_hr">
+                        <hr class="su_hr">
+                        <h4 class="ltn__widget-title m_t_b_10">Commercial Sale inputs</h4>
+                        <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <li class="su_listcat">
+                                <label class="checkbox-item">For Purchase
+                                    <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("residential", request()->type)) checked @endif value="residential" name="type[]">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categorey-no"></span>
+                            </li>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12 commercial_hide">
+                            <li class="su_listcat">
+                                <label class="checkbox-item">For Rent
+                                    <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categorey-no"></span>
+                            </li>
+                        </div>
+                        <hr class="su_hr">
+                        <h4 class="ltn__widget-title m_t_b_10">Price</h4>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
+                                    <input type="text" name="lower_price" placeholder="From:">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                    <input type="text" name="higher_price" placeholder="To:">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="su_hr">
+                        <h4 class="ltn__widget-title m_t_b_10">Land</h4>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <label class="su_input_style">Squares</label>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
+                                    <input type="text" name="lower_Squares" placeholder="Min:">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                    <input type="text" name="higher_Squares" placeholder="Max:">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="su_hr">
+                        <h4 class="ltn__widget-title m_t_b_10">Occupancy Title</h4>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <select class="su_selector_input su_on_click_clr" id="" name="" form="">
+                                <option value="volvo">Whole Building</option>
+                                <option value="saab">Partial Building</option>
+                            </select>
+                        </div>
+                        <hr class="su_hr">
+                        <hr class="su_hr">
+                        <hr class="su_hr">
+                        <h4 class="ltn__widget-title m_t_b_10">Commercial Rent inputs</h4>
+                        <h4 class="ltn__widget-title m_t_b_10">Rental Per Month</h4>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
+                                    <input type="text" name="lower_Rental" placeholder="Min:">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                    <input type="text" name="higher_Rental" placeholder="Max:">
+                                </div>
+                            </div>
+                        </div>
 
-                   
-                                                    <hr class="su_hr">
-                                                    <hr class="su_hr">
-                                                    <hr class="su_hr">
-                                                    <h4 class="ltn__widget-title m_t_b_10">Commercial Sale inputs</h4>
-                                                    <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
-                                                    <div class="col-lg-6 col-md-12 col-12">
-                                                        <li class="su_listcat">
-                                                            <label class="checkbox-item">For Purchase
-                                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("residential", request()->type)) checked @endif value="residential" name="type[]">
-                                                                <span class="checkmark"></span>
-                                                            </label>
-                                                            <span class="categorey-no"></span>
-                                                        </li>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-12 commercial_hide">
-                                                        <li class="su_listcat">
-                                                            <label class="checkbox-item">For Rent
-                                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
-                                                                <span class="checkmark"></span>
-                                                            </label>
-                                                            <span class="categorey-no"></span>
-                                                        </li>
-                                                    </div>
-                                                    <hr class="su_hr">
-                                                    <h4 class="ltn__widget-title m_t_b_10">Price</h4>
-                                                    <div class="col-lg-12 col-md-12 col-12">
-                                                            <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
-                                                                    <input type="text" name="lower_price" placeholder="From:" >
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                                                    <input type="text" name="higher_price" placeholder="To:" >
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                    <hr class="su_hr">
-                                                    <h4 class="ltn__widget-title m_t_b_10">Land</h4>
-                                                    <div class="col-lg-12 col-md-12 col-12">
-                                                            <label class="su_input_style">Squares</label>
-                                                            <br>
-                                                            <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
-                                                                    <input type="text" name="lower_Squares" placeholder="Min:" >
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                                                    <input type="text" name="higher_Squares" placeholder="Max:" >
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                    <hr class="su_hr">
-                                                    <h4 class="ltn__widget-title m_t_b_10">Occupancy Title</h4>
-                                                    <div class="col-lg-12 col-md-12 col-12">
-                                                            <select class="su_selector_input su_on_click_clr" id="" name="" form="">
-                                                                <option value="volvo">Whole Building</option>
-                                                                <option value="saab">Partial Building</option>
-                                                            </select>
-                                                    </div>
-                                                    <hr class="su_hr">
-                                                    <hr class="su_hr">
-                                                    <hr class="su_hr">
-                                                    <h4 class="ltn__widget-title m_t_b_10">Commercial Rent inputs</h4>
-                                                    <h4 class="ltn__widget-title m_t_b_10">Rental Per Month</h4>
-                                                    <div class="col-lg-12 col-md-12 col-12">
-                                                            <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
-                                                                    <input type="text" name="lower_Rental" placeholder="Min:" >
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                                                    <input type="text" name="higher_Rental" placeholder="Max:" >
-                                                                </div>
-                                                            </div>
-                                                    </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer pt-4 pb-0">
-                                            <button type="submit" class="btn theme-btn-1">Search</button>
-                                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pt-4 pb-0">
+                    <button type="submit" class="btn theme-btn-1">Search</button>
+                </div>
             </form>
         </div>
     </div>

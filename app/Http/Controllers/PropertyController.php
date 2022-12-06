@@ -24,7 +24,7 @@ class PropertyController extends Controller
 
     public function property_list(Request $request)
     {
-        // echo "<prE>";print_r($request->all());die;
+        //echo "<prE>";print_r($request->all());die;
         $outdoors = PropertyFeature::where('type', 'outdoor')->get();
         $indoors = PropertyFeature::where('type', 'indoor')->get();
         $heating_coolings = PropertyFeature::where('type', 'heating_cooling')->get();

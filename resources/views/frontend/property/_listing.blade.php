@@ -40,7 +40,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease')
+                            @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease' ||$property->form_type == 'residential_sale')
                             <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
                                 <li>
                                 <i class="fa-solid fa-bed su_icon_clr"></i>
@@ -63,12 +63,12 @@
                             <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief ">
                                 <li>
                                     <i class="fa-solid fa-car-side su_icon_clr"></i>
-                                    <span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
+                                    <span>{{isset($property->property_details->total_car_spaces)?$property->property_details->total_car_spaces:''}} </span>
                                         Parking
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-chart-area su_icon_clr"></i>  
-                                    <span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
+                                    <span>{{isset($property->property_details)?$property->property_details->total_floor_area:''}} </span>
                                     Area
                                 </li>
                             </ul>

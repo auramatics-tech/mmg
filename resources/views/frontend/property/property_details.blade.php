@@ -347,6 +347,7 @@
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
+                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease' ||$property->form_type == 'residential_sale')
                         <ul>
                             <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li>
                             <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}}</span></li>
@@ -354,6 +355,15 @@
                             <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li>
                             <!-- <li><label>Year built:</label> <span>1992</span></li> -->
                         </ul>
+                        @endif
+                        @if($property->form_type == 'commercial' ||$property->form_type == 'commercial_sale')
+                        <ul>
+                            <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li>
+                            <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}}</span></li>
+                            <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}}</span></li>
+                            <!-- <li><label>Year built:</label> <span>1992</span></li> -->
+                        </ul>
+                        @endif
                         <!-- <ul>
                                 <li><label>Lot Area:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
                                 <li><label>Lot dimensions:</label> <span>{{isset($property->property_id)? $property->property_id:''}}t</span></li>
@@ -364,6 +374,7 @@
                     </div>
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
+                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease' ||$property->form_type == 'residential_sale')
                         <ul>
                             <li>
                                 <div class="property-detail-feature-list-item">
@@ -402,6 +413,21 @@
                                 </div>
                             </li>
                         </ul>
+                        @endif
+                        @if($property->form_type == 'commercial' ||$property->form_type == 'commercial_sale')
+                        <ul>
+                            <li>
+                                <div class="property-detail-feature-list-item">
+                                    <i class="fa-solid fa-car-side su_icon_clr"></i>
+                                    <div>
+                                        <h6>Car Parking</h6>
+                                        <small>{{isset($property_details->total_car_spaces)? $property_details->total_car_spaces:''}}</small>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                        @endif
                     </div>
                     @if(Auth::check())
                     <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1 su_mt_sm">
@@ -616,6 +642,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="product-details-apartments-info-list  section-bg-1">
+                                            @if($property->form_type == 'residential' ||$property->form_type == 'residential_sale' ||$property->form_type == 'residential_rental')
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
@@ -634,6 +661,27 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
+                                                @if($property->form_type == 'commercial' ||$property->form_type == 'commercial_sale' ||$property->form_type == 'commercial_lease')
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="apartments-info-list apartments-info-list-color mt-40---">
+                                                            <ul>
+                                                                <li><label>Total Floor Area</label> <span>{{isset( $property_details->total_floor_area)? $property_details->total_floor_area:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
+                                                                <li><label>Office Area</label> <span>{{isset($property_details->office_area)? $property_details->office_area:''}}</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="apartments-info-list apartments-info-list-color mt-40---">
+                                                            <ul>
+                                                                <li><label>Land Size</label> <span>{{isset( $property_details->land_size)? $property_details->land_size:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
+                                                                <li><label>Warehouse Area</label> <span>{{isset($property_details->warehouse_area) ? $property_details->warehouse_area:''}} </span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
