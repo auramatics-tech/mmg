@@ -108,8 +108,8 @@ class PropertyController extends Controller
         $latest_property = Property::where('is_approved', 1)->latest('created_at')->limit(5)->get();
         $property_types = Property::select('property_type')->distinct('property_type')->get();
         $property_inspections = Inspection::where('id', $property_id)->first();
-    // echo "<pre>";print_r($property_inspections);die;
-        $property_reviews = PropertyReview::select('property_reviews.*', DB::raw("(select profile_pic from users where `users`.`id` = property_reviews.user_id) as profile_pic"))->where('property_id', $property_id)->get();
+    //    echo "<pre>";print_r($latest_property);die;
+         $property_reviews = PropertyReview::select('property_reviews.*', DB::raw("(select profile_pic from users where `users`.`id` = property_reviews.user_id) as profile_pic"))->where('property_id', $property_id)->get();
         // echo "<pre>";print_r( $property_reviews);die;
         $comments_count = PropertyReview::where('property_id', $property_id)->count();
         $property = Property::find($property_id);

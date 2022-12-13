@@ -17,8 +17,9 @@
         object-fit: cover;
         object-position: center center;
     }
-    .checkamenties{
-        padding-left:0px!important;
+
+    .checkamenties {
+        padding-left: 0px !important;
 
     }
 
@@ -46,9 +47,11 @@
         z-index: 9999;
         background: #6e6e6e75 !important;
     }
+
     #lightcase-info {
         color: #ff5a3c !important;
     }
+
     #lightcase-caption {
         color: #ff5a3c !important;
     }
@@ -56,20 +59,22 @@
     .img_len a {
         height: calc(100vh - 220px) !important;
     }
+
     .property-detail-feature-list .property-detail-feature-list-item i {
         min-width: 50px !important;
         height: 50px !important;
     }
-    .su_img_height_at_detail{
+
+    .su_img_height_at_detail {
         height: 230px;
         width: 100%;
     }
+
     @media screen and (max-width: 1200px) {
-        .su_mt_sm{
+        .su_mt_sm {
             margin: 5px 0px;
         }
     }
-
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -310,15 +315,15 @@
             <div class="col-lg-12">
                 <div class="ltn__img-slide-item-4 img_len">
                     <a href="{{asset('storage/property_images/'.$property_image->document)}}" data-rel="">
-                        <img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image" class="custom_img">
-                    </a>
-                </div>
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-</div> 
+<img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image" class="custom_img">
+</a>
+</div>
+</div>
+@endforeach
+@endif
+</div>
+</div>
+</div>
 --}}
 <!-- IMAGE SLIDER AREA END -->
 
@@ -351,14 +356,15 @@
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
-                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
+                        @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                         <ul>
                             <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
-                           {{-- <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</</span></li>
+                            {{-- <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</< /span>
+                            </li>
                             <li><label>Rooms:</label> <span>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}</span></li>
-                            <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li>  --}}
-                            <?php $data = json_decode($property_inspections->inspection_day,true);
-                             $property_inspections_date = implode(",",$data); ?>
+                            <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li> --}}
+                            <?php $data = json_decode($property_inspections->inspection_day, true);
+                            $property_inspections_date = implode(",", $data); ?>
                             <li><label>Inspection Date:</label> <span>{{$property_inspections_date}}</span></li>
                             <li><label>Inspection Time:</label> <span>{{isset($property_inspections->start_time)?$property_inspections->start_time:''}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>
                             <li><label>Description:</label> <span>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</span></li>
@@ -372,7 +378,7 @@
                             <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>
                             <!-- <li><label>Inspection Day: </label> <span>{{isset( $property_inspections->inspection_day)? $property_inspections->inspection_day:''}}</span></li> -->
                             <li><label>Start Date: </label> <span>{{isset($property_inspections->start_time)? $property_inspections->start_time:''}}</span></li>
-                            <li><label>End Date:</label> <span>{{isset($property_inspections->end_time)?  $property_inspections->end_time:''}}</span></li>
+                            <li><label>End Date:</label> <span>{{isset($property_inspections->end_time)? $property_inspections->end_time:''}}</span></li>
                             <!-- <li><label>Year built:</label> <span>1992</span></li> -->
                         </ul>
                         @endif
@@ -386,7 +392,7 @@
                     </div>
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
-                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
+                        @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                         <ul>
                             <li>
                                 <div class="property-detail-feature-list-item">
@@ -438,14 +444,14 @@
                                 </div>
                             </li>
                             <li>
-                            <div class="property-detail-feature-list-item">
-                                    <i class="fa-solid fa-chart-area su_icon_clr"></i>  
+                                <div class="property-detail-feature-list-item">
+                                    <i class="fa-solid fa-chart-area su_icon_clr"></i>
                                     <div>
                                         <h6>Area</h6>
-                                    <small>{{isset($property_details->total_floor_area)? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units)? $property_details->floor_area_units:''}}</small>
-                                   </div>      
-                            </div> 
-                            </li>         
+                                        <small>{{isset($property_details->total_floor_area)? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units)? $property_details->floor_area_units:''}}</small>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                         @endif
                     </div>
@@ -482,7 +488,7 @@
                             @endif
                         </div>
                     </div>
-                    @if($property->form_type == 'residential_sale' || $property->form_type  == 'residential_rental')
+                    @if($property->form_type == 'residential_sale' || $property->form_type == 'residential_rental')
                     <div class="property-details-amenities mb-60">
                         <h4 class="title-2 mb-10">Amenities</h4>
                         <div class="row">
@@ -664,7 +670,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="product-details-apartments-info-list  section-bg-1">
-                                            @if($property->form_type == 'residential' ||$property->form_type == 'residential_sale' ||$property->form_type == 'residential_rental')
+                                                @if($property->form_type == 'residential' ||$property->form_type == 'residential_sale' ||$property->form_type == 'residential_rental')
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
@@ -690,7 +696,7 @@
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
                                                                 <li><label>Total Floor Area</label> <span>{{isset($property_details->total_floor_area) ? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units) ? $property_details->floor_area_units:''}}</span></li>
-                                                                <li><label>Office Area</label> <span>{{isset($property_details->office_area) ? $property_details->office_area:''}} {{isset($property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>
+                                                                <li><label>Office Area</label> <span>{{isset($property_details->office_area) ? $property_details->office_area:''}} {{isset($property_details->office_area_units)? $property_details->office_area_units:''}}</span></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -930,7 +936,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-12 col-12">
                         <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                             <div class="product-img">
-                                <a href="{{route('property_details',$property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
+                                <a href="{{route('property_details',$related_property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
                                 <div class="real-estate-agent">
                                     <div class="agent-img">
                                         <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
@@ -1001,74 +1007,97 @@
                     @foreach($property_reviews as $key => $property_review)
                     <div class="ltn__author-widget-inner text-center">
                         <img src="{{isset($property_review->profile_pic) ? asset('user_profile/'.$property_review->profile_pic) : asset('frontend/img/testimonial/1.png')}}" alt="user" />
-                        <h5>{{$property_review->name}}</h5>
-                        <small>{{$property_review->email}}</small>
-                        <div class="product-ratting">
-                            <ul>
-                                <?php
-                                for ($x = 1; $x <= $property_review->rating; $x++) {
-                                    echo "<li><a href='javascript:'><i class='fas fa-star'></i></a></li>";
-                                }
-                                for ($y = 1; $y <= 5 - $property_review->rating; $y++) {
-                                    echo "<li><a href='javascript:'><i class='fas fa-star'
+                <h5>{{$property_review->name}}</h5>
+                <small>{{$property_review->email}}</small>
+                <div class="product-ratting">
+                    <ul>
+                        <?php
+                        for ($x = 1; $x <= $property_review->rating; $x++) {
+                            echo "<li><a href='javascript:'><i class='fas fa-star'></i></a></li>";
+                        }
+                        for ($y = 1; $y <= 5 - $property_review->rating; $y++) {
+                            echo "<li><a href='javascript:'><i class='fas fa-star'
                                                                             style='color:#c8c8c5;'></i></a></li>";
-                                }
-                                ?>
-                                <li class="review-total"> <a href="#"> ({{$comments_count}} Reviews)</a></li>
-                            </ul>
-                        </div>
-                        <p>{{$property_review->comments}}</p>
-                     <div class="ltn__social-media">
-                            <ul>
-                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-
-                                    <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
-                                </ul>  
-                        </div>
-                    </div>
-                    @endforeach
-                    @endif
-                </div>--}}
-                <!-- Search Widget -->
-                <div class="widget ltn__search-widget">
-                    <h4 class="ltn__widget-title ltn__widget-title-border-2">Search Objects</h4>
-                    <form action="#">
-                        <input type="text" name="search" placeholder="Search your keyword...">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
+                        }
+                        ?>
+                        <li class="review-total"> <a href="#"> ({{$comments_count}} Reviews)</a></li>
+                    </ul>
                 </div>
+                <p>{{$property_review->comments}}</p>
+                <div class="ltn__social-media">
+                    <ul>
+                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
 
-                <!-- Form Widget -->
-                <div class="widget ltn__form-widget">
-                    <h4 class="ltn__widget-title ltn__widget-title-border-2"><i class="fa fa-calendar-check-o cal"></i>Book an Inspection</h4>
-                    <form action="{{route('inspection_books')}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div>
-                            <input type="hidden" name="property_id" value="{{isset(request()->id) ? request()->id : ''}}">
-                            <div style="margin-bottom:10px" bis_skin_checked="1">Select a Date by clicking below. </div>
-                            <input type="date" class="date form-data form-control " id="inspection_date" name="inspection_date">
-                        </div>
-                        <div>
-                            <div>
-                                <div style="margin-bottom:10px" bis_skin_checked="1">Select a Time by clicking below. </div>
-                                <input type="text" id="timepicker" name="inspection_time">
-                            </div>
-                            <!-- <input type="text" name="youremail" placeholder="Your e-Mail*" name="email">
+                        <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        @endforeach
+        @endif
+    </div>--}}
+    <!-- Search Widget -->
+    <div class="widget ltn__search-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border-2">Search Objects</h4>
+        <form action="#">
+            <input type="text" name="search" placeholder="Search your keyword...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Form Widget -->
+    <div class="widget ltn__form-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border-2"><i class="fa fa-calendar-check-o cal"></i>Book an Inspection</h4>
+        <form action="{{route('inspection_books')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div>
+                <input type="hidden" name="property_id" value="{{isset(request()->id) ? request()->id : ''}}">
+                <div style="margin-bottom:10px" bis_skin_checked="1">Select a Date by clicking below. </div>
+                <input type="date" class="date form-data form-control " id="inspection_date" name="inspection_date">
+            </div>
+            <div>
+                <div>
+                    <div style="margin-bottom:10px" bis_skin_checked="1">Select a Time by clicking below. </div>
+                    <input type="text" id="timepicker" name="inspection_time">
+                </div>
+                <!-- <input type="text" name="youremail" placeholder="Your e-Mail*" name="email">
                             <textarea name="yourmessage" placeholder="Write Message..." name="comments"></textarea> -->
-                            <button type="submit" class="btn theme-btn-1"><i class="fa fa-calendar-check-o mr-4 cal"></i>Book Now</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- Top Rated Product Widget -->
-                {{-- <div class="widget ltn__top-rated-product-widget">
+                <button type="submit" class="btn theme-btn-1"><i class="fa fa-calendar-check-o mr-4 cal"></i>Book Now</button>
+            </div>
+        </form>
+    </div>
+    <!-- Top Rated Product Widget -->
+    {{-- <div class="widget ltn__top-rated-product-widget">
                         <h4 class="ltn__widget-title ltn__widget-title-border-2">Top Rated Product</h4>
                         <ul>
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
                                         <a href="product-details.html"><img src="{{asset('frontend/img/product/1.png')}}" alt="#"></a>
+</div>
+<div class="top-rated-product-info">
+    <div class="product-ratting">
+        <ul>
+            <li><a href="#"><i class="fas fa-star"></i></a></li>
+            <li><a href="#"><i class="fas fa-star"></i></a></li>
+            <li><a href="#"><i class="fas fa-star"></i></a></li>
+            <li><a href="#"><i class="fas fa-star"></i></a></li>
+            <li><a href="#"><i class="fas fa-star"></i></a></li>
+        </ul>
+    </div>
+    <h6><a href="product-details.html">Luxury House In Greenville </a></h6>
+    <div class="product-price">
+        <span>$30,000.00</span>
+        <del>$35,000.00</del>
+    </div>
+</div>
+</div>
+</li>
+<li>
+    <div class="top-rated-product-item clearfix">
+        <div class="top-rated-product-img">
+            <a href="product-details.html"><img src="{{asset('frontend/img/product/2.png')}}" alt="#"></a>
         </div>
         <div class="top-rated-product-info">
             <div class="product-ratting">
@@ -1080,61 +1109,38 @@
                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                 </ul>
             </div>
-            <h6><a href="product-details.html">Luxury House In Greenville </a></h6>
+            <h6><a href="product-details.html">Apartment with Subunits</a></h6>
             <div class="product-price">
                 <span>$30,000.00</span>
                 <del>$35,000.00</del>
             </div>
         </div>
     </div>
-    </li>
-    <li>
-        <div class="top-rated-product-item clearfix">
-            <div class="top-rated-product-img">
-                <a href="product-details.html"><img src="{{asset('frontend/img/product/2.png')}}" alt="#"></a>
+</li>
+<li>
+    <div class="top-rated-product-item clearfix">
+        <div class="top-rated-product-img">
+            <a href="product-details.html"><img src="{{asset('frontend/img/product/3.png')}}" alt="#"></a>
+        </div>
+        <div class="top-rated-product-info">
+            <div class="product-ratting">
+                <ul>
+                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                    <li><a href="#"><i class="far fa-star"></i></a></li>
+                </ul>
             </div>
-            <div class="top-rated-product-info">
-                <div class="product-ratting">
-                    <ul>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    </ul>
-                </div>
-                <h6><a href="product-details.html">Apartment with Subunits</a></h6>
-                <div class="product-price">
-                    <span>$30,000.00</span>
-                    <del>$35,000.00</del>
-                </div>
+            <h6><a href="product-details.html">3 Rooms Manhattan</a></h6>
+            <div class="product-price">
+                <span>$30,000.00</span>
+                <del>$35,000.00</del>
             </div>
         </div>
-    </li>
-    <li>
-        <div class="top-rated-product-item clearfix">
-            <div class="top-rated-product-img">
-                <a href="product-details.html"><img src="{{asset('frontend/img/product/3.png')}}" alt="#"></a>
-            </div>
-            <div class="top-rated-product-info">
-                <div class="product-ratting">
-                    <ul>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                    </ul>
-                </div>
-                <h6><a href="product-details.html">3 Rooms Manhattan</a></h6>
-                <div class="product-price">
-                    <span>$30,000.00</span>
-                    <del>$35,000.00</del>
-                </div>
-            </div>
-        </div>
-    </li>
-    </ul>
+    </div>
+</li>
+</ul>
 </div> --}}
 <!-- Menu Widget (Category) -->
 <div class="widget ltn__menu-widget ltn__menu-widget-2--- ltn__menu-widget-2-color-2---">
@@ -1158,41 +1164,41 @@
             <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                 <div class="product-img">
                     <a href="{{route('property_details',$property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
-                    <div class="real-estate-agent">
-                        <div class="agent-img">
-                            <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-price">
-                        <span>${{isset($related_property->normal_price)?$related_property->normal_price:''}}</span>
-                    </div>
-                    <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($related_property->property_type)?$related_property->property_type:''}}</a></h2>
-                    <div class="product-img-location">
-                        <ul>
-                            <li>
-                                <a href="product-details.html"><i class="flaticon-pin"></i>{{isset($related_property->address)?$related_property->address:''}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                        <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
-                            Bed
-                        </li>
-                        <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
-                            Bath
-                        </li>
-                        <li><span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
-                            {{isset($property->property_details)?$property->property_details->land_size_units:''}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        @endif
+<div class="real-estate-agent">
+    <div class="agent-img">
+        <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
     </div>
+</div>
+</div>
+<div class="product-info">
+    <div class="product-price">
+        <span>${{isset($related_property->normal_price)?$related_property->normal_price:''}}</span>
+    </div>
+    <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($related_property->property_type)?$related_property->property_type:''}}</a></h2>
+    <div class="product-img-location">
+        <ul>
+            <li>
+                <a href="product-details.html"><i class="flaticon-pin"></i>{{isset($related_property->address)?$related_property->address:''}}</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+        <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
+            Bed
+        </li>
+        <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
+            Bath
+        </li>
+        <li><span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
+            {{isset($property->property_details)?$property->property_details->land_size_units:''}}
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+@endforeach
+@endif
+</div>
 </div>--}}
 <!-- Popular Post Widget -->
 <div class="widget ltn__popular-post-widget">
@@ -1203,15 +1209,23 @@
         <li>
             <div class="popular-post-widget-item clearfix">
                 <div class="popular-post-widget-img">
-                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($blog_property->get_property_image)?asset('storage/property_images/'.$blog_property->get_property_image->document):''}}" alt="#"></a>
+                    <a href="{{route('property_details',$blog_property->id)}}"><img src="{{isset($blog_property->get_property_image)?asset('storage/property_images/'.$blog_property->get_property_image->document):''}}" alt="#"></a>
                 </div>
                 <div class="popular-post-widget-brief">
-                    <h6><a href="blog-details.html">{{isset($blog_property->address)?$blog_property->address:''}}</a></h6>
+                    {{-- <h6><a href="blog-details.html">{{isset($blog_property->address)?$blog_property->address:''}}</a></h6> --}}
                     <div class="ltn__blog-meta">
                         <ul>
                             <li class="ltn__blog-date">
-                                <a href="#"><i class="far fa-calendar-alt"></i>{{date('M d, Y', strtotime($blog_property->created_at))}}</a>
+                                <a href="{{route('property_details',$blog_property->id)}}"> @if($blog_property->form_type == 'commercial')
+                                    <td>{{isset($blog_property->commercial_listing_type)?$blog_property->commercial_listing_type:''}}</td>
+                                    @else
+                                    <td>{{isset($blog_property->form_type)?$blog_property->form_type:''}}</td>
+                                    @endif
+                                </a>
                             </li>
+                            <li class="ltn__blog-date">
+                            <a href="#"><i class="far fa-calendar-alt"></i>{{date('M d, Y', strtotime($blog_property->created_at))}}</a>
+                         </li>
                         </ul>
                     </div>
                 </div>
@@ -1234,27 +1248,6 @@
         </ul>
     </div>
 </div>
-<!-- Tagcloud Widget -->
-{{-- <div class="widget ltn__tagcloud-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border-2">Popular Tags</h4>
-                        <ul>
-                            <li><a href="#">Popular</a></li>
-                            <li><a href="#">desgin</a></li>
-                            <li><a href="#">ux</a></li>
-                            <li><a href="#">usability</a></li>
-                            <li><a href="#">develop</a></li>
-                            <li><a href="#">icon</a></li>
-                            <li><a href="#">Car</a></li>
-                            <li><a href="#">Service</a></li>
-                            <li><a href="#">Repairs</a></li>
-                            <li><a href="#">Auto Parts</a></li>
-                            <li><a href="#">Oil</a></li>
-                            <li><a href="#">Dealer</a></li>
-                            <li><a href="#">Oil Change</a></li>
-                            <li><a href="#">Body Color</a></li>
-                        </ul>
-                    </div>  --}}
-<!-- Banner Widget -->
 <div class="widget ltn__banner-widget d-none">
     <a href="shop.html"><img src="{{asset('frontend/img/banner/2.jpg')}}" alt="#"></a>
 </div>
