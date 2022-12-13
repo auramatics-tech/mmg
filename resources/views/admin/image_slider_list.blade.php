@@ -23,7 +23,7 @@
 				<span class="h-20px border-gray-300 border-start mx-4"></span>
 				<!--end::Separator-->
 				<!--begin::Breadcrumb-->
-	
+
 			</div>
 			<!--end::Page title-->
 			<!--begin::Actions-->
@@ -59,14 +59,14 @@
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-										<form action="{{route('admin.upload_slider_images')}}" method="post" enctype="multipart/form-data">
+											<form action="{{route('admin.upload_slider_images')}}" method="post" enctype="multipart/form-data">
 												@csrf
 												<div>
-													<input type="file" accept="image/*"  name="imageFile" class="upload" multiple id="files" required>
+													<input type="file" accept="image/*" name="imageFile" class="upload"  id="slider_file" required>
 												</div>
 												<div class="modal-footer">
-											<button type="submit" class="btn btn-primary">Submit</button>
-										</div>
+													<button type="submit" class="btn btn-primary">Submit</button>
+												</div>
 											</form>
 										</div>
 									</div>
@@ -271,7 +271,7 @@
 									</div>
 								</td>
 								<td class="align-items-center">
-									<a href="javascript:"  class="btn btn-success " data-bs-toggle="modal" data-bs-target="#img_upload" >Edit</a>
+									<a href="javascript:" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#img_upload">Edit</a>
 								</td>
 							</tr>
 							@endforeach
@@ -284,4 +284,22 @@
 </div>
 @endsection
 @section('script')
+<script>
+	var _URL = window.URL || window.webkitURL;
+	$("#slider_file").change(function(e) {
+		var file, img;
+		if ((file = this.files[0])) {
+			img = new Image();
+			img.onload = function() {
+				if(this.width < 1100 && this.height < 750){
+					alert('Size of Image should be width = 1100 , Height = 750');
+				}
+			};
+			img.onerror = function() {
+				alert("not a valid file: " + file.type);
+			};
+			img.src = _URL.createObjectURL(file);
+		}
+	});
+</script>
 @endsection

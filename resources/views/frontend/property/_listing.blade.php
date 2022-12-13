@@ -19,7 +19,7 @@
                         <div class="product-img su_product_img">
                             <a href="{{route('property_details',$property->id)}}"><img class="su_product_img_inside" src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                             <div class="real-estate-agent">
-                                <div class="w-100 agent-img">
+                                <div class="w-100 agent-img su_circle_img">
                                     <a href=""><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                                 </div>
                             </div>
@@ -81,23 +81,10 @@
 
                         <div class="product-hover-action">
                             <ul>
-                                {{--<li>
-                                                        <a href="{{route('property_details' ,isset($property->$property->id)?$property->$property->id:'')}}" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                <i class="flaticon-expand"></i>
-                                </a>
-                                </li>
-                                --}}
                                 <li>
                                     <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
                                         <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i></a>
                                 </li>
-                                {{--
-                                                    <li>
-                                                        <a href="" title="Product Details">
-                                                            <i class="flaticon-add"></i>
-                                                        </a>
-                                                    </li>
-                                                    --}}
                             </ul>
                         </div>
                     </div>
@@ -142,7 +129,7 @@
             @foreach($properties as $property_list)
             <div class="col-lg-12">
                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-                    <div class="product-img">
+                    <div class="product-img su_img_list">
                         <a href="{{route('property_details',$property_list->id)}}"><img src="{{isset($property_list->get_property_image)?asset('storage/property_images/'.$property_list->get_property_image->document):''}}" alt="#"></a>
                     </div>
                     <div class="product-info">
@@ -176,10 +163,18 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="product-info product-hover-action">
+                            <ul>
+                                <li>
+                                    <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
+                                        <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i></a>
+                                </li>
+                            </ul>
+                    </div>
                     <div class="product-info-bottom">
                         <div class="real-estate-agent">
-                            <div class="agent-img">
-                                <a href=""><img src="img/blog/author.jpg" alt="#"></a>
+                            <div class="agent-img su_circle_list_img">
+                                <a href=""><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
                             </div>
                             <div class="agent-brief">
                                 <h6><a href=""> {{isset($property_list->property_name->first_name)?$property_list->property_name->first_name:''}} {{isset($property_list->property_name->last_name)?$property_list->property_name->last_name:''}} </a></h6>

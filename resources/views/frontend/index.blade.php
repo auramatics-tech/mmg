@@ -28,6 +28,51 @@
     height: 94vh;
     background-size: 100% 100%;
 }
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .home_main_img {
+       height: 70vh;
+    }
+    .logo {
+       height: 70vh;
+    }
+    .mt_size_480_30{
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: 768px) and (min-width: 500px){
+    .home_main_img {
+    height: 70vh;
+}
+.logo img {
+    width: 65px;
+    height: 65px;
+}
+.logo {
+    height: 70vh;
+}
+.mt_size_480_30{
+    margin-top: 20px;
+}
+}
+@media screen and (max-width: 500px) and (min-width: 320px){
+    .logo img {
+        width: 50px;
+        height: 50px;
+        z-index: 9;
+    }
+    .home_main_img {
+        height: 45vh;
+    }
+    .logo {
+        height: 45vh;
+    }
+    .mt_size_480_30{
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: px) {
+
+}
 
 </style>
 
@@ -322,7 +367,7 @@
 <!-- SLIDER AREA END -->
 
 <!-- CAR DEALER FORM AREA START -->
-<div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115---">
+<div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115--- mt_size_480_30">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
