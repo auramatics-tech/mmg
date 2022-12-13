@@ -347,16 +347,21 @@
                     <h1>{{isset($property->property_type)?$property->property_type:''}}</h1>
                     <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span> {{isset($property->address)?$property->address:''}}</label>
                     {{-- <h4 class="title-2">Description</h4>  --}}
-                    <p>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</p>
+                    {{--<p>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</p> --}}
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
                     @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                         <ul>
                             <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
-                            <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</</span></li>
+                           {{-- <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</</span></li>
                             <li><label>Rooms:</label> <span>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}</span></li>
-                            <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li>
+                            <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li>  --}}
+                            <?php $data = json_decode($property_inspections->inspection_day,true);
+                             $property_inspections_date = implode(",",$data); ?>
+                            <li><label>Inspection Date:</label> <span>{{$property_inspections_date}}</span></li>
+                            <li><label>Inspection Time:</label> <span>{{isset($property_inspections->start_time)?$property_inspections->start_time:''}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>
+                            <li><label>Description:</label> <span>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</span></li>
                             <!-- <li><label>Year built:</label> <span>1992</span></li> -->
                         </ul>
                         @endif
@@ -791,9 +796,9 @@
                         </div>
                     </div>
                     <!-- APARTMENTS PLAN AREA END -->
-                    <h4 class="title-2">Property Video</h4>
                     @if(count($property_video_links))
                     @foreach($property_video_links as $property_video_link)
+                    <h4 class="title-2">Property Video</h4>
                     <?php
                     $youtubeUrl = $property_video_link->video_url;
                     $youtubePattern = "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i";
