@@ -667,7 +667,7 @@
                                     <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
                                     <div class="col-lg-6 col-md-12 col-12">
                                         <li class="su_listcat">
-                                            <label class="checkbox-item">For Sale
+                                            <label class="checkbox-item">Residential Sale
                                                 <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("residential_sale", request()->form_type)) checked @endif value="residential_sale" name="form_type[]">
                                                 <span class="checkmark"></span>
                                             </label>
@@ -676,7 +676,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-12 commercial_hide">
                                         <li class="su_listcat">
-                                            <label class="checkbox-item">For Rent
+                                            <label class="checkbox-item">Residential Rental
                                                 <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("residential_rental", request()->form_type)) checked @endif value="residentia_rental" name="form_type[]">
                                                 <span class="checkmark"></span>
                                             </label>
@@ -904,7 +904,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12 col-12">
                                             <li class="su_listcat">
-                                                <label class="checkbox-item">For Sale
+                                                <label class="checkbox-item">Commercial Sale
                                                     <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("commercial_sale", request()->form_type)) checked @endif value="commercial_sale" name="form_type[]">
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -913,7 +913,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-12 commercial_hide">
                                             <li class="su_listcat">
-                                                <label class="checkbox-item">For Lease
+                                                <label class="checkbox-item">Commercial Lease
                                                     <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("commercial_lease", request()->form_type)) checked @endif value="commercial_rental" name="form_type[]">
                                                     <span class="checkmark"></span>
                                                 </label>
