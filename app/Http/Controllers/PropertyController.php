@@ -107,8 +107,8 @@ class PropertyController extends Controller
         $property_details = PropertyDetail::where('property_id', $property_id)->first();
         $latest_property = Property::where('is_approved', 1)->latest('created_at')->limit(5)->get();
         $property_types = Property::select('property_type')->distinct('property_type')->get();
-        $property_inspections = Inspection::where('id', $property_id)->get();
-    //echo "<pre>";print_r($property_inspections);die;
+        $property_inspections = Inspection::where('id', $property_id)->first();
+    // echo "<pre>";print_r($property_inspections);die;
         $property_reviews = PropertyReview::select('property_reviews.*', DB::raw("(select profile_pic from users where `users`.`id` = property_reviews.user_id) as profile_pic"))->where('property_id', $property_id)->get();
         // echo "<pre>";print_r( $property_reviews);die;
         $comments_count = PropertyReview::where('property_id', $property_id)->count();
@@ -122,8 +122,9 @@ class PropertyController extends Controller
                 $property_view->save();
             }
         }
-        $related_properties = Property::where('property_type', $property->property_type)->where('is_approved', 1)->get();
-        $property_video_links = PropertyLinkListing::where('id', $property_id)->get();
+        $related_properties = Property::where('form_type', $property->form_type)->where('is_approved', 1)->get();
+        // echo "<pre>";print_r( $related_properties);die;
+        $property_video_links = PropertyLinkListing::where('id', $property_id)->whereNotNull('video_url')->get();
 
         return view('frontend.property.property_details', compact('property', 'property_details', 'property_reviews', 'related_properties', 'latest_property', 'comments_count', 'property_types', 'property_video_links','property_inspections'));
     }

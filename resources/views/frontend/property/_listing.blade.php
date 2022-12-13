@@ -103,15 +103,23 @@
                     </div>
                     @if($property->form_type == 'residential_sale' || $property->form_type == 'residential_rental')
                     <div class="product-info-bottom">
-                        <div class="product-price">
+                    <div class="product-price">
+                            @if($property->form_type == 'residential_sale')
                             <span>${{isset($property->normal_price)?$property->normal_price:''}}</span>
+                            @elseif($property->form_type == 'residential_rental')
+                            <span>${{isset($property->rental_per_month)?$property->rental_per_month:''}} per/mon</span>
+                            @endif
                         </div>
                     </div>
                     @endif
                     @if($property->commercial_listing_type == 'commercial_sale' || $property->commercial_listing_type == 'commercial_lease')
                     <div class="product-info-bottom">
-                        <div class="product-price">
-                            <span>${{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}}pa</span>
+                    <div class="product-price">
+                            @if( $property->commercial_listing_type == 'commercial_lease')
+                            <span>${{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}} per/year</span>
+                            @elseif($property->commercial_listing_type == 'commercial_sale')
+                            <span>${{isset($property->normal_price)?$property->normal_price:''}}</span>
+                            @endif
                         </div>
                     </div>
                     @endif
