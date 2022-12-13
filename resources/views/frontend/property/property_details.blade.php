@@ -17,6 +17,10 @@
         object-fit: cover;
         object-position: center center;
     }
+    .checkamenties{
+        padding-left:0px!important;
+
+    }
 
     .leave-rating label {
         color: #ffc107;
@@ -347,10 +351,10 @@
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
-                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease' ||$property->form_type == 'residential_sale')
+                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                         <ul>
-                            <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li>
-                            <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}}</span></li>
+                            <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
+                            <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</</span></li>
                             <li><label>Rooms:</label> <span>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}</span></li>
                             <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li>
                             <!-- <li><label>Year built:</label> <span>1992</span></li> -->
@@ -358,9 +362,12 @@
                         @endif
                         @if($property->form_type == 'commercial' ||$property->form_type == 'commercial_sale')
                         <ul>
-                            <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li>
-                            <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}}</span></li>
-                            <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}}</span></li>
+                            <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
+                            <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}} {{isset( $property_details->floor_area_units)?  $property_details->floor_area_units:''}}</span></li>
+                            <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>
+                            <!-- <li><label>Inspection Day: </label> <span>{{isset( $property_inspections->inspection_day)? $property_inspections->inspection_day:''}}</span></li> -->
+                            <li><label>Start Date: </label> <span>{{isset($property_inspections->start_time)? $property_inspections->start_time:''}}</span></li>
+                            <li><label>End Date:</label> <span>{{isset($property_inspections->end_time)?  $property_inspections->end_time:''}}</span></li>
                             <!-- <li><label>Year built:</label> <span>1992</span></li> -->
                         </ul>
                         @endif
@@ -374,7 +381,7 @@
                     </div>
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
-                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_lease' ||$property->form_type == 'residential_sale')
+                    @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                         <ul>
                             <li>
                                 <div class="property-detail-feature-list-item">
@@ -425,7 +432,15 @@
                                     </div>
                                 </div>
                             </li>
-                            
+                            <li>
+                            <div class="property-detail-feature-list-item">
+                                    <i class="fa-solid fa-chart-area su_icon_clr"></i>  
+                                    <div>
+                                        <h6>Area</h6>
+                                    <small>{{isset($property_details->total_floor_area)? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units)? $property_details->floor_area_units:''}}</small>
+                                   </div>      
+                            </div> 
+                            </li>         
                         </ul>
                         @endif
                     </div>
@@ -462,6 +477,7 @@
                             @endif
                         </div>
                     </div>
+                    @if($property->form_type == 'residential_sale' || $property->form_type  == 'residential_rental')
                     <div class="property-details-amenities mb-60">
                         <h4 class="title-2 mb-10">Amenities</h4>
                         <div class="row">
@@ -480,9 +496,9 @@
 
                                         @foreach($property_features as $key => $property_feature)
                                         <li>
-                                            <label class="checkbox-item">{{$property_feature}}
+                                            <label class="checkbox-item checkamenties">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <span class="checkmark"></span>
+                                                <!-- <span class="checkmark"></span> -->
                                             </label>
                                         </li>
                                         @endforeach
@@ -505,9 +521,9 @@
 
                                         @foreach($property_features as $key => $property_feature)
                                         <li>
-                                            <label class="checkbox-item">{{$property_feature}}
+                                            <label class="checkbox-item checkamenties">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <span class="checkmark"></span>
+                                                <!-- <span class="checkmark"></span> -->
                                             </label>
                                         </li>
                                         @endforeach
@@ -529,9 +545,9 @@
                                     <ul>
                                         @foreach($property_features as $key => $property_feature)
                                         <li>
-                                            <label class="checkbox-item">{{$property_feature}}
+                                            <label class="checkbox-item checkamenties">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <span class="checkmark"></span>
+                                                <!-- <span class="checkmark"></span> -->
                                             </label>
                                         </li>
                                         @endforeach
@@ -553,9 +569,9 @@
                                     <ul>
                                         @foreach($property_features as $key => $property_feature)
                                         <li>
-                                            <label class="checkbox-item">{{$property_feature}}
+                                            <label class="checkbox-item checkamenties ">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <span class="checkmark"></span>
+                                                <!-- <span class="checkmark"></span> -->
                                             </label>
                                         </li>
                                         @endforeach
@@ -565,6 +581,7 @@
                             @endif
                         </div>
                     </div>
+                    @endif
                     <h4 class="title-2">Location</h4>
                     <div class="property-details-google-map mb-60">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -662,21 +679,21 @@
                                                     </div>
                                                 </div>
                                                 @endif
-                                                @if($property->form_type == 'commercial' ||$property->form_type == 'commercial_sale' ||$property->form_type == 'commercial_lease')
+                                                @if($property->form_type == 'commercial' ||$property->commercial_listing_type == 'commercial_sale' ||$property->commercial_listing_type == 'commercial_lease')
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
-                                                                <li><label>Total Floor Area</label> <span>{{isset( $property_details->total_floor_area)? $property_details->total_floor_area:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
-                                                                <li><label>Office Area</label> <span>{{isset($property_details->office_area)? $property_details->office_area:''}}</span></li>
+                                                                <li><label>Total Floor Area</label> <span>{{isset($property_details->total_floor_area) ? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units) ? $property_details->floor_area_units:''}}</span></li>
+                                                                <li><label>Office Area</label> <span>{{isset($property_details->office_area) ? $property_details->office_area:''}} {{isset($property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
-                                                                <li><label>Land Size</label> <span>{{isset( $property_details->land_size)? $property_details->land_size:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
-                                                                <li><label>Warehouse Area</label> <span>{{isset($property_details->warehouse_area) ? $property_details->warehouse_area:''}} </span></li>
+                                                                <li><label>Land Size</label> <span>{{isset($property_details->land_size) ? $property_details->land_size:''}} {{isset($property_details->land_size_units) ? $property_details->land_size_units:''}}</span></li>
+                                                                <li><label>Warehouse Area</label> <span>{{isset($property_details->warehouse_area) ? $property_details->warehouse_area:''}} {{isset($property_details->warehouse_units) ? $property_details->warehouse_units:''}} </span></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -974,7 +991,7 @@
         <div class="col-lg-4">
             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar---">
                 <!-- Author Widget -->
-                <div class="widget ltn__author-widget">
+                {{--<div class="widget ltn__author-widget">
                     @if(count($property_reviews))
                     @foreach($property_reviews as $key => $property_review)
                     <div class="ltn__author-widget-inner text-center">
@@ -996,19 +1013,19 @@
                             </ul>
                         </div>
                         <p>{{$property_review->comments}}</p>
-                        <div class="ltn__social-media">
-                            {{-- <ul>
+                     <div class="ltn__social-media">
+                            <ul>
                                     <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
 
                                     <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
-                                </ul>  --}}
+                                </ul>  
                         </div>
                     </div>
                     @endforeach
                     @endif
-                </div>
+                </div>--}}
                 <!-- Search Widget -->
                 <div class="widget ltn__search-widget">
                     <h4 class="ltn__widget-title ltn__widget-title-border-2">Search Objects</h4>
@@ -1126,7 +1143,7 @@
     @endif
 </div>
 <!-- Popular Product Widget -->
-<div class="widget ltn__popular-product-widget">
+{{--<div class="widget ltn__popular-product-widget">
     <h4 class="ltn__widget-title ltn__widget-title-border-2">Related Properties</h4>
     <div class="row ltn__popular-product-widget-active slick-arrow-1">
         <!-- ltn__product-item -->
@@ -1171,7 +1188,7 @@
         @endforeach
         @endif
     </div>
-</div>
+</div>--}}
 <!-- Popular Post Widget -->
 <div class="widget ltn__popular-post-widget">
     <h4 class="ltn__widget-title ltn__widget-title-border-2">Latest Property</h4>

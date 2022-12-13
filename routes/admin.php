@@ -12,5 +12,4 @@ Route::get('/remove-aprroval/{property_id}', [PropertyController::class, 'remove
 Route::get('/sliders', [SliderController::class, 'image_slider_list'])->name('admin.sliders');
 Route::post('/upload-slider-image', [SliderController::class, 'upload_slider_images'])->name('admin.upload_slider_images');
 Route::post('/image-slider-list', [SliderController::class, 'image_slider_list'])->name('admin.image_slider_list');
-Route::get('/delete-Image,/{id}', [SliderController::class, 'deleteImage'])->name('admin.deleteImage');
 

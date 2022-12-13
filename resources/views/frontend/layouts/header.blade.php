@@ -80,7 +80,7 @@
     <!-- ltn__header-top-area end -->
 
     <!-- ltn__header-middle-area start -->
-    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
+    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white header_hide">
         <div class="container">
             <div class="row">
                 <div class="col">

@@ -675,7 +675,12 @@
 													</td>
 													<td>
 														{{--<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->normal_price)?$property->normal_price:''}} - ${{isset($property->desired_price)?$property->desired_price:''}}</div>--}}
+														@if($property->form_type == 'residential_sale' || $property->form_type  == 'residential_rental')
 														{{isset($property->normal_price)?$property->normal_price:''}}
+														@endif
+														@if($property->commercial_listing_type == 'commercial_sale' || $property->commercial_listing_type  == 'commercial_lease')
+														{{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}}pa
+														@endif
 													</td>
 													<!-- <td>{{isset($property->status)?$property->status:''}}</td> -->
 													<td>{{isset($property->form_type)?$property->form_type:''}}</td>

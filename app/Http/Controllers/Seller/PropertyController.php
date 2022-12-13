@@ -34,15 +34,13 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        
+
         $properties = Property::where('created_by', Auth::id())->paginate(5);
         return view('seller.property.property_list', compact('properties'));
     }
 
     public function add_property_form(Request $request)
     {
-       
-   
         $property_form = "listing_details";
         if ($request->listing_type == 'commercial') {
             $property_types = PropertyType::where('form_type', 'commercial')->get();
@@ -50,7 +48,7 @@ class PropertyController extends Controller
             $property_types = PropertyType::where('form_type', 'buisness')->get();
         } elseif ($request->listing_type == 'rural') {
             $property_types = PropertyType::where('form_type', 'rural')->get();
-        }else {
+        } else {
             $property_types = PropertyType::where('form_type', 'residential')->get();
         }
         $property = '';
@@ -106,20 +104,20 @@ class PropertyController extends Controller
 
     public function save_listing_details(Request $request)
     {
-      // echo "<pre>";print_r($request->all());die;
+        //echo "<pre>";print_r($request->all());die;
         $data = $request->except("_token");
         //echo "<pre>";print_r($data);die;
-        if ( $request->form_type == 'residential') {
+        if ($request->form_type == 'residential') {
             $validate = Validator::make($request->all(), [
                 'property_type' => ['required'],
                 'home_and_land_package' => ['required'],
                 'normal_price' => ['required'],
                 'desired_price' => ['required'],
+                // 'commercial_property_name' => ['required'],
                 'commercial_rental_per_annum' => ['required'],
                 'commercial_lease_expiry_date' => ['required'],
                 'commercial_outgoings' => ['required'],
                 'commercial_lease_term' => ['required'],
-                'commercial_property_name' => ['required'],
                 'address' => ['required'],
                 'address_display' => ['required'],
                 'street_no' => ['required'],
@@ -128,88 +126,80 @@ class PropertyController extends Controller
                 'suburb' => ['required'],
                 'state' => ['required'],
                 'postcode' => ['required'],
-                
+
             ]);
-        }elseif ($request->form_type == 'residential_rental') {
+        } elseif ($request->form_type == 'residential_rental') {
             $validate = Validator::make($request->all(), [
                 'property_type' => ['required'],
                 'address' => ['required'],
                 'street_no' => ['required'],
                 'street' => ['required'],
                 'suburb' => ['required'],
-                'state' =>['required'],
+                'state' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'],  
+                'address_display' => ['required'],
             ]);
-        }
-        elseif ($request->form_type == 'residential_sale') {
+        } elseif ($request->form_type == 'residential_sale') {
             $validate = Validator::make($request->all(), [
                 'property_type' => ['required'],
-                'home_and_land_package' =>  ['required'],     
+                'home_and_land_package' =>  ['required'],
                 'address' => ['required'],
                 'street_no' => ['required'],
                 'street' => ['required'],
                 'suburb' => ['required'],
-                'state' =>['required'],
+                'state' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'],  
+                'address_display' => ['required'],
             ]);
-        }
-        elseif ($request->form_type == 'commercial' && $request->commercial_listing_type == 'commercial_sale' ) {
+        } elseif ($request->form_type == 'commercial' && $request->commercial_listing_type == 'commercial_sale') {
             $validate = Validator::make($request->all(), [
-     
+                'commercial_property_type' => ['required'],
                 'commercial_listing_type' => ['required'],
                 'authority' => ['required'],
-                'normal_price' => ['required'],
-                'commercial_property_name' => ['required'],
+                // 'commercial_property_name' => ['required'],
                 'address' => ['required'],
                 'street_no' => ['required'],
                 'street' => ['required'],
                 'suburb' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'], 
-                
+                'address_display' => ['required'],
+
             ]);
-        }
-        elseif ($request->form_type == 'commercial' && $request->commercial_listing_type == 'commercial_lease' ) {
+        } elseif ($request->form_type == 'commercial' && $request->commercial_listing_type == 'commercial_lease') {
 
             $validate = Validator::make($request->all(), [
-         
+                'commercial_property_type' => ['required'],
                 'commercial_listing_type' => ['required'],
                 'commercial_rental_per_annum' => ['required'],
                 'commercial_lease_expiry_date' => ['required'],
                 'commercial_outgoings' => ['required'],
                 'commercial_lease_term' => ['required'],
-                'commercial_property_name' => ['required'],
+                // 'commercial_property_name' => ['required'],
                 'address' => ['required'],
                 'street_no' => ['required'],
                 'street' => ['required'],
                 'suburb' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'], 
+                'address_display' => ['required'],
             ]);
-        }
-        elseif ($request->form_type == 'commercial' && $request->commercial_listing_type == 'commercial_sale_and_lease' ) {
+        } elseif ($request->form_type == 'commercial' && $request->commercial_listing_type == 'commercial_sale_and_lease') {
             $validate = Validator::make($request->all(), [
-
-             'commercial_listing_type' => ['required'],
-               'authority' => ['required'],
-               'normal_price' => ['required'],
-               'commercial_property_name' => ['required'],
-               'commercial_rental_per_annum' => ['required'],
+                'commercial_property_type' => ['required'],
+                'commercial_listing_type' => ['required'],
+                'authority' => ['required'],
+                // 'commercial_property_name' => ['required'],
+                'commercial_rental_per_annum' => ['required'],
                 'commercial_lease_expiry_date' => ['required'],
                 'commercial_outgoings' => ['required'],
                 'commercial_lease_term' => ['required'],
-                'commercial_property_name' => ['required'],
                 'address' => ['required'],
                 'street_no' => ['required'],
                 'street' => ['required'],
                 'suburb' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'], 
+                'address_display' => ['required'],
             ]);
-        }
-        elseif ($request->form_type == 'rural') {
+        } elseif ($request->form_type == 'rural') {
             $validate = Validator::make($request->all(), [
                 'status' => ['required'],
                 'property_type' => ['required'],
@@ -222,12 +212,10 @@ class PropertyController extends Controller
                 'suburb' => ['required'],
                 'state' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'], 
-             
+                'address_display' => ['required'],
+
             ]);
-        }
-        
-        elseif ($request->form_type == 'business') {
+        } elseif ($request->form_type == 'business') {
             $validate = Validator::make($request->all(), [
                 'status' => ['required'],
                 'normal_price' => ['required'],
@@ -238,19 +226,18 @@ class PropertyController extends Controller
                 'suburb' => ['required'],
                 'state' => ['required'],
                 'postcode' => ['required'],
-                'address_display' => ['required'],   
+                'address_display' => ['required'],
             ]);
         }
-       
-     
+
         if ($validate->fails()) {
             return Redirect::back()->with($data)->withErrors($validate);
         }
         $data = $request->except('_token');
         $data['created_by'] = Auth::id();
         $property = Property::updateOrCreate(['id' => $request->id], $data);
-        $url = route('seller.property_details_form', $property->id)."?listing_type=".$data['form_type'];
-        return redirect( $url );
+        $url = route('seller.property_details_form', $property->id) . "?listing_type=" . $data['form_type'];
+        return redirect($url);
     }
 
     public function save_property_details(Request $request)
@@ -269,14 +256,7 @@ class PropertyController extends Controller
 
     public function save_property_images(Request $request)
     {
-        $data = $request->except('_token');
-        $validate = Validator::make($request->all(), [
-            'headline' => ['required'],
-            'description' => ['required'],
-        ]);
-        if ($validate->fails()) {
-            return Redirect::back()->with($data)->withErrors($validate);
-        }
+
         $data = $request->except('_token');
         if (isset($data['upload_images']) && count($data['upload_images'])) {
             foreach ($request->upload_images as $key => $img) {
@@ -327,9 +307,16 @@ class PropertyController extends Controller
 
     public function save_inspections(Request $request)
     {
+        // echo "<pre>";
+        // print_r($request->all());
+        // die;
         $data = $request->except('_token');
-        $data['is_complete'] = 1;
+        if(isset($request->inspection_day)){
+            $data['inspection_day'] = json_encode($data['inspection_day']);
+        }
+       
         $inspection = Inspection::updateOrCreate(['property_id' => $request->property_id], $data);
+        $property = Property::where('id',$request->property_id)->update(['is_complete'=>1]);
         return redirect()->route('seller.property_list');
     }
 

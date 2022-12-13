@@ -22,7 +22,7 @@
             <input type="file" name="upload_images[]" accept="image/png,image/jpg, image/gif, image/jpeg, image/*" multiple>
         </div>
         <br>
-        <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#upload_floorplans" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">
+        {{--<div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#upload_floorplans" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">
             UPLOAD FLOORPLANS
             <span class="ms-2 rotate-180">
 
@@ -36,7 +36,7 @@
         <div id="upload_floorplans" class="collapse show">
             <input type="file" name="upload_floorplans[]" accept="image/png,image/jpg, image/gif, image/jpeg, image/*" multiple>
         </div>
-        <br>
+        <br>--}}
         <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#upload_documents" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">
             UPLOAD DOCUMENTS
             <span class="ms-2 rotate-180">
@@ -50,7 +50,7 @@
             </span>
         </div>
         <div id="upload_documents" class="collapse show">
-            <input type="file" name="upload_documents[]" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf" multiple>
+            <input type="file" name="upload_documents[]" accept="image/png,image/jpg, image/gif, image/jpeg, image/*.doc, .docx,.ppt, .pptx,.txt,.pdf" multiple>
         </div>
 
         <br>
@@ -69,19 +69,15 @@
         </div>
         <div id="listing_copy" class="collapse show">
             <div class="d-flex flex-column mb-7 fv-row">
-                <label class="required fs-6 fw-bold mb-2">Headline</label>
+                <label class=" fs-6 fw-bold mb-2">Headline</label>
                 <input class="form-control form-control-solid" placeholder="" name="headline" value="{{old('headline') ?? isset($property_link_listing->headline)?$property_link_listing->headline:''}}" />
-                @error('headline')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
+            
             </div>
 
             <div class="d-flex flex-column mb-7 fv-row">
-                <label class="required fs-6 fw-bold mb-2">Description</label>
+                <label class=" fs-6 fw-bold mb-2">Description</label>
                 <textarea name="description" class="form-control form-control-solid" cols="30" rows="5">{{old('description') ?? isset($property_link_listing->description)?$property_link_listing->description:''}}</textarea>
-                @error('description')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
+            
             </div>
             {{-- <div class="d-flex flex-column mb-7 fv-row">
             <label class="required fs-6 fw-bold mb-2">Small Description For Stocklists</label>

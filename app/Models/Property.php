@@ -13,7 +13,7 @@ class Property extends Model
         'created_by','is_approved','form_type','business_name',
         'status','is_featured','property_type',
         'new_construction','home_and_land_package',
-        'authority','listing_expiry_date','normal_price',
+        'authority','start_expiry_date','end_expiry_date','normal_price',
         'desired_price','show_price','alt_to_price',
         'address','state','unit','street_no','street',
         'postcode','suburb','lat','lng','address_display','key_number','terms','commercial_outgoings','commercial_lease_term','commercial_property_name',

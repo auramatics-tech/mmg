@@ -28,12 +28,11 @@ class SliderController extends Controller
         // echo "<pre>";
         // print_r( $request->all());
         // die;
-
+        $fileModal = Slider::Find(1);
         if ($request->hasfile('imageFile')) {
             $file = $request->file('imageFile');
             $name = 'slider_' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(storage_path('app/public/sliders'), $name);
-            $fileModal = new Slider();
             $fileModal->file_name = $name;
             $fileModal->save();
         }
@@ -49,13 +48,5 @@ class SliderController extends Controller
     {
         $files = Slider::where('active', 1)->orderBy('sort', 'ASC')->get();
         return view('admin.image_slider_list', compact('files'));
-    }
-
-    public function deleteImage($id )
-    {
-
-        $files = Slider::find($id)->delete();
-
-        return back()->with("success", "Image deleted successfully.");
     }
 }

@@ -2,7 +2,7 @@
     <form action="{{route('seller.save_property_details')}}" method="POST" onsubmit="setFormSubmitting()">
         @csrf
         <input type="hidden" name="property_id" value="{{$property_id}}">
-        <div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_hide " data-bs-toggle="collapse" href="#about_property" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">About the property
+        <div class="fw-bolder fs-3 rotate collapsible mb-7  " data-bs-toggle="collapse" href="#about_property" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">About the property
             <span class="ms-2 rotate-180">
 
                 <span class="svg-icon svg-icon-3">
@@ -14,8 +14,8 @@
             </span>
         </div>
 
-        <div id="about_property" class="collapse show commercial_hide">
-            <div class="row g-9 mb-8">
+        <div id="about_property" class="collapse show">
+            <div class="row g-9 mb-8 commercial_sale_hide commercial_hide commercial_lease_hide">
                 <div class="col-md-6 fv-row">
                     <label class="fs-6 fw-bold mb-2">Bedrooms</label>
                     <select name="bedrooms" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
@@ -95,8 +95,7 @@
                     <label class="fs-6 fw-bold mb-2">Land size</label>
                     <div class="row">
                         <div class="col-6">
-                            <input class="form-control form-control-solid" placeholder="" name="land_size" value="{{old('land_size') ?? isset($property_details->land_size)?$property_details->land_size:''}}" />
-
+                        <input class="form-control form-control-solid" placeholder="" name="land_size" value="{{old('land_size') ?? isset($property_details->land_size)?$property_details->land_size:''}}" />
                         </div>
                         <div class="col-6">
                             <select name="land_size_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
@@ -111,7 +110,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 fv-row">
+                {{--<div class="col-md-6 fv-row">
                     <label class="fs-6 fw-bold mb-2">Energy efficiency rating</label>
                     <select name="energy_efficiency_rating" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
                         <option value=""></option>
@@ -184,12 +183,12 @@
                     <input class="form-control form-control-solid" placeholder="" name="reso_offer_link" value="{{old('reso_offer_link') ?? isset($property_details->reso_offer_link)?$property_details->reso_offer_link:''}}" />
                 </div>
 
-            </div>
+            </div>--}}
         </div>
 
         <br>
 
-        <div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_hide" data-bs-toggle="collapse" href="#property_feature" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Property features
+        <div class="fw-bolder fs-3 rotate collapsible mb-7 commercial_sale_hide commercial_hide commercial_lease_hide" data-bs-toggle="collapse" href="#property_feature" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Property features
             <span class="ms-2 rotate-180">
 
                 <span class="svg-icon svg-icon-3">
@@ -201,7 +200,7 @@
             </span>
         </div>
 
-        <div id="property_feature" class="collapse show commercial_hide">
+        <div id="property_feature" class="collapse show ">
 
             {{--
             <div class="col-md-12 fv-row my-4">
@@ -217,7 +216,7 @@
 </div>
 --}}
 
-<div class="col-md-12 fv-row my-4">
+<div class="col-md-12 fv-row my-4 commercial_sale_hide commercial_hide commercial_lease_hide">
     <label class="fs-5 fw-bolder form-label mb-2">OUTDOOR FEATURES</label>
     <div class="row">
         @foreach($outdoor as $feature)
@@ -229,7 +228,7 @@
     </div>
 </div>
 
-<div class="col-md-12 fv-row my-4">
+<div class="col-md-12 fv-row my-4 commercial_sale_hide commercial_hide commercial_lease_hide">
     <label class="fs-5 fw-bolder form-label mb-2">INDOOR FEATURES</label>
     <div class="row">
         @foreach($indoor as $feature)
@@ -242,7 +241,7 @@
 </div>
 
 
-<div class="col-md-12 fv-row my-4">
+<div class="col-md-12 fv-row my-4 commercial_sale_hide commercial_hide commercial_lease_hide">
     <label class="fs-5 fw-bolder form-label mb-2">HEATING / COOLING</label>
     <div class="row">
         @foreach($heating_cooling as $feature)
@@ -254,7 +253,7 @@
     </div>
 </div>
 
-<div class="col-md-12 fv-row my-4">
+<div class="col-md-12 fv-row my-4 commercial_sale_hide commercial_hide commercial_lease_hide">
     <label class="fs-5 fw-bolder form-label mb-2">ECO FRIENDLY FEATURES</label>
     <div class="row">
         @foreach($eco_friendly as $feature)
@@ -266,7 +265,7 @@
     </div>
 </div>
 
-<div class="col-md-12 fv-row mb-4">
+<div class="col-md-12 fv-row mb-4 commercial_sale_hide commercial_hide commercial_lease_hide">
     <label class=" fs-6 fw-bold mb-2">Other Features</label>
     <textarea class="form-control form-control-solid" name="other_features" rows="5" cols="30">{{old('other_features') ?? (isset($property_details->other_features) && $property_details->other_features)?$property_details->other_features:''}} </textarea>
 
@@ -274,7 +273,7 @@
 
 </div>
 
-<div class="row residential_sale_hide residential_rental_hide " id="">
+<div class="row residential_sale_hide residential_rental_hide" id="">
     <div class="col-lg-6 col-md-6 col-12 mb-7">
         <label class=" fs-6 fw-bold mb-2">Total Floor Area</label>
         <div class="row">
@@ -282,10 +281,10 @@
                 <input class="form-control form-control-solid" placeholder="" name="total_floor_area" value="{{old('total_floor_area') ?? isset($property_details->total_floor_area)?$property_details->total_floor_area:''}}" />
             </div>
             <div class="col-6">
-                <select name="house_size_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
-                    <option value="Square metres" {{((old('total_floor_area') ?? isset($property_details->total_floor_area)?$property_details->total_floor_area:'')=='Square metres')?'selected':'' }}>Square metres</option>
-                    <option value="Squares" {{((old('total_floor_area') ?? isset($property_details->total_floor_area)?$property_details->total_floor_area:'')=='Squares')?'selected':'' }}>Squares</option>
-                    <option value="Square feet" {{((old('total_floor_area') ?? isset($property_details->total_floor_area)?$property_details->total_floor_area:'')=='Square feet')?'selected':'' }}>Square feet</option>
+                <select name="floor_area_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
+                    <option value="Square metres" {{((old('floor_area_units') ?? isset($property_details->floor_area_units)?$property_details->floor_area_units:'')=='Square metres')?'selected':'' }}>Square metres</option>
+                    <option value="Squares" {{((old('floor_area_units') ?? isset($property_details->floor_area_units)?$property_details->floor_area_units:'')=='Squares')?'selected':'' }}>Squares</option>
+                    <option value="Square feet" {{((old('floor_area_units') ?? isset($property_details->floor_area_units)?$property_details->floor_area_units:'')=='Square feet')?'selected':'' }}>Square feet</option>
                 </select>
 
             </div>
@@ -295,23 +294,23 @@
         <label class=" fs-6 fw-bold mb-2">Office Area</label>
         <div class="row">
             <div class="col-6">
-                <input class="form-control form-control-solid" placeholder="" name="office_area" value="" />
+                <input class="form-control form-control-solid" placeholder="" name="office_area" value="{{old('office_area') ?? isset($property_details->office_area)?$property_details->office_area:''}}" />
             </div>
             <div class="col-6">
-                <select name="office_area" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
-                    <option value="Square metres" {{((old('office_area') ?? isset($property_details->office_area)?$property_details->office_area:'')=='Square metres')?'selected':'' }}>Square metres</option>
-                    <option value="Squares" {{((old('office_areaor_area') ?? isset($property_details->office_area)?$property_details->office_area:'')=='Squares')?'selected':'' }}>Squares</option>
-                    <option value="Square feet" {{((old('office_area') ?? isset($property_details->office_area)?$property_details->office_area:'')=='Square feet')?'selected':'' }}>Square feet</option>
+                <select name="office_area_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
+                    <option value="Square metres" {{((old('office_area_units') ?? isset($property_details->office_area_units)?$property_details->office_area_units:'')=='Square metres')?'selected':'' }}>Square metres</option>
+                    <option value="Squares" {{((old('office_area_units') ?? isset($property_details->office_area_units)?$property_details->office_area_units:'')=='Squares')?'selected':'' }}>Squares</option>
+                    <option value="Square feet" {{((old('office_area_units') ?? isset($property_details->office_area_units)?$property_details->office_area_units:'')=='Square feet')?'selected':'' }}>Square feet</option>
                 </select>
+
             </div>
         </div>
     </div>
-
-    <div class="col-lg-6 col-md-6 col-12 mb-7">
+    {{--<div class="col-lg-6 col-md-6 col-12 mb-7">
         <label class=" fs-6 fw-bold mb-2">Land size</label>
         <div class="row">
             <div class="col-6">
-                <input class="form-control form-control-solid" placeholder="" name="land_size" value="" />
+                <input class="form-control form-control-solid" placeholder="" name="land_size" value="{{old('land_size') ?? isset($property_details->land_size)?$property_details->land_size:''}}" />
             </div>
             <div class="col-6">
                 <select name="house_size_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
@@ -324,7 +323,7 @@
 
             </div>
         </div>
-    </div>
+    </div>--}}
     <div class="col-lg-6 col-md-6 col-12 mb-7">
         <label class=" fs-6 fw-bold mb-2">Warehouse Area</label>
         <div class="row">
@@ -332,11 +331,12 @@
                 <input class="form-control form-control-solid" placeholder="" name="warehouse_area" value="{{old('warehouse_area') ?? isset($property_details->warehouse_area)?$property_details->warehouse_area:''}}" />
             </div>
             <div class="col-6">
-                <select name="warehouse_area" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
-                    <option value="Square metres" {{((old('warehouse_area') ?? isset($property_details->warehouse_area)?$property_details->warehouse_area:'')=='Square metres')?'selected':'' }}>Square metres</option>
-                    <option value="Squares" {{((old('warehouse_area') ?? isset($property_details->warehouse_area)?$property_details->warehouse_area:'')=='Squares')?'selected':'' }}>Squares</option>
-                    <option value="Square feet" {{((old('warehouse_area') ?? isset($property_details->warehouse_area)?$property_details->warehouse_area:'')=='Square feet')?'selected':'' }}>Square feet</option>
+                <select name="warehouse_units" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bolder">
+                    <option value="Square metres" {{((old('warehouse_units') ?? isset($property_details->warehouse_units)?$property_details->warehouse_units:'')=='Square metres')?'selected':'' }}>Square metres</option>
+                    <option value="Squares" {{((old('warehouse_units') ?? isset($property_details->warehouse_units)?$property_details->warehouse_units:'')=='Squares')?'selected':'' }}>Squares</option>
+                    <option value="Square feet" {{((old('warehouse_units') ?? isset($property_details->warehouse_units)?$property_details->warehouse_units:'')=='Square feet')?'selected':'' }}>Square feet</option>
                 </select>
+
             </div>
         </div>
     </div>
