@@ -58,7 +58,7 @@
                 <input class="next_btn" name="next" type="button" value="Next">
             </fieldset>
             <fieldset>
-                <h2 class="title">Last but not least! Do you have an email address? If not, just leave it blank.</h2>
+                <h2 class="title">Last but not least! Enter your email address.</h2>
                 <input class="text_field form-control" name="email" placeholder="Type Your Email.." type="email">
                 <span class="error_msg"></span><br>
                 <input class="last_next_btn next_btn" name="next" type="button" value="Next">
