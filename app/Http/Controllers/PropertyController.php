@@ -72,8 +72,8 @@ class PropertyController extends Controller
                 $query->whereJsonContains('property_details.rental_allowances', $request->amenities);
             })->when(isset($request->indoor), function ($query) use ($request) {
                 $query->whereJsonContains('property_details.indoor', $request->indoor);
-            })->when(isset($request->outdoor), function ($query) use ($request) {
-                $query->whereJsonContains('property_details.outdoor', $request->outdoor);
+            })->when(isset($request->outdoor_feature), function ($query) use ($request) {
+                $query->whereJsonContains('property_details.outdoor', $request->outdoor_feature);
             })->when(isset($request->heating_cooling), function ($query) use ($request) {
                 $query->whereJsonContains('property_details.heating_cooling', $request->heating_cooling);
             })->when(isset($request->bathrooms), function ($query) use ($request) {
@@ -84,6 +84,10 @@ class PropertyController extends Controller
                 $query->whereJsonContains('property_details.eco_friendly', $request->eco_friendly);
             })->when((isset($request->price_from) && isset($request->price_to)), function ($query) use ($request) {
                 return $query->whereBetween('properties.normal_price', [$request->price_from, $request->price_to]);
+            })->when((isset($request->price_from_month) && isset($request->price_to_month)), function ($query) use ($request) {
+                return $query->whereBetween('properties.rental_per_month', [$request->price_from_month, $request->price_to_month]);
+            })->when((isset($request->rent_from_year) && isset($request->rent_to_year)), function ($query) use ($request) {
+                return $query->whereBetween('properties.commercial_rental_per_annum', [$request->rent_from_year, $request->rent_to_year]);
             })->when((isset($request->bedroom_from) && isset($request->bedroom_to)), function ($query) use ($request) {
                 return $query->whereBetween('property_details.bedrooms', [$request->bedroom_from, $request->bedroom_to]);
             })->when((isset($request->landsize_from) && isset($request->landsize_to)), function ($query) use ($request) {

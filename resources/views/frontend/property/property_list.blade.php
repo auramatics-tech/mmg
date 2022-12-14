@@ -708,10 +708,10 @@
                                         <h4 class="ltn__widget-title m_t_b_10">Price Per month</h4>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
-                                                <input type="text" name="" class="price_range" placeholder="From:" >
+                                            <input type="text" name="price_from_month" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
                                             </div>
                                             <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
-                                                <input type="text" name="" class="price_range" placeholder="To:" >
+                                            <input type="text" name="price_to_month" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
                                             </div>
                                         </div>
                                     </div>
@@ -827,7 +827,7 @@
                                         @foreach($outdoors as $key => $feature)
                                         @if($key <(count($outdoors) /2)) <li class="su_listcat">
                                             <label class="checkbox-item">{{$feature->name}}
-                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->feature) && in_array($feature->name,request()->feature))checked @endif name="feature[]" value="{{$feature->name}}">
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->feature) && in_array($feature->name,request()->feature))checked @endif name="outdoor_feature[]" value="{{$feature->name}}">
                                                 <span class="checkmark"></span>
                                             </label>
                                             </li>
@@ -961,10 +961,10 @@
                                         <h4 class="ltn__widget-title m_t_b_10">Price</h4>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
-                                                <input type="text" name="lower_price" placeholder="From:">
+                                            <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                                <input type="text" name="higher_price" placeholder="To:">
+                                            <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
                                             </div>
                                         </div>
                                     </div>
@@ -974,10 +974,10 @@
                                         <h4 class="ltn__widget-title m_t_b_10">Price Per Year</h4>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                                <input type="text" name="rent_from" @if(isset(request()->rent_from)) value="{{request()->rent_from}}" @endif placeholder="From:" >
+                                                <input type="text" name="rent_from_year" @if(isset(request()->rent_from)) value="{{request()->rent_from}}" @endif placeholder="From:" >
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                                <input type="text" name="rent_to" @if(isset(request()->rent_to)) value="{{request()->rent_to}}" @endif placeholder="To:" >
+                                                <input type="text" name="rent_to_year" @if(isset(request()->rent_to)) value="{{request()->rent_to}}" @endif placeholder="To:" >
                                             </div>
                                         </div>
                                     </div>
