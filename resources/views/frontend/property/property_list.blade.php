@@ -232,6 +232,12 @@
         width: 50px !important;
         height: 50px !important;
     }
+    .d_hide{
+        display: none;
+    }
+    .d_show{
+        display: block;
+    }
 
 
     @media screen and (max-width: 991px) {
@@ -668,7 +674,7 @@
                                     <div class="col-lg-6 col-md-12 col-12">
                                         <li class="su_listcat">
                                             <label class="checkbox-item">Residential Sale
-                                                <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("residential_sale", request()->form_type)) checked @endif value="residential_sale" name="form_type[]">
+                                                <input id="residential_sale_input" data-price="1" type="radio" class="all_checkbox price_type" @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif value="residential_sale" name="type[]">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <span class="categorey-no"></span>
@@ -677,12 +683,39 @@
                                     <div class="col-lg-6 col-md-12 col-12 commercial_hide">
                                         <li class="su_listcat">
                                             <label class="checkbox-item">Residential Rental
-                                                <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("residential_rental", request()->form_type)) checked @endif value="residentia_rental" name="form_type[]">
+                                                <input id="residential_rental_input" data-price="0"  type="radio" class="all_checkbox price_type" @if(isset(request()->type) && in_array("residential_rental", request()->type)) checked @endif value="residential_rental" name="type[]">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <span class="categorey-no"></span>
                                         </li>
                                     </div>
+
+                                    <div class="saleprice px-3">
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
+                                                <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="leaseprice px-3" style="display: none;">
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price Per month</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                <input type="text" name="" class="price_range" placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
+                                                <input type="text" name="" class="price_range" placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <hr class="su_hr">
                                     <h4 class="ltn__widget-title m_t_b_10">Residental</h4>
                                     <div class="col-lg-6 col-md-12 col-12">
@@ -750,16 +783,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <hr class="su_hr">
-                                    <h4 class="ltn__widget-title m_t_b_10">Price</h4>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
-                                            <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
-                                        </div>
-                                        <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
-                                            <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
-                                        </div>
-                                    </div>
+
                                     <hr class="su_hr">
                                     <h4 class="ltn__widget-title m_t_b_10">Land size</h4>
                                     <div class="row">
@@ -889,6 +913,16 @@
                                         @endforeach
                                         @endif
                                     </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Rental Per Month</h4>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                            <input type="text" name="rent_from"  placeholder="From:" >
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                            <input type="text" name="rent_to"  placeholder="To:" >
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer pt-4 pb-0">
@@ -905,7 +939,7 @@
                                         <div class="col-lg-6 col-md-12 col-12">
                                             <li class="su_listcat">
                                                 <label class="checkbox-item">Commercial Sale
-                                                    <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("commercial_sale", request()->form_type)) checked @endif value="commercial_sale" name="form_type[]">
+                                                    <input id="commercial_sale_input" type="radio" data-price="1" class="all_checkbox price_type" @if(isset(request()->type) && in_array("commercial_sale", request()->type)) checked @endif value="commercial_sale" name="commercial">
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 <span class="categorey-no"></span>
@@ -914,13 +948,40 @@
                                         <div class="col-lg-6 col-md-12 col-12 commercial_hide">
                                             <li class="su_listcat">
                                                 <label class="checkbox-item">Commercial Lease
-                                                    <input type="radio" class="all_checkbox" @if(isset(request()->form_type) && in_array("commercial_lease", request()->form_type)) checked @endif value="commercial_rental" name="form_type[]">
+                                                    <input id="commercial_lease_input" type="radio" data-price="0" class="all_checkbox price_type" @if(isset(request()->type) && in_array("commercial_lease", request()->type)) checked @endif value="commercial_lease" name="commercial">
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 <span class="categorey-no"></span>
                                             </li>
                                         </div>
                                     </div>
+
+                                    <div class="saleprice px-3" >
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
+                                                <input type="text" name="lower_price" placeholder="From:">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                                <input type="text" name="higher_price" placeholder="To:">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="leaseprice px-3" style="display: none;">
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price Per Year</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                                <input type="text" name="rent_from" @if(isset(request()->rent_from)) value="{{request()->rent_from}}" @endif placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                                <input type="text" name="rent_to" @if(isset(request()->rent_to)) value="{{request()->rent_to}}" @endif placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <hr class="su_hr">
                                     <h4 class="ltn__widget-title m_t_b_10">Commercial</h4>
                                     <div class="row">
@@ -954,16 +1015,8 @@
 
                                         </div>
                                     </div>
+                                   
                                     <hr class="su_hr">
-                                    <h4 class="ltn__widget-title m_t_b_10">Price</h4>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
-                                            <input type="text" name="lower_price" placeholder="From:">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                            <input type="text" name="higher_price" placeholder="To:">
-                                        </div>
-                                    </div>
                                     <h4 class="ltn__widget-title m_t_b_10">Land</h4>
                                     <label class="su_input_style">Squares</label>
                                     <br>
@@ -976,15 +1029,7 @@
                                         </div>
                                     </div>
                                     <hr class="su_hr">
-                                    <h4 class="ltn__widget-title m_t_b_10">Rental Per Month</h4>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                            <input type="text" name="rent_from" @if(isset(request()->rent_from)) value="{{request()->rent_from}}" @endif placeholder="From:" >
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                            <input type="text" name="rent_to" @if(isset(request()->rent_to)) value="{{request()->rent_to}}" @endif placeholder="To:" >
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                             <div class="modal-footer pt-4 pb-0">
@@ -1078,6 +1123,19 @@
     $(document).on('click', '.filter_tab', function() {
         $('.filter_tab').removeClass('active_under_line')
         $(this).addClass('active_under_line')
+    })
+</script>
+<script>
+    $(document).on('click','.price_type',function(){
+        if($(this).attr('data-price') == 1){
+            $(".saleprice").show()
+            $(".leaseprice").hide()
+        }
+        if($(this).attr('data-price') == 0){
+            $(".saleprice").hide()
+            $(".leaseprice").show()
+        }
+        console.log($(".price_type[data-price='1']").html())
     })
 </script>
 

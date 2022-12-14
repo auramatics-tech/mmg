@@ -62,6 +62,8 @@ class PropertyController extends Controller
             ->where('is_approved', 1)->where('is_complete', 1)->leftjoin('property_details', 'properties.id', 'property_details.property_id')
             ->when(isset($request->type), function ($query) use ($request) {
                 $query->whereIn('properties.form_type', $request->type);
+            })->when(isset($request->commercial), function ($query) use ($request) {
+                $query->where('properties.commercial_listing_type', 'LIKE', '%' . $request->commercial . '%');
             })->when(isset($request->search), function ($query) use ($request) {
                 $query->where('properties.property_type', 'LIKE', '%' . $request->search . '%');
             })->when(isset($request->property_type), function ($query) use ($request) {
