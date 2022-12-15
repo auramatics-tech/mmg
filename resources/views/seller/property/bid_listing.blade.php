@@ -564,7 +564,7 @@
 									<!--begin:: Avatar -->
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 										@if(isset($buyer_detalis->property->get_property_image))
-										<a href="{{route('property_details',$buyer_detalis->id)}}">
+										<a href="{{route('property_details',$buyer_detalis->property_id)}}">
 											<div class="symbol-label">
 												<img src="{{asset('storage/property_images/'.$buyer_detalis->property->get_property_image->document)}}" alt="E" class="w-100" />
 											</div>

@@ -359,15 +359,13 @@
                   
                     {{-- <h4 class="title-2">Description</h4>  --}}
                     {{--<p>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</p> --}}
-
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
                         <ul>
                             <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
                           {{--  <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}} {{isset( $property_details->floor_area_units)?  $property_details->floor_area_units:''}}</span></li>
                             <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>  --}}
-                            <!-- <li><label>Inspection Day: </label> <span>{{isset( $property_inspections->inspection_day)? $property_inspections->inspection_day:''}}</span></li> -->
-                            <?php $data = json_decode($property_inspections->inspection_day, true);
+                            <?php $data = isset($property_inspections->inspection_day) ? json_decode($property_inspections->inspection_day, true) : array();
                             $property_inspections_date = implode(",", $data); ?>
                             <li><label>Inspection Date:</label> <span>{{$property_inspections_date}}</span></li>
                             <li><label>Inspection Time:</label> <span>{{isset($property_inspections->start_time)?$property_inspections->start_time:''}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>

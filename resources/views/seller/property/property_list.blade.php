@@ -733,7 +733,7 @@
 			<a href="{{route('seller.property_delete',$property->id)}}" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
 		</div>
 		<div class="menu-item px-3">
-			<a href="javascript:" data-id="{{$property->id}}" class="menu-link px-3 copy_link">Copy link</a>
+			<a href="javascript:"  value="Copy Url" onclick="Copy();" data-id="{{$property->id}}" class="menu-link px-3 copy_link">Copy link</a>
 		</div>
 	</div>
 	<!--end::Menu-->

@@ -39,7 +39,7 @@ class PropertyController extends Controller
     {
         Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>str_replace('$','',$request->offer_price),'note'=>$request->note]);
         
-        return back()->with('success',"Your bid submitted successfully, we'll contact you sortly");
+        return redirect()->route('buyer.my_offers')->with('success',"Your bid submitted successfully, we'll contact you sortly");
     }
 
     public function book_inspection($property_id)
