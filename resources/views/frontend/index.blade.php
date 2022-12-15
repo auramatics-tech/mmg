@@ -8,8 +8,8 @@
     align-items: center;
 }
 .logo img{
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     z-index: 9;
 }
 .home-bg-mask-img {
@@ -28,6 +28,15 @@
     height: 94vh;
     background-size: 100% 100%;
 }
+.small_screen_logo{
+    width: 80px;
+    height: 80px;
+}
+.small_screen_logo>a>img{
+    width: 100%;
+    height: 100%;
+}
+
 @media screen and (max-width: 991px) and (min-width: 768px){
     .home_main_img {
        height: 70vh;
@@ -44,8 +53,8 @@
     height: 70vh;
 }
 .logo img {
-    width: 65px;
-    height: 65px;
+    width: 90px;
+    height: 90px;
 }
 .logo {
     height: 70vh;
@@ -56,9 +65,8 @@
 }
 @media screen and (max-width: 500px) and (min-width: 320px){
     .logo img {
-        width: 50px;
-        height: 50px;
-        z-index: 9;
+        width: 75px;
+        height: 75px;
     }
     .home_main_img {
         height: 45vh;
@@ -69,9 +77,6 @@
     .mt_size_480_30{
         margin-top: 30px;
     }
-}
-@media screen and (max-width: px) {
-
 }
 
 </style>
@@ -144,8 +149,8 @@
 <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
-            <div class="site-logo">
-                <a href=""><img src="{{asset('frontend/img/logo.png')}}" alt="Logo"></a>
+            <div class="small_screen_logo">
+                <a href=""><img src="{{asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo"></a>
             </div>
             <button class="ltn__utilize-close">×</button>
         </div>
@@ -285,7 +290,7 @@
                 <div class="image" style="z-index: 1;">
                    <div class="home_main_img">
                        <div class="logo">
-                            <img src="{{asset('frontend/img/favicon.png')}}" alt="Image">
+                          <img src="{{asset('frontend/img/my_logo/SVG/MMG_Black_2.svg')}}" alt="Logo">
                        </div>
                    </div>
                 </div>

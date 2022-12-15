@@ -85,8 +85,8 @@
             <div class="row">
                 <div class="col">
                     <div class="site-logo-wrap">
-                        <div class="site-logo">
-                            <a href="{{route('index')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="Logo"></a>
+                        <div class="mmg_logo">
+                            <a href="{{route('index')}}"><img src="{{asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo"></a>
                         </div>
                         <div class="get-support clearfix d-none">
                             <div class="get-support-icon">

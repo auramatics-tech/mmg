@@ -493,6 +493,23 @@
             scrollbar: true
         });
     </script>
-
+    <script>
+        var _URL = window.URL || window.webkitURL;
+        $("#upload_img").change(function(e) {
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    if(this.width < 750 && this.height < 750){
+                        alert('Size of Image should be width = 750 , Height = 750');
+                    }
+                };
+                img.onerror = function() {
+                    alert("not a valid file: " + file.type);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+    </script>
 
     @endsection

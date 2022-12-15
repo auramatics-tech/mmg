@@ -3,8 +3,9 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
        <a href="{{route('index')}}">
-       <span class="menu-section text-muted text-uppercase  ls-1" style="font-size: 1.50rem;">MMG</span>
-       {{--  <img alt="Logo" src="{{asset('backend/media/logos/logo-1-dark.svg')}}" class="h-25px logo" /> --}} 
+           <div class="dashboard_logo">
+               <img alt="Logo" src="{{asset('frontend/img/my_logo/png/MMG_White.png')}}" class="" />
+           </div>
         </a>
        
         <!--end::Logo-->

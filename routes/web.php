@@ -50,7 +50,7 @@ Route::get('/property-details/{id}', [PropertyController::class, 'property_detai
 Route::get('/property-list', [PropertyController::class, 'property_list'])->name('property_list');
 Route::get('/add-to-favourite/{id}', [PropertyController::class, 'add_to_favourite'])->name('add_to_favourite');
 Route::post('/property-reviews', [PropertyController::class, 'property_reviews'])->name('property_reviews')->middleware('auth');
-Route::post('/inspection-books', [PropertyController::class, 'inspection_books'])->name('inspection_books');
+Route::post('/inspection-books', [PropertyController::class, 'inspection_books'])->name('inspection_books')->middleware('auth');
 //search 
 Route::get('/property_search', [PropertyController::class, 'property_search'])->name('property_search');
 // BOOK APPRAISAL

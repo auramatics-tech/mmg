@@ -6,8 +6,8 @@
                     <div class="col-xl-3 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-about-widget">
                             <div class="footer-logo">
-                                <div class="site-logo">
-                                    <img src="{{asset('frontend/img/logo-2.png')}}" alt="Logo">
+                                <div class="mmg_logo">
+                                    <a href="{{route('index')}}"><img src="{{asset('frontend/img/my_logo/png/MMG_White.png')}}" alt="Logo"></a>
                                 </div>
                             </div>
                             <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>

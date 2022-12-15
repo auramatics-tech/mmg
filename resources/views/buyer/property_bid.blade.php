@@ -299,13 +299,15 @@
                 <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
                 <input class="form-control form-control-solid" id="expiry_date" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
               </div>
-                 <div class="d-flex">
-                <button type="submit" class="button si_btn_bid btn_one mt-2 mb-5" id="">30 days</button>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">60 days</button>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">90 days</button>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">120 days</button>
-                <i class="fa fa-remove" style="margin-top:25px;"></i>
-               </div>
+                 <div class="day_addition_sec" style="display: none;">
+                    <div class="d-flex" >
+                        <button type="button" class="button si_btn_bid btn_one mt-2 mb-5 add_days" data-day="30" id="">30 days</button>
+                        <button type="button" class="button si_btn_bid mt-2 mb-5 add_days" data-day="60"  id="">60 days</button>
+                        <button type="button" class="button si_btn_bid mt-2 mb-5 add_days" data-day="90" id="">90 days</button>
+                        <button type="button" class="button si_btn_bid mt-2 mb-5 add_days" data-day="120" id="">120 days</button>
+                        <i class="fa fa-remove" style="margin-top:25px;"></i>
+                    </div>
+                 </div>
             </form>
             <div class="mb-5">
                 <div class="p-5 si_current_bids" bis_skin_checked="1">
@@ -359,10 +361,21 @@
     })
 </script>
 <script>
- $(document).on('click', '.btn_one', function() {
-    
+    $(document).on('change','#expiry_date',function(){
+        $('.day_addition_sec').show()
+    })
+    $(document).on('click','.add_days',function(){
+        var thisdate = new Date($('#expiry_date').val());
+        days = parseFloat($(this).attr('data-day'))
+        thisdate.setDate(thisdate.getDate() + days); 
+        // var added_date = new Date(thisdate.getTime() + days*24*60*60*1000);
+        // thisdate.setDate(added_date)
+        console.log(thisdate)
+        $('#expiry_date').val(thisdate.getFullYear()+'-'+(thisdate.getMonth() + 1).toString().padStart(2, "0")+'-'+thisdate.getDate());
+        console.log(thisdate.getFullYear()+'-'+(thisdate.getMonth()+1)+'-'+thisdate.getDate())
 
- });
+    })
+
     </script>
 
 @endsection
