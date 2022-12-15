@@ -37,7 +37,7 @@ class PropertyController extends Controller
     
     public function save_offer(Request $request)
     {
-        Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>$request->offer_price,'note'=>$request->note]);
+        Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>str_replace('$','',$request->offer_price),'note'=>$request->note]);
         
         return back()->with('success',"Your bid submitted successfully, we'll contact you sortly");
     }
@@ -92,7 +92,7 @@ class PropertyController extends Controller
         $property_summary = Property::where('id',$property_id)->where('is_approved',1)->get();
         $bid_count = Offer::where('property_id',$property_id)->count();
         // echo"<pre>";print_r($bid_count);die;
-        return view('buyer.property_bid',compact('property_summary','bid_count'));
+        return view('buyer.property_bid',compact('property_summary','bid_count','property'));
     }
 
    

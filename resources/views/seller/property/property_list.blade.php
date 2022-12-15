@@ -169,6 +169,7 @@
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-6">
 					<!--begin::Card title-->
+					<form action="" method="get" id="search_form">
 					<div class="card-title">
 						<!--begin::Search-->
 						<div class="d-flex align-items-center position-relative my-1">
@@ -181,11 +182,12 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" />
+							<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" value="{{isset(request()->q) ? request()->q : ''}}" />
 
 						</div>
 						<!--end::Search-->
 					</div>
+					</form>
 					<!--begin::Card title-->
 					<!--begin::Card toolbar-->
 					<div class="card-toolbar">
@@ -678,11 +680,13 @@
 				<td>
 					{{--<div class="badge badge-light fw-bolder">@if(isset($property->rental_per_week)) ${{$property->rental_per_week}}pw <br>@endif @if(isset($property->rental_per_month)) ${{$property->rental_per_month}}pm <br>@endif @if(isset($property->rental_security_bond)) ${{$property->rental_security_bond}} bond <br>@endif ${{isset($property->normal_price)?$property->normal_price:''}} - ${{isset($property->desired_price)?$property->desired_price:''}}
 </div>--}}
-@if($property->form_type == 'residential_sale' || $property->form_type == 'residential_rental')
+@if($property->form_type == 'residential_sale' || $property->commercial_listing_type == 'commercial_sale')
 {{isset($property->normal_price)?$property->normal_price:''}}
 @endif
-@if($property->commercial_listing_type == 'commercial_sale' || $property->commercial_listing_type == 'commercial_lease')
-{{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}}pa
+@if($property->commercial_listing_type == 'commercial_lease')
+{{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}} per/year
+@elseif($property->form_type == 'residential_rental')
+{{isset($property->rental_per_month)?$property->rental_per_month:''}} per/month
 @endif
 </td>
 <!-- <td>{{isset($property->status)?$property->status:''}}</td> -->

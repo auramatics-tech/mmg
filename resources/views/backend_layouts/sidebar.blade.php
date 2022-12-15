@@ -145,10 +145,10 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">My Property Buyers</span>
+                                <span class="menu-title">My Property Offers</span>
                             </a>
                         </div>
-                        <div class="menu-item">
+                       {{--<div class="menu-item">
                             
                         <a class="menu-link {{(Route::is('seller.property_offers')=='seller.property_offers')?'active':''}}" href="{{route('seller.property_offers')}}">
                                 <span class="menu-bullet">
@@ -156,8 +156,7 @@
                                 </span>
                                 <span class="menu-title">My Property Offers</span>
                             </a>
-                        </div>
-                        
+                        </div>  --}} 
                         <div class="menu-item">
                             <a class="menu-link {{(Route::is('seller.property_inspections')=='seller.property_inspections')?'active':''}}" href="{{route('seller.property_inspections')}}">
                                 <span class="menu-bullet">

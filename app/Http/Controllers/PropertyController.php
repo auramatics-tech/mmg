@@ -184,16 +184,18 @@ class PropertyController extends Controller
     }
     public function inspection_books(Request $request)
     {
+        // echo"<pre>";print_r($request->all());die;
         if (isset($request->id)) {
             $inspection_books = InspectionBook::Find($request->id)->first();
         } else {
             $inspection_books = new InspectionBook();
         }
+        $inspection_books->user_id = Auth::id();
         $inspection_books->property_id = $request->property_id;
         $inspection_books->inspection_date = $request->inspection_date;
         $inspection_books->inspection_time = $request->inspection_time;
         $inspection_books->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Inspection booked successfully');
     }
 
     public function book_appraisal()

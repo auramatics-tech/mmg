@@ -290,22 +290,16 @@
                         <input type="text" name="" id="">
                     </div> 
                 </div>--}}
+              {{-- <div>
+                    <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
+                    <input class="form-control form-control-solid" id="expiry_date" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
+                </div>  --}} 
                 <div class="d-flex flex-column mb-7 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Note</label>
                     <textarea name="note" class="form-control form-control-solid" id="" cols="30" rows="5">{{old('note') ?? isset($property_offer->note)?$property_offer->note:''}}</textarea>
                 </div>
                 <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> My Offer</button>
-              <div>
-                <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
-                <input class="form-control form-control-solid" id="expiry_date" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
-              </div>
-                 <div class="d-flex">
-                <button type="submit" class="button si_btn_bid btn_one mt-2 mb-5" id="">30 days</button>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">60 days</button>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">90 days</button>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="">120 days</button>
-                <i class="fa fa-remove" style="margin-top:25px;"></i>
-               </div>
+
             </form>
             <div class="mb-5">
                 <div class="p-5 si_current_bids" bis_skin_checked="1">
@@ -325,8 +319,20 @@
         <div class="boxed-widget opening-hours summary margin-top-0" bis_skin_checked="1">
             <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
             <ul>
-                <li><b>PROPERTY TYPE</b> <span>{{isset($property_bid_summary->property_type)?$property_bid_summary->property_type:''}}</span></li>
-                <li><b>PRICE</b> <span>${{isset($property_bid_summary->desired_price)?$property_bid_summary->desired_price:''}} - ${{isset($property_bid_summary->normal_price)?$property_bid_summary->normal_price:''}}</span></li>
+                <li><b>PROPERTY TYPE</b> <span>@if($property->form_type == 'commercial')
+                        <td>{{isset($property->commercial_listing_type)?$property->commercial_listing_type:''}}</td>
+                        @else
+                        <td>{{isset($property->form_type)?$property->form_type:''}}</td>
+                        @endif
+                    </span></li>
+                <li><b>PRICE</b> <span>@if($property->form_type == 'residential_sale' || $property->commercial_listing_type == 'commercial_sale')
+                        {{isset($property->normal_price)?$property->normal_price:''}}
+                        @endif
+                        @if($property->commercial_listing_type == 'commercial_lease')
+                        {{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}} per/year
+                        @elseif($property->form_type == 'residential_rental')
+                        {{isset($property->rental_per_month)?$property->rental_per_month:''}} per/month
+                        @endif</span></li>
                 <li><b>BEDROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bedrooms:''}}</span></li>
                 <li><b>BATHROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bathrooms:''}} </span></li>
                 <li><b>LAND SIZE</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size:''}}&nbsp;{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size_units:''}}</span></li>
@@ -349,20 +355,23 @@
             var value_price = $('#offer_price_input').val()
             value_price = value_price.replace('$', '')
             value_price = value_price.replace(',', '')
+            if(value_price == ''){
+                value_price = 0;
+            }
             var total_price = parseFloat(value_price);
         }
         var all_price = price + total_price;
-        $('#offer_price_input').val(all_price.toLocaleString())
+        $('#offer_price_input').val('$ '+all_price.toLocaleString())
     })
     $(document).on('click', '.Clear_bid_price', function() {
         $('#offer_price_input').val('')
     })
 </script>
 <script>
- $(document).on('click', '.btn_one', function() {
-    
+    $(document).on('click', '.btn_one', function() {
 
- });
-    </script>
+
+    });
+</script>
 
 @endsection

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
-use App\Models\BookInspection;
+use App\Models\InspectionBook;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\PropertyType;
@@ -18,6 +18,7 @@ use App\Models\UserRole;
 use Auth;
 use Validator;
 use Redirect;
+use DB;
 
 class PropertyController extends Controller
 {
@@ -32,10 +33,16 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $properties = Property::where('created_by', Auth::id())->paginate(5);
+        $properties = Property::where('created_by', Auth::id())
+        ->when(isset($request->q), function ($query) use ($request) {
+            $query->where(function ($query2)use ($request) {
+                $query2->where('properties.form_type', 'LIKE', '%' . $request->q . '%')
+                ->orWhere('properties.commercial_listing_type', 'LIKE','%' . $request->q . '%');
+            });
+        })->paginate(5);
         return view('seller.property.property_list', compact('properties'));
     }
 
@@ -339,19 +346,34 @@ class PropertyController extends Controller
         return view('seller.property.property_offers', compact('property_offers'));
     }
 
-    public function property_inspections()
+    public function property_inspections(Request $request)
     {
         $my_properties = Property::where(['created_by' => Auth::id()])->pluck('id')->toArray();
-        $property_inspections = BookInspection::whereIn('property_id', $my_properties)->paginate(4);
+        $property_inspections = InspectionBook::select('inspection_books.*',
+        DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = inspection_books.user_id) as user_data"),
+        DB::raw("(select users.email from users where users.id = inspection_books.user_id order by `id` asc limit 1) as user_email"),
+        )->when(isset($request->q), function ($query) use ($request) {
+            $query->havingRaw("user_data LIKE '%" . $request->q . "%'");
+        })->whereIn('property_id', $my_properties)->paginate(4);
+        // echo"<pre>";print_r($property_inspections);die;
         return view('seller.property.property_inspections', compact('property_inspections'));
     }
 
-    public function property_bid_listing()
+    public function property_inspection_delete($id){
+        $property_inspection = InspectionBook::find($id);
+        $property_inspection->delete();
+        return back()->with('success', 'Inspection deleted successfully.');
 
+    }
+
+    public function property_bid_listing(Request $request)
     {
-
         $my_properties = Property::where(['created_by' => Auth::id()])->pluck('id')->toArray();
-        $buyer_name = Offer::whereIn('property_id', $my_properties)->get();
+        $buyer_name = Offer::select('offers.*',DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = offers.user_id) as user_data"),)->whereIn('property_id', $my_properties)
+        ->when(isset($request->q), function ($query) use ($request) {
+            $query->havingRaw("user_data LIKE '%" . $request->q . "%'");
+        })->get();
+        // echo"<pre>";print_r($buyer_name);die;
         return view('seller.property.bid_listing', compact('buyer_name'));
     }
 }

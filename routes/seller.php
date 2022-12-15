@@ -21,3 +21,4 @@ Route::get('/property-bid-listing/{property_id?}', [PropertyController::class, '
 
 Route::get('/property-offers', [PropertyController::class, 'property_offers'])->name('seller.property_offers');
 Route::get('/property-inspections', [PropertyController::class, 'property_inspections'])->name('seller.property_inspections');
+Route::get('/inspection-delete/{id}', [PropertyController::class, 'property_inspection_delete'])->name('seller.property_inspection_delete');

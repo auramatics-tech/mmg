@@ -356,32 +356,21 @@
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
-                        @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                         <ul>
                             <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
-                            {{-- <li><label>Home Area: </label> <span>{{isset( $property_details->house_sizes)?  $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</< /span>
-                            </li>
-                            <li><label>Rooms:</label> <span>{{isset( $property_details->bedrooms)?  $property_details->bedrooms:''}}</span></li>
-                            <li><label>Baths:</label> <span>{{isset( $property_details->bathrooms)?  $property_details->bathrooms:''}}</span></li> --}}
+                          {{--  <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}} {{isset( $property_details->floor_area_units)?  $property_details->floor_area_units:''}}</span></li>
+                            <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>  --}}
+                            <!-- <li><label>Inspection Day: </label> <span>{{isset( $property_inspections->inspection_day)? $property_inspections->inspection_day:''}}</span></li> -->
                             <?php $data = json_decode($property_inspections->inspection_day, true);
                             $property_inspections_date = implode(",", $data); ?>
                             <li><label>Inspection Date:</label> <span>{{$property_inspections_date}}</span></li>
                             <li><label>Inspection Time:</label> <span>{{isset($property_inspections->start_time)?$property_inspections->start_time:''}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>
                             <li><label>Description:</label> <span>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</span></li>
+                            @if($property->form_type == 'residential_rental' || $property->commercial_listing_type == 'commercial_lease')
+                            <li><label>Rental Security Bond:</label> <span>{{isset($property->rental_security_bond)?$property->rental_security_bond:''}}</span></li>
+                            @endif
                             <!-- <li><label>Year built:</label> <span>1992</span></li> -->
                         </ul>
-                        @endif
-                        @if($property->form_type == 'commercial' ||$property->form_type == 'commercial_sale')
-                        <ul>
-                            <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
-                            <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}} {{isset( $property_details->floor_area_units)?  $property_details->floor_area_units:''}}</span></li>
-                            <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>
-                            <!-- <li><label>Inspection Day: </label> <span>{{isset( $property_inspections->inspection_day)? $property_inspections->inspection_day:''}}</span></li> -->
-                            <li><label>Start Date: </label> <span>{{isset($property_inspections->start_time)? $property_inspections->start_time:''}}</span></li>
-                            <li><label>End Date:</label> <span>{{isset($property_inspections->end_time)? $property_inspections->end_time:''}}</span></li>
-                            <!-- <li><label>Year built:</label> <span>1992</span></li> -->
-                        </ul>
-                        @endif
                         <!-- <ul>
                                 <li><label>Lot Area:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
                                 <li><label>Lot dimensions:</label> <span>{{isset($property->property_id)? $property->property_id:''}}t</span></li>
@@ -1053,6 +1042,7 @@
             @csrf
             <div>
                 <input type="hidden" name="property_id" value="{{isset(request()->id) ? request()->id : ''}}">
+                <input type="hidden" name="user_id" value="{{Auth::id()}}">
                 <div style="margin-bottom:10px" bis_skin_checked="1">Select a Date by clicking below. </div>
                 <input type="date" class="date form-data form-control " id="inspection_date" name="inspection_date">
             </div>
