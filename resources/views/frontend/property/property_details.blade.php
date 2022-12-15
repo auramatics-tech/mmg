@@ -69,6 +69,12 @@
         height: 230px;
         width: 100%;
     }
+    .su_btn_position{
+        position: inherit;
+    }
+    .related_property_fav:hover{
+        background-color: white !important;
+    }
 
     @media screen and (max-width: 1200px) {
         .su_mt_sm {
@@ -350,7 +356,7 @@
                         </ul>
                     </div>
                     <h1>{{isset($property->property_type)?$property->property_type:''}}</h1>
-                    <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span> {{isset($property->address)?$property->address:''}}</label>
+                  
                     {{-- <h4 class="title-2">Description</h4>  --}}
                     {{--<p>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</p> --}}
 
@@ -451,7 +457,7 @@
                     {{-- <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a> --}}
                     <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1 su_mt_sm"> Make an Offer</a>
 
-                    <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1 su_mt_sm"> Book Inspection </a>
+                    {{--<a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1 su_mt_sm"> Book Inspection </a>--}}
                     @endif
                     <h4 class="title-2">View Our Gallery</h4>
                     <div class="ltn__property-details-gallery mb-30">
@@ -472,7 +478,7 @@
                             </div>
                             @if(count($property->get_property_all_image))
                             @foreach($property->get_property_all_image as $image)
-                            <a href="{{asset('storage/property_images/'.$image->document)}}" data-rel="lightcase:myCollection"></a>
+                            <a href="{{asset('storage/property_images/'.$image->document)}}" data-rel="lightcase:myCollection" style="width:100%;height:100%;"></a>
                             @endforeach
                             @endif
                         </div>
@@ -583,8 +589,9 @@
                     </div>
                     @endif
                     <h4 class="title-2">Location</h4>
+                    <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span> {{isset($property->address)?$property->address:''}}</label>
                     <div class="property-details-google-map mb-60">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <div id="map" style="height:380px;width:100%;"></div>
                     </div>
                     <h4 class="title-2">Floor Plans</h4>
                     <!-- APARTMENTS PLAN AREA START -->
@@ -959,20 +966,12 @@
                                 </ul>
                                 <div class="product-hover-action">
                                     <ul>
-                                        {{-- <li>
-                                                <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                                    <i class="flaticon-expand"></i>
-                                                </a>
-                                            </li> --}}
-                                        <li>
-                                            <a href="javascript:" data-property_id="{{$property->id}}" title="Wishlist" class="fav_property">
-                                                <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i></a>
+                                        <li class="related_property_fav" data-property_id="{{$property->id}}">
+                                            <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
+                                               {{-- <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i>--}}
+                                                <img  src="{{check_favourite_property($property->id)? asset('frontend/img/my_logo/png/MMG_Gold_1.png') : asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo">
+                                            </a>
                                         </li>
-                                        {{-- <li>
-                                                <a href="portfolio-details.html" title="Compare">
-                                                    <i class="flaticon-add"></i>
-                                                </a>
-                                            </li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -1044,16 +1043,22 @@
                 <input type="hidden" name="property_id" value="{{isset(request()->id) ? request()->id : ''}}">
                 <input type="hidden" name="user_id" value="{{Auth::id()}}">
                 <div style="margin-bottom:10px" bis_skin_checked="1">Select a Date by clicking below. </div>
-                <input type="date" class="date form-data form-control " id="inspection_date" name="inspection_date">
+                <input type="date" class="required date form-data form-control " id="inspection_date" name="inspection_date">
+                @error('inspection_date')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             <div>
                 <div>
                     <div style="margin-bottom:10px" bis_skin_checked="1">Select a Time by clicking below. </div>
                     <input type="text" id="timepicker" name="inspection_time">
+                    @error('inspection_time')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <!-- <input type="text" name="youremail" placeholder="Your e-Mail*" name="email">
                             <textarea name="yourmessage" placeholder="Write Message..." name="comments"></textarea> -->
-                <button type="submit" class="btn theme-btn-1"><i class="fa fa-calendar-check-o mr-4 cal"></i>Book Now</button>
+                <button type="submit" class="btn theme-btn-1 su_btn_position"><i class="fa fa-calendar-check-o mr-4 cal"></i>Book Now</button>
             </div>
         </form>
     </div>
@@ -1601,13 +1606,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#inspection_date').datepicker({
-            minDate: 0
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
         $('#timepicker').timepicker();
     });
     $('#timepicker').timepicker({
@@ -1649,4 +1647,30 @@
         });
     });
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" async defer></script>
+<script type="text/javascript">
+		var map;
+		
+		function initMap() {							
+			var latitude = parseFloat("{{isset($property->lat) ? $property->lat : '' }}"); // YOUR LATITUDE VALUE
+			var longitude = parseFloat("{{isset($property->lng) ? $property->lng : '' }}"); // YOUR LONGITUDE VALUE
+			
+			var myLatLng = {lat: latitude, lng: longitude};
+			
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: myLatLng,
+			  zoom: 13					
+			});
+					
+			var marker = new google.maps.Marker({
+			  position: myLatLng,
+			  map: map,
+			  //title: 'Hello World'
+			  
+			  // setting latitude & longitude as title of the marker
+			  // title is shown when you hover over the marker
+			  title: latitude + ', ' + longitude 
+			});			
+		}
+		</script>
 @endsection

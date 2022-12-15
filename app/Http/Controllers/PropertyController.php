@@ -194,6 +194,11 @@ class PropertyController extends Controller
         $inspection_books->property_id = $request->property_id;
         $inspection_books->inspection_date = $request->inspection_date;
         $inspection_books->inspection_time = $request->inspection_time;
+        $this->validate($request, [
+          
+            'inspection_date' => ['required'],
+            'inspection_time' => ['required'],
+        ]);
         $inspection_books->save();
         return redirect()->back()->with('success', 'Inspection booked successfully');
     }

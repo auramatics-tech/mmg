@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="{{asset('frontend/img/favicon.png')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" sizes="64x64" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="{{asset('frontend/css/font-icons.css')}}">
     <!-- plugins css --> 
@@ -26,6 +26,14 @@
     <style>
         .su_icon_clr{
             color: #ff5a3c;
+        }
+        .mmg_logo{
+            width: 80px;
+            height: 80px;
+        }
+        .mmg_logo>a>img{
+            width: 100%;
+            height: 100%;
         }
     </style>
     @yield('css')
@@ -66,13 +74,11 @@
                         {
                             if(result.is_fav)
                             {
-                                this_.children('i').removeClass('far');
-                                this_.children('i').addClass('fa');
+                                this_.children('img').attr('src',"{{asset('frontend/img/my_logo/png/MMG_Gold_1.png')}}");
                             }
                             else
                             {
-                                this_.closest('i').removeClass('fa');
-                                this_.closest('i').addClass('far');
+                                this_.children('img').attr('src',"{{asset('frontend/img/my_logo/png/MMG_Black_2.png')}}");
                             }
                         }
                     }

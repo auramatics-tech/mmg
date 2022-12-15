@@ -239,6 +239,16 @@
         display: block;
     }
 
+    .su_fav_proporty_logo img{
+        height: 45px !important;
+    }
+    .su_fav_proporty_logo:hover{
+        background-color: white !important;
+    }
+    .su_fav_proporty_logo{
+        width: 50px !important;
+    }
+
 
     @media screen and (max-width: 991px) {
         .su_flex_block {
@@ -708,10 +718,10 @@
                                         <h4 class="ltn__widget-title m_t_b_10">Price Per month</h4>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
-                                            <input type="text" name="price_from_month" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
+                                            <input type="text" name="price_from_month" class="price_range" @if(isset(request()->price_from_month)) value="{{request()->price_from_month}}" @endif placeholder="From:" >
                                             </div>
                                             <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
-                                            <input type="text" name="price_to_month" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
+                                            <input type="text" name="price_to_month" class="price_range" @if(isset(request()->price_to_month)) value="{{request()->price_to_month}}" @endif placeholder="To:" >
                                             </div>
                                         </div>
                                     </div>
@@ -912,16 +922,6 @@
                                         @endif
                                         @endforeach
                                         @endif
-                                    </div>
-                                    <hr class="su_hr">
-                                    <h4 class="ltn__widget-title m_t_b_10">Rental Per Month</h4>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                            <input type="text" name="rent_from"  placeholder="From:" >
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
-                                            <input type="text" name="rent_to"  placeholder="To:" >
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@
         </div>
         @endif
         <div id="upload_images" class="collapse show">
-            <input type="file" name="upload_images[]" accept="image/png,image/jpg, image/gif, image/jpeg, image/*" multiple>
+            <input type="file" id="upload_img" name="upload_images[]" accept="image/png,image/jpg, image/gif, image/jpeg, image/*" multiple>
         </div>
         <br>
         {{--<div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#upload_floorplans" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">
@@ -109,18 +109,20 @@
         <label class="fs-6 fw-bold mb-2">Video URL</label>
         <input class="form-control form-control-solid" placeholder="" name="video_url" value="{{old('video_url') ?? isset($property_link_listing->video_url)?$property_link_listing->video_url:''}}" />
     </div>
-    {{-- <div class="d-flex flex-column mb-7 fv-row">
-            <label class="required fs-6 fw-bold mb-2">Online Tour 1</label>
-            <input class="form-control form-control-solid" placeholder="" name="online_tour_1_url" value="{{old('online_tour_1_url') ?? isset($property_link_listing->online_tour_1_url)?$property_link_listing->online_tour_1_url:''}}" />
-</div>
-<div class="d-flex flex-column mb-7 fv-row">
-    <label class="required fs-6 fw-bold mb-2">Online Tour 2</label>
-    <input class="form-control form-control-solid" placeholder="" name="online_tour_2_url" value="{{old('online_tour_2_url') ?? isset($property_link_listing->online_tour_2_url)?$property_link_listing->online_tour_2_url:''}}" />
-</div>
-<div class="d-flex flex-column mb-7 fv-row">
-    <label class="required fs-6 fw-bold mb-2">Third party website link</label>
-    <input class="form-control form-control-solid" placeholder="" name="email_more_info_url" value="{{old('email_more_info_url') ?? isset($property_link_listing->email_more_info_url)?$property_link_listing->email_more_info_url:''}}" />
-</div> --}}
+    {{-- 
+    <div class="d-flex flex-column mb-7 fv-row">
+        <label class="required fs-6 fw-bold mb-2">Online Tour 1</label>
+        <input class="form-control form-control-solid" placeholder="" name="online_tour_1_url" value="{{old('online_tour_1_url') ?? isset($property_link_listing->online_tour_1_url)?$property_link_listing->online_tour_1_url:''}}" />
+    </div>
+    <div class="d-flex flex-column mb-7 fv-row">
+        <label class="required fs-6 fw-bold mb-2">Online Tour 2</label>
+        <input class="form-control form-control-solid" placeholder="" name="online_tour_2_url" value="{{old('online_tour_2_url') ?? isset($property_link_listing->online_tour_2_url)?$property_link_listing->online_tour_2_url:''}}" />
+    </div>
+    <div class="d-flex flex-column mb-7 fv-row">
+        <label class="required fs-6 fw-bold mb-2">Third party website link</label>
+        <input class="form-control form-control-solid" placeholder="" name="email_more_info_url" value="{{old('email_more_info_url') ?? isset($property_link_listing->email_more_info_url)?$property_link_listing->email_more_info_url:''}}" />
+    </div> 
+    --}}
 </div>
 <br>
 <button class="btn btn-primary">Save</button>
