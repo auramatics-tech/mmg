@@ -565,18 +565,18 @@
 													<td class="d-flex align-items-center">
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-															@if(isset($property->get_property_image))
-															<a href="javascript:">
+														@if(isset($property->property_image->get_property_image))
+															<a href="{{route('property_details',$property->property_id)}}">
 																<div class="symbol-label">
-																	<img src="{{asset('storage/property_images/'.$property->get_property_image->document)}}" alt="E" class="w-100" />
+																	<img src="{{asset('storage/property_images/'.$property->property_image->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
 															</a>
 															@endif
 														</div>
 														<div class="d-flex flex-column">
 															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($property->address_display=='Full Address')?$property->address:$property->suburb}}</a>
-															<span>{{$property->property_type}}</span>
-														</div>
+															{{--<span>{{$property->property_type}}</span>--}}
+														</div> 
 														<!--begin::User details-->
 													</td>
 													{{--<td>

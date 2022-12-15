@@ -569,7 +569,7 @@
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 															@if(isset($book_inspection->property->get_property_image))
-															<a href="{{route('property_details',$book_inspection->id)}}">
+															<a href="{{route('property_details',$book_inspection->property_id)}}">
 																<div class="symbol-label">
 																	<img src="{{asset('storage/property_images/'.$book_inspection->property->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
@@ -591,7 +591,7 @@
 													{{--<td>
 														<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
 													</td>--}}
-													<td>{{isset($book_inspection->inspection_date) ? $book_inspection->inspection_date :'' }}</td>
+													<td>{{isset($book_inspection->inspection_date) ? date('d-m-Y',strtotime($book_inspection->inspection_date)) :'' }}</td>
 													<td>{{isset($book_inspection->inspection_time)? $book_inspection->inspection_time :''}}</td>
 													<td class="d-flex">
 														<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions

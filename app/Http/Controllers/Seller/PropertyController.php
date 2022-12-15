@@ -19,6 +19,7 @@ use Auth;
 use Validator;
 use Redirect;
 use DB;
+use GrahamCampbell\ResultType\Success;
 
 class PropertyController extends Controller
 {
@@ -329,7 +330,7 @@ class PropertyController extends Controller
 
     public function property_delete($id)
     {
-        $property = Property::find($id)->first();
+        $property = Property::find($id);
         $property->delete();
         PropertyDetail::where('property_id', $id)->delete();
         PropertyDocument::where('property_id', $id)->delete();
@@ -375,5 +376,12 @@ class PropertyController extends Controller
         })->get();
         // echo"<pre>";print_r($buyer_name);die;
         return view('seller.property.bid_listing', compact('buyer_name'));
+    }
+
+    public function property_bid_delete($id){
+        $property_bid = Offer::find($id);
+        $property_bid-> delete();
+        return back()->with('success', 'Offer deleted successfully.');
+
     }
 }
