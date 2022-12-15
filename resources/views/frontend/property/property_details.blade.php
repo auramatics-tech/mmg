@@ -410,16 +410,14 @@
                     <a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1"> Book Inspection </a>
                     @endif
                     <h4 class="title-2">From Our Gallery</h4>
-                    <div class="ltn__property-details-gallery mb-30">
+                     <div class="ltn__property-details-gallery mb-30">
                         <div class="row">
                             <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[0]->document))
                                 <a href="img/others/14.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[0]->document)}}" alt="Image">
                                 </a>
-                            </div>
-                            @endif
-                            <div class="col-md-6">
+                                @endif
                                 @if(isset($property->get_property_all_image[1]->document))
                                 <a href="img/others/15.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[1]->document)}}" alt="Image">
@@ -432,8 +430,6 @@
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[2]->document)}}" alt="Image">
                                 </a>
                                 @endif
-                            </div>
-                            <div class="col-md-6">
                                 @if(isset($property->get_property_all_image[3]->document))
                                 <a href="img/others/16.jpg" data-rel="lightcase:myCollection">
                                     <img class="mb-30" src="{{asset('storage/property_images/'.$property->get_property_all_image[3]->document)}}" alt="Image">
@@ -441,7 +437,7 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <div class="property-details-amenities mb-60">
                         <div class="row">
                             @php
@@ -527,7 +523,7 @@
                             }
                             @endphp
                             @if(count($property_features))
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <h4 class="title-2 mb-10">Eco friendly</h4>
                                 <div class="ltn__menu-widget">
                                     <ul>
@@ -544,7 +540,7 @@
                             </div>
                             @endif
                         </div>
-                    </div>
+                    </div> 
                     <h4 class="title-2">Location</h4>
                     <div class="property-details-google-map mb-60">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -980,7 +976,7 @@
                         <div>
                             <input type="hidden" name="property_id" value="{{isset(request()->id) ? request()->id : ''}}">
                             <div style="margin-bottom:10px" bis_skin_checked="1">Select a Date by clicking below. </div>
-                            <input type="date" class="date form-data " id="inspection_date" name="inspection_date">
+                            <input type="date" class="date form-data form-control " id="inspection_date" name="inspection_date">
                         </div>
                         <div>
                             <div>
