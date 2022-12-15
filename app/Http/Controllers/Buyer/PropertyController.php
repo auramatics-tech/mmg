@@ -17,10 +17,15 @@ use Auth;
 
 class PropertyController extends Controller
 {
-    public function favourite_properties()
+    public function favourite_properties(Request $request)
     {
         $favourite_properties = FavouriteProperty::where('user_id',Auth::id())->pluck('property_id')->toArray();
-        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)->paginate(4);
+        $properties = Property::where('is_approved',1)->whereIn('id',$favourite_properties)
+        ->when($request->q, function ($query) use ($request) {
+            $query->where('properties.address','LIKE', '%' . $request->q . '%');
+        })
+        ->paginate(4);
+        // echo"<pre>";print_r($favourite_properties);die;
         return view('buyer.favourite_properties',compact('properties'));
     }
 
@@ -55,13 +60,12 @@ class PropertyController extends Controller
         return back()->with('success','Inspection booked Successfully');
     }
 
-    public function my_offers()
+    public function my_offers(Request $request)
     {
-
-      
-        $my_offers = Offer::where('user_id',Auth::id())->paginate(4);
-    
-        
+        $my_offers = Offer::where('user_id',Auth::id())
+        ->when($request->q, function ($query) use ($request) {
+            $query->where('offers.offer_price','LIKE', '%' . $request->q . '%');
+        })->paginate(4);
         return view('buyer.my_offers',compact('my_offers'));
     }
 

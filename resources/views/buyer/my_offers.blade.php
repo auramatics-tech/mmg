@@ -197,6 +197,7 @@
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-6">
 					<!--begin::Card title-->
+					<form action="" method="get" id="search_form" >
 					<div class="card-title">
 						<!--begin::Search-->
 						<div class="d-flex align-items-center position-relative my-1">
@@ -208,10 +209,11 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" />
+							<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search offer price" value="{{isset(request()->q) ? request()->q : ''}}" />
 						</div>
 						<!--end::Search-->
 					</div>
+					</form>
 					<!--begin::Card title-->
 					<!--begin::Card toolbar-->
 					<div class="card-toolbar">
@@ -630,7 +632,7 @@
 									<!--begin:: Avatar -->
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 										@if(isset($offer->property->get_property_image))
-										<a href="javascript:">
+										<a href="{{route('property_details',$offer->property_id)}}">
 											<div class="symbol-label">
 												<img src="{{asset('storage/property_images/'.$offer->property->get_property_image->document)}}" alt="E" class="w-100" />
 											</div>
@@ -649,7 +651,14 @@
 								</td>
 								<td>
 									{{--<div class="badge badge-light fw-bolder">@if(isset($offer->property->rental_per_week)) ${{$offer->property->rental_per_week}}pw <br>@endif @if(isset($offer->property->rental_per_month)) ${{$offer->property->rental_per_month}}pm <br>@endif @if(isset($offer->property->rental_security_bond)) ${{$offer->property->rental_security_bond}} bond <br>@endif ${{isset($offer->property->price)?$offer->property->price:''}}</div>--}}
-									{{isset($offer->property->normal_price)?$offer->property->normal_price:''}}
+									@if($offer->property->form_type == 'residential_sale' || $offer->property->commercial_listing_type == 'commercial_sale')
+										${{isset($offer->property->normal_price)?$offer->property->normal_price:''}}
+										@endif
+										@if($offer->property->commercial_listing_type == 'commercial_lease')
+										${{isset($offer->property->commercial_rental_per_annum)?$offer->property->commercial_rental_per_annum:''}} per/year
+										@elseif($offer->property->form_type == 'residential_rental')
+										${{isset($offer->property->rental_per_month)?$offer->property->rental_per_month:''}} per/month
+										@endif
 								</td>
 								<td>${{isset($offer->offer_price)?$offer->offer_price:''}}</td>
 								<td>{{isset($offer->note)?$offer->note:''}}</td>

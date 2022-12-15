@@ -13,7 +13,4 @@ class FavouriteProperty extends Model
         'user_id','property_id'
     ];
 
-    public function property_image(){
-        return $this->hasOne(Property::class, 'id','property_id'); 
-    }
 }
