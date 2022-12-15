@@ -174,10 +174,10 @@
                         </div>
                         <div class="product-info product-hover-action">
                             <ul>
-                                <li class="su_fav_proporty_logo" data-property_id="{{$property->id}}">
-                                    <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
-                                        {{-- <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i>--}}
-                                        <img  src="{{check_favourite_property($property->id)? asset('frontend/img/my_logo/png/MMG_Gold_1.png') : asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo">
+                                <li class="su_fav_proporty_logo" data-property_id="{{$property_list->id}}">
+                                    <a href="javascript:" data-property_id="{{$property_list->id}}" class="fav_property">
+                                        {{-- <i class="{{check_favourite_property($property_list->id)?'fa':'far'}} fa-heart"></i>--}}
+                                        <img  src="{{check_favourite_property($property_list->id)? asset('frontend/img/my_logo/png/MMG_Gold_1.png') : asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo">
                                     </a>
                                 </li>
                             </ul>

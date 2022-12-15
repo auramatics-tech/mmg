@@ -670,9 +670,9 @@
 						</a>
 						@endif
 					</div>
-					<div class="d-flex flex-column">
+					<div class="">
 						<a href="{{route('property_details',$property->id)}}" class="text-gray-800 text-hover-primary mb-1">
-							<span>{{$property->property_type}}</span>
+							
 						</a>
 					</div>
 					<!--begin::User details-->

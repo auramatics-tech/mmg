@@ -362,7 +362,7 @@
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
                         <ul>
-                            <!-- <li><label>Property ID:</label> <span>{{isset( $property_details->property_id)?  $property_details->property_id:''}}</span></li> -->
+                           
                           {{--  <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}} {{isset( $property_details->floor_area_units)?  $property_details->floor_area_units:''}}</span></li>
                             <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>  --}}
                             <?php $data = isset($property_inspections->inspection_day) ? json_decode($property_inspections->inspection_day, true) : array();
@@ -373,15 +373,9 @@
                             @if($property->form_type == 'residential_rental' || $property->commercial_listing_type == 'commercial_lease')
                             <li><label>Rental Security Bond:</label> <span>{{isset($property->rental_security_bond)?$property->rental_security_bond:''}}</span></li>
                             @endif
-                            <!-- <li><label>Year built:</label> <span>1992</span></li> -->
+
                         </ul>
-                        <!-- <ul>
-                                <li><label>Lot Area:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
-                                <li><label>Lot dimensions:</label> <span>{{isset($property->property_id)? $property->property_id:''}}t</span></li>
-                                <li><label>Beds:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
-                                <li><label>Price:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
-                                <li><label>Property Status:</label> <span>{{isset($property->property_id)? $property->property_id:''}}</span></li>
-                            </ul> -->
+                       
                     </div>
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
@@ -475,6 +469,10 @@
                                 @endif
                             </div>
                             @if(count($property->get_property_all_image))
+                            <?php
+                            unset($property->get_property_all_image[0]);
+                            unset($property->get_property_all_image[1]);
+                            ?>
                             @foreach($property->get_property_all_image as $image)
                             <a href="{{asset('storage/property_images/'.$image->document)}}" data-rel="lightcase:myCollection" style="width:100%;height:100%;"></a>
                             @endforeach

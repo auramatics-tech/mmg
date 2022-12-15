@@ -639,14 +639,6 @@
 										</a>
 										@endif
 									</div>
-									<div class="d-flex flex-column">
-										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</a>
-									</div>
-									
-								{{--<div class="d-flex flex-column">
-										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{(isset($offer->property->address) && ($offer->property->address_display=='Full Address'))?$offer->property->address:$offer->property->suburb}}</a>
-										<span>{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</span>
-									</div>--}}
 									<!--begin::User details-->
 								</td>
 								<td>
