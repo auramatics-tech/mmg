@@ -133,21 +133,23 @@
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-6">
 					<!--begin::Card title-->
-					<div class="card-title">
-						<!--begin::Search-->
-						<div class="d-flex align-items-center position-relative my-1">
-							<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-							<span class="svg-icon svg-icon-1 position-absolute ms-6">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-									<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
-									<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
-								</svg>
-							</span>
-							<!--end::Svg Icon-->
-							<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" />
+					<form action="" method="get">
+						<div class="card-title">
+							<!--begin::Search-->
+							<div class="d-flex align-items-center position-relative my-1">
+								<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+								<span class="svg-icon svg-icon-1 position-absolute ms-6">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+										<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
+									</svg>
+								</span>
+								<!--end::Svg Icon-->
+								<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" value="{{isset(request()->q) ? request()->q : ''}}" />
+							</div>
+							<!--end::Search-->
 						</div>
-						<!--end::Search-->
-					</div>
+					</form>
 					<!--begin::Card title-->
 					<!--begin::Card toolbar-->
 					<div class="card-toolbar">
@@ -544,9 +546,9 @@
 								</th>
 								<th class="min-w-125px">Property</th>
 								<th class="min-w-125px">Price</th>
-								<th class="min-w-125px">Inspection Type</th>
-								<th class="min-w-125px">Inspection start time</th>
-								<th class="min-w-125px">Inspection end time</th>
+								<th class="min-w-125px">Property Type</th>
+								<th class="min-w-125px">Inspection Date</th>
+								<th class="min-w-125px">Inspection Time</th>
 								<th class="min-w-125px">Actions</th>
 							</tr>
 							<!--end::Table row-->
@@ -567,7 +569,7 @@
 									<!--begin:: Avatar -->
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 										@if(isset($book_inspection->property->get_property_image))
-										<a href="javascript:">
+										<a href="{{route('property_details',$book_inspection->property_id)}}">
 											<div class="symbol-label">
 												<img src="{{asset('storage/property_images/'.$book_inspection->property->get_property_image->document)}}" alt="E" class="w-100" />
 											</div>
@@ -575,52 +577,63 @@
 										@endif
 									</div>
 									<div class="d-flex flex-column">
-										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</a>	
+										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{isset($offer->property->property_type) ? $offer->property->property_type : ''}}</a>
 									</div>
 									{{--<div class="d-flex flex-column">
 										<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($book_inspection->property->address_display=='Full Address')?$book_inspection->property->address:$book_inspection->property->suburb}}</a>
-										<span>{{$book_inspection->property->property_type}}</span>
-									</div>--}}
-									<!--begin::User details-->
-								</td>
-								<td>
-									{{--<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}
+									<span>{{$book_inspection->property->property_type}}</span>
 				</div>--}}
-				{{isset($book_inspection->property->normal_price)?$book_inspection->property->normal_price:''}}
+				<!--begin::User details-->
 				</td>
-				<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
-				<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
-				<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>
-				<td class="d-flex">
-					<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-						<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-						<span class="svg-icon svg-icon-5 m-0">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-								<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
-							</svg>
-						</span>
-					</a>
-					<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-						<div class="menu-item px-3">
-							<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
-						</div>
+				<td>
+					{{--<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}
+			</div>--}}
+			@if($book_inspection->property->form_type == 'residential_sale' || $book_inspection->property->commercial_listing_type == 'commercial_sale')
+			${{isset($book_inspection->property->normal_price)?$book_inspection->property->normal_price:''}}
+			@endif
+			@if($book_inspection->property->commercial_listing_type == 'commercial_lease')
+			${{isset($book_inspection->property->commercial_rental_per_annum)?$book_inspection->property->commercial_rental_per_annum:''}} per/year
+			@elseif($book_inspection->property->form_type == 'residential_rental')
+			${{isset($book_inspection->property->rental_per_month)?$book_inspection->property->rental_per_month:''}} per/month
+			@endif
+			</td>
+			@if($book_inspection->property->form_type == 'commercial')
+			<td>{{isset($book_inspection->property->commercial_listing_type)?$book_inspection->property->commercial_listing_type:''}}</td>
+			@else
+			<td>{{isset($book_inspection->property->form_type)?$book_inspection->property->form_type:''}}</td>
+			@endif
+			<td>{{isset($book_inspection->inspection_date)?date('d-m-Y',strtotime($book_inspection->inspection_date)):''}}</td>
+			<td>{{isset($book_inspection->inspection_time)?date('g : i A',strtotime($book_inspection->inspection_time)):''}}</td>
+			<td class="d-flex">
+				<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+					<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+					<span class="svg-icon svg-icon-5 m-0">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
+						</svg>
+					</span>
+				</a>
+				<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+					<div class="menu-item px-3">
+						<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
 					</div>
-					<!--end::Menu-->
-				</td>
-				<!--end::Action=-->
-				</tr>
-				<!--end::Table row-->
-				@endforeach
-				</tbody>
-				<!--end::Table body-->
-				</table>
-				<!--end::Table-->
-			</div>
-			<!--end::Card body-->
+				</div>
+				<!--end::Menu-->
+			</td>
+			<!--end::Action=-->
+			</tr>
+			<!--end::Table row-->
+			@endforeach
+			</tbody>
+			<!--end::Table body-->
+			</table>
+			<!--end::Table-->
 		</div>
-		<!--end::Card-->
+		<!--end::Card body-->
 	</div>
-	<!--end::Container-->
+	<!--end::Card-->
+</div>
+<!--end::Container-->
 </div>
 <!--end::Post-->
 </div>

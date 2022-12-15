@@ -10,7 +10,7 @@ use App\Models\PropertyFeature;
 use App\Models\PropertyDetail;
 use App\Models\PropertyDocument;
 use App\Models\Offer;
-use App\Models\Inspection;
+use App\Models\InspectionBook;
 use App\Models\User;
 use App\Models\FavouriteProperty;
 use Auth;
@@ -75,15 +75,15 @@ class PropertyController extends Controller
         return back()->with('success','Offer deleted Successfully');
     }
 
-    public function booked_inspections()
+    public function booked_inspections(Request $request)
     {
-        $booked_inspections = BookInspection::where('user_id',Auth::id())->paginate(4);
+        $booked_inspections = InspectionBook::where('user_id',Auth::id())->paginate(5);
         return view('buyer.booked_inspections',compact('booked_inspections'));
     }
 
     public function delete_inspection($book_inspection_id)
     {
-        BookInspection::find($book_inspection_id)->delete();
+        InspectionBook::find($book_inspection_id)->delete();
         return back()->with('success','Inspection deleted Successfully');
     }
 
