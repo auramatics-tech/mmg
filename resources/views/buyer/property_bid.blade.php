@@ -342,9 +342,9 @@
                 <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
                 <ul>
                     <li><b>PROPERTY TYPE</b> <span>@if($property->form_type == 'commercial')
-                            <td>{{isset($property->commercial_listing_type)?$property->commercial_listing_type:''}}</td>
+                            <td>{{ucfirst(isset($property->commercial_listing_type)?str_replace('_',' ',$property->commercial_listing_type):'')}}</td>
                             @else
-                            <td>{{isset($property->form_type)?$property->form_type:''}}</td>
+                            <td>{{ucfirst(isset($property->form_type)?str_replace('_',' ',$property->form_type):'')}}</td>
                             @endif
                         </span></li>
                     <li><b>PRICE</b> <span>@if($property->form_type == 'residential_sale' || $property->commercial_listing_type == 'commercial_sale')
@@ -355,9 +355,52 @@
                             @elseif($property->form_type == 'residential_rental')
                             {{isset($property->rental_per_month)?$property->rental_per_month:''}} per/month
                             @endif</span></li>
+                            @if($property_bid_summary->property_details->bedrooms > 0)
                     <li><b>BEDROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bedrooms:''}}</span></li>
+                    @endif
+                    @if($property_bid_summary->property_details->bathrooms > 0)
                     <li><b>BATHROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bathrooms:''}} </span></li>
+                    @endif
+                    @if($property_bid_summary->property_details->land_size && isset($property_bid_summary->property_details->land_size))
                     <li><b>LAND SIZE</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size:''}}&nbsp;{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size_units:''}}</span></li>
+                    @endif
+                    <?php $data = isset($property_inspections->inspection_day) ? json_decode($property_inspections->inspection_day, true) : array();
+                            $property_inspections_date = implode(",", $data); ?>
+                            @if($property_inspections->inspection_day && isset($property_inspections_date))
+                            <li><b>INSPECTION DAY:</b> <span>{{$property_inspections_date}}</span></li>
+                            @endif
+                            @if($property_inspections->start_time && isset($property_inspections->start_time))
+                            <li><b>INSPECTION TIME:</b><span>{{$property_inspections->start_time}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>
+                            @endif
+                            @if($property->property_links_listing->description && isset($property->property_links_listing->description))
+                            <li><b>DESCRIPTION:</b> <span>{{$property->property_links_listing->description}}</span></li>
+                            @endif
+                            @if($property->form_type == 'residential_rental' && isset($property->rental_security_bond))
+                            <li><b>RENTAL SECURITY BOND:</b> <span>{{$property->rental_security_bond}}</span></li>
+                            @elseif($property->commercial_listing_type == 'commercial_lease' && isset($property->rental_security_bond))
+                            <li><b>RENTAL SECURITY BOND:</b> <span>{{$property->rental_security_bond}}</span></li>
+                            @endif
+                            @if($property_details->land_size > 0)
+                            <li><b>TOTAL LAND AREA</b><span>{{isset( $property_details->land_size)? $property_details->land_size:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
+                            @endif
+                            @if($property_details->house_sizes > 0)
+                            <li><b>HOUSE AREA</b><span>{{isset($property_details->house_sizes)? $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</span></li>
+                            @endif
+                            @if($property_details->open_car_spaces > 0)
+                            <li><b>OPEN CAR SPACES</b> <span>{{isset($property_details->open_car_spaces) ? $property_details->open_car_spaces:''}}</span></li>
+                            @endif
+                            @if($property_details->living_areas > 0)
+                            <li><b>LIVING AREAS</b> <span>{{isset($property_details->living_areas) ? $property_details->living_areas:''}} </span></li>
+                            @endif
+                            @if($property_details->total_floor_area && isset($property_details->total_floor_area))
+                            <li><b>TOTAL FLOOR AREA</b> <span>{{isset($property_details->total_floor_area) ? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units) ? $property_details->floor_area_units:''}}</span></li>
+                            @endif
+                            @if( $property_details->office_area && isset( $property_details->office_area))
+                            <li><b>OFFICE AREA</b> <span>{{isset($property_details->office_area) ? $property_details->office_area:''}} {{isset($property_details->office_area_units)? $property_details->office_area_units:''}}</span></li>
+                            @endif
+                            @if($property_details->warehouse_area && isset($property_details->warehouse_area))
+                            <li><b>WAREHOUSE AREA</b><span>{{isset($property_details->warehouse_area) ? $property_details->warehouse_area:''}} {{isset($property_details->warehouse_units) ? $property_details->warehouse_units:''}} </span></li>
+                            @endif
                     <li style="text-align:center" class="pb-5 pt-5"><a href="{{route('property_details',$property_bid_summary->id)}}" class="button"><i class="fa fa-arrow-circle-left"></i> Back</a></li>
                 </ul>
             </div>
