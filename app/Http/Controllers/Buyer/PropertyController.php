@@ -6,7 +6,7 @@ use App\Models\BookInspection;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\PropertyType;
-use App\Models\PropertyFeature;
+use App\Models\Inspection;
 use App\Models\PropertyDetail;
 use App\Models\PropertyDocument;
 use App\Models\Offer;
@@ -14,6 +14,7 @@ use App\Models\InspectionBook;
 use App\Models\User;
 use App\Models\FavouriteProperty;
 use Auth;
+use DB;
 
 class PropertyController extends Controller
 {
@@ -77,7 +78,12 @@ class PropertyController extends Controller
 
     public function booked_inspections(Request $request)
     {
-        $booked_inspections = InspectionBook::where('user_id',Auth::id())->paginate(5);
+        $booked_inspections = InspectionBook::select('inspection_books.*',
+        DB::raw("(select properties.form_type from properties where properties.id = inspection_books.property_id ) as property_type"),
+        ) ->when(isset($request->q), function ($query) use ($request) {
+            $query->havingRaw("property_type LIKE '%" . $request->q . "%'");
+        })->where('user_id',Auth::id())->paginate(5);
+        // echo"<pre>";print_r($booked_inspections);die;
         return view('buyer.booked_inspections',compact('booked_inspections'));
     }
 
@@ -94,9 +100,11 @@ class PropertyController extends Controller
         //  print_r($property);
         //  die;
         $property_summary = Property::where('id',$property_id)->where('is_approved',1)->get();
+        $property_details = PropertyDetail::where('property_id', $property_id)->first();
         $bid_count = Offer::where('property_id',$property_id)->count();
-        // echo"<pre>";print_r($bid_count);die;
-        return view('buyer.property_bid',compact('property_summary','bid_count','property'));
+        $property_inspections = Inspection::where('property_id', $property_id)->first();
+        // echo"<pre>";print_r($property_summary);die;
+        return view('buyer.property_bid',compact('property_summary','bid_count','property','property_inspections','property_details'));
     }
 
    

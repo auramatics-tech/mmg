@@ -145,7 +145,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" value="{{isset(request()->q) ? request()->q : ''}}" />
+								<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property type" value="{{isset(request()->q) ? request()->q : ''}}" />
 							</div>
 							<!--end::Search-->
 						</div>
