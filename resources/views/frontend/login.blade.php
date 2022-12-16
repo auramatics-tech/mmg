@@ -1,7 +1,13 @@
 @extends('frontend.layouts.master')
+@section('css')
+<style>
+    .invalid-feedback{
+        display: block !important;
+    }
+</style>
+@endsection
 @section('content')
 
-<!-- Utilize Cart Menu Start -->
 <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
@@ -63,9 +69,7 @@
 
     </div>
 </div>
-<!-- Utilize Cart Menu End -->
 
-<!-- Utilize Mobile Menu Start -->
 <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
@@ -198,31 +202,9 @@
         </div>
     </div>
 </div>
-<!-- Utilize Mobile Menu End -->
 
 <div class="ltn__utilize-overlay"></div>
 
-{{--<!-- BREADCRUMB AREA START -->
-<!-- <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ltn__breadcrumb-inner">
-                    <h1 class="page-title">Account </h1>
-                    <div class="ltn__breadcrumb-list">
-                        <ul>
-                            <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
-                            <li>Login</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- BREADCRUMB AREA END --> --}}
-
-<!-- LOGIN AREA START -->
 <div class="ltn__login-area pb-65">
     <div class="container">
         <div class="row">
@@ -277,9 +259,7 @@
         </div>
     </div>
 </div>
-<!-- LOGIN AREA END -->
 
-<!-- CALL TO ACTION START (call-to-action-6) -->
 <div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom" data-bs-bg="img/1.jpg--">
     <div class="container">
         <div class="row">
@@ -297,9 +277,7 @@
         </div>
     </div>
 </div>
-<!-- CALL TO ACTION END -->
 
-<!-- MODAL AREA START (Reset Password Modal) -->
 <div class="ltn__modal-area ltn__add-to-cart-modal-area----">
     <div class="modal fade" id="ltn_forget_password_modal" tabindex="-1">
         <div class="modal-dialog modal-md" role="document">
@@ -332,7 +310,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <!-- additional-info -->
                                     <div class="additional-info d-none">
                                         <p>We want to give you <b>10% discount</b> for your first order, <br> Use discount code at checkout</p>
                                         <div class="payment-method">
@@ -348,6 +325,5 @@
         </div>
     </div>
 </div>
-<!-- MODAL AREA END -->
 
 @endsection
