@@ -305,7 +305,6 @@
 </div>
 {{--<div class="ltn__slider-area ltn__slider-3  section-bg-1">
         <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
-            <!-- ltn__slide-item -->
             <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
                 <div class="ltn__slide-item-inner">
                     <div class="container">

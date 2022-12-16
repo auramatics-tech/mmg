@@ -1,22 +1,20 @@
 @extends('frontend.layouts.master')
 @section('css')
 <style>
-    fieldset {
-        display: none;
-    }
+   
 
     #first {
         display: block;
     }
 
-    .container {
+    /* .container {
         margin-bottom: 50px;
-    }
+    } */
 
     input[type=submit],
     input[type=button] {
         width: 120px;
-        margin: 15px 25px;
+        margin: 25px 25px 15px 0px;
         padding: 5px;
         height: 40px;
         background-color: var(--ltn__secondary-color);
@@ -27,6 +25,32 @@
     }
     .error_msg{
         color: red;
+    }
+
+    .su_select_style:focus {
+        border-color: var(--ltn__secondary-color);
+        box-shadow: none !important;
+    }
+    .text_field:focus{
+        border-color: var(--ltn__secondary-color);
+    }
+    .su_select_style {
+        height: 65px;
+        padding: 12px 5px;
+        border: 2px solid;
+        border-color: var(--border-color-9);
+    }
+    .su_phone_input{
+        height: 65px;
+        padding: 12px 5px;
+        border: 2px solid;
+        border-color: var(--border-color-9);
+    }
+    .su_phone_input:focus{
+        border-color: var(--ltn__secondary-color) !important;
+    }
+    .su_mb_30{
+        margin-bottom: 30px;
     }
 </style>
 @endsection
@@ -43,102 +67,122 @@
                 <h1 class="title">Let’s start with your full name</h1>
                 <input class="text_field" name="name" placeholder="Type Your Full Name.." type="text">
                 <span class="error_msg"></span><br>
-                <input class="next_btn" name="next" type="button" value="Next">
-            </fieldset>
-            <fieldset>
+           
                 <h2 class="title">Great! What's the property address you are considering selling?*</h2>
                 <textarea class="text_field" name="address" placeholder="Type Your Property Address" placeholder="Address"></textarea>
                 <span class="error_msg"></span><br>
-                <input class="next_btn" name="next" type="button" value="Next">
-            </fieldset>
-            <fieldset>
+            
                 <h2 class="title">Fantastic, now we just need your phone number to arrange a date & time to meet you.</h2>
-                <input class="text_field form-control" name="phone_no" placeholder="Type Your Phone No.." type="number">
+                <input class="text_field form-control su_phone_input" name="phone_no" placeholder="Type Your Phone No.." type="number">
                 <span class="error_msg"></span><br>
-                <input class="next_btn" name="next" type="button" value="Next">
-            </fieldset>
-            <fieldset>
+            
                 <h2 class="title">Last but not least! Enter your email address.</h2>
                 <input class="text_field form-control" name="email" placeholder="Type Your Email.." type="email">
                 <span class="error_msg"></span><br>
-                <input class="last_next_btn next_btn" name="next" type="button" value="Next">
+                
                 <button type="submit" class="theme-btn-1 btn btn-effect-1" id="submit_from_btn" style="display: none;">Submit</button>
-            </fieldset>
+           
+                <h2 class="title">What was the last time you sold.</h2>
+                <div class="w-100">
+                    <select class="nice-select su_select_style w-100 su_mb_30">
+                        <option>Choose Area</option>
+                        <option>chicago</option>
+                        <option>London</option>
+                        <option>Los Angeles</option>
+                        <option>New York</option>
+                        <option>New Jersey</option>
+                    </select>
+                </div>
+                <h2 class="title">What you think your property worth is.</h2>
+                <div class="w-100">
+                    <select class="nice-select su_select_style w-100 su_mb_30">
+                        <option>Choose Area</option>
+                        <option>chicago</option>
+                        <option>London</option>
+                        <option>Los Angeles</option>
+                        <option>New York</option>
+                        <option>New Jersey</option>
+                    </select>
+                </div>
+                <h2 class="title">Select agent in MMG you are working with or want to work with.</h2>
+                <div class="w-100">
+                    <select class="nice-select su_select_style w-100 su_mb_30">
+                        <option>Choose Area</option>
+                        <option>chicago</option>
+                        <option>London</option>
+                        <option>Los Angeles</option>
+                        <option>New York</option>
+                        <option>New Jersey</option>
+                    </select>
+                </div>
+                <h2 class="title">Enter the date you wish to be contacted.</h2>
+                <input class="form-control form-control-solid su_select_style su_mb_30" id="" placeholder="" name="" type="date" value="" />
+            
+                <h2 class="title">Your prefered method for sale.</h2>
+                <div class="row su_mb_30">
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Off Market
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Private Sale
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Expression of Interest
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Need Advice
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                </div>
+                <h2 class="title">Where did you hear about MMg.</h2>
+                <div class="row">
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Social media
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Website
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Past client
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Friends/family
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <label class="checkbox-item checkamenties">Neighbor of recent result
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                </div>
+                <input class="last_next_btn next_btn" name="next" type="button" value="Submit">
         </form>
     </div>
 </div>
 @endsection
 @section('script')
-<script>
-    $(document).ready(function() {
-        var count = 0; // To Count Blank Fields
-        /*------------ Validation Function-----------------*/
-        $(".submit_btn").click(function(event) {
-            var radio_check = $('.rad'); // Fetching Radio Button By Class Name
-            var input_field = $('.text_field'); // Fetching All Inputs With Same Class Name text_field & An HTML Tag textarea
-            var text_area = $('textarea');
-            // Validating Radio Button
-            if (radio_check[0].checked == false && radio_check[1].checked == false) {
-                var y = 0;
-            } else {
-                var y = 1;
-            }
-            // For Loop To Count Blank Inputs
-            for (var i = input_field.length; i > count; i--) {
-                if (input_field[i - 1].value == '' || text_area.value == '') {
-                    count = count + 1;
-                } else {
-                    count = 0;
-                }
-            }
-            // Notifying Validation
-            if (count != 0 || y == 0) {
-                alert("*All Fields are mandatory*");
-                event.preventDefault();
-            } else {
-                return true;
-            }
-        });
-        /*---------------------------------------------------------*/
-        $(".next_btn").click(function() { // Function Runs On NEXT Button Click
-            // console.log($(this).closest('fieldset').find(".text_field").val())
-            $(".error_msg").html('');
-            if($(this).parent().find(".text_field").val() == ''){
-                $(this).parent().find(".error_msg").html('This field is required')
-                return false;
-            }else{
-                $(this).parent().find(".error_msg").html('');
-            }
-            $(this).parent().next().fadeIn('slow');
-            $(this).parent().css({
-                'display': 'none'
-            });
-            // Adding Class Active To Show Steps Forward;
-            $('.active').next().addClass('active');
-        });
-        $(".pre_btn").click(function() { // Function Runs On PREVIOUS Button Click
-            $(this).parent().prev().fadeIn('slow');
-            $(this).parent().css({
-                'display': 'none'
-            });
-            // Removing Class Active To Show Steps Backward;
-            $('.active:last').removeClass('active');
-        });
-        // Validating All Input And Textarea Fields
-        $(".submit_btn").click(function(e) {
-            if ($('input').val() == "" || $('textarea').val() == "") {
-                alert("*All Fields are mandatory*");
-                return false;
-            } else {
-                return true;
-            }
-        });
-    });
-    $(document).on('click','.last_next_btn',function(){
-        $('.next_btn').hide();
-        $('.last_next_btn').hide();
-        $('fieldset').show();
-        $('#submit_from_btn').show();
-    })
-</script>
+
 @endsection
