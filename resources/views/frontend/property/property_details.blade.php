@@ -380,9 +380,7 @@
                             @elseif($property->commercial_listing_type == 'commercial_lease' && isset($property->rental_security_bond))
                             <li><label>Rental Security Bond:</label><span>{{$property->rental_security_bond}}</span></li>
                             @endif
-
                         </ul>
-                       
                     </div>
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
