@@ -544,6 +544,7 @@
 								<th class="min-w-125px">Property Name</th>
 								<th class="min-w-125px">Note</th>
 								<th class="min-w-125px">Offer price</th>
+								<th class="min-w-125px">Property Price</th>
 								<th class="min-w-125px">Actions</th>
 							</tr>
 							<!--end::Table row-->
@@ -581,6 +582,16 @@
 								<td>{{$buyer_detalis->property->address}}</td>
 								<td>{{$buyer_detalis->note}}</td>
 								<td>{{$buyer_detalis->offer_price}}</td>
+								<td>
+									@if($buyer_detalis->form_type == 'residential_sale' || $buyer_detalis->commercial_listing_type == 'commercial_sale')
+									{{isset($buyer_detalis->normal_price)?$buyer_detalis->normal_price:''}}
+									@endif
+									@if($buyer_detalis->commercial_listing_type == 'commercial_lease')
+									{{isset($buyer_detalis->commercial_rental_per_annum)?$buyer_detalis->commercial_rental_per_annum:''}} per/year
+									@elseif($buyer_detalis->form_type == 'residential_rental')
+									{{isset($buyer_detalis->rental_per_month)?$buyer_detalis->rental_per_month:''}} per/month
+									@endif
+								</td>
 								<td class="d-flex">
 									<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->

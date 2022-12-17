@@ -1068,7 +1068,7 @@
             <div>
                 <div>
                     <div style="margin-bottom:10px" bis_skin_checked="1">Select a Time by clicking below. </div>
-                    <input type="text" id="timepicker" name="inspection_time">
+                    <input type="text" id="timepicker" name="inspection_time" autocomplete="off">
                     @error('inspection_time')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -1634,10 +1634,8 @@
     $('#timepicker').timepicker({
         timeFormat: 'h:mm p',
         interval: 60,
-        minTime: '10',
-        maxTime: '6:00pm',
-        defaultTime: '11',
-        startTime: '10:00',
+        minTime: "{{$property_inspections->start_time}}",
+        maxTime: "{{$property_inspections->end_time}}",
         dynamic: false,
         dropdown: true,
         scrollbar: true
