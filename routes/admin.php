@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SliderController;
 //property-form 
 Route::get('/draft-properties', [PropertyController::class, 'draft_properties'])->name('admin.draft_properties');
 Route::get('/approved-properties', [PropertyController::class, 'approved_properties'])->name('admin.approved_properties');
+Route::get('/appraisal', [PropertyController::class, 'appraisal'])->name('admin.appraisal');
 Route::get('/add-approval/{property_id}', [PropertyController::class, 'add_approval'])->name('admin.add_approval');
 Route::get('/remove-aprroval/{property_id}', [PropertyController::class, 'remove_aprroval'])->name('admin.remove_aprroval');
 Route::get('/sliders', [SliderController::class, 'image_slider_list'])->name('admin.sliders');

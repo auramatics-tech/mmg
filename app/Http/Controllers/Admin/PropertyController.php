@@ -14,6 +14,7 @@ use App\Models\Inspection;
 use App\Models\Offer;
 use App\Models\User;
 use App\Models\UserRole;
+use App\Models\Appraisal;
 use Auth;
 
 class PropertyController extends Controller
@@ -51,5 +52,11 @@ class PropertyController extends Controller
     {
         $property = Property::where('id', $property_id)->update(['is_approved'=>0]);
         return back()->with("success","Property approval removed successful.");
+    }
+
+    public function appraisal()
+    {
+        $appraisal_data = Appraisal::all();
+        return view('admin.appraisal_listing',compact('appraisal_data'));
     }
 }
