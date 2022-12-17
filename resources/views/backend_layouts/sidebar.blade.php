@@ -100,6 +100,16 @@
                             </a>
                         </div>
                     </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.index')=='admin.index')?'active':''}}" href="{{route('admin.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Bid Through Croud Seller Link</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 @endif
                 @if(in_array(1,get_user_roles()))

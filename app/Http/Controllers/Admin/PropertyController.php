@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\UserRole;
 use App\Models\Appraisal;
 use Auth;
+use DB;
 
 class PropertyController extends Controller
 {
@@ -58,5 +59,14 @@ class PropertyController extends Controller
     {
         $appraisal_data = Appraisal::all();
         return view('admin.appraisal_listing',compact('appraisal_data'));
+    }
+    
+    public function index(){
+        $bid_through_links = Offer::select('offers.*',
+        DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = offers.user_id) as user_data"),
+        DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = offers.reference_id) as croud_seller_name"),
+        )->whereNotNull('reference_id')->get();
+        // echo"<pre>";print_r($bid_through_link);die;
+        return view('admin.bid_listing_through_croud',compact('bid_through_links'));
     }
 }
