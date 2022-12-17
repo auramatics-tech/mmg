@@ -260,9 +260,15 @@
                 </div>
                 @if(count($property_summary))
                 @foreach($property_summary as $bid_placeholder)
+                {{--
                 <div class="si_custom_bid pt-2">
                     <label class="mb-2"><b> Enter Your Custom Bid $</b></label>
-                    <input type="text" name="offer_price" id="offer_price_input" value="{{isset($bid_placeholder->desired_price)?$bid_placeholder->desired_price:old('offer_price')}}" class="valid" aria-invalid="false">
+                    <input type="text" name="offer_price" id="offer_price_input" value="${{isset($bid_placeholder->desired_price)?number_format($bid_placeholder->desired_price):old('offer_price')}}" class="valid" aria-invalid="false">
+                </div>
+                --}}
+                <div class="si_custom_bid pt-2">
+                    <label class="mb-2"><b> Enter Your Custom Bid $</b></label><br>
+                    <input type="number" name="offer_price" id="offer_price_input" value="${{isset($bid_placeholder->desired_price)?number_format($bid_placeholder->desired_price):old('offer_price')}}" class="valid w-100 py-2" aria-invalid="false">
                 </div>
                 @endforeach
                 @endif
@@ -290,11 +296,30 @@
                         <input type="text" name="" id="">
                     </div> 
                 </div>--}}
+              {{-- <div>
+                    <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
+                    <input class="form-control form-control-solid" id="expiry_date" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
+                </div>  --}} 
                 <div class="d-flex flex-column mb-7 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Note</label>
                     <textarea name="note" class="form-control form-control-solid" id="" cols="30" rows="5">{{old('note') ?? isset($property_offer->note)?$property_offer->note:''}}</textarea>
                 </div>
-                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> Bid Now!</button>
+                <div>
+                    <label class="fs-6 fw-bold mb-2">Listing Expiry Date</label>
+                    <input class="form-control form-control-solid mb-2" id="expiry_date" placeholder="" name="listing_expiry_date" type="date" value="{{old('listing_expiry_date') ?? isset($property->listing_expiry_date)?$property->listing_expiry_date:''}}" />
+                </div>
+                <div class="day_addition_sec" style="display: none;">
+                    <div class="d-flex" >
+                        <button type="button" class="button si_btn_bid btn_one mt-2 mb-5 add_days" data-day="30" id="">30 days</button>
+                        <button type="button" class="button si_btn_bid mt-2 mb-5 add_days" data-day="60"  id="">60 days</button>
+                        <button type="button" class="button si_btn_bid mt-2 mb-5 add_days" data-day="90" id="">90 days</button>
+                        <button type="button" class="button si_btn_bid mt-2 mb-5 add_days" data-day="120" id="">120 days</button>
+                        <i class="fa fa-remove" style="margin-top:25px;"></i>
+                    </div>
+                 </div>
+                <button type="submit" class="button si_btn_bid mt-2 mb-5" id="submitButton"><i class="fa fa-hand-paper" aria-hidden="true"></i> My Offer</button>
+             
+                
             </form>
             <div class="mb-5">
                 <div class="p-5 si_current_bids" bis_skin_checked="1">
@@ -302,20 +327,34 @@
                 </div>
             </div>
         </div>
-        @if(count($property_summary))
-        @foreach($property_summary as $property_bid_summary)
+            @if(count($property_summary))
+            @foreach($property_summary as $property_bid_summary)
         <div class="col-lg-4 col-md-4 col-12">
+            {{-- 
             <div class="listing-item" bis_skin_checked="1">
                 <img src="{{isset($property_bid_summary->get_property_image)?asset('storage/property_images/'.$property_bid_summary->get_property_image->document):''}}" alt="">
                 <div class="listing-item-content" bis_skin_checked="1">
                     <span>{{isset($property_bid_summary->address)?$property_bid_summary->address:''}}</span>
                 </div>
             </div>
+            --}}
             <div class="boxed-widget opening-hours summary margin-top-0" bis_skin_checked="1">
                 <h3><i class="fa fa-home" style="font-size:23px"></i> Property Summary</h3>
                 <ul>
-                    <li><b>PROPERTY TYPE</b> <span>{{isset($property_bid_summary->property_type)?$property_bid_summary->property_type:''}}</span></li>
-                    <li><b>PRICE</b> <span>${{isset($property_bid_summary->desired_price)?$property_bid_summary->desired_price:''}} - ${{isset($property_bid_summary->normal_price)?$property_bid_summary->normal_price:''}}</span></li>
+                    <li><b>PROPERTY TYPE</b> <span>@if($property->form_type == 'commercial')
+                            <td>{{isset($property->commercial_listing_type)?$property->commercial_listing_type:''}}</td>
+                            @else
+                            <td>{{isset($property->form_type)?$property->form_type:''}}</td>
+                            @endif
+                        </span></li>
+                    <li><b>PRICE</b> <span>@if($property->form_type == 'residential_sale' || $property->commercial_listing_type == 'commercial_sale')
+                            {{isset($property->normal_price)?$property->normal_price:''}}
+                            @endif
+                            @if($property->commercial_listing_type == 'commercial_lease')
+                            {{isset($property->commercial_rental_per_annum)?$property->commercial_rental_per_annum:''}} per/year
+                            @elseif($property->form_type == 'residential_rental')
+                            {{isset($property->rental_per_month)?$property->rental_per_month:''}} per/month
+                            @endif</span></li>
                     <li><b>BEDROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bedrooms:''}}</span></li>
                     <li><b>BATHROOMS</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->bathrooms:''}} </span></li>
                     <li><b>LAND SIZE</b> <span>{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size:''}}&nbsp;{{isset($property_bid_summary->property_details)?$property_bid_summary->property_details->land_size_units:''}}</span></li>
@@ -335,14 +374,37 @@
         if ($('#offer_price_input').val() == '') {
             var total_price = 0;
         } else {
-            var total_price = parseFloat($('#offer_price_input').val());
+            var value_price = $('#offer_price_input').val()
+            value_price = value_price.replace('$', '')
+            value_price = value_price.replace(',', '')
+            if(value_price == ''){
+                value_price = 0;
+            }
+            var total_price = parseFloat(value_price);
         }
-
-        $('#offer_price_input').val(price + total_price)
+        var all_price = price + total_price;
+        $('#offer_price_input').val(all_price)
     })
     $(document).on('click', '.Clear_bid_price', function() {
         $('#offer_price_input').val('')
     })
 </script>
+<script>
+    $(document).on('change','#expiry_date',function(){
+        $('.day_addition_sec').show()
+    })
+    $(document).on('click','.add_days',function(){
+        var thisdate = new Date($('#expiry_date').val());
+        days = parseFloat($(this).attr('data-day'))
+        thisdate.setDate(thisdate.getDate() + days); 
+        // var added_date = new Date(thisdate.getTime() + days*24*60*60*1000);
+        // thisdate.setDate(added_date)
+        console.log(thisdate)
+        $('#expiry_date').val(thisdate.getFullYear()+'-'+(thisdate.getMonth() + 1).toString().padStart(2, "0")+'-'+(thisdate.getDate()).toString().padStart(2, "0"));
+        console.log(thisdate.getFullYear()+'-'+(thisdate.getMonth()+1)+'-'+thisdate.getDate())
+
+    })
+
+    </script>
 
 @endsection

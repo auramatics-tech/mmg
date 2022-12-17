@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\Slider;
+use App\Models\PropertyFeature;
 
 class HomeController extends Controller
 {
@@ -21,7 +23,12 @@ class HomeController extends Controller
     public function index()
     {
         $properties = Property::where('is_approved',1)->get();
-        return view('frontend.index',compact('properties'));
+        $property_features = PropertyFeature::all(); $sliderimages = Slider::all();
+        $sliderimages = Slider::first();
+        //   echo "<pre>";
+        //     print_r( $sliderimages);
+        //     die;
+        return view('frontend.index',compact('properties','sliderimages','property_features'));
     }
 
     public function login()

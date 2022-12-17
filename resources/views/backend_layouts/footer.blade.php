@@ -4,7 +4,9 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted fw-bold me-1">2022©</span>
-            <a href="{{route('index')}}" target="_blank" class="text-gray-800 text-hover-primary">MMG</a>
+            <a href="{{route('index')}}" target="_blank" class="text-gray-800 text-hover-primary">
+               <img alt="Logo" src="{{asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" style="width:45px;height:40px;" class="" />
+            </a>
         </div>
         <!--end::Copyright-->
         <!--begin::Menu-->

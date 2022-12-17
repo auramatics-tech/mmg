@@ -30,644 +30,481 @@
         background-color: var(--ltn__secondary-color);
         border: none !important;
     }
-    .extra_fetures{
+
+    .extra_fetures {
         display: none;
+    }
+
+    .listcat {
+        list-style: none;
+    }
+
+    .new_hi {
+        height: 40px;
+    }
+
+    .su_modal_content {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .su_modal_dialog {
+        max-width: 50%;
+        margin-top: 50px;
+    }
+
+    .su_modal {
+        z-index: 99999 !important;
+    }
+
+    .m_t_b_20 {
+        margin: 20px 0px;
+    }
+
+    .su_listcat {
+        list-style: none;
+        margin-top: 2px;
+    }
+
+    .su_flex_block {
+        display: flex;
+    }
+
+    .su_selector_input {
+        width: 100%;
+    }
+
+    .su_selector_input:focus {
+        border-color: #e8e8e8 !important;
+    }
+
+    .su_div_height {
+        overflow-y: scroll;
+        height: 50vh;
+    }
+
+    .su_input_style {
+        color: var(--ltn__paragraph-color);
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        font-family: var(--ltn__body-font);
+        line-height: 1.8;
+    }
+
+    .su_sub_heading {
+        font-weight: 800 !important;
+    }
+
+    .su_hr {
+        border-top: 1px solid #dee2e6 !important;
+        margin: 15px 0px !important;
+    }
+
+    .m_t_b_10 {
+        margin: 0px 0px 20px 0px;
+    }
+
+    .su_product_img>a {
+        width: 100%;
+        height: 230px;
+    }
+
+    .su_product_img_inside {
+        width: 100%;
+        height: 100%;
+    }
+
+    .cal {
+        margin-right: 4px;
+    }
+
+    .ltn__product-item-4 .product-info {
+        padding: 20px 16px 1px;
+    }
+
+    .custom_img {
+        width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .leave-rating label {
+        color: #ffc107;
+    }
+
+    .leave-rating input {
+        display: none;
+    }
+
+    .leave-rating .star_color {
+        color: #ccc;
+    }
+
+    .agency_leave_a_review .btn {
+        background: #00B3FF;
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        transition: all .5s ease;
+    }
+
+    #lightcase-overlay {
+        z-index: 9999;
+        background: #a5a139 !important;
+
+    }
+
+    .img_len a {
+        height: calc(100vh - 155px) !important;
+    }
+
+    .ul_Residential_commercial {
+        display: flex;
+        width: 100%;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+
+    .ul_Residential_commercial li {
+        width: 50%;
+        border-bottom: black 1px solid;
+        text-align: center;
+        margin: 0;
+        padding: 10px 0px;
+    }
+
+    .su_res_com_btns {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        background: none;
+        padding: 0.5rem 1rem;
+    }
+
+    .active_under_line {
+        border-bottom: #ff5a3c 3px solid !important;
+    }
+
+    .su_on_click_clr.open,
+    .su_on_click_clr:active,
+    .su_on_click_clr:focus {
+        border-color: var(--ltn__secondary-color) !important;
+    }
+
+    .nav-link {
+        color: #495057 !important;
+    }
+
+    .su_img_list>a {
+        height: 210px;
+    }
+
+    .su_img_list>a>img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .su_circle_img>a {
+        width: 50px;
+        height: 50px;
+    }
+
+    .su_circle_img>a>img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .su_circle_list_img>a {
+        width: 40px;
+        height: 40px;
+    }
+
+    .su_circle_list_img>a>img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .su_circle_list_img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .d_hide{
+        display: none;
+    }
+    .d_show{
+        display: block;
+    }
+
+    .su_fav_proporty_logo img{
+        height: 45px !important;
+    }
+    .su_fav_proporty_logo:hover{
+        background-color: white !important;
+    }
+    .su_fav_proporty_logo{
+        width: 50px !important;
+    }
+
+
+    @media screen and (max-width: 991px) {
+        .su_flex_block {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .su_modal_dialog {
+            max-width: 65%;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .su_modal_dialog {
+            max-width: 100%;
+        }
     }
 </style>
 @endsection
 @section('content')
 
-<!-- Utilize Cart Menu Start -->
-<div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
-    <div class="ltn__utilize-menu-inner ltn__scrollbar">
-        <div class="ltn__utilize-menu-head">
-            <span class="ltn__utilize-menu-title">Cart</span>
-            <button class="ltn__utilize-close">×</button>
-        </div>
-        <div class="mini-cart-product-area ltn__scrollbar">
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/1.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <span class="ltn__utilize-menu-title">Cart</span>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+            <div class="mini-cart-product-area ltn__scrollbar">
+                <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a href="#"><img src="img/product/1.png" alt="Image"></a>
+                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="#">Wheel Bearing Retainer</a></h6>
+                        <span class="mini-cart-quantity">1 x $65.00</span>
+                    </div>
                 </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">Wheel Bearing Retainer</a></h6>
-                    <span class="mini-cart-quantity">1 x $65.00</span>
+                <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a href="#"><img src="img/product/2.png" alt="Image"></a>
+                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="#">3 Rooms Manhattan</a></h6>
+                        <span class="mini-cart-quantity">1 x $85.00</span>
+                    </div>
+                </div>
+                <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a href="#"><img src="img/product/3.png" alt="Image"></a>
+                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="#">OE Replica Wheels</a></h6>
+                        <span class="mini-cart-quantity">1 x $92.00</span>
+                    </div>
+                </div>
+                <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a href="#"><img src="img/product/4.png" alt="Image"></a>
+                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="#">Shock Mount Insulator</a></h6>
+                        <span class="mini-cart-quantity">1 x $68.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/2.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+            <div class="mini-cart-footer">
+                <div class="mini-cart-sub-total">
+                    <h5>Subtotal: <span>$310.00</span></h5>
                 </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">3 Rooms Manhattan</a></h6>
-                    <span class="mini-cart-quantity">1 x $85.00</span>
+                <div class="btn-wrapper">
+                    <a href="" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                    <a href="" class="theme-btn-2 btn btn-effect-2">Checkout</a>
                 </div>
+                <p>Free Shipping on All Orders Over $100!</p>
             </div>
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/3.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">OE Replica Wheels</a></h6>
-                    <span class="mini-cart-quantity">1 x $92.00</span>
-                </div>
-            </div>
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">Shock Mount Insulator</a></h6>
-                    <span class="mini-cart-quantity">1 x $68.00</span>
-                </div>
-            </div>
-        </div>
-        <div class="mini-cart-footer">
-            <div class="mini-cart-sub-total">
-                <h5>Subtotal: <span>$310.00</span></h5>
-            </div>
-            <div class="btn-wrapper">
-                <a href="" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                <a href="" class="theme-btn-2 btn btn-effect-2">Checkout</a>
-            </div>
-            <p>Free Shipping on All Orders Over $100!</p>
-        </div>
-
-    </div>
-</div>
-<!-- Utilize Cart Menu End -->
-
-<!-- Utilize Mobile Menu Start -->
-<div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
-    <div class="ltn__utilize-menu-inner ltn__scrollbar">
-        <div class="ltn__utilize-menu-head">
-            <div class="site-logo">
-                <a href=""><img src="img/logo.png" alt="Logo"></a>
-            </div>
-            <button class="ltn__utilize-close">×</button>
-        </div>
-        <div class="ltn__utilize-menu-search-form">
-            <form action="#">
-                <input type="text" placeholder="Search...">
-                <button><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-        <div class="ltn__utilize-menu">
-            <ul>
-                <li><a href="#">Home</a>
-                    <ul class="sub-menu">
-                        <li><a href="">Home Style 01</a></li>
-                        <li><a href="">Home Style 02</a></li>
-                        <li><a href="">Home Style 03</a></li>
-                        <li><a href="">Home Style 04</a></li>
-                        <li><a href="">Home Style 05 <span class="menu-item-badge">video</span></a></li>
-                        <li><a href="">Home Style 06</a></li>
-                        <li><a href="">Home Style 07</a></li>
-                        <li><a href="">Home Style 08</a></li>
-                        <li><a href="">Home Style 09</a></li>
-                        <li><a href="">Home Style 10 <span class="menu-item-badge">Map</span></a></li>
-                        <li><a href="">Home Style 11</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">About</a>
-                    <ul class="sub-menu">
-                        <li><a href="">About</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Service Details</a></li>
-                        <li><a href="">Portfolio</a></li>
-                        <li><a href="l">Portfolio - 02</a></li>
-                        <li><a href="">Portfolio Details</a></li>
-                        <li><a href="">Team</a></li>
-                        <li><a href="">Team Details</a></li>
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="">Google Map Locations</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Shop</a>
-                    <ul class="sub-menu">
-                        <li><a href="">Shop</a></li>
-                        <li><a href="">Shop Grid</a></li>
-                        <li><a href="">Shop Left sidebar</a></li>
-                        <li><a href="">Shop right sidebar</a></li>
-                        <li><a href="">Shop details </a></li>
-                        <li><a href="">Cart</a></li>
-                        <li><a href="">Wishlist</a></li>
-                        <li><a href="">Checkout</a></li>
-                        <li><a href="">Order Tracking</a></li>
-                        <li><a href="">My Account</a></li>
-                        <li><a href="">Sign in</a></li>
-                        <li><a href="">Register</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">News</a>
-                    <ul class="sub-menu">
-                        <li><a href="">News</a></li>
-                        <li><a href="">News Grid</a></li>
-                        <li><a href="">News Left sidebar</a></li>
-                        <li><a href="">News Right sidebar</a></li>
-                        <li><a href="">News details</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Pages</a>
-                    <ul class="sub-menu">
-                        <li><a href="">About</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Service Details</a></li>
-                        <li><a href="">Portfolio</a></li>
-                        <li><a href="">Portfolio - 02</a></li>
-                        <li><a href="">Portfolio Details</a></li>
-                        <li><a href="">Team</a></li>
-                        <li><a href="">Team Details</a></li>
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="">History</a></li>
-                        <li><a href="">Appointment</a></li>
-                        <li><a href="">Google Map Locations</a></li>
-                        <li><a href="">404</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Coming Soon</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
-        <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
-            <ul>
-                <li>
-                    <a href="" title="My Account">
-                        <span class="utilize-btn-icon">
-                            <i class="far fa-user"></i>
-                        </span>
-                        My Account
-                    </a>
-                </li>
-                <li>
-                    <a href="" title="Wishlist">
-                        <span class="utilize-btn-icon">
-                            <i class="far fa-heart"></i>
-                            <sup>3</sup>
-                        </span>
-                        Wishlist
-                    </a>
-                </li>
-                <li>
-                    <a href="" title="Shoping Cart">
-                        <span class="utilize-btn-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <sup>5</sup>
-                        </span>
-                        Shoping Cart
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="ltn__social-media-2">
-            <ul>
-                <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-            </ul>
         </div>
     </div>
-</div>
-<!-- Utilize Mobile Menu End -->
-
-<div class="ltn__utilize-overlay"></div>
-
-{{-- <!-- BREADCRUMB AREA START -->
-<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ltn__breadcrumb-inner">
-                    <h1 class="page-title">Properties</h1>
-                    <div class="ltn__breadcrumb-list">
-                        <ul>
-                            <li><a href="{{route('index')}}"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
-                            <li>Properties</li>
+    <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <div class="site-logo">
+                    <a href=""><img src="img/logo.png" alt="Logo"></a>
+                </div>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+            <div class="ltn__utilize-menu-search-form">
+                <form action="#">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="ltn__utilize-menu">
+                <ul>
+                    <li><a href="#">Home</a>
+                        <ul class="sub-menu">
+                            <li><a href="">Home Style 01</a></li>
+                            <li><a href="">Home Style 02</a></li>
+                            <li><a href="">Home Style 03</a></li>
+                            <li><a href="">Home Style 04</a></li>
+                            <li><a href="">Home Style 05 <span class="menu-item-badge">video</span></a></li>
+                            <li><a href="">Home Style 06</a></li>
+                            <li><a href="">Home Style 07</a></li>
+                            <li><a href="">Home Style 08</a></li>
+                            <li><a href="">Home Style 09</a></li>
+                            <li><a href="">Home Style 10 <span class="menu-item-badge">Map</span></a></li>
+                            <li><a href="">Home Style 11</a></li>
                         </ul>
-                    </div>
-                </div>
+                    </li>
+                    <li><a href="#">About</a>
+                        <ul class="sub-menu">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Services</a></li>
+                            <li><a href="">Service Details</a></li>
+                            <li><a href="">Portfolio</a></li>
+                            <li><a href="l">Portfolio - 02</a></li>
+                            <li><a href="">Portfolio Details</a></li>
+                            <li><a href="">Team</a></li>
+                            <li><a href="">Team Details</a></li>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">Google Map Locations</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Shop</a>
+                        <ul class="sub-menu">
+                            <li><a href="">Shop</a></li>
+                            <li><a href="">Shop Grid</a></li>
+                            <li><a href="">Shop Left sidebar</a></li>
+                            <li><a href="">Shop right sidebar</a></li>
+                            <li><a href="">Shop details </a></li>
+                            <li><a href="">Cart</a></li>
+                            <li><a href="">Wishlist</a></li>
+                            <li><a href="">Checkout</a></li>
+                            <li><a href="">Order Tracking</a></li>
+                            <li><a href="">My Account</a></li>
+                            <li><a href="">Sign in</a></li>
+                            <li><a href="">Register</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">News</a>
+                        <ul class="sub-menu">
+                            <li><a href="">News</a></li>
+                            <li><a href="">News Grid</a></li>
+                            <li><a href="">News Left sidebar</a></li>
+                            <li><a href="">News Right sidebar</a></li>
+                            <li><a href="">News details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Pages</a>
+                        <ul class="sub-menu">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Services</a></li>
+                            <li><a href="">Service Details</a></li>
+                            <li><a href="">Portfolio</a></li>
+                            <li><a href="">Portfolio - 02</a></li>
+                            <li><a href="">Portfolio Details</a></li>
+                            <li><a href="">Team</a></li>
+                            <li><a href="">Team Details</a></li>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">History</a></li>
+                            <li><a href="">Appointment</a></li>
+                            <li><a href="">Google Map Locations</a></li>
+                            <li><a href="">404</a></li>
+                            <li><a href="">Contact</a></li>
+                            <li><a href="">Coming Soon</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
+                <ul>
+                    <li>
+                        <a href="" title="My Account">
+                            <span class="utilize-btn-icon">
+                                <i class="far fa-user"></i>
+                            </span>
+                            My Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title="Wishlist">
+                            <span class="utilize-btn-icon">
+                                <i class="far fa-heart"></i>
+                                <sup>3</sup>
+                            </span>
+                            Wishlist
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title="Shoping Cart">
+                            <span class="utilize-btn-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <sup>5</sup>
+                            </span>
+                            Shoping Cart
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ltn__social-media-2">
+                <ul>
+                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
-<!-- BREADCRUMB AREA END -->  --}}
-<!-- PRODUCT DETAILS AREA START -->
-<div class="ltn__product-area ltn__product-gutter mb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="ltn__shop-options">
-                    <ul class="justify-content-start">
-                        <li>
-                            <div class="ltn__grid-list-tab-menu ">
-                                <div class="nav">
-                                    <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
-                                    <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-none">
-                            <div class="showing-product-number text-right">
-                                <span>Showing 1–12 of 18 results</span>
-                            </div>
-                        </li>
-                        <li>
-                            <form id="sorting_form">
-                            <div class="short-by text-center">
-                                <select class="nice-select" name="sort" id="sortby">
-                                    <option value="">Default Sorting</option>
-                                    <option @if(isset(request()->sort) && request()->sort == 'o') selected @endif value="o">Sort by first arrivals</option>
-                                    <option @if(isset(request()->sort) && request()->sort == 'n') selected @endif value="n">Sort by new arrivals</option>
-                                    <option @if(isset(request()->sort) && request()->sort == 'l') selected @endif  value="l">Sort by price: low to high</option>
-                                    <option @if(isset(request()->sort) && request()->sort == 'h')  selected @endif value="h">Sort by price: high to low</option>
-                                </select>
-                            </div>
-                            </form>
-                        </li>
-                        <li>
-                            <div class="short-by text-center">
-                                <select class="nice-select">
-                                    <option>Per Page: 12</option>
-                                    <option>Per Page: 20</option>
-                                    <option>Per Page: 30</option>
-                                    <option>Per Page: 50</option>
-                                    <option>Per Page: 100</option>
-                                </select>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade active show" id="liton_product_grid">
-                        <div class="ltn__product-tab-content-inner ltn__product-grid-view">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <!-- Search Widget -->
-                                    <div class="ltn__search-widget mb-30">
-                                        <form action="#" id="form1">
-                                            <input type="text" name="search" placeholder="Search your keyword...">
-                                            <button type="button" id="searchbtn"><i class="fas fa-search"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                                @if(isset($properties) && count($properties))
-                                @foreach($properties as $property)
-                                <div class="col-xl-6 col-sm-6 col-12">
-                                    <div class="ltn__product-item ltn__product-item-4 ltn__grid-list-tab-menu ltn__product-item-5 text-center---">
-                                        <div class="product-img">
-                                            <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
-                                            <div class="real-estate-agent">
-                                                <div class="agent-img">
-                                                    <a href=""><img src="{{isset($property->get_property_image)?asset('storage/property_images/'.$property->get_property_image->document):''}}" alt="#"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            <div class="product-badge">
-                                                <ul>
-                                                    <li class="sale-badg">{{isset($property->status)?$property->status:''}}</li>
-                                                </ul>
-                                            </div>
-                                            <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($property->property_type)?$property->property_type:''}}</a></h2>
-                                            <div class="product-img-location">
-                                                <ul>
-                                                    <li>
-                                                        <a href=""><i class="flaticon-pin"></i> {{isset($property->address)?$property->address:''}}</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
-                                                    Bed
-                                                </li>
-                                                <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
-                                                    Bath
-                                                </li>
-                                                <li><span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
-                                                    {{isset($property->property_details)?$property->property_details->land_size_units:''}}
-                                                </li>
-                                            </ul>
-                                            <div class="product-hover-action">
-                                                <ul>
-                                                   {{--<li>
-                                                        <a href="{{route('property_details' ,isset($property->$property->id)?$property->$property->id:'')}}" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                                            <i class="flaticon-expand"></i>
-                                                        </a>
-                                                    </li>
-                                                    --}} 
-                                                    <li>
-                                                        <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
-                                                            <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i></a>
-                                                    </li>
-                                                    {{--
-                                                    <li>
-                                                        <a href="" title="Product Details">
-                                                            <i class="flaticon-add"></i>
-                                                        </a>
-                                                    </li>
-                                                    --}} 
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-info-bottom">
-                                            <div class="product-price">
-                                                <span>${{isset($property->normal_price)?$property->normal_price:''}}</span>
-                                            </div>
+    <div class="ltn__utilize-overlay"></div>
+    <div class="ltn__product-area ltn__product-gutter mb-120">
+        <div class="container mt-4">
+            <div class="row">
+                    <div class="col-lg-8">
+                        <div class="ltn__shop-options">
+                            <ul class="justify-content-start">
+                                <li>
+                                    <div class="ltn__grid-list-tab-menu ">
+                                        <div class="nav">
+                                            <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
+                                            <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="liton_product_list">
-                        <div class="ltn__product-tab-content-inner ltn__product-list-view">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <!-- Search Widget -->
-                                    <div class="ltn__search-widget mb-30">
-                                        <form action="#">
-                                            <input type="text" name="search" placeholder="Search your keyword...">
-                                            <button type="submit"><i class="fas fa-search"></i></button>
-                                        </form>
+                                </li>
+                                <li class="d-none">
+                                    <div class="showing-product-number text-right">
+                                        <span>Showing 1–12 of 18 results</span>
                                     </div>
-                                </div>
-                                <!-- ltn__product-item -->
-                                @if(isset($properties) && count($properties))
-                                @foreach($properties as $property_list)
-                                <div class="col-lg-12">
-                                    <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-                                        <div class="product-img">
-                                        <a href="{{route('property_details',$property->id)}}"><img src="{{isset($property_list->get_property_image)?asset('storage/property_images/'.$property_list->get_property_image->document):''}}" alt="#"></a>
+                                </li>
+                                <li>
+                                    <form id="sorting_form">
+                                        <div class="short-by text-center">
+                                            <select class="nice-select" name="sort" id="sortby">
+                                                <option value="">Default Sorting</option>
+                                                <option @if(isset(request()->sort) && request()->sort == 'o') selected @endif value="o">Sort by first arrivals</option>
+                                                <option @if(isset(request()->sort) && request()->sort == 'n') selected @endif value="n">Sort by new arrivals</option>
+                                                <option @if(isset(request()->sort) && request()->sort == 'l') selected @endif value="l">Sort by price: low to high</option>
+                                                <option @if(isset(request()->sort) && request()->sort == 'h') selected @endif value="h">Sort by price: high to low</option>
+                                            </select>
                                         </div>
-                                        <div class="product-info">
-                                            <div class="product-badge-price">
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badg">{{isset($property_list->status)?$property_list->status:''}}</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}<label></label></span>
-                                                </div>
-                                            </div>
-                                            <h2 class="product-title"><a href="{{isset($property_list->id) ? route('property_details', $property_list->id ) : 'javascript:'}}">{{isset($property_list->property_type)?$property_list->property_type:''}}</a></h2>
-                                            <div class="product-img-location">
-                                                <ul>
-                                                    <li>
-                                                        <a href=""><i class="flaticon-pin"></i> {{isset($property_list->address)?$property_list->address:''}}</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                <li><span>{{isset($property_list->property_details)?$property_list->property_details->bedrooms:''}} </span>
-                                                    Bed
-                                                </li>
-                                                <li><span>{{isset($property_list->property_details)?$property_list->property_details->bathrooms:''}} </span>
-                                                    Bath
-                                                </li>
-                                                <li><span>{{isset($property_list->property_details)?$property_list->property_details->land_size:''}} </span>
-                                                    {{isset($property_list->property_details)?$property_list->property_details->land_size_units:''}}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info-bottom">
-                                            <div class="real-estate-agent">
-                                                <div class="agent-img">
-                                                    <a href=""><img src="img/blog/author.jpg" alt="#"></a>
-                                                </div>
-                                                <div class="agent-brief">
-                                                    <h6><a href=""> {{isset($property_list->property_name->first_name)?$property_list->property_name->first_name:''}} {{isset($property_list->property_name->last_name)?$property_list->property_name->last_name:''}} </a></h6>
-                                                {{-- <small>Estate Agents</small> --}}
-                                                </div>
-                                            </div>
-                                            <div class="product-hover-action">
-                                                <ul>
-                                                {{--
-                                                    <li>
-                                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                                            <i class="flaticon-expand"></i>
-                                                        </a>
-                                                    </li>
-                                                    --}}
-                                                    <li>
-                                                        <a href="javascript:" title="" data-property_id="{{$property->id}}" class="fav_property" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
-                                                            <i class="flaticon-heart-1"></i></a>
-                                                    </li>
-                                                    {{--
-                                                    <li>
-                                                        <a href="" title="Product Details">
-                                                            <i class="flaticon-add"></i>
-                                                        </a>
-                                                    </li>
-                                                    --}}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                                @endif
-                                <!-- end item -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{ $properties->links('frontend.layouts.pagination') }}
-                <!--<div class="ltn__pagination-area text-center">
-                        <div class="ltn__pagination">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">...</a></li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                                    </form>
+                                </li>
+                                <li class="ms-auto">
+                                    <button class="btn theme-btn-1" data-bs-toggle="modal" data-bs-target="#filter_model">Filter</button>
+                                </li>
                             </ul>
                         </div>
-                    </div>-->
-            </div>
-            <div class="col-lg-4">
-                <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
-                    <h3 class="mb-10">Advance Information</h3>
-                <label class="mb-30"><small>Filter All Property </small></label>
-                    <!-- Advance Information widget -->
-                    <div class="widget ltn__menu-widget">
-                        <h4 class="ltn__widget-title">Property Type</h4>
-                        <form action="" id="form2">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="">
-                                        <label class="checkbox-item">Residential Sale
-                                            <input type="checkbox" @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif value="residential_sale" name="type[]">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <label class="checkbox-item">Residential Rental
-                                        <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental", request()->type)) checked @endif value="residential_rental" name="type[]">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                                <li>
-                                    <label class="checkbox-item">Land
-                                        <input type="checkbox" @if(isset(request()->type) && in_array("land", request()->type)) checked @endif value="land" name="type[]">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                                <li>
-                                    <label class="checkbox-item">Commercial
-                                        <input type="checkbox" @if(isset(request()->type) && in_array("commercial", request()->type)) checked @endif value="commercial" name="type[]">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                                <li>
-                                    <label class="checkbox-item">Rural
-                                        <input type="checkbox" @if(isset(request()->type) && in_array("rural", request()->type)) checked @endif value="rural" name="type[]">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                                <li>
-                                    <label class="checkbox-item">Business
-                                        <input type="checkbox" @if(isset(request()->type) && in_array("business", request()->type)) checked @endif value="business" name="type[]">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                                <li>
-                                    <label class="checkbox-item">Holiday Rental
-                                        <input type="checkbox" @if(isset(request()->type) && in_array("residential_rental&holiday=1", request()->type)) checked @endif value="residential_rental&holiday=1" name="type[]">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                            </ul>
-                        </form>
-                        <hr>
-                        <form action="" id="form3">
-                        <h4 class="ltn__widget-title">Amenities</h4>
-                        <ul class="list-unstyled">
-                            @if(count($property_features))
-                            @foreach($property_features as $key => $property_feature)
-                            @if($key <= 7)
-                            <li>
-                                <label class="checkbox-item">{{$property_feature->name}}
-                                    <input type="checkbox" name="amenities[]" value="{{$property_feature->name}}">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no"></span>
-                            </li>
-                            @else
-                                <li class="extra_fetures">
-                                    <label class="checkbox-item">{{$property_feature->name}}
-                                        <input type="checkbox" name="amenities[]" value="{{$property_feature->name}}">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="categorey-no"></span>
-                                </li>
-                            @endif
-                            @endforeach
-                            <li class="text-center">
-                                <button class="ltn__secondary-color section-subtitle section-subtitle-2" type="button" id="view_more_fetures">See More</button>
-                            <li>
-                            <li class="text-center">
-                                <button class="ltn__secondary-color section-subtitle section-subtitle-2" type="button" id="hide_more_fetures" style="display: none;">See less</button>
-                            <li>
-                            @endif
-                        </ul>
-                        <hr>
-                        </form>
-                        {{-- <h4 class="ltn__widget-title">Price Renge</h4>
-                           <ul>
-                            <li>
-                                <label class="checkbox-item">Low Budget
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no">$5,000 - $10,000</span>
-                            </li>
-                            <li>
-                                <label class="checkbox-item">Medium
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no">$10,000 - $30,000</span>
-                            </li>
-                            <li>
-                                <label class="checkbox-item">High Budget
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no">$30,000 Up</span>
-                            </li>
-                        </ul> --}}
-                        <hr>
-                        <!-- Price Filter Widget -->
-                        <div class="widget--- ltn__price-filter-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
-                            <div class="price_filter">
-                                <div class="price_slider_amount">
-                                    <input type="submit" value="Your range:" />
-                                    <input type="text" class="amount" name="price" placeholder="Add Your Price" />
-                                </div>
-                                <div class="slider-range"></div>
-                            </div>
+                        <div class="property_listing">
+                            @include('frontend.property._listing')
                         </div>
-                        <hr>
-                        {{--<h4 class="ltn__widget-title">Bed/bath</h4>
-                        <ul>
-                        @if(isset($property_details) && count($property_details))
-                                @foreach($property_details as $bed_bath)
-                            <li>
-                                <label class="checkbox-item">Single
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                @endforeach
-                                @endif
-                            </li>
-                        </ul>--}}
-                        <hr>
-                        <h4 class="ltn__widget-title">Catagory</h4>
-                        <ul>
-                            <li>
-                                <label class="checkbox-item">For Sale
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no"></span>
-                            </li>
-                            <li>
-                                <label class="checkbox-item">Renting
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no"></span>
-                            </li>
-                            <li>
-                                <label class="checkbox-item">Selling
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categorey-no"></span>
-                            </li>
-                        </ul>
                     </div>
-                    <!-- Category Widget -->
                     <div class="widget ltn__menu-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Product categories</h4>
                         <ul>
@@ -680,25 +517,13 @@
                             <li><a href="#">Wheel <span><i class="fas fa-long-arrow-alt-right"></i></span></a></li>
                         </ul>
                     </div>
-                    <!-- Price Filter Widget -->
-                    <div class="widget ltn__price-filter-widget d-none">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Filter by price</h4>
-                        <div class="price_filter">
-                            <div class="price_slider_amount">
-                                <input type="submit" value="Your range:" />
-                                <input type="text" class="amount" name="price" placeholder="Add Your Price" />
-                            </div>
-                            <div class="slider-range"></div>
-                        </div>
-                    </div>
-                    <!-- Top Rated Product Widget -->
                     <div class="widget ltn__top-rated-product-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Top Rated Product</h4>
                         <ul>
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                    <a href=""><img src="" alt="#"></a>
+                                        <a href=""><img src="" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -721,7 +546,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                    <a href=""><img src="" alt="#"></a>
+                                        <a href=""><img src="" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -744,7 +569,7 @@
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
-                                      <a href=""><img src="" alt="#"></a>
+                                        <a href=""><img src="" alt="#"></a>
                                     </div>
                                     <div class="top-rated-product-info">
                                         <div class="product-ratting">
@@ -766,7 +591,6 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- Search Widget -->
                     <div class="widget ltn__search-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Search Objects</h4>
                         <form action="#">
@@ -774,7 +598,6 @@
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
-                    <!-- Tagcloud Widget -->
                     <div class="widget ltn__tagcloud-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Popular Tags</h4>
                         <ul>
@@ -794,7 +617,6 @@
                             <li><a href="#">Body Color</a></li>
                         </ul>
                     </div>
-                    <!-- Size Widget -->
                     <div class="widget ltn__tagcloud-widget ltn__size-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Product Size</h4>
                         <ul>
@@ -805,7 +627,6 @@
                             <li><a href="#">XXL</a></li>
                         </ul>
                     </div>
-                    <!-- Color Widget -->
                     <div class="widget ltn__color-widget d-none">
                         <h4 class="ltn__widget-title ltn__widget-title-border">Product Color</h4>
                         <ul>
@@ -832,49 +653,426 @@
                             <li><a href="#" class="orange"></a></li>
                         </ul>
                     </div>
-                    <!-- Banner Widget -->
                     <div class="widget ltn__banner-widget d-none">
                         <a href=""><img src="img/banner/banner-2.jpg" alt="#"></a>
                     </div>
-                </aside>
+                    </aside>
             </div>
         </div>
     </div>
-</div>
-<!-- PRODUCT DETAILS AREA END -->
-<!-- CALL TO ACTION START (call-to-action-6) -->
-<div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom" data-bs-bg="img/1.jpg--">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="call-to-action-inner call-to-action-inner-6 ltn__secondary-bg position-relative text-center---">
-                    <div class="coll-to-info text-color-white">
-                        <h1>Looking for a dream home?</h1>
-                        <p>We can help you realize your dream of a new home</p>
+    <div class="modal fade su_modal" id="filter_model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog su_modal_dialog">
+            <div class="modal-content su_modal_content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Filter</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <ul class="nav nav-tabs justify-content-around" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active active_under_line filter_tab" id="residential-tab" data-bs-toggle="tab" data-bs-target="#residential" type="button" role="tab" aria-controls="home" aria-selected="true">Residential</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link filter_tab" id="commercial-tab" data-bs-toggle="tab" data-bs-target="#commercial" type="button" role="tab" aria-controls="profile" aria-selected="false">Commercial</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="residential" role="tabpanel" aria-labelledby="residential-tab">
+                        <form>
+                            <div class="modal-body p-0 mt-4">
+                                <div class="row su_div_height">
+                                    <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">Residential Sale
+                                                <input id="residential_sale_input" data-price="1" type="radio" class="all_checkbox price_type" @if(isset(request()->type) && in_array("residential_sale", request()->type)) checked @endif value="residential_sale" name="type[]">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12 commercial_hide">
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">Residential Rental
+                                                <input id="residential_rental_input" data-price="0"  type="radio" class="all_checkbox price_type" @if(isset(request()->type) && in_array("residential_rental", request()->type)) checked @endif value="residential_rental" name="type[]">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                    </div>
+
+                                    <div class="saleprice px-3">
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
+                                                <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="leaseprice px-3" style="display: none;">
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price Per month</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                            <input type="text" name="price_from_month" class="price_range" @if(isset(request()->price_from_month)) value="{{request()->price_from_month}}" @endif placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-4 pl_mt_4" bis_skin_checked="1">
+                                            <input type="text" name="price_to_month" class="price_range" @if(isset(request()->price_to_month)) value="{{request()->price_to_month}}" @endif placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Residental</h4>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($residentials))
+                                        @foreach($residentials as $key => $residential)
+                                        @if($key <(count($residentials) /2)) <li class="su_listcat">
+                                            <label class="checkbox-item">{{$residential->value}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->property_type) && in_array($residential->value, request()->property_type)) checked @endif value="{{$residential->value}}" name="property_type[]">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                            </li>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($residentials))
+                                        @foreach($residentials as $key => $residential)
+                                        @if($key >=(count($residentials) /2)) <li class="su_listcat">
+                                            <label class="checkbox-item">{{$residential->value}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->property_type) && in_array($residential->value, request()->property_type)) checked @endif value="{{$residential->value}}" name="property_type[]">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">About the property</h4>
+                                    <div class="row">
+                                        <div class="ltn__widget-title m_t_b_10">Bedrooms</div>
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <label class="su_input_style">Min</label>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                    <input type="text" name="bedroom_from" @if(isset(request()->bedroom_from)) value="{{request()->bedroom_from}}" @endif placeholder="From:" >
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12 pl_mt_4" bis_skin_checked="1">
+                                                    <input type="text" name="bedroom_to" @if(isset(request()->bedroom_to)) value="{{request()->bedroom_to}}" @endif placeholder="To:" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Bathrooms</h4>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <select class="su_selector_input" id="" name="bathrooms">
+                                                <option value="">Select</option>
+                                                {!!number_dropdown(old('bathrooms') ?? isset(request()->bathrooms)?request()->bathrooms:'')!!}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Car spaces</h4>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <select class="su_selector_input" id="" name="open_car_spaces">
+                                                <option value="">Select</option>
+                                                {!!number_dropdown(old('open_car_spaces') ?? isset(request()->open_car_spaces)?request()->open_car_spaces:'')!!}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Land size</h4>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <label class="su_input_style">Min</label>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-12" bis_skin_checked="1">
+                                                    <input type="text" name="landsize_from" @if(isset(request()->landsize_from)) value="{{request()->landsize_from}}" @endif placeholder="From:" >
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12 pl_mt_4" bis_skin_checked="1">
+                                                    <input type="text" name="landsize_to" @if(isset(request()->landsize_to)) value="{{request()->landsize_to}}" @endif placeholder="To:" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">New or established property</h4>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">New
+                                                <input type="checkbox" class="all_checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">Established
+                                                <input type="checkbox" class="all_checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Outdoor features</h4>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($outdoors))
+                                        @foreach($outdoors as $key => $feature)
+                                        @if($key <(count($outdoors) /2)) <li class="su_listcat">
+                                            <label class="checkbox-item">{{$feature->name}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->feature) && in_array($feature->name,request()->feature))checked @endif name="outdoor_feature[]" value="{{$feature->name}}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            </li>
+                                            @endif
+                                            @endforeach
+                                            @endif
+
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($outdoors))
+                                        @foreach($outdoors as $key => $feature)
+                                        @if($key >=(count($outdoors)/2))
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">{{$feature->name}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->feature) && in_array($feature->name,request()->feature))checked @endif name="feature[]" value="{{$feature->name}}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                        @endif
+
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Indoor features</h4>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($indoors))
+                                        @foreach($indoors as $key => $indoor)
+                                        @if($key < (count($indoors)/2)) <li class="su_listcat">
+                                            <label class="checkbox-item">{{$indoor->name}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->indoor) && in_array($indoor->name,request()->indoor))checked @endif name="indoor[]" value="{{$indoor->name}}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                            </li>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($indoors))
+                                        @foreach($indoors as $key => $indoor)
+                                        @if($key >= (count($indoors)/2))
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">{{$indoor->name}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->indoor) && in_array($indoor->name,request()->indoor))checked @endif name="indoor[]" value="{{$indoor->name}}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                    </div>
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Climate control & energy</h4>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($heating_coolings))
+                                        @foreach($heating_coolings as $key => $heating_cooling)
+                                        @if($key <(count($heating_coolings) /2)) <li class="su_listcat">
+                                            <label class="checkbox-item">{{$heating_cooling->name}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->heating_cooling) && in_array($heating_cooling->name,request()->heating_cooling))checked @endif name="heating_cooling[]" value="{{$heating_cooling->name}}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                            </li>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        @if(count($heating_coolings))
+                                        @foreach($heating_coolings as $key => $heating_cooling)
+                                        @if($key >(count($heating_coolings)/2))
+                                        <li class="su_listcat">
+                                            <label class="checkbox-item">{{$heating_cooling->name}}
+                                                <input type="checkbox" class="all_checkbox" @if(isset(request()->heating_cooling) && in_array($heating_cooling->name,request()->heating_cooling))checked @endif name="heating_cooling[]" value="{{$heating_cooling->name}}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no"></span>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer pt-4 pb-0">
+                                <button type="submit" class="btn theme-btn-1">Search</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="btn-wrapper">
-                        <a class="btn btn-effect-3 btn-white" href="{{route('property_list')}}">Explore Properties <i class="icon-next"></i></a>
+                    <div class="tab-pane fade" id="commercial" role="tabpanel" aria-labelledby="commercial-tab">
+                        <form>
+                            <div class="modal-body p-0 mt-4">
+                                <div class="row su_div_height">
+                                    <h4 class="ltn__widget-title m_t_b_10">Property Type</h4>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <li class="su_listcat">
+                                                <label class="checkbox-item">Commercial Sale
+                                                    <input id="commercial_sale_input" type="radio" data-price="1" class="all_checkbox price_type" @if(isset(request()->type) && in_array("commercial_sale", request()->type)) checked @endif value="commercial_sale" name="commercial">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="categorey-no"></span>
+                                            </li>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12 commercial_hide">
+                                            <li class="su_listcat">
+                                                <label class="checkbox-item">Commercial Lease
+                                                    <input id="commercial_lease_input" type="radio" data-price="0" class="all_checkbox price_type" @if(isset(request()->type) && in_array("commercial_lease", request()->type)) checked @endif value="commercial_lease" name="commercial">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="categorey-no"></span>
+                                            </li>
+                                        </div>
+                                    </div>
+
+                                    <div class="saleprice px-3" >
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
+                                            <input type="text" name="price_from" class="price_range" @if(isset(request()->price_from)) value="{{request()->price_from}}" @endif placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                            <input type="text" name="price_to" class="price_range" @if(isset(request()->price_to)) value="{{request()->price_to}}" @endif placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="leaseprice px-3" style="display: none;">
+                                        <hr class="su_hr">
+                                        <h4 class="ltn__widget-title m_t_b_10">Price Per Year</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                                <input type="text" name="rent_from_year" @if(isset(request()->rent_from)) value="{{request()->rent_from}}" @endif placeholder="From:" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                                <input type="text" name="rent_to_year" @if(isset(request()->rent_to)) value="{{request()->rent_to}}" @endif placeholder="To:" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Commercial</h4>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            @if(count($commercials))
+                                            @foreach($commercials as $key => $commercial)
+                                            @if($key <(count($commercials) /2)) <li class="su_listcat">
+                                                <label class="checkbox-item">{{$commercial->value}}
+                                                    <input type="checkbox" class="all_checkbox" @if(isset(request()->property_type) && in_array($commercial->value, request()->property_type)) checked @endif value="{{$commercial->value}}" name="property_type[]">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="categorey-no"></span>
+                                                </li>
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            @if(count($commercials))
+                                            @foreach($commercials as $key => $commercial)
+                                            @if($key >=(count($commercials) /2)) <li class="su_listcat">
+                                                <label class="checkbox-item">{{$commercial->value}}
+                                                    <input type="checkbox" class="all_checkbox" @if(isset(request()->property_type) && in_array($commercial->value, request()->property_type)) checked @endif value="{{$commercial->value}}" name="property_type[]">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="categorey-no"></span>
+                                            </li>
+                                            @endif
+                                            @endforeach
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                   
+                                    <hr class="su_hr">
+                                    <h4 class="ltn__widget-title m_t_b_10">Land</h4>
+                                    <label class="su_input_style">Squares</label>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-12 pl_mt_4" bis_skin_checked="1">
+                                            <input type="text" name="lower_Squares" placeholder="Min:">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12" bis_skin_checked="1">
+                                            <input type="text" name="higher_Squares" placeholder="Max:">
+                                        </div>
+                                    </div>
+                                    <hr class="su_hr">
+                                   
+                                </div>
+                            </div>
+                            <div class="modal-footer pt-4 pb-0">
+                                <button type="submit" class="btn theme-btn-1">Search</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- CALL TO ACTION END -->
+    <div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom" data-bs-bg="img/1.jpg--">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="call-to-action-inner call-to-action-inner-6 ltn__secondary-bg position-relative text-center---">
+                        <div class="coll-to-info text-color-white">
+                            <h1>Looking for a dream home?</h1>
+                            <p>We can help you realize your dream of a new home</p>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a class="btn btn-effect-3 btn-white" href="{{route('property_list')}}">Explore Properties <i class="icon-next"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
 <script>
     $(document).on('click', '#searchbtn', function() {
         $('#form2 :input').not(':submit').clone().hide().appendTo('#form1');
         $('#form3 :input').not(':submit').clone().hide().appendTo('#form1');
+        $('#form4 :input').not(':submit').clone().hide().appendTo('#form1');
         $('#form1').submit();
     })
-    $(document).on('click','#view_more_fetures',function(){
+    $(document).on('click', '#view_more_fetures', function() {
         $(this).hide();
         $('.extra_fetures').show();
         $('#hide_more_fetures').show();
     })
-    $(document).on('click','#hide_more_fetures',function(){
+    $(document).on('click', '#hide_more_fetures', function() {
         $(this).hide();
         $('.extra_fetures').hide();
         $('#view_more_fetures').show();
@@ -882,14 +1080,63 @@
 </script>
 <script>
     $("#myselect").change(function() {
-     this.form.submit();
-});
+        this.form.submit();
+    });
 </script>
 <script>
-$(document).ready(function(){
-   $('#sortby').change(function(){
-       $('#sorting_form').submit();
+    $(document).ready(function() {
+        $('#sortby').change(function() {
+            $('#sorting_form').submit();
+        });
     });
-});
 </script>
+
+<script>
+    $(document).on('click', '.all_checkbox', function() {
+        var formID = $(this).parents("form").attr("id");
+        $('#' + formID + ' :input').not(':submit').clone().hide().appendTo('#form1');
+        $.ajax({
+            method: "get",
+            url: '{{route("property_list")}}',
+            data: $('#form1').serialize(),
+            success: function(data) {
+                $('.property_listing').html(data)
+            }
+        })
+    });
+</script>
+<script>
+    $(document).on('keypress', '.price_range', function() {
+        var formID = $(this).parents("form").attr("id");
+        $('#' + formID + ' :input').not(':submit').clone().hide().appendTo('#form1');
+        $.ajax({
+            method: "get",
+            url: '{{route("property_list")}}',
+            data: $('#form1').serialize(),
+            success: function(data) {
+                $('.property_listing').html(data)
+            }
+        })
+    });
+</script>
+<script>
+    $(document).on('click', '.filter_tab', function() {
+        $('.filter_tab').removeClass('active_under_line')
+        $(this).addClass('active_under_line')
+    })
+</script>
+<script>
+    $(document).on('click','.price_type',function(){
+        if($(this).attr('data-price') == 1){
+            $(".saleprice").show()
+            $(".leaseprice").hide()
+        }
+        if($(this).attr('data-price') == 0){
+            $(".saleprice").hide()
+            $(".leaseprice").show()
+        }
+        console.log($(".price_type[data-price='1']").html())
+    })
+</script>
+
 @endsection

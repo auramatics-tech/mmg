@@ -133,6 +133,7 @@
 									<!--begin::Card header-->
 									<div class="card-header border-0 pt-6">
 										<!--begin::Card title-->
+										<form action="" method="get" id="search_form">
 										<div class="card-title">
 											<!--begin::Search-->
 											<div class="d-flex align-items-center position-relative my-1">
@@ -144,10 +145,11 @@
 													</svg>
 												</span>
 												<!--end::Svg Icon-->
-												<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property" />
+												<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search property"  value="{{isset(request()->q)? request()->q : ''}}"/>
 											</div>
 											<!--end::Search-->
 										</div>
+										</form>
 										<!--begin::Card title-->
 										<!--begin::Card toolbar-->
 										<div class="card-toolbar">
@@ -357,7 +359,7 @@
 																			<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
 																				<i class="bi bi-pencil-fill fs-7"></i>
 																				<!--begin::Inputs-->
-																				<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+																				< name="avatar" accept=".png, .jpg, .jpeg" />
 																				<input type="hidden" name="avatar_remove" />
 																				<!--end::Inputs-->
 																			</label>
@@ -543,16 +545,17 @@
 													</th>
 													<th class="min-w-125px">Property</th>
 													<th class="min-w-125px">User</th>
-													<th class="min-w-125px">Inspection Type</th>
-													<th class="min-w-125px">Inspection start time</th>
-													<th class="min-w-125px">Inspection end time</th>
-													<th class="text-end min-w-100px">Actions</th>
+													<th class="min-w-125px">Email</th>
+													<th class="min-w-125px">Inspection Date</th>
+													<th class="min-w-125px">Inspection Time</th>
+													<th class="min-w-125px">Actions</th>
 												</tr>
 												<!--end::Table row-->
 											</thead>
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
+												@if(count($property_inspections))
                                                 @foreach($property_inspections as $book_inspection)
 												<!--begin::Table row-->
 												<tr>
@@ -566,28 +569,30 @@
 														<!--begin:: Avatar -->
 														<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 															@if(isset($book_inspection->property->get_property_image))
-															<a href="javascript:">
+															<a href="{{route('property_details',$book_inspection->property_id)}}">
 																<div class="symbol-label">
 																	<img src="{{asset('storage/property_images/'.$book_inspection->property->get_property_image->document)}}" alt="E" class="w-100" />
 																</div>
 															</a>
 															@endif
 														</div>
-														<div class="d-flex flex-column">
+													 {{--<div class="d-flex flex-column">
 															<a href="javascript:" class="text-gray-800 text-hover-primary mb-1">{{($book_inspection->property->address_display=='Full Address')?$book_inspection->property->address:$book_inspection->property->suburb}}</a>
 															<span>{{$book_inspection->property->property_type}}</span>
-														</div>
+														</div>  --}}
 														<!--begin::User details-->
 													</td>
 													<td>
-														{{isset($book_inspection->user->first_name)?$book_inspection->user->first_name:''}} {{isset($book_inspection->user->last_name)?$book_inspection->user->last_name:''}}
+														{{$book_inspection->user_data}}
+													</td>
+													<td>
+														{{$book_inspection->user_email}}
 													</td>
 													{{--<td>
 														<div class="badge badge-light fw-bolder">@if(isset($book_inspection->property->rental_per_week)) ${{$book_inspection->property->rental_per_week}}pw <br>@endif @if(isset($book_inspection->property->rental_per_month)) ${{$book_inspection->property->rental_per_month}}pm <br>@endif @if(isset($book_inspection->property->rental_security_bond)) ${{$book_inspection->property->rental_security_bond}} bond <br>@endif ${{isset($book_inspection->property->price)?$book_inspection->property->price:''}}</div>
 													</td>--}}
-													<td>{{isset($book_inspection->inspection)?$book_inspection->inspection->inspection_type:''}}</td>
-													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->start_time)):''}}</td>
-													<td>{{isset($book_inspection->inspection)?date('d M, Y h:i A', strtotime($book_inspection->inspection->inspection_date .' '. $book_inspection->inspection->end_time)):''}}</td>
+													<td>{{isset($book_inspection->inspection_date) ? date('d-m-Y',strtotime($book_inspection->inspection_date)) :'' }}</td>
+													<td>{{isset($book_inspection->inspection_time)? $book_inspection->inspection_time :''}}</td>
 													<td class="d-flex">
 														<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 														<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -599,7 +604,7 @@
 														</a>
 														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 															<div class="menu-item px-3">
-																<a href="{{route('buyer.delete_inspection',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
+																<a href="{{route('seller.property_inspection_delete',$book_inspection->id)}}" class="menu-link px-3 copy_link">Delete Inspection</a>
 															</div>
 														</div>
 														<!--end::Menu-->
@@ -608,6 +613,7 @@
 												</tr>
 												<!--end::Table row-->
                                                 @endforeach
+												@endif
 											</tbody>
 											<!--end::Table body-->
 										</table>

@@ -2,6 +2,8 @@
 @section('css')
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <style>
     @if(request()->get('listing_type')=='residential_rental') .land_show {
         display: none !important;
@@ -112,14 +114,6 @@
     }
 
     .commercial_show {
-        display: block !important;
-    }
-
-    .commercial_lease_show {
-        display: block !important;
-    }
-
-    .commercial_sale_show {
         display: block !important;
     }
 
@@ -247,7 +241,6 @@
 </style>
 @endsection
 @section('content')
-
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -286,6 +279,11 @@
     </div>
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <div id="kt_content_container" class="container-xxl">
+            @if(Session::has('error'))
+            <div class="alert alert-danger text-center">
+                {{ Session::get('error') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="stepper stepper-links d-flex flex-column" id="kt_modal_create_project_stepper" data-kt-stepper="true">
@@ -352,6 +350,7 @@
     <div id="map" style="display:none;"></div>
     @endsection
     @section('script')
+
     <script>
         // tagging support
         $('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
@@ -431,6 +430,86 @@
                 }
             }
         }
+    </script>
+    <script>
+        $(document).on('change', '#property_commercial_listing_type', function() {
+            if ($(this).val() == 'commercial_sale') {
+                $('.commercial_lease_show').hide();
+                $('.commercial_sale_show').show();
+            } else if ($(this).val() == 'commercial_lease') {
+                $('.commercial_sale_show').hide();
+                $('.commercial_lease_show').show();
+            } else if ($(this).val() == 'commercial_sale_and_lease') {
+                $('.commercial_sale_show').show();
+                $('.commercial_lease_show').show();
+            }
+        });
+    </script>
+    <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#start_date').datepicker({
+                minDate: 0
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#timepicker').timepicker();
+        });
+        $('#timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '10',
+            maxTime: '6:00pm',
+            defaultTime: '11',
+            startTime: '10:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#end_date').datepicker({
+                minDate: 0
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#timepicker2').timepicker();
+        });
+        $('#timepicker2').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '11',
+            maxTime: '6:00pm',
+            defaultTime: '00',
+            startTime: '10:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    </script>
+    <script>
+        var _URL = window.URL || window.webkitURL;
+        $("#upload_img").change(function(e) {
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    if(this.width < 750 && this.height < 750){
+                        alert('Size of Image should be width = 750 , Height = 750');
+                    }
+                };
+                img.onerror = function() {
+                    alert("not a valid file: " + file.type);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
     </script>
 
     @endsection

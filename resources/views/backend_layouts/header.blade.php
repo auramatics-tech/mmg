@@ -143,7 +143,7 @@
                     @if(isset(Auth::user()->profile_pic))
                     <img src="{{asset('user_profile/'.Auth::user()->profile_pic)}}" alt="user" />
                     @else
-                    <img src="{{asset('backend/media/avatars/300-1.jpg')}}" alt="user" />
+                    <img src="{{asset('backend/media/avatars/new_user.png')}}" alt="user" />
                     @endif
                     </div>
                     <!--begin::User account menu-->
@@ -152,8 +152,11 @@
                         <div class="menu-item px-3">
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
-                                <div class="symbol symbol-50px me-5">
+                                {{--<div class="symbol symbol-50px me-5">
                                     <img alt="Logo" src="{{asset('backend/media/avatars/300-1.jpg')}}" />
+                                </div>--}}
+                                <div class="symbol symbol-50px me-5">
+                                <img src="{{asset('user_profile/'.Auth::user()->profile_pic)}}" alt="user" />
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->

@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller\PropertyController;
 //property-form 
 Route::get('/property-list', [PropertyController::class, 'index'])->name('seller.property_list');
+// Route::get('/property-list', function(){
+//     return Artisan::call('down');
+// });
 Route::get('/add-property-form/{property_id?}', [PropertyController::class, 'add_property_form'])->name('seller.add_property_form');
 Route::get('/property-detail-form/{property_id}', [PropertyController::class, 'property_details_form'])->name('seller.property_details_form');
 Route::get('/property-image-form/{property_id}', [PropertyController::class, 'property_image_form'])->name('seller.property_image_form');
@@ -14,7 +17,9 @@ Route::post('/save-property-images', [PropertyController::class, 'save_property_
 Route::post('/save-inspections', [PropertyController::class, 'save_inspections'])->name('seller.save_inspections');
 Route::get('/property-delete/{id}', [PropertyController::class, 'property_delete'])->name('seller.property_delete');
 Route::get('/property-bid-listing/{property_id?}', [PropertyController::class, 'property_bid_listing'])->name('seller.property_bid_listing');
+Route::get('/property-bid-delete/{id}', [PropertyController::class, 'property_bid_delete'])->name('seller.property_bid_delete');
 
 
 Route::get('/property-offers', [PropertyController::class, 'property_offers'])->name('seller.property_offers');
 Route::get('/property-inspections', [PropertyController::class, 'property_inspections'])->name('seller.property_inspections');
+Route::get('/inspection-delete/{id}', [PropertyController::class, 'property_inspection_delete'])->name('seller.property_inspection_delete');

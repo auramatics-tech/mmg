@@ -8,6 +8,7 @@
                         <ul>
                             <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i> info@webmail.com</a></li>
                             <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a></li>
+                            <li><a href="{{route('book_appraisal')}}"><i></i>BOOK APPRAISAL</a></li>
                         </ul>
                     </div>
                 </div>
@@ -79,13 +80,13 @@
     <!-- ltn__header-top-area end -->
 
     <!-- ltn__header-middle-area start -->
-    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
+    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white header_hide">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="site-logo-wrap">
-                        <div class="site-logo">
-                            <a href="{{route('index')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="Logo"></a>
+                        <div class="mmg_logo">
+                            <a href="{{route('index')}}"><img src="{{asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo"></a>
                         </div>
                         <div class="get-support clearfix d-none">
                             <div class="get-support-icon">

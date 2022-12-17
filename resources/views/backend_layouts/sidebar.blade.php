@@ -3,8 +3,9 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
        <a href="{{route('index')}}">
-       <span class="menu-section text-muted text-uppercase  ls-1" style="font-size: 1.50rem;">MMG</span>
-       {{--  <img alt="Logo" src="{{asset('backend/media/logos/logo-1-dark.svg')}}" class="h-25px logo" /> --}} 
+           <div class="dashboard_logo">
+               <img alt="Logo" src="{{asset('frontend/img/my_logo/png/MMG_White.png')}}" class="" />
+           </div>
         </a>
        
         <!--end::Logo-->
@@ -95,6 +96,16 @@
                             </a>
                         </div>
                     </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.sliders')=='admin.sliders')?'active':''}}" href="{{route('admin.sliders')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Slider Images</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             @endif
             
@@ -135,10 +146,10 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">My Property Buyers</span>
+                                <span class="menu-title">My Property Offers</span>
                             </a>
                         </div>
-                        <div class="menu-item">
+                       {{--<div class="menu-item">
                             
                         <a class="menu-link {{(Route::is('seller.property_offers')=='seller.property_offers')?'active':''}}" href="{{route('seller.property_offers')}}">
                                 <span class="menu-bullet">
@@ -146,8 +157,7 @@
                                 </span>
                                 <span class="menu-title">My Property Offers</span>
                             </a>
-                        </div>
-                        
+                        </div>  --}} 
                         <div class="menu-item">
                             <a class="menu-link {{(Route::is('seller.property_inspections')=='seller.property_inspections')?'active':''}}" href="{{route('seller.property_inspections')}}">
                                 <span class="menu-bullet">

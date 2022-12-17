@@ -14597,3 +14597,9 @@ input.cart-plus-minus-box {
 ---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+.header_hide{
+  display: none;
+}
+.sticky-active.header_hide{
+  display: block;
+}
