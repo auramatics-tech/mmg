@@ -217,7 +217,6 @@ class PropertyController extends Controller
             'phone_no' => ['required'],
             'email' => ['required'],
             'property_worth' => ['required'],
-            'year' => ['required'],
             'date' => ['required'],
             'prefered_method' => ['required'],
         ]);

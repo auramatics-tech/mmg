@@ -107,7 +107,7 @@
                 <h2 class="title">What was the last time you sold*.</h2>
                 <div class="w-100">
                     <select id="year" class="nice-select su_select_style w-100 su_mb_30" name="year">
-                        <option value="">year</option>
+                        <option value="">Never</option>
                         {{ $year = date('Y') }}
                         @for ($year = 2022; $year >= 1950; $year--) <option value="{{ $year }}">{{ $year }}</option>
                         @endfor
@@ -121,8 +121,8 @@
                 <h2 class="title">What you think your property worth is*.</h2>
                 <div class="w-100">
                     <select class="nice-select su_select_style w-100 su_mb_30" name="property_worth">
-                        <option value="">--</option>
-                        @for($property_worth = 1000000; $property_worth <= 7000000; $property_worth=$property_worth+ 1000000 ) <option value="{{$property_worth }}">{{$property_worth }}</option>
+                        <option value="0">Less then 1000000</option>
+                        @for($property_worth = 1000000; $property_worth <= 7000000; $property_worth=$property_worth+ 1000000 ) <option value="{{$property_worth }}">@if($property_worth == 7000000){{$property_worth.'+' }}@else{{$property_worth }}@endif</option>
                             @endfor
                     </select>
                 </div>
@@ -135,6 +135,7 @@
                 <div class="w-100">
                     <select class="nice-select su_select_style w-100 su_mb_30" name="agent">
                         <option>Select Agenet</option>
+                        <option>No Agenet</option>
                         <option>sumit</option>
                         <option>Ved</option>
                         <option>Abhishek</option>
