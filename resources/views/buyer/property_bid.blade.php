@@ -235,7 +235,7 @@
                 <p><b>Quick Bid</b></p>
                 @csrf
                 <input type="hidden" name="user_id" value="{{Auth::id()}}">
-                <input type="hidden" name="reference_id" value="{{request()->get('reference_id')}}">
+                <input type="hidden" name="reference_id" value="{{isset(request()->reference_id) ? Crypt::decrypt(request()->reference_id) : ''}}">
                 <input type="hidden" name="property_id" value="{{isset(request()->property_id) ? request()->property_id :''}}">
                 <div class="d-flex justify-content-between si_bg_h4" bis_skin_checked="1">
                     <a href="javascript:" data-amount="5000" class="highlighted-category add_price_bid">
@@ -257,6 +257,10 @@
                     <a href="javascript:" class="highlighted-category Clear_bid_price">
                         <h4>Clear</h4>
                     </a>
+                </div>
+                <div class="si_custom_bid pt-2">
+                    <label class="mb-2"><b> Enter Your Custom Bid $</b></label>
+                    <input type="text" name="offer_price" id="offer_price_input" value="${{isset($bid_placeholder->desired_price)?number_format($bid_placeholder->desired_price):old('offer_price')}}" class="valid" aria-invalid="false">
                 </div>
                 <div class="d-flex flex-column mb-7 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Note</label>

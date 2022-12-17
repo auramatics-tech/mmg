@@ -355,6 +355,9 @@
                             </li>
                         </ul>
                     </div>
+                    @if(Auth::check() && in_array(2,get_user_roles()))
+                    <a href="javascript:" data-link="{{route('property_details',['id'=>request()->id,'croud_seller_id'=>Crypt::encrypt(Auth::id())])}}" class="btn theme-btn-1 su_mt_sm copy_link"> Copy Link </a>
+                    @endif
                     <h1>{{isset($property->property_type)?$property->property_type:''}}</h1>
                   
                     {{-- <h4 class="title-2">Description</h4>  --}}
@@ -447,15 +450,13 @@
                         </ul>
                         @endif
                     </div>
-                    @if(Auth::check())
                     <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1 su_mt_sm">
                         @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
-
                     {{-- <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a> --}}
-                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1 su_mt_sm"> Make an Offer</a>
+                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->croud_seller_id)?'?reference_id='.request()->croud_seller_id:''}}" class="btn theme-btn-1 su_mt_sm"> Make an Offer</a>
 
                     {{--<a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1 su_mt_sm"> Book Inspection </a>--}}
-                    @endif
+                  
                     <h4 class="title-2">View Our Gallery</h4>
                     <div class="ltn__property-details-gallery mb-30">
                         <div class="row">
@@ -1694,4 +1695,11 @@
 			});			
 		}
 		</script>
+        <script>
+	$(document).on('click', '.copy_link', function() {
+		var copyText = $(this).attr('data-link');
+		navigator.clipboard.writeText(copyText);
+        alert("Copied the text: " + copyText);
+	})
+</script>
 @endsection
