@@ -18,6 +18,7 @@ use App\Models\Inspection;
 use Auth;
 use DB;
 use Pdf;
+use Crypt;
 
 class PropertyController extends Controller
 {
@@ -107,9 +108,9 @@ class PropertyController extends Controller
         return view('frontend.property.property_list', compact('properties', 'residentials', 'commercials', 'outdoors', 'indoors', 'heating_coolings', 'eco_friendlies'));
     }
 
-    public function property_details($property_id = '')
+    public function property_details(Request $request,$property_id = '')
     {
-
+        
         $property_details = PropertyDetail::where('property_id', $property_id)->first();
         $latest_property = Property::where('is_approved', 1)->latest('created_at')->limit(5)->get();
         $property_types = Property::select('property_type')->distinct('property_type')->get();
@@ -210,11 +211,27 @@ class PropertyController extends Controller
 
     public function save_appraisal(Request $request)
     {
+        // echo"<pre>";print_r($request->all());die;
+        $this->validate($request, [
+            'name' => ['required'],
+            'address' => ['required'],
+            'phone_no' => ['required'],
+            'email' => ['required'],
+            'property_worth' => ['required'],
+            'date' => ['required'],
+            'prefered_method' => ['required'],
+        ]);
         $appraisal = new Appraisal();
         $appraisal->name = $request->name;
         $appraisal->address = $request->address;
         $appraisal->phone_no = $request->phone_no;
         $appraisal->email = $request->email;
+        $appraisal->year = $request->year;
+        $appraisal->property_worth = $request->property_worth;
+        $appraisal->agent = $request->agent;
+        $appraisal->date = $request->date;
+        $appraisal->prefered_method = implode(',', $request->prefered_method);
+        $appraisal->hear_about = implode(',', $request->hear_about);
         $appraisal->save();
         return redirect()->back()->with('success', 'Appraisal booked successfully, will get back to you sortly!');
     }

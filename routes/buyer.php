@@ -32,4 +32,4 @@ Route::get('/delete-inspection/{book_inspection_id}', [PropertyController::class
 Route::get('/become-seller', [UserRoleController::class, 'become_seller'])->name('buyer.become_seller');
 Route::get('/become-crowd-seller', [UserRoleController::class, 'become_crowd_seller'])->name('buyer.become_crowd_seller');
 //property bid form
-Route::get('/property-bid/{property_id?}', [PropertyController::class, 'property_bid'])->name('buyer.property_bid');
+Route::get('/property-bid/{property_id?}', [PropertyController::class, 'property_bid'])->name('buyer.property_bid')->middleware('auth');

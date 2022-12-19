@@ -46,9 +46,9 @@ Route::get('/about-us', [HomeController::class, 'about_us'])->name('about_us');
 Route::get('/registeration', [HomeController::class, 'registration'])->name('registration');
 
 //property
-Route::get('/property-details/{id}', [PropertyController::class, 'property_details'])->name('property_details');
+Route::get('/property-details/{id}/{croud_seller_id?}', [PropertyController::class, 'property_details'])->name('property_details');
 Route::get('/property-list', [PropertyController::class, 'property_list'])->name('property_list');
-Route::get('/add-to-favourite/{id}', [PropertyController::class, 'add_to_favourite'])->name('add_to_favourite');
+Route::get('/add-to-favourite/{id}', [PropertyController::class, 'add_to_favourite'])->name('add_to_favourite')->middleware('auth');;
 Route::post('/property-reviews', [PropertyController::class, 'property_reviews'])->name('property_reviews')->middleware('auth');
 Route::post('/inspection-books', [PropertyController::class, 'inspection_books'])->name('inspection_books')->middleware('auth');
 //search 

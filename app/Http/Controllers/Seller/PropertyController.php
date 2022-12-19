@@ -370,7 +370,16 @@ class PropertyController extends Controller
     public function property_bid_listing(Request $request)
     {
         $my_properties = Property::where(['created_by' => Auth::id()])->pluck('id')->toArray();
-        $buyer_name = Offer::select('offers.*',DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = offers.user_id) as user_data"),)->whereIn('property_id', $my_properties)
+        $buyer_name = Offer::select('offers.*',
+        DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = offers.user_id) as user_data"),
+        DB::raw("(select properties.normal_price from `properties` where `properties`.`id` = offers.property_id) as normal_price"),
+        DB::raw("(select properties.rental_per_month from `properties` where `properties`.`id` = offers.property_id) as rental_per_month"),
+        DB::raw("(select properties.commercial_rental_per_annum from `properties` where `properties`.`id` = offers.property_id) as commercial_rental_per_annum"),
+        DB::raw("(select properties.commercial_listing_type from `properties` where `properties`.`id` = offers.property_id) as commercial_listing_type"),
+        DB::raw("(select properties.form_type from `properties` where `properties`.`id` = offers.property_id) as form_type"),
+        DB::raw("(select properties.commercial_listing_type from `properties` where `properties`.`id` = offers.property_id) as commercial_listing_type"),
+        )
+        ->whereIn('property_id', $my_properties)
         ->when(isset($request->q), function ($query) use ($request) {
             $query->havingRaw("user_data LIKE '%" . $request->q . "%'");
         })->get();

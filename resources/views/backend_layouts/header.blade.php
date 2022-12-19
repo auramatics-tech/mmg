@@ -251,7 +251,7 @@
                         <div class="menu-item px-5">
                             <a class="menu-link px-5" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                               document.getElementById('logout-form').submit();">
                                 Sign Out
                             </a>
                         </div>

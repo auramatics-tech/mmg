@@ -141,7 +141,7 @@
 										<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
 									</svg>
 								</span>
-								<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search" value="{{isset(request()->q) ? request()->q : ''}}" />
+								<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Buyers Name" value="{{isset(request()->q) ? request()->q : ''}}" />
 							</div>
 						</div>
 					</form>
@@ -544,6 +544,7 @@
 								<th class="min-w-125px">Property Name</th>
 								<th class="min-w-125px">Note</th>
 								<th class="min-w-125px">Offer price</th>
+								<th class="min-w-125px">Property Price</th>
 								<th class="min-w-125px">Actions</th>
 							</tr>
 							<!--end::Table row-->
@@ -581,6 +582,16 @@
 								<td>{{$buyer_detalis->property->address}}</td>
 								<td>{{$buyer_detalis->note}}</td>
 								<td>{{$buyer_detalis->offer_price}}</td>
+								<td>
+									@if($buyer_detalis->form_type == 'residential_sale' || $buyer_detalis->commercial_listing_type == 'commercial_sale')
+									{{isset($buyer_detalis->normal_price)?$buyer_detalis->normal_price:''}}
+									@endif
+									@if($buyer_detalis->commercial_listing_type == 'commercial_lease')
+									{{isset($buyer_detalis->commercial_rental_per_annum)?$buyer_detalis->commercial_rental_per_annum:''}} per/year
+									@elseif($buyer_detalis->form_type == 'residential_rental')
+									{{isset($buyer_detalis->rental_per_month)?$buyer_detalis->rental_per_month:''}} per/month
+									@endif
+								</td>
 								<td class="d-flex">
 									<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->

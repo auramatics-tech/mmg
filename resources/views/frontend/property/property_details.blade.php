@@ -355,6 +355,9 @@
                             </li>
                         </ul>
                     </div>
+                    @if(Auth::check() && in_array(2,get_user_roles()))
+                    <a href="javascript:" data-link="{{route('property_details',['id'=>request()->id,'croud_seller_id'=>Crypt::encrypt(Auth::id())])}}" class="btn theme-btn-1 su_mt_sm copy_link"> Copy Link </a>
+                    @endif
                     <h1>{{isset($property->property_type)?$property->property_type:''}}</h1>
                   
                     {{-- <h4 class="title-2">Description</h4>  --}}
@@ -362,20 +365,25 @@
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
                         <ul>
-                           
                           {{--  <li><label>Floor Area: </label> <span>{{isset( $property_details->total_floor_area)?  $property_details->total_floor_area:''}} {{isset( $property_details->floor_area_units)?  $property_details->floor_area_units:''}}</span></li>
                             <li><label>Office Area:</label> <span>{{isset( $property_details->office_area)?  $property_details->office_area:''}} {{isset( $property_details->office_area_units)?  $property_details->office_area_units:''}}</span></li>  --}}
                             <?php $data = isset($property_inspections->inspection_day) ? json_decode($property_inspections->inspection_day, true) : array();
                             $property_inspections_date = implode(",", $data); ?>
-                            <li><label>Inspection Date:</label> <span>{{$property_inspections_date}}</span></li>
-                            <li><label>Inspection Time:</label> <span>{{isset($property_inspections->start_time)?$property_inspections->start_time:''}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>
-                            <li><label>Description:</label> <span>{{isset($property->property_links_listing)?$property->property_links_listing->description:''}}</span></li>
-                            @if($property->form_type == 'residential_rental' || $property->commercial_listing_type == 'commercial_lease')
-                            <li><label>Rental Security Bond:</label> <span>{{isset($property->rental_security_bond)?$property->rental_security_bond:''}}</span></li>
+                            @if($property_inspections->inspection_day && isset($property_inspections_date))
+                            <li><label>Inspection Date:</label><span>{{$property_inspections_date}}</span></li>
                             @endif
-
+                            @if($property_inspections->start_time && isset($property_inspections->start_time))
+                            <li><label>Inspection Time:</label><span>{{$property_inspections->start_time}} - {{isset($property_inspections->end_time)?$property_inspections->end_time:''}}</span></li>
+                            @endif
+                            @if($property->property_links_listing->description && isset($property->property_links_listing->description))
+                            <li><label>Description:</label> <span>{{$property->property_links_listing->description}}</span></li>
+                            @endif
+                            @if($property->form_type == 'residential_rental' && isset($property->rental_security_bond))
+                            <li><label>Rental Security Bond:</label> <span>{{$property->rental_security_bond}}</span></li>
+                            @elseif($property->commercial_listing_type == 'commercial_lease' && isset($property->rental_security_bond))
+                            <li><label>Rental Security Bond:</label><span>{{$property->rental_security_bond}}</span></li>
+                            @endif
                         </ul>
-                       
                     </div>
                     <h4 class="title-2">Facts and Features</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
@@ -442,15 +450,13 @@
                         </ul>
                         @endif
                     </div>
-                    @if(Auth::check())
                     <a href="{{route('add_to_favourite',$property->id)}}" class="btn theme-btn-1 su_mt_sm">
                         @if(!check_favourite_property($property->id)) Add to Favourite @else Remove from Favourite @endif</a>
-
                     {{-- <a href="{{route('buyer.offer_form',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1"> Bid </a> --}}
-                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->get('reference_id'))?'?reference_id='.request()->get('reference_id'):''}}" class="btn theme-btn-1 su_mt_sm"> Make an Offer</a>
+                    <a href="{{route('buyer.property_bid',$property->id)}}{{(request()->croud_seller_id)?'?reference_id='.request()->croud_seller_id:''}}" class="btn theme-btn-1 su_mt_sm"> Make an Offer</a>
 
                     {{--<a href="{{route('buyer.book_inspection',$property->id)}}" class="btn theme-btn-1 su_mt_sm"> Book Inspection </a>--}}
-                    @endif
+                  
                     <h4 class="title-2">View Our Gallery</h4>
                     <div class="ltn__property-details-gallery mb-30">
                         <div class="row">
@@ -667,16 +673,24 @@
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
-                                                                <li><label>Total land Area</label> <span>{{isset( $property_details->land_size)? $property_details->land_size:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
+                                                                @if($property_details->land_size && isset($property_details->land_size))
+                                                                <li><label>Total land Area</label> <span>{{isset($property_details->land_size)? $property_details->land_size:''}} {{isset( $property_details->land_size_units)?  $property_details->land_size_units:''}}</span></li>
+                                                                @endif
+                                                                @if($property_details->house_sizes && isset($property_details->house_sizes))
                                                                 <li><label>House Area</label> <span>{{isset($property_details->house_sizes)? $property_details->house_sizes:''}} {{isset( $property_details->house_size_units)?  $property_details->house_size_units:''}}</span></li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
+                                                                @if($property_details->open_car_spaces && isset($property_details->open_car_spaces))
                                                                 <li><label>Open Car Spaces</label> <span>{{isset($property_details->open_car_spaces) ? $property_details->open_car_spaces:''}}</span></li>
-                                                                <li><label>Living Areas</label> <span>{{isset($property_details->open_car_spaces) ? $property_details->open_car_spaces:''}} </span></li>
+                                                                @endif
+                                                                @if($property_details->living_areas && isset($property_details->living_areas))
+                                                                <li><label>Living Areas</label> <span>{{isset($property_details->living_areas) ? $property_details->living_areas:''}} </span></li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -687,16 +701,24 @@
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
+                                                                @if($property_details->total_floor_area && isset($property_details->total_floor_area))
                                                                 <li><label>Total Floor Area</label> <span>{{isset($property_details->total_floor_area) ? $property_details->total_floor_area:''}} {{isset($property_details->floor_area_units) ? $property_details->floor_area_units:''}}</span></li>
+                                                                @endif
+                                                                @if( $property_details->office_area && isset( $property_details->office_area))
                                                                 <li><label>Office Area</label> <span>{{isset($property_details->office_area) ? $property_details->office_area:''}} {{isset($property_details->office_area_units)? $property_details->office_area_units:''}}</span></li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="apartments-info-list apartments-info-list-color mt-40---">
                                                             <ul>
+                                                                @if($property_details->land_size && isset($property_details->land_size))
                                                                 <li><label>Land Size</label> <span>{{isset($property_details->land_size) ? $property_details->land_size:''}} {{isset($property_details->land_size_units) ? $property_details->land_size_units:''}}</span></li>
+                                                                @endif
+                                                                @if($property_details->warehouse_area && isset($property_details->warehouse_area))
                                                                 <li><label>Warehouse Area</label> <span>{{isset($property_details->warehouse_area) ? $property_details->warehouse_area:''}} {{isset($property_details->warehouse_units) ? $property_details->warehouse_units:''}} </span></li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1047,7 +1069,7 @@
             <div>
                 <div>
                     <div style="margin-bottom:10px" bis_skin_checked="1">Select a Time by clicking below. </div>
-                    <input type="text" id="timepicker" name="inspection_time">
+                    <input type="text" id="timepicker" name="inspection_time" autocomplete="off">
                     @error('inspection_time')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -1174,15 +1196,21 @@
         </ul>
     </div>
     <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+    @if($property_bid_summary->property_details->bedrooms > 0)
         <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
             Bed
         </li>
+        @endif
+        @if($property_bid_summary->property_details->bathrooms > 0)
         <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
             Bath
         </li>
-        <li><span>{{isset($property->property_details)?$property->property_details->land_size:''}} </span>
+        @endif
+        @if($property_bid_summary->property_details->land_size && isset($property_bid_summary->property_details->land_size))
+        <li><span>{{$property->property_details->land_size}} </span>
             {{isset($property->property_details)?$property->property_details->land_size_units:''}}
         </li>
+        @endif
     </ul>
 </div>
 </div>
@@ -1607,10 +1635,8 @@
     $('#timepicker').timepicker({
         timeFormat: 'h:mm p',
         interval: 60,
-        minTime: '10',
-        maxTime: '6:00pm',
-        defaultTime: '11',
-        startTime: '10:00',
+        minTime: "{{$property_inspections->start_time}}",
+        maxTime: "{{$property_inspections->end_time}}",
         dynamic: false,
         dropdown: true,
         scrollbar: true
@@ -1669,4 +1695,11 @@
 			});			
 		}
 		</script>
+        <script>
+	$(document).on('click', '.copy_link', function() {
+		var copyText = $(this).attr('data-link');
+		navigator.clipboard.writeText(copyText);
+        alert("Copied the text: " + copyText);
+	})
+</script>
 @endsection

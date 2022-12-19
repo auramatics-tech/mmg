@@ -2,7 +2,6 @@
 @section('css')
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <style>
     @if(request()->get('listing_type')=='residential_rental') .land_show {
@@ -239,6 +238,7 @@
 
     @endif
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 @section('content')
 <!--begin::Content-->
@@ -445,15 +445,7 @@
             }
         });
     </script>
-    <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#start_date').datepicker({
-                minDate: 0
-            });
-        });
-    </script>
     <script>
         $(document).ready(function() {
             $('#timepicker').timepicker();
@@ -472,13 +464,6 @@
     </script>
     <script>
         $(document).ready(function() {
-            $('#end_date').datepicker({
-                minDate: 0
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
             $('#timepicker2').timepicker();
         });
         $('#timepicker2').timepicker({
@@ -493,6 +478,7 @@
             scrollbar: true
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         var _URL = window.URL || window.webkitURL;
         $("#upload_img").change(function(e) {
@@ -500,7 +486,7 @@
             if ((file = this.files[0])) {
                 img = new Image();
                 img.onload = function() {
-                    if(this.width < 750 && this.height < 750){
+                    if (this.width < 750 && this.height < 750) {
                         alert('Size of Image should be width = 750 , Height = 750');
                     }
                 };
@@ -509,6 +495,26 @@
                 };
                 img.src = _URL.createObjectURL(file);
             }
+        });
+
+        $(document).ready(function(){
+            $("#StartDate").datepicker({
+                minDate: 0,
+                maxDate: "+60D",
+                numberOfMonths: 2,
+                onSelect: function(selected) {
+                $("#EndDate").datepicker("option","minDate", selected)
+                }
+            });
+
+            $("#EndDate").datepicker({
+                minDate: 0,
+                maxDate:"+60D",
+                numberOfMonths: 2,
+                onSelect: function(selected) {
+                $("#StartDate").datepicker("option","maxDate", selected)
+                }
+            });
         });
     </script>
 
