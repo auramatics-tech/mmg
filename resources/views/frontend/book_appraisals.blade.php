@@ -147,10 +147,12 @@
                     <h2 class="title">Select agent in MMG you are working with or want to work with.</h2>
                     <div class="w-100">
                         <select class="nice-select su_select_style w-100 su_mb_30" name="agent">
-                            <option>No Agenet</option>
-                            <option>sumit</option>
-                            <option>Ved</option>
-                            <option>Abhishek</option>
+                        <option value="no_agent">No Agenet</option>
+                            @if(count($croud_sellers))
+                            @foreach($croud_sellers as $croud_seller)
+                            <option value="{{$croud_seller->user_data}}">{{$croud_seller->user_data}}</option>
+                            @endforeach
+                            @endif
                         </select>
                     </div>
                     <h2 class="title">Enter the date you wish to be contacted*.</h2>

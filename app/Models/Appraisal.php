@@ -21,4 +21,7 @@ class Appraisal extends Model
         'prefered_method',
         'hear_about'
     ];
+    public function get_croud_seller_name(){
+        return $this->hasOne(User::class, 'id','user_id'); 
+    }
 }

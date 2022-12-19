@@ -55,9 +55,13 @@ class PropertyController extends Controller
         return back()->with("success","Property approval removed successful.");
     }
 
-    public function appraisal()
+    public function appraisal(Request $request)
     {
-        $appraisal_data = Appraisal::all();
+        $appraisal_data = Appraisal::when(isset($request->q), function ($query) use ($request) {
+            $query->whereRaw("(name LIKE '%" . $request->q . "%' or address LIKE '%" . $request->q . "%' or email LIKE '%"
+             . $request->q . "%' or year LIKE '%" . $request->q . "%' or property_worth LIKE '%" . $request->q . "%'
+            or agent LIKE '%" . $request->q . "%' or date LIKE '%" . $request->q . "%' or prefered_method LIKE '%" . $request->q . "%' or hear_about LIKE '%" . $request->q . "%')");})->get();
+         
         return view('admin.appraisal_listing',compact('appraisal_data'));
     }
     

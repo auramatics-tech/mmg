@@ -15,6 +15,7 @@ use App\Models\ReviewImages;
 use App\Models\Appraisal;
 use App\Models\PropertyType;
 use App\models\Inspection;
+use App\Models\UserRole;
 use Auth;
 use DB;
 use Pdf;
@@ -204,9 +205,11 @@ class PropertyController extends Controller
         return redirect()->back()->with('success', 'Inspection booked successfully');
     }
 
-    public function book_appraisal()
+    public function book_appraisal(Request $request)
     {
-        return view('frontend.book_appraisals');
+       $croud_sellers = UserRole::select('user_roles.*', DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = user_roles.user_id) as user_data"))->where('role', 2)->get();
+    //    echo"<pre>";print_r($croud_sellers);die;
+        return view('frontend.book_appraisals',compact('croud_sellers'));
     }
 
     public function save_appraisal(Request $request)
