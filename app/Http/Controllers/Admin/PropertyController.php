@@ -31,15 +31,21 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function draft_properties()
+    public function draft_properties(Request $request)
     {
-        $properties = Property::where('is_approved',0)->get();
+        $properties = Property::where('is_approved',0)->when(isset($request->q), function ($query) use ($request) {
+            $query->whereRaw("(address LIKE '%" . $request->q . "%' or normal_price LIKE '%" . $request->q . "%' 
+             or rental_per_month LIKE '%" . $request->q . "%'  or commercial_rental_per_annum LIKE '%" . $request->q . "%')");
+        })->get();
         return view('admin.draft_properties',compact('properties'));
     }
 
-    public function approved_properties()
+    public function approved_properties(Request $request)
     {
-        $properties = Property::where('is_approved',1)->get();
+        $properties = Property::where('is_approved',1)->when(isset($request->q), function ($query) use ($request) {
+            $query->whereRaw("(address LIKE '%" . $request->q . "%' or normal_price LIKE '%" . $request->q . "%' 
+             or rental_per_month LIKE '%" . $request->q . "%'  or commercial_rental_per_annum LIKE '%" . $request->q . "%')");
+        })->get();
         return view('admin.draft_properties',compact('properties'));
     }
 
