@@ -243,6 +243,8 @@ class PropertyController extends Controller
         }
         $data = $request->except('_token');
         $data['created_by'] = Auth::id();
+        $data['start_expiry_date'] = date('Y-m-d',strtotime($request->start_expiry_date));
+        $data['end_expiry_date'] = date('Y-m-d',strtotime($request->end_expiry_date));
         $property = Property::updateOrCreate(['id' => $request->id], $data);
         $url = route('seller.property_details_form', $property->id) . "?listing_type=" . $data['form_type'];
         return redirect($url);

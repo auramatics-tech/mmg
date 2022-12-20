@@ -704,7 +704,6 @@
             </div>
         </div>
         <div class="row ltn__product-slider-item-four-active-full-width slick-arrow-1">
-
             @if(isset($properties) && count($properties))
             @foreach($properties as $property)
             <div class="col-lg-12">

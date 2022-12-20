@@ -293,6 +293,8 @@
 			img.onload = function() {
 				if(this.width < 1100 && this.height < 750){
 					alert('Size of Image should be width = 1100 , Height = 750');
+					$("#slider_file").val('')
+					return false;
 				}
 			};
 			img.onerror = function() {
