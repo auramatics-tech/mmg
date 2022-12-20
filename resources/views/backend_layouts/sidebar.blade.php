@@ -110,6 +110,16 @@
                             </a>
                         </div>
                     </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.seller_croud_selller_user')=='admin.seller_croud_selller_user')?'active':''}}" href="{{route('admin.seller_croud_selller_user')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Seller And Croud Seller Approved</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 @endif
                 @if(in_array(1,get_user_roles()))

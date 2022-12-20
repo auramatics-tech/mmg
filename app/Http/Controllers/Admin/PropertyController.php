@@ -87,4 +87,12 @@ class PropertyController extends Controller
         // echo"<pre>";print_r($bid_through_link);die;
         return view('admin.bid_listing_through_croud',compact('bid_through_links'));
     }
+
+    public function seller_croud_selller_user(Request $request){
+       $seller_croud_sellers = UserRole::select('user_roles.*',
+       DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = user_roles.user_id) as user_data"),)
+        ->where('is_approved' , 0)->wherein('role' , [1,2])->get();
+    //    echo"<pre>";print_r($seller_croud_sellers);die;
+        return view('admin.seller_croud_seller',compact('seller_croud_sellers'));
+    }
 }
