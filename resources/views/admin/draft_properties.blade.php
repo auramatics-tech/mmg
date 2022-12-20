@@ -696,11 +696,11 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 								@if(!$property->is_approved)
 								<div class="menu-item px-3">
-									<a href="{{route('admin.add_approval',$property->id)}}" class="menu-link px-3">Aprrove</a>
+									<a href="{{route('admin.add_approval',$property->id)}}" class="menu-link px-3">Approve</a>
 								</div>
 								@else
 								<div class="menu-item px-3">
-									<a href="{{route('admin.remove_aprroval',$property->id)}}" class="menu-link px-3">Remove Aprroval</a>
+									<a href="{{route('admin.remove_aprroval',$property->id)}}" class="menu-link px-3">Remove Approval</a>
 								</div>
 								@endif
 								<div class="menu-item px-3">

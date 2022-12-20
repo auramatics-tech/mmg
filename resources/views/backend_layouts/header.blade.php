@@ -50,10 +50,17 @@
                             <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                 @if(!in_array(1,get_user_roles()))
                                 <div class="menu-item">
+                                @if(empty(is_requested_for_seller()))
                                     <a class="menu-link py-3" href="{{route('buyer.become_seller')}}" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                                         <span class="menu-title">Become a Seller</span>
                                     </a>
+                                    @else
+                                    <a class="menu-link py-3" href="javascript:" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                                        <span class="menu-title">Already Requested</span>
+                                    </a>
+                                    @endif
                                 </div>
+                              
                                 @else
                                 <div class="menu-item">
                                     <a class="menu-link py-3" href="{{route('seller.property_list')}}" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
@@ -110,9 +117,15 @@
                             <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                             @if(!in_array(2,get_user_roles()))
                                 <div class="menu-item">
+                                @if(empty(is_requested_for_croud_seller()))
                                     <a class="menu-link py-3" href="{{route('buyer.become_crowd_seller')}}" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                                         <span class="menu-title">Become a Crowd Seller</span>
                                     </a>
+                                    @else
+                                    <a class="menu-link py-3" href="Javascript:" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                                        <span class="menu-title">Already Requested</span>
+                                    </a>
+                                    @endif
                                 </div>
                                 @else
                                 <div class="menu-item">

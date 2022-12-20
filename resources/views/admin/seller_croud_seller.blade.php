@@ -16,7 +16,7 @@
 			<!--begin::Page title-->
 			<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 				<!--begin::Title-->
-				<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Bid Through Croud Seller Link </h1>
+				<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Requested Users</h1>
 				<!--end::Title-->
 				<!--begin::Separator-->
 				<span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -59,7 +59,7 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Croud Seller Name" value="{{isset(request()->q) ? request()->q : ''}}" />
+							<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Name" value="{{isset(request()->q) ? request()->q : ''}}" />
 
 						</div>
 						<!--end::Search-->
@@ -124,7 +124,7 @@
 							<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
 								<th class="min-w-125px">Sr No</th>
 								<th class="min-w-125px">Name</th>
-								<th class="min-w-125px">For Apply</th>
+								<th class="min-w-125px">Apply For</th>
 								<th class="min-w-125px">Actions</th>
 							</tr>
 						</thead>
@@ -134,9 +134,33 @@
 							<!--begin::Table row-->
 							<tr>
 								<td>{{++$key}}</td>
-								<td>{{$seller_croud_seller->user_data}}</td>
-								<td></td>
-								<td></td>
+								<td>{{isset($seller_croud_seller->user_data) ? $seller_croud_seller->user_data : ''}}</td>
+								<td>
+									@if($seller_croud_seller->role == 1)
+									<p>seller</p>
+									@else
+									<p>croud seller</p>
+									@endif
+								</td>
+								<td class="d-flex">
+							<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+								<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+								<span class="svg-icon svg-icon-5 m-0">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
+									</svg>
+								</span>
+							</a>
+							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+								<div class="menu-item px-3">
+									<a href="{{route('admin.approved_seller_croud_seller',['user_id'=>$seller_croud_seller->user_id,'role'=>$seller_croud_seller->role])}}" data-type="Approve" class="menu-link px-3 status_change">Approve</a>
+								</div>
+								<div class="menu-item px-3">
+									<a href="{{route('admin.seller_croud_selller_delete', $seller_croud_seller->id)}}" class="menu-link px-3 status_change" data-type="Delete" data-kt-users-table-filter="delete_row">Delete</a>
+								</div>
+							</div>
+							<!--end::Menu-->
+						</td>
 							</tr>
 						</tbody>
 						@endforeach
@@ -149,4 +173,23 @@
 </div>
 @endsection
 @section('script')
+<script>
+    $(document).on('click', ".status_change", function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var type = $(this).attr("data-type")
+        Swal.fire({
+            title: 'Are you sure want to ' + type + ' this user?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, ' + type + ' it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = $this.attr('href');
+            }
+        })
+    });
+</script>
 @endsection

@@ -29,7 +29,7 @@ class UserRoleController extends Controller
             $user_role->role = 1;
             $user_role->save();
         }
-        return back()->with('success','Congratulations you are seller.');
+        return back()->with('success','Congratulations your request for seller has been submitted sucessfully.');
     }
 
     public function become_crowd_seller()
@@ -42,7 +42,7 @@ class UserRoleController extends Controller
             $user_role->role = 2;
             $user_role->save();
         }
-        return back()->with('success','Congratulations you are crowd seller.');
+        return back()->with('success','Congratulations your request for croud seller has been submitted sucessfully.');
     }
 
 }

@@ -57,7 +57,7 @@ class PropertyController extends Controller
 
     public function remove_aprroval($property_id)
     {
-        $property = Property::where('id', $property_id)->update(['is_approved'=>0]);
+        $property = Property::where('id', $property_id)->update(['is_approved'=>0]);    
         return back()->with("success","Property approval removed successful.");
     }
 
@@ -91,8 +91,21 @@ class PropertyController extends Controller
     public function seller_croud_selller_user(Request $request){
        $seller_croud_sellers = UserRole::select('user_roles.*',
        DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = user_roles.user_id) as user_data"),)
-        ->where('is_approved' , 0)->wherein('role' , [1,2])->get();
+        ->where('is_approved' , 0)->wherein('role' , [1,2]) ->when(isset($request->q), function ($query) use ($request) {
+            $query->havingRaw("user_data LIKE '%" . $request->q . "%'");
+        })->get();
     //    echo"<pre>";print_r($seller_croud_sellers);die;
         return view('admin.seller_croud_seller',compact('seller_croud_sellers'));
+    }
+
+    public function seller_croud_selller_delete($id){
+        $property = UserRole::find($id);
+        $property->delete();
+        return back()->with('success', ' Data Deleted successfully.');
+    }
+
+    public function approved_seller_croud_seller($user_id , $role ){
+        $user_role_approved = UserRole::where('role', $role)->where('user_id', $user_id)->update(['is_approved'=>1]);
+        return back()->with('success', 'Data Approved successfully.');
     }
 }

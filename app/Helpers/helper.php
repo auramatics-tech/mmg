@@ -38,6 +38,20 @@ if (!function_exists('get_user_roles')) {
     }
 }
 
+if (!function_exists('is_requested_for_seller')) {
+    function is_requested_for_seller(){
+        $is_requested_seller =  UserRole::where('role',1)->where(['user_id'=>Auth::id(),'is_approved'=>0])->pluck('user_id')->toArray(); 
+        return $is_requested_seller;
+    }
+}
+
+if (!function_exists('is_requested_for_croud_seller')) {
+    function is_requested_for_croud_seller(){
+        $is_requested_croud_seller =  UserRole::where('role',2)->where(['user_id'=>Auth::id(),'is_approved'=>0])->pluck('user_id')->toArray(); 
+        return $is_requested_croud_seller;
+    }
+}
+
 
 if (!function_exists('check_favourite_property')) {
     function check_favourite_property($property_id){
