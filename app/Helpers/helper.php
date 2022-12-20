@@ -33,7 +33,7 @@ if (!function_exists('number_dropdown')) {
 
 if (!function_exists('get_user_roles')) {
     function get_user_roles(){
-        $roles =  UserRole::where('user_id',Auth::id())->orderby('id','desc')->pluck('role')->toArray(); 
+        $roles =  UserRole::where(['user_id'=>Auth::id(),'is_approved'=>1])->orderby('id','desc')->pluck('role')->toArray(); 
         return $roles;
     }
 }
