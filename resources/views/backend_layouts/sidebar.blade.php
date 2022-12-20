@@ -116,7 +116,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Seller And Croud Seller Approved</span>
+                                <span class="menu-title"> Requested For Seller And Croud Seller</span>
                             </a>
                         </div>
                     </div>
