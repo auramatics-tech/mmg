@@ -75,16 +75,30 @@
     .related_property_fav:hover{
         background-color: white !important;
     }
+    .slick-track {
+        margin-left: 0px; 
+    }
+    .su_youtube_vdo{
+        position: static;
+        clear: both;
+        width: 560px;
+        height: 315px;
+    }
 
     @media screen and (max-width: 1200px) {
         .su_mt_sm {
             margin: 5px 0px;
         }
     }
+    @media screen and (max-width: 992px) {
+        .su_youtube_vdo{
+            width: 100%;
+        }
+    }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<!-- Utilize Cart Menu Start -->
+
 <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
@@ -146,9 +160,7 @@
 
     </div>
 </div>
-<!-- Utilize Cart Menu End -->
 
-<!-- Utilize Mobile Menu Start -->
 <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
@@ -281,29 +293,9 @@
         </div>
     </div>
 </div>
-<!-- Utilize Mobile Menu End -->
 
 <div class="ltn__utilize-overlay"></div>
 
-<!-- BREADCRUMB AREA START -->
-<!-- <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image mb-0" data-bs-bg="img/bg/14.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ltn__breadcrumb-inner">
-                    <h1 class="page-title">Property Details</h1>
-                    <div class="ltn__breadcrumb-list">
-                        <ul>
-                            <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
-                            <li>Property Details</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- BREADCRUMB AREA END -->
 
 @if(session()->has('success'))
 <div class="alert alert-success">
@@ -311,29 +303,8 @@
 </div>
 @endif
 
-<!-- IMAGE SLIDER AREA START (img-slider-3)  -->
-{{--
-<div class="ltn__img-slider-area mb-50">
-    <div class="container-fluid">
-        <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
-            @if(isset($property->get_property_all_image) && count($property->get_property_all_image))
-            @foreach($property->get_property_all_image as $property_image)
-            <div class="col-lg-12">
-                <div class="ltn__img-slide-item-4 img_len">
-                    <a href="{{asset('storage/property_images/'.$property_image->document)}}" data-rel="">
-<img src="{{asset('storage/property_images/'.$property_image->document)}}" alt="Image" class="custom_img">
-</a>
-</div>
-</div>
-@endforeach
-@endif
-</div>
-</div>
-</div>
---}}
-<!-- IMAGE SLIDER AREA END -->
 
-<!-- SHOP DETAILS AREA START -->
+
 <div class="ltn__shop-details-area pb-10 mt-4">
     <div class="container">
         <div class="row">
@@ -506,7 +477,7 @@
                                         <li>
                                             <label class="checkbox-item checkamenties">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <!-- <span class="checkmark"></span> -->
+                                               
                                             </label>
                                         </li>
                                         @endforeach
@@ -531,7 +502,7 @@
                                         <li>
                                             <label class="checkbox-item checkamenties">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <!-- <span class="checkmark"></span> -->
+                                               
                                             </label>
                                         </li>
                                         @endforeach
@@ -555,7 +526,7 @@
                                         <li>
                                             <label class="checkbox-item checkamenties">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <!-- <span class="checkmark"></span> -->
+                                               
                                             </label>
                                         </li>
                                         @endforeach
@@ -579,7 +550,7 @@
                                         <li>
                                             <label class="checkbox-item checkamenties ">{{$property_feature}}
                                                 <input type="checkbox" checked="checked" disabled=true>
-                                                <!-- <span class="checkmark"></span> -->
+                                                
                                             </label>
                                         </li>
                                         @endforeach
@@ -596,7 +567,7 @@
                         <div id="map" style="height:380px;width:100%;"></div>
                     </div>
                     <h4 class="title-2">Floor Plans</h4>
-                    <!-- APARTMENTS PLAN AREA START -->
+                    
                     <div class="ltn__apartments-plan-area product-details-apartments-plan mb-60">
                         <div class="ltn__tab-menu ltn__tab-menu-3 ltn__tab-menu-top-right-- text-uppercase--- text-center---">
                             <div class="nav">
@@ -815,7 +786,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- APARTMENTS PLAN AREA END -->
+                    
                     @if(count($property_video_links))
                     @foreach($property_video_links as $property_video_link)
                     <h4 class="title-2">Property Video</h4>
@@ -832,12 +803,7 @@
                     }
                     $youtubeEmbed = preg_replace_callback($youtubePattern, "youtubeEmbedCallback", $youtubeUrl);
                     ?>
-                    {{-- <div class="ltn__video-bg-img ltn__video-popup-height-500 bg-overlay-black-50 bg-image mb-60" data-bs-bg="img/others/5.jpg">
-                        <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="{{$youtubeEmbed}}" data-rel="lightcase:myCollection">
-                    <i class="fa fa-play"></i>
-                    </a>
-                </div> --}}
-                <div width="560px" height="315px" style="position: static; clear: both; width: 560px; height: 315px;">&nbsp;<div style="position: relative"><img id="vidimg" width="560px" height="315px" src="URL_TO_PICTURE" style="position: absolute; top: 0; left: 0; cursor: pointer; pointer-events: none; z-index: 2;" /><iframe id="unlocked-video" style="position: absolute; top: 0; left: 0; z-index: 1;" src="{{$youtubeEmbed}}" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+                <div class="su_youtube_vdo">&nbsp;<div style="position: relative"><img id="vidimg" width="560px" height="315px" src="URL_TO_PICTURE" style="position: absolute; top: 0; left: 0; cursor: pointer; pointer-events: none; z-index: 2;" /><iframe id="unlocked-video" style="position: absolute; top: 0; left: 0; z-index: 1;" src="{{$youtubeEmbed}}" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
                 </div>
                 @endforeach
                 @endif
@@ -854,7 +820,7 @@
                         </ul>
                     </div>
                     <hr>
-                    <!-- comment-area -->
+                    
                     <div class="ltn__comment-area mb-30">
                         <div class="ltn__comment-inner">
                             <ul>
@@ -891,7 +857,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- comment-reply -->
 
                     <div class="ltn__comment-reply-area ltn__form-box mb-30">
                         <form action="{{route('property_reviews')}}" method="post" enctype="multipart/form-data">
@@ -931,9 +896,6 @@
                             <div>
                                 <input type="file" placeholder="Review image...." name="upload_images[]" class="upload" multiple id="files" required>
                             </div>
-                            <!-- <div class="input-item input-item-website ltn__custom-icon">
-                                    <input type="text" name="website" placeholder="Type your website....">
-                                </div> -->
                             <div class="btn-wrapper">
                                 <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
                             </div>
@@ -944,7 +906,7 @@
 
                 <h4 class="title-2">Related Properties</h4>
                 <div class="row">
-                    <!-- ltn__product-item -->
+                    {{--
                     @if(count($related_properties))
                     @foreach($related_properties as $key => $related_property)
                     <div class="col-xl-4 col-md-6 col-sm-12 col-12">
@@ -986,7 +948,65 @@
                                     <ul>
                                         <li class="related_property_fav" data-property_id="{{$property->id}}">
                                             <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
-                                               {{-- <i class="{{check_favourite_property($property->id)?'fa':'far'}} fa-heart"></i>--}}
+                                                <img  src="{{check_favourite_property($property->id)? asset('frontend/img/my_logo/png/MMG_Gold_1.png') : asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-info-bottom">
+                                <div class="product-price">
+                                    <span>${{isset($related_property->normal_price)?$related_property->normal_price:''}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+                    --}}
+                </div>
+                <div class="row ltn__product_slider_item_detailpage slick-arrow-1">
+                @if(count($related_properties))
+                    @foreach($related_properties as $key => $related_property)
+                    <div class="col-xl-4 col-md-6 col-sm-12 col-12">
+                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
+                            <div class="product-img">
+                                <a href="{{route('property_details',$related_property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
+                                <div class="real-estate-agent">
+                                    <div class="agent-img">
+                                        <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-badge">
+                                    <ul>
+                                        <li class="sale-badg">{{isset($related_property->status)?$related_property->status:''}}</li>
+                                    </ul>
+                                </div>
+                                <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($related_property->property_type)?$related_property->property_type:''}}</a></h2>
+                                <div class="product-img-location">
+                                    <ul>
+                                        <li>
+                                            <a href="product-details.html"><i class="flaticon-pin"></i>{{isset($related_property->address)?$related_property->address:''}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+                                    <li><span>{{isset($related_property->property_details)?$related_property->property_details->bedrooms:''}} </span>
+                                        Bed
+                                    </li>
+                                    <li><span>{{isset($related_property->property_details)?$related_property->property_details->bathrooms:''}} </span>
+                                        Bath
+                                    </li>
+                                    <li><span>{{isset($related_property->property_details)?$related_property->property_details->land_size:''}} </span>
+                                        {{isset($related_property->property_details)?$related_property->property_details->land_size_units:''}}
+                                    </li>
+                                </ul>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li class="related_property_fav" data-property_id="{{$property->id}}">
+                                            <a href="javascript:" data-property_id="{{$property->id}}" class="fav_property">
                                                 <img  src="{{check_favourite_property($property->id)? asset('frontend/img/my_logo/png/MMG_Gold_1.png') : asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo">
                                             </a>
                                         </li>
@@ -1003,11 +1023,12 @@
                     @endforeach
                     @endif
                 </div>
+
             </div>
         </div>
         <div class="col-lg-4">
             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar---">
-                <!-- Author Widget -->
+                
                 {{--<div class="widget ltn__author-widget">
                     @if(count($property_reviews))
                     @foreach($property_reviews as $key => $property_review)
@@ -1043,7 +1064,7 @@
         @endforeach
         @endif
     </div>--}}
-    <!-- Search Widget -->
+    
     <div class="widget ltn__search-widget">
         <h4 class="ltn__widget-title ltn__widget-title-border-2">Search Objects</h4>
         <form action="#">
@@ -1052,7 +1073,7 @@
         </form>
     </div>
 
-    <!-- Form Widget -->
+    
     <div class="widget ltn__form-widget">
         <h4 class="ltn__widget-title ltn__widget-title-border-2"><i class="fa fa-calendar-check-o cal"></i>Book an Inspection</h4>
         <form action="{{route('inspection_books')}}" method="post" enctype="multipart/form-data">
@@ -1074,152 +1095,153 @@
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
-                <!-- <input type="text" name="youremail" placeholder="Your e-Mail*" name="email">
-                            <textarea name="yourmessage" placeholder="Write Message..." name="comments"></textarea> -->
+                
                 <button type="submit" class="btn theme-btn-1 su_btn_position"><i class="fa fa-calendar-check-o mr-4 cal"></i>Book Now</button>
             </div>
         </form>
     </div>
-    <!-- Top Rated Product Widget -->
-    {{-- <div class="widget ltn__top-rated-product-widget">
+    
+        {{--
+        <div class="widget ltn__top-rated-product-widget">
                         <h4 class="ltn__widget-title ltn__widget-title-border-2">Top Rated Product</h4>
                         <ul>
                             <li>
                                 <div class="top-rated-product-item clearfix">
                                     <div class="top-rated-product-img">
                                         <a href="product-details.html"><img src="{{asset('frontend/img/product/1.png')}}" alt="#"></a>
-</div>
-<div class="top-rated-product-info">
-    <div class="product-ratting">
-        <ul>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-        </ul>
-    </div>
-    <h6><a href="product-details.html">Luxury House In Greenville </a></h6>
-    <div class="product-price">
-        <span>$30,000.00</span>
-        <del>$35,000.00</del>
-    </div>
-</div>
-</div>
-</li>
-<li>
-    <div class="top-rated-product-item clearfix">
-        <div class="top-rated-product-img">
-            <a href="product-details.html"><img src="{{asset('frontend/img/product/2.png')}}" alt="#"></a>
+                                    </div>
+                                    <div class="top-rated-product-info">
+                                        <div class="product-ratting">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <h6><a href="product-details.html">Luxury House In Greenville </a></h6>
+                                        <div class="product-price">
+                                            <span>$30,000.00</span>
+                                            <del>$35,000.00</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="top-rated-product-item clearfix">
+                                    <div class="top-rated-product-img">
+                                        <a href="product-details.html"><img src="{{asset('frontend/img/product/2.png')}}" alt="#"></a>
+                                    </div>
+                                    <div class="top-rated-product-info">
+                                        <div class="product-ratting">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <h6><a href="product-details.html">Apartment with Subunits</a></h6>
+                                        <div class="product-price">
+                                            <span>$30,000.00</span>
+                                            <del>$35,000.00</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="top-rated-product-item clearfix">
+                                    <div class="top-rated-product-img">
+                                        <a href="product-details.html"><img src="{{asset('frontend/img/product/3.png')}}" alt="#"></a>
+                                    </div>
+                                    <div class="top-rated-product-info">
+                                        <div class="product-ratting">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                <li><a href="#"><i class="far fa-star"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <h6><a href="product-details.html">3 Rooms Manhattan</a></h6>
+                                        <div class="product-price">
+                                            <span>$30,000.00</span>
+                                            <del>$35,000.00</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
         </div>
-        <div class="top-rated-product-info">
-            <div class="product-ratting">
-                <ul>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                </ul>
-            </div>
-            <h6><a href="product-details.html">Apartment with Subunits</a></h6>
-            <div class="product-price">
-                <span>$30,000.00</span>
-                <del>$35,000.00</del>
-            </div>
+         --}}
+
+        <div class="widget ltn__menu-widget ltn__menu-widget-2--- ltn__menu-widget-2-color-2---">
+            <h4 class="ltn__widget-title ltn__widget-title-border-2">Top Categories</h4>
+            @if(count($property_types))
+            @foreach($property_types as $key => $property_type)
+            <ul>
+                <li><a href="#">{{$property_type->property_type}} <span></span></a></li>
+            </ul>
+            @endforeach
+            @endif
         </div>
-    </div>
-</li>
-<li>
-    <div class="top-rated-product-item clearfix">
-        <div class="top-rated-product-img">
-            <a href="product-details.html"><img src="{{asset('frontend/img/product/3.png')}}" alt="#"></a>
-        </div>
-        <div class="top-rated-product-info">
-            <div class="product-ratting">
-                <ul>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                </ul>
+
+{{--
+    <div class="widget ltn__popular-product-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border-2">Related Properties</h4>
+        <div class="row ltn__popular-product-widget-active slick-arrow-1">
+            @if(count($related_properties))
+            @foreach($related_properties as $key => $related_property)
+            <div class="col-12">
+                <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
+                    <div class="product-img">
+                        <a href="{{route('property_details',$property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
+                        <div class="real-estate-agent">
+                            <div class="agent-img">
+                                <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-price">
+                            <span>${{isset($related_property->normal_price)?$related_property->normal_price:''}}</span>
+                        </div>
+                        <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($related_property->property_type)?$related_property->property_type:''}}</a></h2>
+                        <div class="product-img-location">
+                            <ul>
+                                <li>
+                                    <a href="product-details.html"><i class="flaticon-pin"></i>{{isset($related_property->address)?$related_property->address:''}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+                            @if($property_bid_summary->property_details->bedrooms > 0)
+                            <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
+                                Bed
+                            </li>
+                            @endif
+                            @if($property_bid_summary->property_details->bathrooms > 0)
+                            <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
+                                Bath
+                            </li>
+                            @endif
+                            @if($property_bid_summary->property_details->land_size && isset($property_bid_summary->property_details->land_size))
+                            <li><span>{{$property->property_details->land_size}} </span>
+                                {{isset($property->property_details)?$property->property_details->land_size_units:''}}
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <h6><a href="product-details.html">3 Rooms Manhattan</a></h6>
-            <div class="product-price">
-                <span>$30,000.00</span>
-                <del>$35,000.00</del>
-            </div>
+            @endforeach
+            @endif
         </div>
-    </div>
-</li>
-</ul>
-</div> --}}
-<!-- Menu Widget (Category) -->
-<div class="widget ltn__menu-widget ltn__menu-widget-2--- ltn__menu-widget-2-color-2---">
-    <h4 class="ltn__widget-title ltn__widget-title-border-2">Top Categories</h4>
-    @if(count($property_types))
-    @foreach($property_types as $key => $property_type)
-    <ul>
-        <li><a href="#">{{$property_type->property_type}} <span></span></a></li>
-    </ul>
-    @endforeach
-    @endif
-</div>
-<!-- Popular Product Widget -->
-{{--<div class="widget ltn__popular-product-widget">
-    <h4 class="ltn__widget-title ltn__widget-title-border-2">Related Properties</h4>
-    <div class="row ltn__popular-product-widget-active slick-arrow-1">
-        <!-- ltn__product-item -->
-        @if(count($related_properties))
-        @foreach($related_properties as $key => $related_property)
-        <div class="col-12">
-            <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                <div class="product-img">
-                    <a href="{{route('property_details',$property->id)}}"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
-<div class="real-estate-agent">
-    <div class="agent-img">
-        <a href="team-details.html"><img src="{{isset($related_property->get_property_image)?asset('storage/property_images/'.$related_property->get_property_image->document):''}}" alt="#"></a>
-    </div>
-</div>
-</div>
-<div class="product-info">
-    <div class="product-price">
-        <span>${{isset($related_property->normal_price)?$related_property->normal_price:''}}</span>
-    </div>
-    <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($related_property->property_type)?$related_property->property_type:''}}</a></h2>
-    <div class="product-img-location">
-        <ul>
-            <li>
-                <a href="product-details.html"><i class="flaticon-pin"></i>{{isset($related_property->address)?$related_property->address:''}}</a>
-            </li>
-        </ul>
-    </div>
-    <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-    @if($property_bid_summary->property_details->bedrooms > 0)
-        <li><span>{{isset($property->property_details)?$property->property_details->bedrooms:''}} </span>
-            Bed
-        </li>
-        @endif
-        @if($property_bid_summary->property_details->bathrooms > 0)
-        <li><span>{{isset($property->property_details)?$property->property_details->bathrooms:''}} </span>
-            Bath
-        </li>
-        @endif
-        @if($property_bid_summary->property_details->land_size && isset($property_bid_summary->property_details->land_size))
-        <li><span>{{$property->property_details->land_size}} </span>
-            {{isset($property->property_details)?$property->property_details->land_size_units:''}}
-        </li>
-        @endif
-    </ul>
-</div>
-</div>
-</div>
-@endforeach
-@endif
-</div>
-</div>--}}
-<!-- Popular Post Widget -->
+    </div>--}}
+
 <div class="widget ltn__popular-post-widget">
     <h4 class="ltn__widget-title ltn__widget-title-border-2">Latest Property</h4>
     <ul>
@@ -1254,7 +1276,7 @@
         @endif
     </ul>
 </div>
-<!-- Social Media Widget -->
+
 <div class="widget ltn__social-media-widget">
     <h4 class="ltn__widget-title ltn__widget-title-border-2">Follow us</h4>
     <div class="ltn__social-media-2">
@@ -1275,9 +1297,7 @@
 </div>
 </div>
 </div>
-<!-- SHOP DETAILS AREA END -->
 
-<!-- PRODUCT SLIDER AREA START -->
 <div class="ltn__product-slider-area ltn__product-gutter pb-70 d-none">
     <div class="container">
         <div class="row">
@@ -1288,7 +1308,7 @@
             </div>
         </div>
         <div class="row ltn__related-product-slider-two-active slick-arrow-1">
-            <!-- ltn__product-item -->
+            
             <div class="col-xl-6 col-sm-6 col-12">
                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
@@ -1350,7 +1370,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ltn__product-item -->
+            
             <div class="col-xl-6 col-sm-6 col-12">
                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
@@ -1412,7 +1432,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ltn__product-item -->
+            
             <div class="col-xl-6 col-sm-6 col-12">
                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
@@ -1474,7 +1494,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ltn__product-item -->
+            
             <div class="col-xl-6 col-sm-6 col-12">
                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
@@ -1536,7 +1556,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ltn__product-item -->
+            
             <div class="col-xl-6 col-sm-6 col-12">
                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
@@ -1598,13 +1618,11 @@
                     </div>
                 </div>
             </div>
-            <!--  -->
+            
         </div>
     </div>
 </div>
-<!-- PRODUCT SLIDER AREA END -->
 
-<!-- CALL TO ACTION START (call-to-action-6) -->
 <div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom" data-bs-bg="img/1.jpg--">
     <div class="container">
         <div class="row">
@@ -1622,7 +1640,7 @@
         </div>
     </div>
 </div>
-<!-- CALL TO ACTION END -->
+
 
 @endsection
 @section('script')
@@ -1701,5 +1719,77 @@
 		navigator.clipboard.writeText(copyText);
         alert("Copied the text: " + copyText);
 	})
+</script>
+<script>
+            $('.ltn__product_slider_item_detailpage').slick({
+            arrows: true,
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
+            nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
+            responsive: [
+                {
+                    breakpoint: 1800,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 1600,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 1400,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 575,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
 </script>
 @endsection

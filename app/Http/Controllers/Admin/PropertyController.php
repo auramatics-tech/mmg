@@ -36,7 +36,7 @@ class PropertyController extends Controller
         $properties = Property::where('is_approved',0)->when(isset($request->q), function ($query) use ($request) {
             $query->whereRaw("(address LIKE '%" . $request->q . "%' or normal_price LIKE '%" . $request->q . "%' 
              or rental_per_month LIKE '%" . $request->q . "%'  or commercial_rental_per_annum LIKE '%" . $request->q . "%')");
-        })->get();
+        })->orderby('id','desc')->get();
         return view('admin.draft_properties',compact('properties'));
     }
 
@@ -45,7 +45,7 @@ class PropertyController extends Controller
         $properties = Property::where('is_approved',1)->when(isset($request->q), function ($query) use ($request) {
             $query->whereRaw("(address LIKE '%" . $request->q . "%' or normal_price LIKE '%" . $request->q . "%' 
              or rental_per_month LIKE '%" . $request->q . "%'  or commercial_rental_per_annum LIKE '%" . $request->q . "%')");
-        })->get();
+        })->orderby('id','desc')->get();
         return view('admin.draft_properties',compact('properties'));
     }
 
@@ -66,7 +66,7 @@ class PropertyController extends Controller
         $appraisal_data = Appraisal::when(isset($request->q), function ($query) use ($request) {
             $query->whereRaw("(name LIKE '%" . $request->q . "%' or address LIKE '%" . $request->q . "%' or email LIKE '%"
              . $request->q . "%' or year LIKE '%" . $request->q . "%' or property_worth LIKE '%" . $request->q . "%'
-            or agent LIKE '%" . $request->q . "%' or date LIKE '%" . $request->q . "%' or prefered_method LIKE '%" . $request->q . "%' or hear_about LIKE '%" . $request->q . "%')");})->get();
+            or agent LIKE '%" . $request->q . "%' or date LIKE '%" . $request->q . "%' or prefered_method LIKE '%" . $request->q . "%' or hear_about LIKE '%" . $request->q . "%')");})->orderby('id','desc')->get();
          
         return view('admin.appraisal_listing',compact('appraisal_data'));
     }
@@ -83,7 +83,7 @@ class PropertyController extends Controller
         DB::raw("(select properties.commercial_listing_type from `properties` where `properties`.`id` = offers.property_id) as commercial_listing_type"),
         )->whereNotNull('reference_id')->when(isset($request->q), function ($query) use ($request) {
             $query->havingRaw("(user_data LIKE '%" . $request->q . "%' or croud_seller_name LIKE '%" . $request->q . "%')");
-        })->get();
+        })->orderby('id','desc')->get();
         // echo"<pre>";print_r($bid_through_link);die;
         return view('admin.bid_listing_through_croud',compact('bid_through_links'));
     }
