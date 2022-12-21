@@ -1,14 +1,7 @@
 @extends('backend_layouts.master')
 @section('content')
-<style>
-	.section_padding {
-		position: relative !important;
-		top: -62px !important;
-	}
-</style>
 
-
-<div class="content d-flex flex-column flex-column-fluid section_padding" id="kt_content">
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<div class="toolbar" id="kt_toolbar">
 		<div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
 			<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">

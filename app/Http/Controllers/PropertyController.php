@@ -97,7 +97,7 @@ class PropertyController extends Controller
             })->when((isset($request->rent_from) && isset($request->rent_to)), function ($query) use ($request) {
                 return $query->whereBetween('properties.commercial_rental_per_annum', [$request->rent_from, $request->rent_to]);
             })
-            ->orderby($sortby, $orderby)->paginate(4);
+            ->orderby($sortby, $orderby)->paginate(10);
             // echo "<pre>";
             // print_r($properties);
             // die;

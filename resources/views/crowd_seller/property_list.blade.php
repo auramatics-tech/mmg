@@ -1,16 +1,10 @@
 @extends('backend_layouts.master')
 @section('css')
-<style>
-	.section_padding {
-		position: relative !important;
-		top: -62px !important;
-	}
-</style>
 @endsection
 @section('content')
 
 <!--begin::Content-->
-<div class="content d-flex flex-column flex-column-fluid section_padding" id="kt_content">
+<div class="content d-flex flex-column flex-column-fluid " id="kt_content">
 	<!--begin::Toolbar-->
 	<div class="toolbar" id="kt_toolbar">
 		<!--begin::Container-->

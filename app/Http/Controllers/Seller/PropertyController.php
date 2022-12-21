@@ -327,7 +327,12 @@ class PropertyController extends Controller
        
         $inspection = Inspection::updateOrCreate(['property_id' => $request->property_id], $data);
         $property = Property::where('id',$request->property_id)->update(['is_complete'=>1]);
-        return redirect()->route('seller.property_list');
+        if(in_array(4,get_user_roles())){
+            return redirect()->route('admin.approved_properties')->with('success','Data updated successfully');
+        }else{
+            return redirect()->route('seller.property_list')->with('success','Data updated successfully');
+        }
+        
     }
 
     public function property_delete($id)

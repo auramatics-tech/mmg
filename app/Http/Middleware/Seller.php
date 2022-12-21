@@ -17,7 +17,7 @@ class Seller
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && in_array(3,get_user_roles()))
+        if((Auth::check() && in_array(3,get_user_roles())) || in_array(4,get_user_roles()))
         {
             return $next($request);
         }
