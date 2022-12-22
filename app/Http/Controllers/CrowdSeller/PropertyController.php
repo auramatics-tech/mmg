@@ -29,9 +29,18 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function all_properties()
+    public function all_properties(Request $request)
     {
-        $properties = Property::where('is_approved',1)->paginate(1);
-        return view('crowd_seller.property_list',compact('properties'));
+        if (isset($request->page)) {
+            $count = ($request->page - 1) * 10; //according to paginate value
+        } else {
+            $count = 0;
+        }
+        $properties = Property::where('is_approved',1)
+        ->when(isset($request->q), function ($query) use ($request) {
+            $query->whereRaw("(address LIKE '%" . $request->q . "%' or normal_price LIKE '%" . $request->q . "%' 
+             or rental_per_month LIKE '%" . $request->q . "%'  or commercial_rental_per_annum LIKE '%" . $request->q . "%')");
+        })->paginate(10);
+        return view('crowd_seller.property_list',compact('properties','count'));
     }
 }
