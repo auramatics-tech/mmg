@@ -242,6 +242,9 @@ class PropertyController extends Controller
             return Redirect::back()->with($data)->withErrors($validate);
         }
         $data = $request->except('_token');
+        if(in_array(4,get_user_roles())){
+            $data['is_approved'] = 1;
+        }
         $data['created_by'] = Auth::id();
         $data['start_expiry_date'] = date('Y-m-d',strtotime($request->start_expiry_date));
         $data['end_expiry_date'] = date('Y-m-d',strtotime($request->end_expiry_date));
