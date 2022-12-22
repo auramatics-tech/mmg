@@ -207,11 +207,6 @@
 					<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 						<thead>
 							<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-								<th class="w-10px pe-2">
-									<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-										<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
-									</div>
-								</th>
 								<th class="min-w-125px">Property</th>
 								<th class="min-w-125px">Price</th>
 								<th class="min-w-125px">Property Type</th>
@@ -223,12 +218,7 @@
 						<tbody class="text-gray-600 fw-bold">
 							@foreach($booked_inspections as $book_inspection)
 							<tr>
-								<td>
-									<div class="form-check form-check-sm form-check-custom form-check-solid">
-										<input class="form-check-input" type="checkbox" value="1" />
-									</div>
-								</td>
-								<td class="d-flex align-items-center">
+								<td class="">
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 										@if(isset($book_inspection->property->get_property_image))
 										<a href="{{route('property_details',$book_inspection->property_id)}}">
@@ -257,7 +247,7 @@
 								@endif
 								<td>{{isset($book_inspection->inspection_date)?date('d-m-Y',strtotime($book_inspection->inspection_date)):''}}</td>
 								<td>{{isset($book_inspection->inspection_time)?date('g : i A',strtotime($book_inspection->inspection_time)):''}}</td>
-								<td class="d-flex">
+								<td class="">
 									<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 										<span class="svg-icon svg-icon-5 m-0">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -275,6 +265,7 @@
 						    @endforeach
 						</tbody>
 			        </table>
+					{{ $booked_inspections->links("pagination::bootstrap-4") }}
 		        </div>
 	        </div>
         </div>
