@@ -36,7 +36,11 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
-
+        if (isset($request->page)) {
+            $count = ($request->page - 1) * 10; //according to paginate value
+        } else {
+            $count = 0;
+        }
         $properties = Property::where('created_by', Auth::id())
         ->when(isset($request->q), function ($query) use ($request) {
             $query->where(function ($query2)use ($request) {
@@ -44,7 +48,7 @@ class PropertyController extends Controller
                 ->orWhere('properties.commercial_listing_type', 'LIKE','%' . $request->q . '%');
             });
         })->paginate(5);
-        return view('seller.property.property_list', compact('properties'));
+        return view('seller.property.property_list', compact('properties','count'));
     }
 
     public function add_property_form(Request $request)
@@ -359,15 +363,20 @@ class PropertyController extends Controller
 
     public function property_inspections(Request $request)
     {
+        if (isset($request->page)) {
+            $count = ($request->page - 1) * 10; //according to paginate value
+        } else {
+            $count = 0;
+        }
         $my_properties = Property::where(['created_by' => Auth::id()])->pluck('id')->toArray();
         $property_inspections = InspectionBook::select('inspection_books.*',
         DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = inspection_books.user_id) as user_data"),
         DB::raw("(select users.email from users where users.id = inspection_books.user_id order by `id` asc limit 1) as user_email"),
         )->when(isset($request->q), function ($query) use ($request) {
             $query->havingRaw("user_data LIKE '%" . $request->q . "%'");
-        })->whereIn('property_id', $my_properties)->paginate(4);
+        })->whereIn('property_id', $my_properties)->paginate(10);
         // echo"<pre>";print_r($property_inspections);die;
-        return view('seller.property.property_inspections', compact('property_inspections'));
+        return view('seller.property.property_inspections', compact('property_inspections','count'));
     }
 
     public function property_inspection_delete($id){

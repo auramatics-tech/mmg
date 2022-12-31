@@ -204,6 +204,8 @@
 					<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 						<thead>
 							<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+								
+								<th class="min-w-125px">Sr No</th>
 								<th class="min-w-125px">Property</th>
 								<th class="min-w-125px">User</th>
 								<th class="min-w-125px">Email</th>
@@ -216,6 +218,7 @@
 							@if(count($property_inspections))
 							@foreach($property_inspections as $book_inspection)
 							<tr>
+								<td>{{++$count}}</td>
 								<td class="">
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 										@if(isset($book_inspection->property->get_property_image))
@@ -254,7 +257,7 @@
 							@endif
 						</tbody>
 					</table>
-					{{ $property_inspections->links() }}
+					{{$property_inspections->links() }}
 				</div>
 			</div>
 		</div>
