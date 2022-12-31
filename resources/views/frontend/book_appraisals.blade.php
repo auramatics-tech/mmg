@@ -5,10 +5,6 @@
         display: block;
     }
 
-    /* .container {
-        margin-bottom: 50px;
-    } */
-
     input[type=submit],
     input[type=button] {
         width: 120px;
@@ -94,7 +90,7 @@
                     </span>
                     @enderror
                     <h2 class="title">Great! What's the property address you are considering selling?*</h2>
-                    <textarea class="text_field su_mb_30" name="address" placeholder="Type Your Property Address" placeholder="Address"></textarea>
+                    <textarea class="text_field su_mb_30" id="address_filed" name="address" placeholder="Type Your Property Address" placeholder="Address"></textarea>
                     <span class="error_msg"></span>
                     @error('address')
                     <span class="text-danger" role="alert">
@@ -232,5 +228,16 @@
     </div>
 </div>
 @endsection
-@section('script')
+@section('script')  
+<script>
+     function initAutocomplete() {
+            address1Field = document.querySelector("#address_filed");
+            // Create the autocomplete object, restricting the search predictions to
+            // addresses in the US and Canada.
+            autocomplete = new google.maps.places.Autocomplete(address1Field);
+            // When the user selects an address from the drop-down, populate the
+            // address fields in the form.
+            autocomplete.addListener("place_changed", fillInAddress);
+        }
+</script>
 @endsection
