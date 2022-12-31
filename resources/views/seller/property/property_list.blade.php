@@ -270,7 +270,7 @@
 						<tbody class="text-gray-600 fw-bold">
 							@foreach($properties as $property)
 							<tr>
-								<td>{{isset($property->id)?$property->id:''}}</td>
+								<td>{{++$count}}</td>
 								<td class="">
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
 										@if(isset($property->get_property_image))
@@ -345,7 +345,7 @@
 							@endforeach
 						</tbody>
 					</table>
-					{{ $properties->links("pagination::bootstrap-4") }}
+					{{$properties->links("pagination::bootstrap-4") }}
 				</div>
 			</div>
 		</div>
