@@ -135,9 +135,28 @@
                                         <li class="sale-badg">{{isset($property_list->status)?$property_list->status:''}}</li>
                                     </ul>
                                 </div>
-                                <div class="product-price">
-                                    <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}<label></label></span>
-                                </div>
+                                @if($property_list->form_type == 'residential_sale' || $property_list->form_type == 'residential_rental')
+                        <div class="product-info-bottom">
+                            <div class="product-price">
+                                @if($property_list->form_type == 'residential_sale')
+                                <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}</span>
+                                @elseif($property_list->form_type == 'residential_rental')
+                                <span>${{isset($property_list->rental_per_month)?$property_list->rental_per_month:''}} per/mon</span>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+                        @if($property_list->commercial_listing_type == 'commercial_sale' || $property_list->commercial_listing_type == 'commercial_lease')
+                        <div class="product-info-bottom">
+                            <div class="product-price">
+                                @if( $property_list->commercial_listing_type == 'commercial_lease')
+                                <span>${{isset($property_list->commercial_rental_per_annum)?$property_list->commercial_rental_per_annum:''}} per/year</span>
+                                @elseif($property_list->commercial_listing_type == 'commercial_sale')
+                                <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}</span>
+                                @endif
+                            </div>
+                            </div>
+                        @endif
                             </div>
                             <h2 class="product-title"><a href="{{isset($property_list->id) ? route('property_details', $property_list->id ) : 'javascript:'}}">{{isset($property_list->property_type)?$property_list->property_type:''}}</a></h2>
                             <div class="product-img-location">

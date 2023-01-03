@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\FavouriteProperty;
 use App\Models\PropertyView;
+use App\Models\User;
 use App\Models\PropertyFeature;
 use App\Models\PropertyDetail;
 use App\Models\PropertyReview;
@@ -19,6 +20,7 @@ use App\Models\UserRole;
 use Auth;
 use DB;
 use Pdf;
+use Mail;
 use Crypt;
 
 class PropertyController extends Controller
@@ -186,7 +188,7 @@ class PropertyController extends Controller
     }
     public function inspection_books(Request $request)
     {
-        // echo"<pre>";print_r($request->all());die;
+        // echo"<pre>";print_r( Auth::user()->email );die;
         if (isset($request->id)) {
             $inspection_books = InspectionBook::Find($request->id)->first();
         } else {
@@ -202,6 +204,16 @@ class PropertyController extends Controller
             'inspection_time' => ['required'],
         ]);
         $inspection_books->save();
+         Mail::send('frontend.inspectionbook_mail', compact('request','inspection_books'), function ($m) use ($request) {
+            $m->to(Auth::user()->email)
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject(__('Inspection Book Successfully'));
+        });
+        Mail::send('frontend.inspectionbook_mail', compact('request','inspection_books'), function ($m) use ($request) {
+            $m->to(env('MAIL_TO_ADMIN'))
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_TO_ADMIN'))
+                ->subject(__('New Inspection Book'));
+        });
         return redirect()->back()->with('success', 'Inspection booked successfully');
     }
 
@@ -236,6 +248,16 @@ class PropertyController extends Controller
         $appraisal->prefered_method = implode(',', $request->prefered_method);
         $appraisal->hear_about = implode(',', $request->hear_about);
         $appraisal->save();
+         Mail::send('frontend.book_appraisals_mail', compact('request'), function ($m) use ($request) {
+             $m->to($request->email)
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject(__('Appraisal Submit Successfully'));
+        });
+        Mail::send('frontend.book_appraisals_mail', compact('request'), function ($m) use ($request) {
+            $m->to(env('MAIL_TO_ADMIN'))
+               ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+               ->subject(__(' New Appraisal Submitted'));
+            });
         return redirect()->back()->with('success', 'Appraisal booked successfully, will get back to you sortly!');
     }
 }

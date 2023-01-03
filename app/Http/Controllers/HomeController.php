@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Slider;
+use App\Models\ContactUs;
 use App\Models\PropertyFeature;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -44,6 +46,34 @@ class HomeController extends Controller
     public function contact_us()
     {
         return view('frontend.contact_us');
+    }
+
+    public function save_contact_us(Request $request){
+        // echo"<pre>";print_r($request->all());die;
+        $this->validate($request, [
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone' => ['required'],
+            'message' => ['required'],
+        ]);
+        $contact_us = New ContactUs();
+        $contact_us->name = $request->name;
+        $contact_us->email = $request->email;
+        $contact_us->phone = $request->phone;
+        $contact_us->message = $request->message;
+        $contact_us->service_type = $request->service_type;
+        $contact_us->save();
+        Mail::send('frontend.contact_us_mail', compact('request'), function ($m) use ($request) {
+            $m->to($request->email)
+               ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+               ->subject(__('Contact Form Submit Successfully'));
+       });
+       Mail::send('frontend.contact_us_mail', compact('request'), function ($m) use ($request) {
+           $m->to(env('MAIL_TO_ADMIN'))
+              ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+              ->subject(__(' New Contact Submitted'));
+           });
+        return redirect()->back()->with('success', 'Form Submitted successfully, will get back to you sortly!');
     }
 
     public function about_us()

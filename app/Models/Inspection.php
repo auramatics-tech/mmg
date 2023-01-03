@@ -16,5 +16,6 @@ class Inspection extends Model
     public function property(){
         return $this->hasOne(Property::class, 'id','property_id'); 
     }
+
     
 }
