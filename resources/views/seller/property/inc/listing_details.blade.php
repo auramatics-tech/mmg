@@ -215,11 +215,11 @@
             <div class="row g-9 mb-8">
                 <div class="col-md-6 mb-8 fv-row">
                     <label class="fs-6 fw-bold mb-2">Start Date</label>
-                    <input class="form-control form-control-solid from_date" id="StartDate" placeholder="" name="start_expiry_date" type="text" value="{{old('start_expiry_date') ?? isset($property->start_expiry_date)?$property->start_expiry_date:''}}" />
+                    <input class="form-control form-control-solid from_date" id="StartDate" placeholder="" name="start_expiry_date" type="date" value="{{old('start_expiry_date') ?? isset($property->start_expiry_date)?$property->start_expiry_date:''}}" />
                 </div>
                 <div class="col-md-6 mb-8 fv-row">
                     <label class="fs-6 fw-bold mb-2"> Expiry Date</label>
-                    <input class="form-control form-control-solid to_date" id="EndDate" placeholder="" name="end_expiry_date" type="text" value="{{old('end_expiry_date') ?? isset($property->end_expiry_date)?$property->end_expiry_date:''}}" />
+                    <input class="form-control form-control-solid to_date" id="EndDate" placeholder="" name="end_expiry_date" type="date" value="{{old('end_expiry_date') ?? isset($property->end_expiry_date)?$property->end_expiry_date:''}}" />
                 </div>
             </div>
             <div class="d-flex flex-column mb-7 fv-row residential_rental_show">

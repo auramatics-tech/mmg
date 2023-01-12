@@ -497,22 +497,13 @@
             }
         });
 
-        $(document).ready(function(){
-            $("#StartDate").datepicker({
-                minDate: 0,
-                maxDate: "+60D",
-                numberOfMonths: 2,
-                onSelect: function(selected) {
-                $("#EndDate").datepicker("option","minDate", selected)
-                }
-            });
-
-            $("#EndDate").datepicker({
-                minDate: 0,
-                maxDate:"+60D",
-                numberOfMonths: 2,
-                onSelect: function(selected) {
-                $("#StartDate").datepicker("option","maxDate", selected)
+        $(document).ready(function() {
+            $('#StartDate, #EndDate').on('change', function() {
+                var StartDate = new Date($('#StartDate').val());
+                var EndDate = new Date($('#EndDate').val());
+                if (EndDate <= StartDate) {
+                    alert("End date should be greater than start date");
+                    $('#EndDate').val('');
                 }
             });
         });

@@ -249,6 +249,13 @@
                         </span>
                         @enderror
                         <input type="text" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" required autocomplete="last-name" autofocus>
+                        <input type="tel" name="phone_no" placeholder="Phone Number" value="{{ old('phone_no') }}" required autocomplete="phone-no" autofocus class="form-control" style="margin-bottom:30px; padding-right:40px; padding-left:20px;
+                        font-size:14px!important;height: 65px;border: 2px solid;border-color: var(--border-color-9);">
+                        @error('phone_no')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                         <input type="text" name="email" placeholder="Email*" value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')

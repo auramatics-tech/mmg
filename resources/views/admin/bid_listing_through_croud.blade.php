@@ -7,7 +7,6 @@
 </style>
 @endsection
 @section('content')
-
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<!--begin::Toolbar-->
@@ -47,6 +46,25 @@
 		<div id="kt_content_container" class="container-xxl">
 			<div class="card">
 				<div class="card-header border-0">
+				<form action="" method="get" id="search_form">
+					<div class="card-title">
+						<!--begin::Search-->
+						<div class="d-flex align-items-center position-relative my-1">
+							<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+
+							<span class="svg-icon svg-icon-1 position-absolute ms-6">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+									<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
+								</svg>
+							</span>
+							<!--end::Svg Icon-->
+							<input type="text" name="q" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Croud Seller Name" value="{{isset(request()->q) ? request()->q : ''}}" />
+
+						</div>
+						<!--end::Search-->
+					</div>
+					</form>
 					<div class="card-title">
 					</div>
 					<div class="card-toolbar">
@@ -107,6 +125,8 @@
 								<th class="min-w-125px">Property</th>
 								<th class="min-w-125px">Buyer Name</th>
 								<th class="min-w-125px">Croud Seller Name</th>
+								<th class="min-w-125px">Property Type</th>
+								<th class="min-w-125px">Normol Price</th>
 								<th class="min-w-125px">Bid Price</th>
 								<th class="min-w-125px">Notes</th>
 							</tr>
@@ -127,12 +147,26 @@
 										@endif
 									</div>
 								</td>
-                                <td>{{isset($bid_through_link->user_data) ? $bid_through_link->user_data : ''}}</td>
-                                <td>{{isset($bid_through_link->croud_seller_name) ? $bid_through_link->croud_seller_name : ''}}</td>
-                                <td>{{isset($bid_through_link->offer_price) ? $bid_through_link->offer_price : ''}}</td>
-                                <td>{{isset($bid_through_link->note) ? $bid_through_link->note : ''}}</td>
+								<td>{{isset($bid_through_link->user_data) ? $bid_through_link->user_data : ''}}</td>
+								<td>{{isset($bid_through_link->croud_seller_name) ? $bid_through_link->croud_seller_name : ''}}</td>
+								@if($bid_through_link->form_type == 'commercial')
+								<td>{{isset($bid_through_link->commercial_listing_type)?str_replace('_',' ',$bid_through_link->commercial_listing_type):''}}</td>
+								@else
+								<td>{{isset($bid_through_link->form_type)? str_replace('_',' ', $bid_through_link->form_type):''}}</td>
+								@endif
+								<td>@if($bid_through_link->form_type == 'residential_sale' || $bid_through_link->commercial_listing_type == 'commercial_sale')
+									{{isset($bid_through_link->normal_price)?$bid_through_link->normal_price:''}}
+									@endif
+									@if($bid_through_link->commercial_listing_type == 'commercial_lease')
+									{{isset($bid_through_link->commercial_rental_per_annum)?$bid_through_link->commercial_rental_per_annum:''}} per/year
+									@elseif($bid_through_link->form_type == 'residential_rental')
+									{{isset($bid_through_link->rental_per_month)?$bid_through_link->rental_per_month:''}} per/month
+									@endif
+								</td>
+								<td>{{isset($bid_through_link->offer_price) ? $bid_through_link->offer_price : ''}}</td>
+								<td>{{isset($bid_through_link->note) ? $bid_through_link->note : ''}}</td>
 							</tr>
-                            @endforeach
+							@endforeach
 						</tbody>
 					</table>
 				</div>
