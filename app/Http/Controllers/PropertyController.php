@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\FavouriteProperty;
 use App\Models\PropertyView;
+use App\Models\User;
 use App\Models\PropertyFeature;
 use App\Models\PropertyDetail;
 use App\Models\PropertyReview;
@@ -18,6 +19,7 @@ use App\Models\Inspection;
 use Auth;
 use DB;
 use Pdf;
+use Mail;
 use Crypt;
 
 class PropertyController extends Controller
@@ -96,7 +98,7 @@ class PropertyController extends Controller
             })->when((isset($request->rent_from) && isset($request->rent_to)), function ($query) use ($request) {
                 return $query->whereBetween('properties.commercial_rental_per_annum', [$request->rent_from, $request->rent_to]);
             })
-            ->orderby($sortby, $orderby)->paginate(4);
+            ->orderby($sortby, $orderby)->paginate(10);
             // echo "<pre>";
             // print_r($properties);
             // die;
@@ -185,7 +187,7 @@ class PropertyController extends Controller
     }
     public function inspection_books(Request $request)
     {
-        // echo"<pre>";print_r($request->all());die;
+        // echo"<pre>";print_r( Auth::user()->email );die;
         if (isset($request->id)) {
             $inspection_books = InspectionBook::Find($request->id)->first();
         } else {
@@ -201,12 +203,24 @@ class PropertyController extends Controller
             'inspection_time' => ['required'],
         ]);
         $inspection_books->save();
+         Mail::send('frontend.inspectionbook_mail', compact('request','inspection_books'), function ($m) use ($request) {
+            $m->to(Auth::user()->email)
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject(__('Inspection Book Successfully'));
+        });
+        Mail::send('frontend.inspectionbook_mail', compact('request','inspection_books'), function ($m) use ($request) {
+            $m->to(env('MAIL_TO_ADMIN'))
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_TO_ADMIN'))
+                ->subject(__('New Inspection Book'));
+        });
         return redirect()->back()->with('success', 'Inspection booked successfully');
     }
 
-    public function book_appraisal()
+    public function book_appraisal(Request $request)
     {
-        return view('frontend.book_appraisals');
+       $croud_sellers = UserRole::select('user_roles.*', DB::raw("(select concat(COALESCE(users.first_name,''),' ',COALESCE(users.last_name,'')) from `users` where `users`.`id` = user_roles.user_id) as user_data"))->where('role', 2)->get();
+    //    echo"<pre>";print_r($croud_sellers);die;
+        return view('frontend.book_appraisals',compact('croud_sellers'));
     }
 
     public function save_appraisal(Request $request)
@@ -233,6 +247,16 @@ class PropertyController extends Controller
         $appraisal->prefered_method = implode(',', $request->prefered_method);
         $appraisal->hear_about = implode(',', $request->hear_about);
         $appraisal->save();
+         Mail::send('frontend.book_appraisals_mail', compact('request'), function ($m) use ($request) {
+             $m->to($request->email)
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject(__('Appraisal Submit Successfully'));
+        });
+        Mail::send('frontend.book_appraisals_mail', compact('request'), function ($m) use ($request) {
+            $m->to(env('MAIL_TO_ADMIN'))
+               ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+               ->subject(__(' New Appraisal Submitted'));
+            });
         return redirect()->back()->with('success', 'Appraisal booked successfully, will get back to you sortly!');
     }
 }

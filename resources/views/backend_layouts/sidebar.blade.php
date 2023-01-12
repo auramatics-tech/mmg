@@ -110,6 +110,16 @@
                             </a>
                         </div>
                     </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('admin.seller_croud_selller_user')=='admin.seller_croud_selller_user')?'active':''}}" href="{{route('admin.seller_croud_selller_user')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title"> Requested For Seller And Croud Seller</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 @endif
                 @if(in_array(1,get_user_roles()))
@@ -188,6 +198,14 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">All Properties</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{(Route::is('CrowdSeller.bid_through_link_list')=='CrowdSeller.bid_through_link_list')?'active':''}}" href="{{route('CrowdSeller.bid_through_link_list')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Bid Through Link</span>
                             </a>
                         </div>
                     </div>

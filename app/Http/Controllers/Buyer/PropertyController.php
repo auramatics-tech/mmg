@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\FavouriteProperty;
 use Auth;
 use DB;
+use Mail;
 
 class PropertyController extends Controller
 {
@@ -43,9 +44,14 @@ class PropertyController extends Controller
     
     public function save_offer(Request $request)
     {
-        Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>str_replace('$','',$request->offer_price),'note'=>$request->note]);
-        
-        return redirect()->route('buyer.my_offers')->with('success',"Your bid submitted successfully, we'll contact you sortly");
+        // echo"<pre>";print_r($request->all());die;
+     $offer =  Offer::updateOrCreate(['user_id'=>$request->user_id,'property_id'=>$request->property_id],['reference_id'=>$request->reference_id,'offer_price'=>str_replace('$','',$request->offer_price),'note'=>$request->note ,'listing_expiry_date'=>date('Y-m-d', strtotime($request->listing_expiry_date))]);
+        Mail::send('frontend.offer_mail', compact('request','offer'), function ($m) use ($request) {
+            $m->to(env('MAIL_TO_ADMIN'))
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_TO_ADMIN'))
+                ->subject(__('New Offer Submitted'));
+        });
+        return redirect()->route('buyer.my_offers')->with('success',"Your Offer submitted successfully, we'll contact you sortly");
     }
 
     public function book_inspection($property_id)

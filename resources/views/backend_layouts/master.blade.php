@@ -48,6 +48,12 @@ License: For each use you must have a valid license purchased only from above li
             width: 100%;
             height: 100%;
         }
+        .su_pl_12{
+            padding-left: 10px;
+        }
+        .su_pr_20{
+            padding-right: 20px;
+        }
     </style>
 </head>
 <!--end::Head-->

@@ -5,16 +5,6 @@ use App\Http\Controllers\Buyer\PropertyController;
 use App\Http\Controllers\Buyer\DashboardController;
 use App\Http\Controllers\Buyer\UserRoleController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('buyer.dashboard');
 

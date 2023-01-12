@@ -16,7 +16,7 @@
 			<!--begin::Page title-->
 			<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 				<!--begin::Title-->
-				<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Slider Images</h1>
+				<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Bid Through Croud Seller Link </h1>
 				<!--end::Title-->
 				<!--begin::Separator-->
 				<span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -122,6 +122,7 @@
 					<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 						<thead>
 							<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+								<th class="min-w-125px">Sr No</th>
 								<th class="min-w-125px">Property</th>
 								<th class="min-w-125px">Buyer Name</th>
 								<th class="min-w-125px">Croud Seller Name</th>
@@ -135,6 +136,7 @@
 							@foreach($bid_through_links as $bid_through_link)
 							<!--begin::Table row-->
 							<tr>
+								<td>{{++$count}}</td>
 								<td class="d-flex align-items-center">
 									<!--begin:: Avatar -->
 									<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
@@ -169,6 +171,7 @@
 							@endforeach
 						</tbody>
 					</table>
+					{{$bid_through_links->links("pagination::bootstrap-4")}}
 				</div>
 			</div>
 		</div>

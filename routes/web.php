@@ -42,6 +42,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
+Route::POST('/save-contact-us', [HomeController::class, 'save_contact_us'])->name('save_contact_us');
 Route::get('/about-us', [HomeController::class, 'about_us'])->name('about_us');
 Route::get('/registeration', [HomeController::class, 'registration'])->name('registration');
 

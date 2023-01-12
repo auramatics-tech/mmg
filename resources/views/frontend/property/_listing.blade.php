@@ -3,7 +3,6 @@
         <div class="ltn__product-tab-content-inner ltn__product-grid-view">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Search Widget -->
                     <div class="ltn__search-widget mb-30">
                         <form action="#" id="form1">
                             <input type="text" name="search" placeholder="Search your keyword...">
@@ -24,13 +23,6 @@
                             </div>
                         </div>
                         <div class="product-info">
-                                {{--
-                                <div class="product-badge">
-                                    <ul>
-                                        <li class="sale-badg">{{isset($property->status)?$property->status:''}}</li>
-                                    </ul>
-                                </div>
-                                --}}
                                 @if($property->form_type == 'residential' ||$property->form_type == 'residential_rental' ||$property->form_type == 'residential_sale')
                                 <h2 class="product-title"><a href="{{route('property_details',$property->id)}}">{{isset($property->property_type)?$property->property_type:''}}</a></h2>
                                 @endif
@@ -122,10 +114,6 @@
         <div class="ltn__product-tab-content-inner ltn__product-list-view">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Search Widget -->
-
-                    <!-- Search Widget -->
-
                     <div class="ltn__search-widget mb-30">
                         <form action="#" id="form1">
                             <input type="text" name="search" placeholder="Search your keyword...">
@@ -133,7 +121,6 @@
                         </form>
                     </div>
                 </div>
-                <!-- ltn__product-item -->
                 @if(isset($properties) && count($properties))
                 @foreach($properties as $property_list)
                 <div class="col-lg-12">
@@ -148,9 +135,28 @@
                                         <li class="sale-badg">{{isset($property_list->status)?$property_list->status:''}}</li>
                                     </ul>
                                 </div>
-                                <div class="product-price">
-                                    <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}<label></label></span>
-                                </div>
+                                @if($property_list->form_type == 'residential_sale' || $property_list->form_type == 'residential_rental')
+                        <div class="product-info-bottom">
+                            <div class="product-price">
+                                @if($property_list->form_type == 'residential_sale')
+                                <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}</span>
+                                @elseif($property_list->form_type == 'residential_rental')
+                                <span>${{isset($property_list->rental_per_month)?$property_list->rental_per_month:''}} per/mon</span>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+                        @if($property_list->commercial_listing_type == 'commercial_sale' || $property_list->commercial_listing_type == 'commercial_lease')
+                        <div class="product-info-bottom">
+                            <div class="product-price">
+                                @if( $property_list->commercial_listing_type == 'commercial_lease')
+                                <span>${{isset($property_list->commercial_rental_per_annum)?$property_list->commercial_rental_per_annum:''}} per/year</span>
+                                @elseif($property_list->commercial_listing_type == 'commercial_sale')
+                                <span>${{isset($property_list->normal_price)?$property_list->normal_price:''}}</span>
+                                @endif
+                            </div>
+                            </div>
+                        @endif
                             </div>
                             <h2 class="product-title"><a href="{{isset($property_list->id) ? route('property_details', $property_list->id ) : 'javascript:'}}">{{isset($property_list->property_type)?$property_list->property_type:''}}</a></h2>
                             <div class="product-img-location">
@@ -176,7 +182,6 @@
                             <ul>
                                 <li class="su_fav_proporty_logo" data-property_id="{{$property_list->id}}">
                                     <a href="javascript:" data-property_id="{{$property_list->id}}" class="fav_property">
-                                        {{-- <i class="{{check_favourite_property($property_list->id)?'fa':'far'}} fa-heart"></i>--}}
                                         <img  src="{{check_favourite_property($property_list->id)? asset('frontend/img/my_logo/png/MMG_Gold_1.png') : asset('frontend/img/my_logo/png/MMG_Black_2.png')}}" alt="Logo">
                                     </a>
                                 </li>

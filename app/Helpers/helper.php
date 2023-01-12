@@ -33,8 +33,22 @@ if (!function_exists('number_dropdown')) {
 
 if (!function_exists('get_user_roles')) {
     function get_user_roles(){
-        $roles =  UserRole::where('user_id',Auth::id())->orderby('id','desc')->pluck('role')->toArray(); 
+        $roles =  UserRole::where(['user_id'=>Auth::id(),'is_approved'=>1])->orderby('id','desc')->pluck('role')->toArray(); 
         return $roles;
+    }
+}
+
+if (!function_exists('is_requested_for_seller')) {
+    function is_requested_for_seller(){
+        $is_requested_seller =  UserRole::where('role',1)->where(['user_id'=>Auth::id(),'is_approved'=>0])->pluck('user_id')->toArray(); 
+        return $is_requested_seller;
+    }
+}
+
+if (!function_exists('is_requested_for_croud_seller')) {
+    function is_requested_for_croud_seller(){
+        $is_requested_croud_seller =  UserRole::where('role',2)->where(['user_id'=>Auth::id(),'is_approved'=>0])->pluck('user_id')->toArray(); 
+        return $is_requested_croud_seller;
     }
 }
 
